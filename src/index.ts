@@ -1,7 +1,7 @@
 import { setFailed, getInput } from '@actions/core';
 import { context, getOctokit } from '@actions/github';
 import { exec } from '@actions/exec';
-import { argv, cwd } from 'process';
+import { argv } from 'process';
 
 import { readFileSync } from 'fs';
 
@@ -19,6 +19,8 @@ async function getCoverage(
 
         await exec(`git checkout -f ${branch}`);
     }
+
+    await exec('npm ci');
 
     await exec(testCommand);
 
