@@ -1,10 +1,12 @@
 import { setFailed, getInput } from '@actions/core';
 import { context, getOctokit } from '@actions/github';
 import { exec } from '@actions/exec';
-import { argv } from 'process';
+import { argv, report } from 'process';
 
 import { readFileSync } from 'fs';
 import { parseCoverageSummary } from './parseCoverageSummary';
+import { fetchPreviousComment } from './fetchPreviousComment';
+import { getCommentBody } from './getCommentBody';
 
 async function getCoverage(
     testCommand: string,
@@ -61,7 +63,39 @@ async function run() {
         const headSummary = parseCoverageSummary(headOutput);
         const baseSummary = parseCoverageSummary(baseOutput);
 
-        console.log(headSummary, baseSummary);
+        const previousComment = await fetchPreviousComment(
+            octokit,
+            repo,
+            pull_request
+        );
+
+        const body = getCommentBody(headSummary, baseSummary);
+
+        if (!previousComment) {
+            try {
+                await octokit.issues.createComment({
+                    ...repo,
+                    issue_number: pull_request.number,
+                    body,
+                });
+            } catch (error) {
+                console.error(
+                    "Error creating comment. This can happen for PR's originating from a fork without write permissions."
+                );
+            }
+        } else {
+            try {
+                await octokit.issues.updateComment({
+                    ...repo,
+                    comment_id: (previousComment as any).id,
+                    body,
+                });
+            } catch (error) {
+                console.error(
+                    "Error updating comment. This can happen for PR's originating from a fork without write permissions."
+                );
+            }
+        }
     } catch (error) {
         setFailed(error.message);
     }
