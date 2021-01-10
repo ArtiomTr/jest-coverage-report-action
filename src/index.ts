@@ -57,7 +57,7 @@ async function run() {
             pull_request.base.ref
         );
 
-        console.log(headOutput, baseOutput);
+        console.log('LOLLLL!!!!!::JK: ________', headOutput, baseOutput);
     } catch (error) {
         setFailed(error.message);
     }
