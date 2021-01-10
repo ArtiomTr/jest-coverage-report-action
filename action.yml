@@ -11,7 +11,7 @@ inputs:
     test_script:
         required: false
         description: 'a custom npm script to test'
-        default: npx jest --silent --coverage --coverageReporters=\"text\" --coverageReporters=\"text-summary\"
+        default: npx jest --silent --coverage --coverageReporters="text" --coverageReporters="text-summary"
 runs:
     using: 'docker'
     image: 'Dockerfile'
