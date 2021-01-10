@@ -26,7 +26,7 @@ async function getCoverage(
 
     await exec(testCommand, [], {
         listeners: {
-            stdout: (data) => (output += data.toString()),
+            stdout: (data) => (output = data.toString()),
         },
     });
 
@@ -57,7 +57,12 @@ async function run() {
             pull_request.base.ref
         );
 
-        console.log('LOLLLL!!!!!::JK: ________', headOutput, baseOutput);
+        console.log(
+            'LOLLLL!!!!!::JK: ________',
+            testScript,
+            headOutput,
+            baseOutput
+        );
     } catch (error) {
         setFailed(error.message);
     }
