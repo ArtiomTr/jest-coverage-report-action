@@ -33,8 +33,9 @@ export const getCommentBody = (
 ): string => {
     return [
         MESSAGE_HEADING,
-        table(
-            (Object.keys(headSummary) as Array<
+        table([
+            ['Category', 'Percentage', 'Covered / Total'],
+            ...(Object.keys(headSummary) as Array<
                 keyof ParsedCoverageSummary
             >).map((value: keyof ParsedCoverageSummary) => [
                 map[value],
@@ -43,7 +44,7 @@ export const getCommentBody = (
                     baseSummary[value].percentage
                 ),
                 `${headSummary[value].covered}/${headSummary[value].total}`,
-            ])
-        ),
+            ]),
+        ]),
     ].join('\n');
 };
