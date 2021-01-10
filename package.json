@@ -16,10 +16,12 @@
     "dependencies": {
         "@actions/core": "^1.2.6",
         "@actions/exec": "^1.0.4",
-        "@actions/github": "^4.0.0"
+        "@actions/github": "^4.0.0",
+        "markdown-table": "^2.0.0"
     },
     "devDependencies": {
         "@types/jest": "^26.0.20",
+        "@types/markdown-table": "^2.0.0",
         "@types/node": "^14.14.20",
         "jest": "^26.6.3",
         "ts-jest": "^26.4.4",
