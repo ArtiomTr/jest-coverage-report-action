@@ -35,19 +35,22 @@ const getSummaryTable = (
     headSummary: ParsedCoverageSummary,
     baseSummary: ParsedCoverageSummary
 ) =>
-    table([
-        ['Category', 'Percentage', 'Covered / Total'],
-        ...(Object.keys(headSummary) as Array<
-            keyof ParsedCoverageSummary
-        >).map((value: keyof ParsedCoverageSummary) => [
-            map[value],
-            getFormattedPercentage(
-                headSummary[value].percentage,
-                baseSummary[value].percentage
-            ),
-            `${headSummary[value].covered}/${headSummary[value].total}`,
-        ]),
-    ]);
+    table(
+        [
+            ['Category', 'Percentage', 'Covered / Total'],
+            ...(Object.keys(headSummary) as Array<
+                keyof ParsedCoverageSummary
+            >).map((value: keyof ParsedCoverageSummary) => [
+                map[value],
+                getFormattedPercentage(
+                    headSummary[value].percentage,
+                    baseSummary[value].percentage
+                ),
+                `${headSummary[value].covered}/${headSummary[value].total}`,
+            ]),
+        ],
+        { align: ['l', 'l', 'c'] }
+    );
 
 const getDetailsTable = (content: string[][]) =>
     table([
@@ -74,9 +77,9 @@ const getNewFilesSpoiler = (
 <details>
     <summary>Show new covered files</summary>
 
+This is coverage of previously not existing files:
 
-    ${getDetailsTable(tableContent)}
-
+${getDetailsTable(tableContent)}
 
 </details>
 `;
@@ -127,10 +130,10 @@ const getFilesWithDecreasedCoverage = (
 <details>
     <summary>Show files with decreased coverage</summary>
 
+    These are files, where coverage was decreased:
+
+${getDetailsTable(tableContent)}
     
-    ${getDetailsTable(tableContent)}
-
-
 </details>
         `;
     }
@@ -146,6 +149,7 @@ export const getCommentBody = (
 ): string => {
     return [
         MESSAGE_HEADING,
+        '### Total coverage',
         getSummaryTable(headSummary, baseSummary),
         getFilesWithDecreasedCoverage(headDetails, baseDetails),
         getNewFilesSpoiler(headDetails, baseDetails),
