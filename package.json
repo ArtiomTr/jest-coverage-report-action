@@ -6,6 +6,7 @@
     "main": "index.js",
     "scripts": {
         "test:coverage": "jest --silent --coverage --json",
+        "test:watch": "jest --watch",
         "start": "webpack --watch --mode development",
         "build": "webpack --mode production"
     },
@@ -18,6 +19,8 @@
         "@actions/github": "^4.0.0"
     },
     "devDependencies": {
+        "@types/jest": "^26.0.20",
+        "@types/node": "^14.14.20",
         "jest": "^26.6.3",
         "ts-jest": "^26.4.4",
         "ts-loader": "^8.0.14",
