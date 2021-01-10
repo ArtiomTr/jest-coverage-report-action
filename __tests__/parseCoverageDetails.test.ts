@@ -1,4 +1,4 @@
-import { parseCoverageSummary } from '../src/parseCoverageSummary';
+import { parseCoverageDetails } from '../src/parseCoverageDetails';
 
 const coverageOutput1 = `
 -------------------------|---------|----------|---------|---------|-------------------
@@ -16,28 +16,14 @@ Lines        : 81.15% ( 15/15 )
 ================================================================================
 `;
 
-describe('parseCoverageSummary', () => {
-    it('stats', () => {
-        expect(parseCoverageSummary(coverageOutput1)).toStrictEqual({
-            statements: {
-                percentage: 100,
-                covered: 16,
-                total: 16,
-            },
-            branches: {
-                percentage: 1,
-                covered: 7,
-                total: 8,
-            },
-            functions: {
-                percentage: 0.001,
-                covered: 2,
-                total: 2,
-            },
-            lines: {
-                percentage: 81.15,
-                covered: 15,
-                total: 15,
+describe('parseCoverageDetails', () => {
+    it('', () => {
+        expect(parseCoverageDetails(coverageOutput1)).toStrictEqual({
+            'parseCoverageSummary.ts': {
+                statements: 100,
+                branches: 87.5,
+                functions: 100,
+                lines: 100,
             },
         });
     });

@@ -14,6 +14,8 @@ export type ParsedCoverageSummary = {
 };
 
 export const parseCoverageSummary = (source: string): ParsedCoverageSummary => {
+    source = source.slice(source.indexOf('='), source.lastIndexOf('='));
+
     const map: ParsedCoverageSummary = {} as ParsedCoverageSummary;
 
     source.replace(statsRegexp, (key, percentage, covered, total) => {
