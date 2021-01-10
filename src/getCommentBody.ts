@@ -18,7 +18,7 @@ const getFormattedPercentage = (
     const delta = headPercentage - basePercentage;
 
     const symbol =
-        delta < APPROXIMATION_DELTA
+        delta < -APPROXIMATION_DELTA
             ? '🔻'
             : delta > APPROXIMATION_DELTA
             ? '🔼'
