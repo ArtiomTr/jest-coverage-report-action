@@ -48,7 +48,7 @@ async function run() {
 
         const [token, testScript, coverageOutputFile] = argv.slice(2);
 
-        const octokit = getOctokit('cb3e22207e148ada031b7c31aaf61bf75ce46de6');
+        const octokit = getOctokit(token);
 
         const headOutput = await getCoverage(testScript, coverageOutputFile);
         const baseOutput = await getCoverage(
