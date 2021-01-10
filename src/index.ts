@@ -4,6 +4,7 @@ import { exec } from '@actions/exec';
 import { argv } from 'process';
 
 import { readFileSync } from 'fs';
+import { parseCoverageSummary } from './parseCoverageSummary';
 
 async function getCoverage(
     testCommand: string,
@@ -26,7 +27,7 @@ async function getCoverage(
 
     await exec(testCommand, [], {
         listeners: {
-            stdout: (data) => (output = data.toString()),
+            stdout: (data) => (output += data.toString()),
         },
     });
 
@@ -57,12 +58,10 @@ async function run() {
             pull_request.base.ref
         );
 
-        console.log(
-            'LOLLLL!!!!!::JK: ________',
-            testScript,
-            headOutput,
-            baseOutput
-        );
+        const headSummary = parseCoverageSummary(headOutput);
+        const baseSummary = parseCoverageSummary(baseOutput);
+
+        console.log(headSummary, baseSummary);
     } catch (error) {
         setFailed(error.message);
     }
