@@ -1,6 +1,6 @@
 import { getOctokit } from '@actions/github';
 
-export const MESSAGE_HEADING = '## jest coverage report 🧪🧪';
+export const MESSAGE_HEADING = '## jest coverage report 🧪';
 
 export async function fetchPreviousComment(
     octokit: ReturnType<typeof getOctokit>,
