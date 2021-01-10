@@ -71,8 +71,13 @@ async function run() {
 
         const body = getCommentBody(headSummary, baseSummary);
 
-        if (!previousComment) {
+        if (previousComment) {
             try {
+                await octokit.issues.deleteComment({
+                    ...repo,
+                    comment_id: (previousComment as any).id,
+                });
+
                 await octokit.issues.createComment({
                     ...repo,
                     issue_number: pull_request.number,
@@ -80,19 +85,7 @@ async function run() {
                 });
             } catch (error) {
                 console.error(
-                    "Error creating comment. This can happen for PR's originating from a fork without write permissions."
-                );
-            }
-        } else {
-            try {
-                await octokit.issues.updateComment({
-                    ...repo,
-                    comment_id: (previousComment as any).id,
-                    body,
-                });
-            } catch (error) {
-                console.error(
-                    "Error updating comment. This can happen for PR's originating from a fork without write permissions."
+                    "Error deleting and/or creating comment. This can happen for PR's originating from a fork without write permissions."
                 );
             }
         }
