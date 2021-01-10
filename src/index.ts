@@ -6,6 +6,7 @@ import { argv } from 'process';
 import { parseCoverageSummary } from './parseCoverageSummary';
 import { fetchPreviousComment } from './fetchPreviousComment';
 import { getCommentBody } from './getCommentBody';
+import { parseCoverageDetails } from './parseCoverageDetails';
 
 async function getCoverage(testCommand: string, branch?: string) {
     if (branch) {
@@ -58,31 +59,38 @@ async function run() {
         const headSummary = parseCoverageSummary(headOutput);
         const baseSummary = parseCoverageSummary(baseOutput);
 
+        const headDetails = parseCoverageDetails(headOutput);
+        const baseDetails = parseCoverageDetails(baseOutput);
+
         const previousComment = await fetchPreviousComment(
             octokit,
             repo,
             pull_request
         );
 
-        const body = getCommentBody(headSummary, baseSummary);
+        const body = getCommentBody(
+            headSummary,
+            baseSummary,
+            headDetails,
+            baseDetails
+        );
 
-        if (previousComment) {
-            try {
+        try {
+            if (previousComment) {
                 await octokit.issues.deleteComment({
                     ...repo,
                     comment_id: (previousComment as any).id,
                 });
-
-                await octokit.issues.createComment({
-                    ...repo,
-                    issue_number: pull_request.number,
-                    body,
-                });
-            } catch (error) {
-                console.error(
-                    "Error deleting and/or creating comment. This can happen for PR's originating from a fork without write permissions."
-                );
             }
+            await octokit.issues.createComment({
+                ...repo,
+                issue_number: pull_request.number,
+                body,
+            });
+        } catch (error) {
+            console.error(
+                "Error deleting and/or creating comment. This can happen for PR's originating from a fork without write permissions."
+            );
         }
     } catch (error) {
         setFailed(error.message);
