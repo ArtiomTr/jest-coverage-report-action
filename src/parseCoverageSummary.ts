@@ -1,4 +1,4 @@
-const statsRegexp = /(?:Statements|Branches|Functions|Lines)\s*:\s*([0-9]+(?:\.[0-9]+)?)[^(]+\(\s+([0-9])+\/([0-9]+)/g;
+const statsRegexp = /(?:Statements|Branches|Functions|Lines)\s*:\s*([0-9]+(?:\.[0-9]+)?)[^(]+\(\s+([0-9]+)\/([0-9]+)/g;
 
 export type CoverageSummaryStat = {
     percentage: number;
