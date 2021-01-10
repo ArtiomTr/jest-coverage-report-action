@@ -77,7 +77,7 @@ const getNewFilesSpoiler = (
 <details>
     <summary>Show new covered files</summary>
 
-This is coverage of previously not existing files:
+### Coverage of new files
 
 ${getDetailsTable(tableContent)}
 
@@ -128,9 +128,9 @@ const getFilesWithDecreasedCoverage = (
     if (tableContent.length > 0) {
         return `
 <details>
-    <summary>Show files with decreased coverage</summary>
+    <summary>Show files with reduced coverage</summary>
 
-    These are files, where coverage was decreased:
+### Reduced coverage
 
 ${getDetailsTable(tableContent)}
     
