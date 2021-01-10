@@ -1,0 +1,12 @@
+on: [pull_request]
+
+jobs:
+    custom_test:
+        runs-on: ubuntu-latest
+        name: Test locally using act
+        steps:
+            - name: Test coverage
+              uses: ./ # Uses an action in the root directory
+              with:
+                  github_token: ${{ secrets.GITHUB_TOKEN }}
+                  test_script: npm run test
