@@ -11,14 +11,7 @@ inputs:
     test_script:
         required: false
         description: 'a custom npm script to test'
-        default: npx jest --coverage --coverageReporters="json-summary"
-    # skip_step:
-    #     required: false
-    #     description: 'which step to skip, either "install" or "build"'
-    coverage_output:
-        required: false
-        description: 'a custom coverage output file'
-        default: './coverage/coverage-summary.json'
+        default: npx jest --silent --coverage --json
 runs:
     using: 'docker'
     image: 'Dockerfile'
