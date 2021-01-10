@@ -5,7 +5,7 @@
     "description": "",
     "main": "index.js",
     "scripts": {
-        "test:coverage": "jest --coverage --coverageReporters=\"json-summary\"",
+        "test:coverage": "jest --silent --coverage --json",
         "start": "webpack --watch --mode development",
         "build": "webpack --mode production"
     },

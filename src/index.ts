@@ -22,11 +22,15 @@ async function getCoverage(
 
     await exec('npm ci');
 
-    await exec(testCommand);
+    let output = '';
 
-    const output = readFileSync(coverageOutput);
+    await exec(testCommand, [], {
+        listeners: {
+            stdout: (data) => (output += data.toString()),
+        },
+    });
 
-    return output.toString();
+    return output;
 }
 
 async function run() {
@@ -47,13 +51,13 @@ async function run() {
         const octokit = getOctokit('cb3e22207e148ada031b7c31aaf61bf75ce46de6');
 
         const headOutput = await getCoverage(testScript, coverageOutputFile);
-        // const baseOutput = await getCoverage(
-        //     testScript,
-        //     coverageOutputFile,
-        //     pull_request.base.ref
-        // );
+        const baseOutput = await getCoverage(
+            testScript,
+            coverageOutputFile,
+            pull_request.base.ref
+        );
 
-        console.log(headOutput);
+        console.log(headOutput, baseOutput);
     } catch (error) {
         setFailed(error.message);
     }
