@@ -1,4 +1,4 @@
-import { ParsedCoverageDetails } from '../../parseCoverageDetails';
+import { ParsedCoverageDetails } from '../../collect-coverage/parseCoverageDetails';
 
 export const getNewFilesCoverage = (
     headDetails: ParsedCoverageDetails,

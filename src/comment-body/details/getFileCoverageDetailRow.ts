@@ -1,4 +1,4 @@
-import { FileCoverageDetail } from '../../parseCoverageDetails';
+import { FileCoverageDetail } from '../../collect-coverage/parseCoverageDetails';
 import { formatPercentage } from '../utils/formatPercentage';
 
 export const getFileCoverageDetailRow = (

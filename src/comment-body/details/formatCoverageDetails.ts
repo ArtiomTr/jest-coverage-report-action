@@ -1,5 +1,5 @@
 import { formatCoverageDetailsPart } from './formatCoverageDetailsPart';
-import { ParsedCoverageDetails } from '../../parseCoverageDetails';
+import { ParsedCoverageDetails } from '../../collect-coverage/parseCoverageDetails';
 import { getDecreasedCoverage } from '../getters/getDecreasedCoverage';
 import { getNewFilesCoverage } from '../getters/getNewFilesCoverage';
 import { details } from '../strings.json';
