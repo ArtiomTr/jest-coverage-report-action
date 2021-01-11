@@ -12,7 +12,7 @@
     "errors": {
         "testsFailed": "The test suite failed. Please, check the console output for more details.",
         "invalidFormat": "Output of test script has invalid format. Check [documentation](https://github.com/ArtiomTr/jest-coverage-report-action#jest-coverage-report-) for more details.",
-        "underThreshold": "Total coverage is less than specified threshold. Current coverage is {{ currentCoverage }}, but it the minimum is {{ coverageThreshold }}.",
+        "underThreshold": "Total line coverage is less than specified threshold. Current coverage is {{ currentCoverage }}%, but the minimum is {{ coverageThreshold }}%.",
         "unknownError": "Something went wrong. If this is an issue of jest-coverage-report-action, please report about it [here](https://github.com/ArtiomTr/jest-coverage-report-action/issues/new)."
     },
     "summary": {
@@ -33,11 +33,11 @@
     },
     "details": {
         "newFiles": {
-            "summary": "Show new covered files",
+            "summary": "Show new covered files 🌑",
             "heading": "Coverage of new files"
         },
         "decreasedCoverageFiles": {
-            "summary": "Show files with reduced coverage",
+            "summary": "Show files with reduced coverage 🔻",
             "heading": "Reduced coverage"
         },
         "columnHeaders": [
@@ -47,6 +47,7 @@
             "Branches",
             "Functions",
             "Lines"
-        ]
+        ],
+        "columnAlignment": ["c", "l", "l", "l", "l", "l"]
     }
 }

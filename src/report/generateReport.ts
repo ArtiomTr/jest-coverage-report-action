@@ -33,13 +33,6 @@ export const generateReport = async (
     const previousReport = await fetchPreviousReport(octokit, repo, pr);
 
     try {
-        if (previousReport) {
-            await octokit.issues.deleteComment({
-                ...repo,
-                comment_id: (previousReport as { id: number }).id,
-            });
-        }
-
         let reportContent = '';
 
         let failReason = headReport.failReason;
@@ -67,6 +60,14 @@ export const generateReport = async (
                 console.log(
                     'Skipping reporting without rejecting request, because head is ok, but base branch has not valid coverage.'
                 );
+
+                if (previousReport) {
+                    await octokit.issues.deleteComment({
+                        ...repo,
+                        comment_id: (previousReport as { id: number }).id,
+                    });
+                }
+
                 return;
             }
         } else {
@@ -96,11 +97,21 @@ export const generateReport = async (
             }
         }
 
-        await octokit.issues.createComment({
-            ...repo,
-            body: [MESSAGE_HEADING, reportContent].join('\n'),
-            issue_number: pr.number,
-        });
+        const reportBody = [MESSAGE_HEADING, reportContent].join('\n');
+
+        if (previousReport) {
+            await octokit.issues.updateComment({
+                ...repo,
+                body: reportBody,
+                comment_id: (previousReport as { id: number }).id,
+            });
+        } else {
+            await octokit.issues.createComment({
+                ...repo,
+                body: reportBody,
+                issue_number: pr.number,
+            });
+        }
 
         if (failReason) {
             setFailed(reportContent);
