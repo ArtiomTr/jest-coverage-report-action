@@ -1,41 +1,11 @@
 import { argv } from 'process';
 
 import { setFailed } from '@actions/core';
-import { exec } from '@actions/exec';
 import { context, getOctokit } from '@actions/github';
 
+import { collectCoverage } from './collect-coverage/collectCoverage';
+import { getCommentBody } from './comment-body/getCommentBody';
 import { fetchPreviousComment } from './fetchPreviousComment';
-import { getCommentBody } from './getCommentBody';
-import { parseCoverageDetails } from './parseCoverageDetails';
-import { parseCoverageSummary } from './parseCoverageSummary';
-
-async function getCoverage(testCommand: string, branch?: string) {
-    if (branch) {
-        try {
-            await exec(`git fetch ${branch} --depth=1`);
-        } catch (error) {
-            console.error('Fetch failed', error.message);
-        }
-
-        await exec(`git checkout -f ${branch}`);
-    }
-
-    await exec('npm ci');
-
-    let output = '';
-
-    try {
-        await exec(testCommand, [], {
-            listeners: {
-                stdout: (data) => (output += data.toString()),
-            },
-        });
-    } catch (error) {
-        setFailed(`Test execution failed with message: "${error.message}"`);
-    }
-
-    return output;
-}
 
 async function run() {
     try {
@@ -54,14 +24,8 @@ async function run() {
 
         const octokit = getOctokit(token);
 
-        const headOutput = await getCoverage(testScript);
-        const baseOutput = await getCoverage(testScript, pull_request.base.ref);
-
-        const headSummary = parseCoverageSummary(headOutput);
-        const baseSummary = parseCoverageSummary(baseOutput);
-
-        const headDetails = parseCoverageDetails(headOutput);
-        const baseDetails = parseCoverageDetails(baseOutput);
+        const [headSummary, headDetails] = await collectCoverage(testScript);
+        const [baseSummary, baseDetails] = await collectCoverage(testScript);
 
         const previousComment = await fetchPreviousComment(
             octokit,
