@@ -8,7 +8,9 @@ export const formatPercentage = (
 ) => {
     const delta = basePercentage - headPercentage;
 
-    return `${headPercentage}% ${
+    return `\`\`\`diff
+!   ${headPercentage}% 
+\`\`\` ${
         Math.abs(delta) > APPROXIMATION_THRESHOLD
             ? formatPercentageDelta(delta)
             : ''
