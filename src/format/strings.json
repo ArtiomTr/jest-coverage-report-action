@@ -16,7 +16,7 @@
     },
     "summary": {
         "heading": "Total coverage",
-        "columnHeaders": ["St", "Category", "Percentage", "Covered / Total"],
+        "columnHeaders": ["Category", "St", "Percentage", "Covered / Total"],
         "columnAlignment": ["l", "l", "c"],
         "keyToDisplayString": {
             "statements": "Statements",
