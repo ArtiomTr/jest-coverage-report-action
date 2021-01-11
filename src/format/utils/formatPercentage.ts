@@ -6,7 +6,7 @@ export const formatPercentage = (
     headPercentage: number,
     basePercentage: number = headPercentage
 ) => {
-    const delta = basePercentage - headPercentage;
+    const delta = headPercentage - basePercentage;
 
     return `${parseFloat(headPercentage.toFixed(2))}% ${
         Math.abs(delta) > APPROXIMATION_THRESHOLD
