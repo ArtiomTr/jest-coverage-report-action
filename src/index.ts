@@ -4,8 +4,8 @@ import { setFailed } from '@actions/core';
 import { exec } from '@actions/exec';
 import { context, getOctokit } from '@actions/github';
 
+import { getCommentBody } from './comment-body/getCommentBody';
 import { fetchPreviousComment } from './fetchPreviousComment';
-import { getCommentBody } from './getCommentBody';
 import { parseCoverageDetails } from './parseCoverageDetails';
 import { parseCoverageSummary } from './parseCoverageSummary';
 

@@ -1,0 +1,33 @@
+{
+    "increaseIcon": "🔼",
+    "decreaseIcon": "🔻",
+    "heading": "jest coverage report 🧪",
+    "summary": {
+        "heading": "Total coverage",
+        "columnHeaders": ["Category", "Percentage", "Covered / Total"],
+        "columnAlignment": ["l", "l", "c"],
+        "keyToDisplayString": {
+            "statements": "Statements",
+            "branches": "Branches",
+            "functions": "Functions",
+            "lines": "Lines"
+        }
+    },
+    "details": {
+        "newFiles": {
+            "summary": "Show new covered files",
+            "heading": "Coverage of new files"
+        },
+        "decreasedCoverageFiles": {
+            "summary": "Show files with reduced coverage",
+            "heading": "Reduced coverage"
+        },
+        "columnHeaders": [
+            "Filename",
+            "Statements",
+            "Branches",
+            "Functions",
+            "Lines"
+        ]
+    }
+}
