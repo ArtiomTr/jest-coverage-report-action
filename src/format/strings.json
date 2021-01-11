@@ -33,11 +33,11 @@
     },
     "details": {
         "newFiles": {
-            "summary": "Show new covered files",
+            "summary": "Show new covered files 🌑",
             "heading": "Coverage of new files"
         },
         "decreasedCoverageFiles": {
-            "summary": "Show files with reduced coverage",
+            "summary": "Show files with reduced coverage 🔻",
             "heading": "Reduced coverage"
         },
         "columnHeaders": [
