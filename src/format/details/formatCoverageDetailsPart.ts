@@ -33,7 +33,9 @@ export const formatCoverageDetailsPart = (
         return createMarkdownSpoiler({
             body: formatTable(
                 heading,
-                markdownTable([details.columnHeaders, ...tableContent]),
+                markdownTable([details.columnHeaders, ...tableContent], {
+                    align: details.columnAlignment,
+                }),
                 hint
             ),
             summary,

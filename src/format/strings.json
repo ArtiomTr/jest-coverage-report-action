@@ -47,6 +47,7 @@
             "Branches",
             "Functions",
             "Lines"
-        ]
+        ],
+        "columnAlignment": ["c", "l", "l", "l", "l", "l"]
     }
 }
