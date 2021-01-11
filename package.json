@@ -5,6 +5,7 @@
     "description": "",
     "main": "index.js",
     "scripts": {
+        "test": "jest",
         "test:coverage": "jest --silent --coverage --coverageReporters=\"text\" --coverageReporters=\"text-summary\"",
         "test:watch": "jest --watch",
         "start": "webpack --watch --mode development",

@@ -1,7 +1,14 @@
 {
     "increaseIcon": "🔼",
     "decreaseIcon": "🔻",
+    "errorIcon": "❌",
     "heading": "jest coverage report 🧪",
+    "errors": {
+        "testsFailed": "The test suite failed. Please, check the console output for more details.",
+        "invalidFormat": "Output of test script has invalid format. Check [documentation](https://github.com/ArtiomTr/jest-coverage-report-action#jest-coverage-report-) for more details.",
+        "tooSmallCoverage": "Total coverage is too small. Current coverage is {{ currentCoverage }}, but it should be at least {{ coverageThreshold }}.",
+        "unknownError": "Something went wrong. If this is an issue of jest-coverage-report-action, please report about it [here](https://github.com/ArtiomTr/jest-coverage-report-action/issues/new)."
+    },
     "summary": {
         "heading": "Total coverage",
         "columnHeaders": ["Category", "Percentage", "Covered / Total"],

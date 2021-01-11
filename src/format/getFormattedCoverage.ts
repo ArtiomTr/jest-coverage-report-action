@@ -1,17 +1,15 @@
 import { formatCoverageDetails } from './details/formatCoverageDetails';
 import { formatCoverageSummary } from './summary/formatCoverageSummary';
-import { ParsedCoverageDetails } from '../collect-coverage/parseCoverageDetails';
-import { ParsedCoverageSummary } from '../collect-coverage/parseCoverageSummary';
-import { MESSAGE_HEADING } from '../fetchPreviousComment';
+import { ParsedCoverageDetails } from '../collect/parseCoverageDetails';
+import { ParsedCoverageSummary } from '../collect/parseCoverageSummary';
 
-export const getCommentBody = (
+export const getFormattedCoverage = (
     headSummary: ParsedCoverageSummary,
     baseSummary: ParsedCoverageSummary,
     headDetails: ParsedCoverageDetails,
     baseDetails: ParsedCoverageDetails
 ): string => {
     return [
-        MESSAGE_HEADING,
         formatCoverageSummary(headSummary, baseSummary),
         formatCoverageDetails(headDetails, baseDetails),
     ]

@@ -1,7 +1,7 @@
 import markdownTable from 'markdown-table';
 
 import { getFileCoverageDetailRow } from './getFileCoverageDetailRow';
-import { ParsedCoverageDetails } from '../../collect-coverage/parseCoverageDetails';
+import { ParsedCoverageDetails } from '../../collect/parseCoverageDetails';
 import { details } from '../strings.json';
 import { createMarkdownSpoiler } from '../utils/createMarkdownSpoiler';
 import { formatHeadingAndTable } from '../utils/formatHeadingAndTable';

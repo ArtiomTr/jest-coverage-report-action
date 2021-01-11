@@ -1,10 +1,8 @@
 import { getOctokit } from '@actions/github';
 
-import { heading } from './comment-body/strings.json';
+import { MESSAGE_HEADING } from '../constants/MESSAGE_HEADING';
 
-export const MESSAGE_HEADING = `## ${heading}`;
-
-export async function fetchPreviousComment(
+export async function fetchPreviousReport(
     octokit: ReturnType<typeof getOctokit>,
     repo: { owner: string; repo: string },
     pr: { number: number }
@@ -20,5 +18,6 @@ export async function fetchPreviousComment(
     const sizeLimitComment = commentList.find((comment) =>
         (comment as { body: string }).body.startsWith(MESSAGE_HEADING)
     );
+
     return !sizeLimitComment ? null : sizeLimitComment;
 }

@@ -21,6 +21,12 @@
         "@typescript-eslint/no-non-null-assertion": "off",
         "@typescript-eslint/ban-types": "off",
         "no-console": "off",
+        "prettier/prettier": [
+            "error",
+            {
+                "endOfLine": "auto"
+            }
+        ],
         "simple-import-sort/imports": [
             "warn",
             {

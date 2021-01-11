@@ -1,7 +1,7 @@
 import {
     FileCoverageDetail,
     ParsedCoverageDetails,
-} from '../../collect-coverage/parseCoverageDetails';
+} from '../../collect/parseCoverageDetails';
 
 const coverageLessThan = (
     first: FileCoverageDetail,
