@@ -1,20 +1,20 @@
-name: 'jest-coverage-report-action'
-description: 'Reports total jest coverage'
+name: 'Jest coverage report'
+description: 'Track your code coverage in each pull request.'
 author: 'Artiom Tretjakovas <artiom.tretjakovas2@gmail.com>'
 branding:
     icon: 'activity'
-    color: 'green'
+    color: 'gray-dark'
 inputs:
     github_token:
         required: true
         description: 'A github access token'
     test_script:
         required: false
-        description: 'A custom npm script to test'
+        description: 'A custom npm script to get coverage'
         default: npx jest --silent --ci --coverage --coverageReporters="text" --coverageReporters="text-summary"
     threshold:
         required: false
-        description: 'Coverage threshold. If total line coverage is less than threshold, PR will be rejected'
+        description: 'Coverage threshold. If total coverage is less than threshold, PR will be rejected'
 runs:
     using: 'docker'
     image: 'Dockerfile'
