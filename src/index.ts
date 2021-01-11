@@ -25,6 +25,15 @@ async function run() {
             ? parseFloat(coverageThresholdStr)
             : undefined;
 
+        if (
+            coverageThreshold !== undefined &&
+            (coverageThreshold > 100 || coverageThreshold < 0)
+        ) {
+            throw new Error(
+                `Specified threshold '${coverageThreshold}' is not valid. Threshold should be more than 0 and less than 100.`
+            );
+        }
+
         const octokit = getOctokit(token);
 
         const headReport = await collectCoverage(testScript);
