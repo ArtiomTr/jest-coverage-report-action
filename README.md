@@ -22,7 +22,7 @@ This action uses [Jest](https://github.com/facebook/jest) to extract code covera
 -   Showing spoiler in the comment for all files, in which **coverage was reduced**. 🔻
 
 <p align="center">
-  <img alt="PR Comment example" width="540" src="./img/PR-rejected-screenshot.png">
+  <img alt="PR Comment example" width="540" src="./img/Rejected-PR-screenshot.png">
 </p>
 
 ## Usage
