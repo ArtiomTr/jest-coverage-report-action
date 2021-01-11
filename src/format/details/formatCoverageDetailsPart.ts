@@ -14,7 +14,8 @@ export type DetailsFormatOptions = {
 export const formatCoverageDetailsPart = (
     formatOptions: DetailsFormatOptions,
     headDetails: ParsedCoverageDetails,
-    baseDetails?: ParsedCoverageDetails
+    baseDetails?: ParsedCoverageDetails,
+    threshold?: number
 ): string | undefined => {
     const { summary, heading } = formatOptions;
 
@@ -22,7 +23,8 @@ export const formatCoverageDetailsPart = (
         getFileCoverageDetailRow(
             filename,
             headDetails[filename],
-            baseDetails?.[filename]
+            baseDetails?.[filename],
+            threshold
         )
     );
 

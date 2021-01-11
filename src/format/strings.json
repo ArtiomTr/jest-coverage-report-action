@@ -1,8 +1,13 @@
 {
+    "heading": "jest coverage report 🧪",
     "increaseIcon": "🔼",
     "decreaseIcon": "🔻",
     "errorIcon": "❌",
-    "heading": "jest coverage report 🧪",
+    "coverageStatusIcons": {
+        "good": "🟢",
+        "normal": "🟡",
+        "bad": "🔴"
+    },
     "errors": {
         "testsFailed": "The test suite failed. Please, check the console output for more details.",
         "invalidFormat": "Output of test script has invalid format. Check [documentation](https://github.com/ArtiomTr/jest-coverage-report-action#jest-coverage-report-) for more details.",
@@ -11,7 +16,7 @@
     },
     "summary": {
         "heading": "Total coverage",
-        "columnHeaders": ["Category", "Percentage", "Covered / Total"],
+        "columnHeaders": ["St", "Category", "Percentage", "Covered / Total"],
         "columnAlignment": ["l", "l", "c"],
         "keyToDisplayString": {
             "statements": "Statements",
@@ -30,6 +35,7 @@
             "heading": "Reduced coverage"
         },
         "columnHeaders": [
+            "St",
             "Filename",
             "Statements",
             "Branches",

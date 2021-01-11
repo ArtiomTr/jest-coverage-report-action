@@ -60,7 +60,8 @@ export const generateReport = async (
                     headReport.summary,
                     baseReport.summary,
                     headReport.details,
-                    baseReport.details
+                    baseReport.details,
+                    coverageThreshold
                 );
             } else {
                 console.log(
