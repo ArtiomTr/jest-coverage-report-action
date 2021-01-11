@@ -15,15 +15,18 @@
 
 This action uses [Jest](https://github.com/facebook/jest) to extract code coverage, and comments it on pull request. Inspired by [Size-limit action](https://github.com/andresz1/size-limit-action/). Features:
 
--   **Commenting** pull request with current code coverage.
--   **Comparing** coverage with base branch.
--   Showing spoiler in the comment for all **new covered files**.
--   Showing spoiler in the comment for all files, in which **coverage was reduced**.
+-   **Reporting** code coverage on each pull request. 📃
+-   **Rejecting** pull request, if coverage is under threshold. ❌
+-   **Comparing** coverage with base branch. 🔍
+-   Showing spoiler in the comment for all **new covered files**. 🆕
+-   Showing spoiler in the comment for all files, in which **coverage was reduced**. 🔻
 
 ## Usage
 
 1. Install and configure [Jest](https://github.com/facebook/jest).
 2. Create new action inside `.github/workflows`:
+
+**Minimal configuration**
 
 ```yml
 name: 'coverage'
@@ -41,9 +44,23 @@ jobs:
             - uses: artiomtr/jest-coverage-report-action@v1
               with:
                   github_token: ${{ secrets.GITHUB_TOKEN }}
+                  #   threshold: 80 # optional parameter
 ```
 
-3. That's it!
+3. Pay attention to the action parameters. You can specify custom [threshold](specify-threshold) or [test script](customizing-test-script)
+4. That's it!
+
+## Specify threshold
+
+If you want to set minimal accepted coverage for the PR, you can pass and optional parameter threshold.
+
+For example, if you want to reject every pull request, with total line coverage less than 80%:
+
+```yml
+with:
+    github_token: ${{ secrets.GITHUB_TOKEN }}
+    threshold: 80 # value in percents
+```
 
 ## Customizing test script
 
