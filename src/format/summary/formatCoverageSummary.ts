@@ -18,11 +18,11 @@ export const formatCoverageSummary = (
                 ...(Object.keys(headSummary) as Array<
                     keyof ParsedCoverageSummary
                 >).map((value: keyof ParsedCoverageSummary) => [
-                    summary.keyToDisplayString[value],
                     getStatusOfPercents(
                         headSummary[value].percentage,
                         threshold
                     ),
+                    summary.keyToDisplayString[value],
                     formatPercentage(
                         headSummary[value].percentage,
                         baseSummary[value].percentage
