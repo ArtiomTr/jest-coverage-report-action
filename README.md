@@ -76,7 +76,7 @@ npx jest --silent --ci --coverage --coverageReporters="text" --coverageReporters
 
 If you're not satisfied with default behaviour, you can specify your own command, by passing custom option `test_script`.
 
-**!!! IMPORTANT !!!:** Please, note that this is not simple `npx jest --coverage` script call. If you're specify your custom script, **YOU SHOULD PASS SAME COVERAGE REPORTERS** as it does default script (`text` and `text-summary` reporters). Without those options, your action will not work.
+> **⚠ IMPORTANT ⚠:** Please, note that this is not simple `npx jest --coverage` script call. If you're specify your custom script, **YOU SHOULD PASS SAME COVERAGE REPORTERS** as it does default script (`text` and `text-summary` reporters). Without those options, your action will not work.
 
 For instance, if you want to run `test:coverage` npm script:
 
