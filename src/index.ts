@@ -37,7 +37,10 @@ async function run() {
         const octokit = getOctokit(token);
 
         const headReport = await collectCoverage(testScript);
-        const baseReport = await collectCoverage(testScript);
+        const baseReport = await collectCoverage(
+            testScript,
+            pull_request.base.ref
+        );
 
         if (
             coverageThreshold !== undefined &&
