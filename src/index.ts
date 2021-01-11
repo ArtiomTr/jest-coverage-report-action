@@ -1,12 +1,13 @@
-import { setFailed } from '@actions/core';
-import { context, getOctokit } from '@actions/github';
-import { exec } from '@actions/exec';
 import { argv } from 'process';
 
-import { parseCoverageSummary } from './parseCoverageSummary';
+import { setFailed } from '@actions/core';
+import { exec } from '@actions/exec';
+import { context, getOctokit } from '@actions/github';
+
 import { fetchPreviousComment } from './fetchPreviousComment';
 import { getCommentBody } from './getCommentBody';
 import { parseCoverageDetails } from './parseCoverageDetails';
+import { parseCoverageSummary } from './parseCoverageSummary';
 
 async function getCoverage(testCommand: string, branch?: string) {
     if (branch) {
@@ -79,7 +80,7 @@ async function run() {
             if (previousComment) {
                 await octokit.issues.deleteComment({
                     ...repo,
-                    comment_id: (previousComment as any).id,
+                    comment_id: (previousComment as { id: number }).id,
                 });
             }
             await octokit.issues.createComment({

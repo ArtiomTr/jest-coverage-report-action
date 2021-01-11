@@ -16,7 +16,7 @@ export async function fetchPreviousComment(
     );
 
     const sizeLimitComment = commentList.find((comment) =>
-        (comment as any).body.startsWith(MESSAGE_HEADING)
+        (comment as { body: string }).body.startsWith(MESSAGE_HEADING)
     );
     return !sizeLimitComment ? null : sizeLimitComment;
 }

@@ -1,10 +1,11 @@
-import { MESSAGE_HEADING } from './fetchPreviousComment';
-import { ParsedCoverageSummary } from './parseCoverageSummary';
 import table from 'markdown-table';
+
+import { MESSAGE_HEADING } from './fetchPreviousComment';
 import {
     FileCoverageDetail,
     ParsedCoverageDetails,
 } from './parseCoverageDetails';
+import { ParsedCoverageSummary } from './parseCoverageSummary';
 
 const map: Record<string, string> = {
     statements: 'Statements',
