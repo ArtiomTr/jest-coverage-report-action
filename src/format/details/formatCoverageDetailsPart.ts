@@ -3,8 +3,9 @@ import markdownTable from 'markdown-table';
 import { getFileCoverageDetailRow } from './getFileCoverageDetailRow';
 import { ParsedCoverageDetails } from '../../collect/parseCoverageDetails';
 import { details } from '../strings.json';
+import { hint } from '../strings.json';
 import { createMarkdownSpoiler } from '../utils/createMarkdownSpoiler';
-import { formatHeadingAndTable } from '../utils/formatHeadingAndTable';
+import { formatTable } from '../utils/formatTable';
 
 export type DetailsFormatOptions = {
     summary: string;
@@ -14,7 +15,8 @@ export type DetailsFormatOptions = {
 export const formatCoverageDetailsPart = (
     formatOptions: DetailsFormatOptions,
     headDetails: ParsedCoverageDetails,
-    baseDetails?: ParsedCoverageDetails
+    baseDetails?: ParsedCoverageDetails,
+    threshold?: number
 ): string | undefined => {
     const { summary, heading } = formatOptions;
 
@@ -22,15 +24,17 @@ export const formatCoverageDetailsPart = (
         getFileCoverageDetailRow(
             filename,
             headDetails[filename],
-            baseDetails?.[filename]
+            baseDetails?.[filename],
+            threshold
         )
     );
 
     if (tableContent.length > 0) {
         return createMarkdownSpoiler({
-            body: formatHeadingAndTable(
+            body: formatTable(
                 heading,
-                markdownTable([details.columnHeaders, ...tableContent])
+                markdownTable([details.columnHeaders, ...tableContent]),
+                hint
             ),
             summary,
         });

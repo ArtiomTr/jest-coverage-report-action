@@ -7,12 +7,12 @@ export const getFormattedCoverage = (
     headSummary: ParsedCoverageSummary,
     baseSummary: ParsedCoverageSummary,
     headDetails: ParsedCoverageDetails,
-    baseDetails: ParsedCoverageDetails
-): string => {
-    return [
-        formatCoverageSummary(headSummary, baseSummary),
-        formatCoverageDetails(headDetails, baseDetails),
+    baseDetails: ParsedCoverageDetails,
+    threshold: number | undefined
+): string =>
+    [
+        formatCoverageSummary(headSummary, baseSummary, threshold),
+        formatCoverageDetails(headDetails, baseDetails, threshold),
     ]
         .filter(Boolean)
         .join('\n');
-};

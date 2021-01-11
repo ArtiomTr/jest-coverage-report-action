@@ -11,7 +11,7 @@ import { getFormattedFailReason } from '../format/getFormattedFailReason';
 export enum FailReason {
     TESTS_FAILED = 'testsFailed',
     INVALID_COVERAGE_FORMAT = 'invalidFormat',
-    TOO_SMALL_TOTAL_COVERAGE = 'tooSmallCoverage',
+    UNDER_THRESHOLD = 'underThreshold',
     UNKNOWN_ERROR = 'unknownError',
 }
 
@@ -60,7 +60,8 @@ export const generateReport = async (
                     headReport.summary,
                     baseReport.summary,
                     headReport.details,
-                    baseReport.details
+                    baseReport.details,
+                    coverageThreshold
                 );
             } else {
                 console.log(
@@ -75,6 +76,24 @@ export const generateReport = async (
                 coverageThreshold,
                 headReport.summary?.lines.percentage
             );
+            if (
+                failReason === FailReason.UNDER_THRESHOLD &&
+                headReport.summary &&
+                headReport.details &&
+                baseReport.summary &&
+                baseReport.details
+            ) {
+                reportContent = reportContent.concat(
+                    '\n',
+                    getFormattedCoverage(
+                        headReport.summary,
+                        baseReport.summary,
+                        headReport.details,
+                        baseReport.details,
+                        coverageThreshold
+                    )
+                );
+            }
         }
 
         await octokit.issues.createComment({

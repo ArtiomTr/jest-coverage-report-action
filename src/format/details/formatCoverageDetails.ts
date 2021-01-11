@@ -6,19 +6,23 @@ import { details } from '../strings.json';
 
 export const formatCoverageDetails = (
     headDetails: ParsedCoverageDetails,
-    baseDetails: ParsedCoverageDetails
+    baseDetails: ParsedCoverageDetails,
+    threshold: number | undefined
 ): string => {
     const decreasedCoverage = getDecreasedCoverage(headDetails, baseDetails);
 
     return [
         formatCoverageDetailsPart(
             details.newFiles,
-            getNewFilesCoverage(headDetails, baseDetails)
+            getNewFilesCoverage(headDetails, baseDetails),
+            undefined,
+            threshold
         ),
         formatCoverageDetailsPart(
             details.decreasedCoverageFiles,
             decreasedCoverage.headDetails,
-            decreasedCoverage.baseDetails
+            decreasedCoverage.baseDetails,
+            threshold
         ),
     ].join('\n');
 };

@@ -48,7 +48,7 @@ async function run() {
             headReport.summary.lines.percentage < coverageThreshold
         ) {
             headReport.success = false;
-            headReport.failReason = FailReason.TOO_SMALL_TOTAL_COVERAGE;
+            headReport.failReason = FailReason.UNDER_THRESHOLD;
         }
 
         await generateReport(

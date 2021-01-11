@@ -1,18 +1,29 @@
 {
+    "heading": "jest coverage report 🧪",
     "increaseIcon": "🔼",
     "decreaseIcon": "🔻",
     "errorIcon": "❌",
-    "heading": "jest coverage report 🧪",
+    "coverageStatusIcons": {
+        "good": "🟢",
+        "normal": "🟡",
+        "bad": "🔴"
+    },
+    "hint": "Status of coverage: 🟢 - ok, 🟡 - slightly more than threshold, 🔴 - under the threshold",
     "errors": {
         "testsFailed": "The test suite failed. Please, check the console output for more details.",
         "invalidFormat": "Output of test script has invalid format. Check [documentation](https://github.com/ArtiomTr/jest-coverage-report-action#jest-coverage-report-) for more details.",
-        "tooSmallCoverage": "Total coverage is too small. Current coverage is {{ currentCoverage }}, but it should be at least {{ coverageThreshold }}.",
+        "underThreshold": "Total coverage is less than specified threshold. Current coverage is {{ currentCoverage }}, but it the minimum is {{ coverageThreshold }}.",
         "unknownError": "Something went wrong. If this is an issue of jest-coverage-report-action, please report about it [here](https://github.com/ArtiomTr/jest-coverage-report-action/issues/new)."
     },
     "summary": {
         "heading": "Total coverage",
-        "columnHeaders": ["Category", "Percentage", "Covered / Total"],
-        "columnAlignment": ["l", "l", "c"],
+        "columnHeaders": [
+            "Status",
+            "Category",
+            "Percentage",
+            "Covered / Total"
+        ],
+        "columnAlignment": ["c", "l", "l", "c"],
         "keyToDisplayString": {
             "statements": "Statements",
             "branches": "Branches",
@@ -30,6 +41,7 @@
             "heading": "Reduced coverage"
         },
         "columnHeaders": [
+            "Status",
             "Filename",
             "Statements",
             "Branches",
