@@ -1,6 +1,6 @@
 import table from 'markdown-table';
 
-import { ParsedCoverageSummary } from '../../collect-coverage/parseCoverageSummary';
+import { ParsedCoverageSummary } from '../../collect/parseCoverageSummary';
 import { summary } from '../strings.json';
 import { formatPercentage } from '../utils/formatPercentage';
 

@@ -1,4 +1,4 @@
-import { parseCoverageDetails } from '../src/collect-coverage/parseCoverageDetails';
+import { parseCoverageDetails } from '../src/collect/parseCoverageDetails';
 
 const coverageOutput1 = `
 -------------------------|---------|----------|---------|---------|-------------------

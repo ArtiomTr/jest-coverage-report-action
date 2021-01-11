@@ -7,11 +7,14 @@ branding:
 inputs:
     github_token:
         required: true
-        description: 'a github access token'
+        description: 'A github access token'
     test_script:
         required: false
-        description: 'a custom npm script to test'
+        description: 'A custom npm script to test'
         default: npx jest --silent --coverage --coverageReporters="text" --coverageReporters="text-summary"
+    threshold:
+        required: false
+        description: 'Coverage threshold. If total line coverage is less than threshold, PR will be rejected'
 runs:
     using: 'docker'
     image: 'Dockerfile'
@@ -19,3 +22,4 @@ runs:
         - ${{ inputs.github_token }}
         - ${{ inputs.test_script }}
         - ${{ inputs.directory }}
+        - ${{ inputs.threshold }}

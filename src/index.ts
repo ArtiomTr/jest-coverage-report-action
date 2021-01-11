@@ -3,9 +3,8 @@ import { argv } from 'process';
 import { setFailed } from '@actions/core';
 import { context, getOctokit } from '@actions/github';
 
-import { collectCoverage } from './collect-coverage/collectCoverage';
-import { getCommentBody } from './comment-body/getCommentBody';
-import { fetchPreviousComment } from './fetchPreviousComment';
+import { collectCoverage } from './collect/collectCoverage';
+import { FailReason, generateReport } from './report/generateReport';
 
 async function run() {
     try {
@@ -20,43 +19,46 @@ async function run() {
             );
         }
 
-        const [token, testScript] = argv.slice(2);
+        const [token, testScript, coverageThresholdStr] = argv.slice(2);
+
+        const coverageThreshold = coverageThresholdStr
+            ? parseFloat(coverageThresholdStr)
+            : undefined;
+
+        if (
+            coverageThreshold !== undefined &&
+            (coverageThreshold > 100 || coverageThreshold < 0)
+        ) {
+            throw new Error(
+                `Specified threshold '${coverageThreshold}' is not valid. Threshold should be more than 0 and less than 100.`
+            );
+        }
 
         const octokit = getOctokit(token);
 
-        const [headSummary, headDetails] = await collectCoverage(testScript);
-        const [baseSummary, baseDetails] = await collectCoverage(testScript);
+        const headReport = await collectCoverage(testScript);
+        const baseReport = await collectCoverage(testScript);
 
-        const previousComment = await fetchPreviousComment(
-            octokit,
-            repo,
-            pull_request
-        );
-
-        const body = getCommentBody(
-            headSummary,
-            baseSummary,
-            headDetails,
-            baseDetails
-        );
-
-        try {
-            if (previousComment) {
-                await octokit.issues.deleteComment({
-                    ...repo,
-                    comment_id: (previousComment as { id: number }).id,
-                });
-            }
-            await octokit.issues.createComment({
-                ...repo,
-                issue_number: pull_request.number,
-                body,
-            });
-        } catch (error) {
-            console.error(
-                "Error deleting and/or creating comment. This can happen for PR's originating from a fork without write permissions."
-            );
+        if (
+            coverageThreshold !== undefined &&
+            headReport.success &&
+            headReport.summary &&
+            headReport.details &&
+            !headReport.failReason &&
+            headReport.summary.lines.percentage < coverageThreshold
+        ) {
+            headReport.success = false;
+            headReport.failReason = FailReason.TOO_SMALL_TOTAL_COVERAGE;
         }
+
+        await generateReport(
+            headReport,
+            baseReport,
+            coverageThreshold,
+            repo,
+            pull_request,
+            octokit
+        );
     } catch (error) {
         setFailed(error.message);
     }
