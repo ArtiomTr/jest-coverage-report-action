@@ -11,7 +11,7 @@ import { getFormattedFailReason } from '../format/getFormattedFailReason';
 export enum FailReason {
     TESTS_FAILED = 'testsFailed',
     INVALID_COVERAGE_FORMAT = 'invalidFormat',
-    LESS_THAN_THRESHOLD = 'tooSmallCoverage',
+    UNDER_THRESHOLD = 'underThreshold',
     UNKNOWN_ERROR = 'unknownError',
 }
 
@@ -77,7 +77,7 @@ export const generateReport = async (
                 headReport.summary?.lines.percentage
             );
             if (
-                failReason === FailReason.LESS_THAN_THRESHOLD &&
+                failReason === FailReason.UNDER_THRESHOLD &&
                 headReport.summary &&
                 headReport.details &&
                 baseReport.summary &&
