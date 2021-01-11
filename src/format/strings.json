@@ -8,7 +8,7 @@
         "normal": "🟡",
         "bad": "🔴"
     },
-    "hint": "*[Status] - Status of coverage, 🟢 - ok, 🟡 - slightly more than threshold, 🔴 - under the threshold",
+    "hint": "Status of coverage: 🟢 - ok, 🟡 - slightly more than threshold, 🔴 - under the threshold",
     "errors": {
         "testsFailed": "The test suite failed. Please, check the console output for more details.",
         "invalidFormat": "Output of test script has invalid format. Check [documentation](https://github.com/ArtiomTr/jest-coverage-report-action#jest-coverage-report-) for more details.",
@@ -23,7 +23,7 @@
             "Percentage",
             "Covered / Total"
         ],
-        "columnAlignment": ["l", "l", "c"],
+        "columnAlignment": ["c", "l", "l", "c"],
         "keyToDisplayString": {
             "statements": "Statements",
             "branches": "Branches",

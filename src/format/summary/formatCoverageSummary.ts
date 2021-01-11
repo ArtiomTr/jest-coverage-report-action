@@ -1,8 +1,10 @@
 import table from 'markdown-table';
 
 import { ParsedCoverageSummary } from '../../collect/parseCoverageSummary';
+import { hint } from '../strings.json';
 import { summary } from '../strings.json';
 import { formatPercentage } from '../utils/formatPercentage';
+import { formatTable } from '../utils/formatTable';
 import { getStatusOfPercents } from '../utils/getStatusOfPercents';
 
 export const formatCoverageSummary = (
@@ -10,8 +12,8 @@ export const formatCoverageSummary = (
     baseSummary: ParsedCoverageSummary,
     threshold: number | undefined
 ): string =>
-    [
-        `### ${summary.heading}`,
+    formatTable(
+        summary.heading,
         table(
             [
                 summary.columnHeaders,
@@ -32,4 +34,5 @@ export const formatCoverageSummary = (
             ],
             { align: summary.columnAlignment }
         ),
-    ].join('\n');
+        hint
+    );
