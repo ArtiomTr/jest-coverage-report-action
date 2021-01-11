@@ -47,7 +47,7 @@ jobs:
                   #   threshold: 80 # optional parameter
 ```
 
-3. Pay attention to the action parameters. You can specify custom [threshold](specify-threshold) or [test script](customizing-test-script)
+3. Pay attention to the action parameters. You can specify custom [threshold](#specify-threshold) or [test script](#customizing-test-script)
 4. That's it!
 
 ## Specify threshold
