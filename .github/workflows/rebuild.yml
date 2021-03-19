@@ -1,0 +1,33 @@
+name: Build
+
+on:
+    push:
+        paths:
+            - 'src/**'
+        branches: [master]
+    workflow_dispatch:
+
+jobs:
+    build:
+        name: Build
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@v2
+
+            - name: Use Node.js 10.x
+              uses: actions/setup-node@v1
+              with:
+                  node-version: 10.x
+
+            - name: Installing dependencies
+              run: npm install
+
+            - name: Building
+              run: npm run build
+
+            - name: Committing & pushing
+              run: |
+                  git config --global user.name 'github-actions[bot]'
+                  git config --global user.email '41898282+github-actions[bot]@users.noreply.github.com'
+                  git commit -am "Build $(date +'%F %T')"
+                  git push origin master
