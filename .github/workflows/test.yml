@@ -11,4 +11,3 @@ jobs:
               uses: ./ # Uses an action in the root directory
               with:
                   github_token: ${{ secrets.GITHUB_TOKEN }}
-                  threshold: 85
