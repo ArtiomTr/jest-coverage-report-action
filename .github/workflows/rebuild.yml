@@ -27,5 +27,7 @@ jobs:
 
             - name: Committing & pushing
               run: |
+                  git config --global user.name 'Bot'
+                  git config --global user.email 'bot@users.noreply.github.com'
                   git commit -am "Build $(date +'%F %T')"
                   git push
