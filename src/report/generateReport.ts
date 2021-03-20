@@ -1,6 +1,7 @@
 import { setFailed } from '@actions/core';
 import { getOctokit } from '@actions/github';
 
+import { createAnnotations } from './createAnnotations';
 import { fetchPreviousReport } from './fetchPreviousReport';
 import { ParsedCoverageDetails } from '../collect/parseCoverageDetails';
 import { ParsedCoverageSummary } from '../collect/parseCoverageSummary';
@@ -111,6 +112,10 @@ export const generateReport = async (
                 body: reportBody,
                 issue_number: pr.number,
             });
+        }
+
+        if (headReport.details) {
+            await createAnnotations(headReport.details, repo, octokit);
         }
 
         if (failReason) {

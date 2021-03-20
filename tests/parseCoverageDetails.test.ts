@@ -5,7 +5,7 @@ const coverageOutput1 = `
 File                     | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line #s
 -------------------------|---------|----------|---------|---------|-------------------
 All files                |     100 |     87.5 |     100 |     100 |
- parseCoverageSummary.ts |     100 |     87.5 |     100 |     100 | 27
+ parseCoverageSummary.ts |     100 |     87.5 |     100 |     100 | 15-19, 27, 31
 -------------------------|---------|----------|---------|---------|-------------------
 
 =============================== Coverage summary ===============================
@@ -24,6 +24,20 @@ describe('parseCoverageDetails', () => {
                 branches: 87.5,
                 functions: 100,
                 lines: 100,
+                uncoveredLines: [
+                    {
+                        start: 15,
+                        end: 19,
+                    },
+                    {
+                        start: 27,
+                        end: null,
+                    },
+                    {
+                        start: 31,
+                        end: null,
+                    },
+                ],
             },
         });
     });
