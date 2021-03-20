@@ -114,8 +114,12 @@ export const generateReport = async (
             });
         }
 
-        if (headReport.details) {
-            await createAnnotations(headReport.details, repo, octokit);
+        try {
+            if (headReport.details) {
+                await createAnnotations(headReport.details, repo, octokit);
+            }
+        } catch (err) {
+            console.error('Error during creating annotations', err);
         }
 
         if (failReason) {

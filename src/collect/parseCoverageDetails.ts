@@ -5,10 +5,6 @@ const coverageDetailsRegexp = new RegExp(
     'gm'
 );
 
-// const coverageDetailsRegexp = /^([^0-9|-]+)(?:\|\s*([0-9]+\.?[0-9]*)\s*)(?:\|\s*([0-9]+\.?[0-9]*)\s*)(?:\|\s*([0-9]+\.?[0-9]*)\s*)(?:\|\s*([0-9]+\.?[0-9]*)\s*)/gm;
-
-console.log(coverageDetailsRegexp);
-
 export type Range = {
     start: number;
     end: number | null;
