@@ -1,3 +1,5 @@
+import fs from 'fs';
+
 import { exec } from '@actions/exec';
 
 import { FailReason } from '../report/generateReport';
@@ -14,7 +16,9 @@ export const getRawCoverage = async (
         await exec(`git checkout -f ${branch}`);
     }
 
-    await exec('npm ci');
+    // NOTE: The `npm ci` command is not used. Because if your version of npm is old, the generated `package-lock.json` will also be old, and the latest version of `npm ci` will fail.
+    fs.rmdirSync('node_modules', { recursive: true });
+    await exec('npm i');
 
     let output = '';
 
