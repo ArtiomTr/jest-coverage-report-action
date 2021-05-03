@@ -19,7 +19,12 @@ async function run() {
             );
         }
 
-        const [token, testScript, coverageThresholdStr] = argv.slice(2);
+        const [
+            token,
+            testScript,
+            coverageThresholdStr,
+            workingDirectory,
+        ] = argv.slice(2);
 
         const coverageThreshold = coverageThresholdStr
             ? parseFloat(coverageThresholdStr)
@@ -36,10 +41,15 @@ async function run() {
 
         const octokit = getOctokit(token);
 
-        const headReport = await collectCoverage(testScript);
+        const headReport = await collectCoverage(
+            testScript,
+            undefined,
+            workingDirectory
+        );
         const baseReport = await collectCoverage(
             testScript,
-            pull_request.base.ref
+            pull_request.base.ref,
+            workingDirectory
         );
 
         if (
