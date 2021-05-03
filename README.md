@@ -66,6 +66,16 @@ with:
     threshold: 80 # value in percents
 ```
 
+## Custom working directory
+
+If you want to run this action in custom directory, specify `working-directory`:
+
+```yml
+with:
+    github_token: ${{ secrets.GITHUB_TOKEN }}
+    working_directory: <dir>
+```
+
 ## Customizing test script
 
 By default, this action will run this command, to extract coverage:
