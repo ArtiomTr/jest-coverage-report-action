@@ -15,6 +15,9 @@ inputs:
     threshold:
         required: false
         description: 'Coverage threshold. If total coverage is less than threshold, PR will be rejected'
+    working_directory:
+        required: false
+        description: 'Custom working directory'
 runs:
     using: 'docker'
     image: 'Dockerfile'
@@ -22,3 +25,4 @@ runs:
         - ${{ inputs.github_token }}
         - ${{ inputs.test_script }}
         - ${{ inputs.threshold }}
+        - ${{ inputs.working_directory }}

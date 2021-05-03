@@ -1,12 +1,17 @@
 import fs from 'fs';
+import { join } from 'path';
 
 import { exec } from '@actions/exec';
 
 import { FailReason } from '../report/generateReport';
 
+const joinPaths = (...segments: Array<string | undefined>) =>
+    join(...(segments as string[]).filter((segment) => segment !== undefined));
+
 export const getRawCoverage = async (
     testCommand: string,
-    branch?: string
+    branch?: string,
+    workingDirectory?: string
 ): Promise<
     string | { success: false; failReason: FailReason.TESTS_FAILED }
 > => {
@@ -17,8 +22,13 @@ export const getRawCoverage = async (
     }
 
     // NOTE: The `npm ci` command is not used. Because if your version of npm is old, the generated `package-lock.json` will also be old, and the latest version of `npm ci` will fail.
-    fs.rmdirSync('node_modules', { recursive: true });
-    await exec('npm i');
+    fs.rmdirSync(joinPaths(workingDirectory, 'node_modules'), {
+        recursive: true,
+    });
+
+    await exec('npm i', undefined, {
+        cwd: workingDirectory,
+    });
 
     let output = '';
 
@@ -27,6 +37,7 @@ export const getRawCoverage = async (
             listeners: {
                 stdout: (data) => (output += data.toString()),
             },
+            cwd: workingDirectory,
         });
     } catch (error) {
         console.error(`Test execution failed with message: "${error.message}"`);
