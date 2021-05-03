@@ -25,3 +25,4 @@ runs:
         - ${{ inputs.github_token }}
         - ${{ inputs.test_script }}
         - ${{ inputs.threshold }}
+        - ${{ inputs.working_directory }}
