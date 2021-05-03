@@ -26,6 +26,8 @@ async function run() {
             workingDirectory,
         ] = argv.slice(2);
 
+        console.log(argv);
+
         const coverageThreshold = coverageThresholdStr
             ? parseFloat(coverageThresholdStr)
             : undefined;
