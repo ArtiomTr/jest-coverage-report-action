@@ -13,7 +13,8 @@ export const getRawCoverage = async (
     branch?: string,
     workingDirectory?: string
 ): Promise<
-    string | { success: false; failReason: FailReason.TESTS_FAILED }
+    | string
+    | { success: false; failReason: FailReason.TESTS_FAILED; error?: Error }
 > => {
     if (branch) {
         // NOTE: It is possible that the 'git fetch -all' command will fail due to different file permissions, but this is unlikely to happen with github actions, so the 'try ~ catch' block is not used.
@@ -41,7 +42,12 @@ export const getRawCoverage = async (
         });
     } catch (error) {
         console.error(`Test execution failed with message: "${error.message}"`);
-        return { success: false, failReason: FailReason.TESTS_FAILED };
+
+        return {
+            success: false,
+            failReason: FailReason.TESTS_FAILED,
+            error: error instanceof Error ? error : undefined,
+        };
     }
 
     return output;

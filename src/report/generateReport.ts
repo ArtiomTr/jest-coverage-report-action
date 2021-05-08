@@ -20,6 +20,7 @@ export type ReportData = {
     details?: ParsedCoverageDetails;
     success?: boolean;
     failReason?: FailReason;
+    error?: Error;
 };
 
 export const generateReport = async (
@@ -75,7 +76,8 @@ export const generateReport = async (
             reportContent = getFormattedFailReason(
                 failReason,
                 coverageThreshold,
-                headReport.summary?.lines.percentage
+                headReport.summary?.lines.percentage,
+                headReport.error
             );
             if (
                 failReason === FailReason.UNDER_THRESHOLD &&
