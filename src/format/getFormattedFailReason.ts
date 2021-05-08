@@ -15,9 +15,7 @@ const insertArgs = (
 };
 
 const errorToDisplay = (error?: Error) =>
-    error
-        ? `\n\`\`\`\`\n${error.name}:${error.message}\n${error.stack}\n\`\`\``
-        : '';
+    error ? `\n\`\`\`\`\n${error.stack}\n\`\`\`` : '';
 
 export const getFormattedFailReason = (
     reason: FailReason,
