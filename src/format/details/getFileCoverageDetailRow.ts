@@ -1,17 +1,18 @@
-import { FileCoverageDetail } from '../../collect/parseCoverageDetails';
+import { CoverageDetail } from '../../typings/Coverage';
 import { formatPercentage } from '../utils/formatPercentage';
 import { getStatusOfPercents } from '../utils/getStatusOfPercents';
 
 export const getFileCoverageDetailRow = (
     filename: string,
-    headDetail: FileCoverageDetail,
-    baseDetail?: FileCoverageDetail,
+    headDetail: CoverageDetail,
+    baseDetail?: CoverageDetail,
     threshold?: number
 ): Array<string> => [
-    getStatusOfPercents(headDetail.lines, threshold),
+    // FIXME
+    getStatusOfPercents(1, threshold),
     filename,
     formatPercentage(headDetail.statements, baseDetail?.statements),
     formatPercentage(headDetail.branches, baseDetail?.branches),
     formatPercentage(headDetail.functions, baseDetail?.functions),
-    formatPercentage(headDetail.lines, baseDetail?.lines),
+    // formatPercentage(headDetail.lines, baseDetail?.lines),
 ];

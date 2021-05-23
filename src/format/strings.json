@@ -23,13 +23,7 @@
             "Percentage",
             "Covered / Total"
         ],
-        "columnAlignment": ["c", "l", "l", "c"],
-        "keyToDisplayString": {
-            "statements": "Statements",
-            "branches": "Branches",
-            "functions": "Functions",
-            "lines": "Lines"
-        }
+        "columnAlignment": ["c", "l", "l", "c"]
     },
     "details": {
         "newFiles": {

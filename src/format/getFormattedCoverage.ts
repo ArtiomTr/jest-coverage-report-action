@@ -1,13 +1,12 @@
 import { formatCoverageDetails } from './details/formatCoverageDetails';
 import { formatCoverageSummary } from './summary/formatCoverageSummary';
-import { ParsedCoverageDetails } from '../collect/parseCoverageDetails';
-import { ParsedCoverageSummary } from '../collect/parseCoverageSummary';
+import { CoverageDetailsMap, CoverageSummary } from '../typings/Coverage';
 
 export const getFormattedCoverage = (
-    headSummary: ParsedCoverageSummary,
-    baseSummary: ParsedCoverageSummary,
-    headDetails: ParsedCoverageDetails,
-    baseDetails: ParsedCoverageDetails,
+    headSummary: Array<CoverageSummary>,
+    baseSummary: Array<CoverageSummary>,
+    headDetails: CoverageDetailsMap,
+    baseDetails: CoverageDetailsMap,
     threshold: number | undefined
 ): string =>
     [

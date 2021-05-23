@@ -1,6 +1,6 @@
 import table from 'markdown-table';
 
-import { ParsedCoverageSummary } from '../../collect/parseCoverageSummary';
+import { CoverageSummary } from '../../typings/Coverage';
 import { hint } from '../strings.json';
 import { summary } from '../strings.json';
 import { formatPercentage } from '../utils/formatPercentage';
@@ -8,8 +8,8 @@ import { formatTable } from '../utils/formatTable';
 import { getStatusOfPercents } from '../utils/getStatusOfPercents';
 
 export const formatCoverageSummary = (
-    headSummary: ParsedCoverageSummary,
-    baseSummary: ParsedCoverageSummary,
+    headSummary: Array<CoverageSummary>,
+    baseSummary: Array<CoverageSummary>,
     threshold: number | undefined
 ): string =>
     formatTable(
@@ -17,19 +17,17 @@ export const formatCoverageSummary = (
         table(
             [
                 summary.columnHeaders,
-                ...(Object.keys(headSummary) as Array<
-                    keyof ParsedCoverageSummary
-                >).map((value: keyof ParsedCoverageSummary) => [
+                ...headSummary.map((currSummary, index) => [
                     getStatusOfPercents(
-                        headSummary[value].percentage,
+                        currSummary.covered / currSummary.total,
                         threshold
                     ),
-                    summary.keyToDisplayString[value],
+                    currSummary.title,
                     formatPercentage(
-                        headSummary[value].percentage,
-                        baseSummary[value].percentage
+                        currSummary.covered / currSummary.total,
+                        baseSummary[index].covered / baseSummary[index].total
                     ),
-                    `${headSummary[value].covered}/${headSummary[value].total}`,
+                    `${currSummary.covered}/${currSummary.total}`,
                 ]),
             ],
             { align: summary.columnAlignment }

@@ -6,7 +6,7 @@
     "main": "index.js",
     "scripts": {
         "test": "jest",
-        "test:coverage": "jest --silent --coverage --coverageReporters=\"text\" --coverageReporters=\"text-summary\"",
+        "test:coverage": "jest --silent --testLocationInResults --coverage --json --outputFile=\"report.json\"",
         "test:watch": "jest --watch",
         "start": "webpack --watch --mode development",
         "build": "webpack --mode production",
@@ -19,9 +19,11 @@
         "@actions/core": "^1.2.6",
         "@actions/exec": "^1.0.4",
         "@actions/github": "^4.0.0",
+        "fs-extra": "^10.0.0",
         "markdown-table": "^2.0.0"
     },
     "devDependencies": {
+        "@types/fs-extra": "^9.0.11",
         "@types/jest": "^26.0.20",
         "@types/markdown-table": "^2.0.0",
         "@types/node": "^14.14.20",

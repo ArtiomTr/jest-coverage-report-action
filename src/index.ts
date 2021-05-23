@@ -4,7 +4,8 @@ import { setFailed } from '@actions/core';
 import { context, getOctokit } from '@actions/github';
 
 import { collectCoverage } from './collect/collectCoverage';
-import { FailReason, generateReport } from './report/generateReport';
+import { generateReport } from './report/generateReport';
+import { FailReason } from './typings/Report';
 
 async function run() {
     try {
@@ -58,7 +59,9 @@ async function run() {
             headReport.summary &&
             headReport.details &&
             !headReport.failReason &&
-            headReport.summary.lines.percentage < coverageThreshold
+            true
+            // FIXME
+            // headReport.summary.lines.percentage < coverageThreshold
         ) {
             headReport.success = false;
             headReport.failReason = FailReason.UNDER_THRESHOLD;

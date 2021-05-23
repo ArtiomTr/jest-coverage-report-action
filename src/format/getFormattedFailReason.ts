@@ -1,5 +1,5 @@
 import { errorIcon, errors } from './strings.json';
-import { FailReason } from '../report/generateReport';
+import { FailReason } from '../typings/Report';
 
 const insertArgs = (
     text: string,

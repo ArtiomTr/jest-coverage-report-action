@@ -2,30 +2,14 @@ import { setFailed } from '@actions/core';
 import { getOctokit } from '@actions/github';
 
 import { fetchPreviousReport } from './fetchPreviousReport';
-import { ParsedCoverageDetails } from '../collect/parseCoverageDetails';
-import { ParsedCoverageSummary } from '../collect/parseCoverageSummary';
 import { MESSAGE_HEADING } from '../constants/MESSAGE_HEADING';
 import { getFormattedCoverage } from '../format/getFormattedCoverage';
 import { getFormattedFailReason } from '../format/getFormattedFailReason';
-
-export enum FailReason {
-    TESTS_FAILED = 'testsFailed',
-    INVALID_COVERAGE_FORMAT = 'invalidFormat',
-    UNDER_THRESHOLD = 'underThreshold',
-    UNKNOWN_ERROR = 'unknownError',
-}
-
-export type ReportData = {
-    summary?: ParsedCoverageSummary;
-    details?: ParsedCoverageDetails;
-    success?: boolean;
-    failReason?: FailReason;
-    error?: Error;
-};
+import { FailReason, Report } from '../typings/Report';
 
 export const generateReport = async (
-    headReport: ReportData,
-    baseReport: ReportData,
+    headReport: Report,
+    baseReport: Report,
     coverageThreshold: number | undefined,
     repo: { owner: string; repo: string },
     pr: { number: number },
@@ -76,7 +60,7 @@ export const generateReport = async (
             reportContent = getFormattedFailReason(
                 failReason,
                 coverageThreshold,
-                headReport.summary?.lines.percentage,
+                1, // FIXME
                 headReport.error
             );
             if (

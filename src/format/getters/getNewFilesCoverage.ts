@@ -1,12 +1,12 @@
-import { ParsedCoverageDetails } from '../../collect/parseCoverageDetails';
+import { CoverageDetailsMap } from '../../typings/Coverage';
 
 export const getNewFilesCoverage = (
-    headDetails: ParsedCoverageDetails,
-    baseDetails: ParsedCoverageDetails
-): ParsedCoverageDetails =>
+    headDetails: CoverageDetailsMap,
+    baseDetails: CoverageDetailsMap
+): CoverageDetailsMap =>
     Object.keys(headDetails)
         .filter((filename) => baseDetails[filename] === undefined)
-        .reduce<ParsedCoverageDetails>((acc, filename) => {
+        .reduce<CoverageDetailsMap>((acc, filename) => {
             acc[filename] = headDetails[filename];
             return acc;
         }, {});

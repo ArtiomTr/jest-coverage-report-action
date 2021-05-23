@@ -1,12 +1,12 @@
 import { formatCoverageDetailsPart } from './formatCoverageDetailsPart';
-import { ParsedCoverageDetails } from '../../collect/parseCoverageDetails';
+import { CoverageDetailsMap } from '../../typings/Coverage';
 import { getDecreasedCoverage } from '../getters/getDecreasedCoverage';
 import { getNewFilesCoverage } from '../getters/getNewFilesCoverage';
 import { details } from '../strings.json';
 
 export const formatCoverageDetails = (
-    headDetails: ParsedCoverageDetails,
-    baseDetails: ParsedCoverageDetails,
+    headDetails: CoverageDetailsMap,
+    baseDetails: CoverageDetailsMap,
     threshold: number | undefined
 ): string => {
     const decreasedCoverage = getDecreasedCoverage(headDetails, baseDetails);

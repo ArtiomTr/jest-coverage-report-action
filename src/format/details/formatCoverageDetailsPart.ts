@@ -1,7 +1,7 @@
 import markdownTable from 'markdown-table';
 
 import { getFileCoverageDetailRow } from './getFileCoverageDetailRow';
-import { ParsedCoverageDetails } from '../../collect/parseCoverageDetails';
+import { CoverageDetailsMap } from '../../typings/Coverage';
 import { details } from '../strings.json';
 import { hint } from '../strings.json';
 import { createMarkdownSpoiler } from '../utils/createMarkdownSpoiler';
@@ -14,8 +14,8 @@ export type DetailsFormatOptions = {
 
 export const formatCoverageDetailsPart = (
     formatOptions: DetailsFormatOptions,
-    headDetails: ParsedCoverageDetails,
-    baseDetails?: ParsedCoverageDetails,
+    headDetails: CoverageDetailsMap,
+    baseDetails?: CoverageDetailsMap,
     threshold?: number
 ): string | undefined => {
     const { summary, heading } = formatOptions;
