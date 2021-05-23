@@ -56,7 +56,7 @@ export type AssertionResult = {
 
 export type Location = {
     column?: number;
-    line?: number;
+    line: number;
 };
 
 export type Range = {

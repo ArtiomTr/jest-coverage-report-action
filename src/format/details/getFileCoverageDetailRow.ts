@@ -8,11 +8,10 @@ export const getFileCoverageDetailRow = (
     baseDetail?: CoverageDetail,
     threshold?: number
 ): Array<string> => [
-    // FIXME
-    getStatusOfPercents(1, threshold),
+    getStatusOfPercents(headDetail.lines, threshold),
     filename,
     formatPercentage(headDetail.statements, baseDetail?.statements),
     formatPercentage(headDetail.branches, baseDetail?.branches),
     formatPercentage(headDetail.functions, baseDetail?.functions),
-    // formatPercentage(headDetail.lines, baseDetail?.lines),
+    formatPercentage(headDetail.lines, baseDetail?.lines),
 ];

@@ -3,6 +3,7 @@ export type CoverageDetail = {
     statements: number;
     branches: number;
     functions: number;
+    lines: number;
 };
 
 export type CoverageDetailsMap = Record<string, CoverageDetail>;
