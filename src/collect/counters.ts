@@ -18,7 +18,7 @@ export const coveredBranchesCounter = (value: FileCoverage) =>
     );
 
 const lineDiff = (startLine: number, endLine: number, lastEndLine: number) =>
-    Math.max(Math.max(startLine, lastEndLine) - endLine, 0);
+    Math.max(endLine - Math.max(startLine, lastEndLine), 0);
 
 export const totalLinesCounter = (value: FileCoverage) => {
     let lastEndLine = 0;
