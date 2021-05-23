@@ -1,3 +1,4 @@
+import { getPercents } from './getPercents';
 import { CoverageSummary } from '../typings/Coverage';
 import { CoverageMap, FileCoverage } from '../typings/JsonReport';
 
@@ -21,5 +22,6 @@ export const getSummary = (
         title,
         total,
         covered,
+        percentage: getPercents(covered, total),
     };
 };

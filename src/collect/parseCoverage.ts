@@ -1,5 +1,6 @@
 import { relative } from 'path';
 
+import { getPercents } from './getPercents';
 import { getSummary } from './getSummary';
 import { CoverageDetailsMap } from '../typings/Coverage';
 import { FileCoverage, JsonReport } from '../typings/JsonReport';
@@ -52,15 +53,18 @@ export const parseCoverage = (source: string): Report => {
         const normalizedFilename = relative(process.cwd(), filename);
         acc[normalizedFilename] = {
             filename: normalizedFilename,
-            statements:
-                standardCoveredCounter('s')(fileCoverage) /
-                standardTotalCounter('s')(fileCoverage),
-            functions:
-                standardCoveredCounter('f')(fileCoverage) /
-                standardTotalCounter('f')(fileCoverage),
-            branches:
-                coveredBranchesCounter(fileCoverage) /
-                totalBranchesCounter(fileCoverage),
+            statements: getPercents(
+                standardCoveredCounter('s')(fileCoverage),
+                standardTotalCounter('s')(fileCoverage)
+            ),
+            functions: getPercents(
+                standardCoveredCounter('f')(fileCoverage),
+                standardTotalCounter('f')(fileCoverage)
+            ),
+            branches: getPercents(
+                coveredBranchesCounter(fileCoverage),
+                totalBranchesCounter(fileCoverage)
+            ),
         };
         return acc;
     }, {});

@@ -18,14 +18,11 @@ export const formatCoverageSummary = (
             [
                 summary.columnHeaders,
                 ...headSummary.map((currSummary, index) => [
-                    getStatusOfPercents(
-                        currSummary.covered / currSummary.total,
-                        threshold
-                    ),
+                    getStatusOfPercents(currSummary.percentage, threshold),
                     currSummary.title,
                     formatPercentage(
-                        currSummary.covered / currSummary.total,
-                        baseSummary[index].covered / baseSummary[index].total
+                        currSummary.percentage,
+                        baseSummary[index].percentage
                     ),
                     `${currSummary.covered}/${currSummary.total}`,
                 ]),

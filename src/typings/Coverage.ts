@@ -11,4 +11,5 @@ export type CoverageSummary = {
     title: string;
     covered: number;
     total: number;
+    percentage: number;
 };
