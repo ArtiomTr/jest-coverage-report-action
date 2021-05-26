@@ -1,5 +1,6 @@
 import { setFailed } from '@actions/core';
 import { getOctokit } from '@actions/github';
+import { context } from '@actions/github';
 
 import { fetchPreviousReport } from './fetchPreviousReport';
 import { MESSAGE_HEADING } from '../constants/MESSAGE_HEADING';
@@ -90,6 +91,8 @@ export const generateReport = async (
         const reportBody = insertArgs(REPORT, {
             head: MESSAGE_HEADING,
             body: reportContent,
+            sha: context.sha,
+            runId: context.runId,
         });
 
         if (previousReport) {
