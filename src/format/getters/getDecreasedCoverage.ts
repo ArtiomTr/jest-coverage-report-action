@@ -1,20 +1,13 @@
-import {
-    FileCoverageDetail,
-    ParsedCoverageDetails,
-} from '../../collect/parseCoverageDetails';
+import { CoverageDetail, CoverageDetailsMap } from '../../typings/Coverage';
 
-const coverageLessThan = (
-    first: FileCoverageDetail,
-    second: FileCoverageDetail
-) =>
+const coverageLessThan = (first: CoverageDetail, second: CoverageDetail) =>
     first.statements < second.statements ||
     first.branches < second.branches ||
-    first.functions < second.functions ||
-    first.lines < second.lines;
+    first.functions < second.functions;
 
 export const getDecreasedCoverage = (
-    headDetails: ParsedCoverageDetails,
-    baseDetails: ParsedCoverageDetails
+    headDetails: CoverageDetailsMap,
+    baseDetails: CoverageDetailsMap
 ) =>
     Object.keys(headDetails)
         .filter(
@@ -24,8 +17,8 @@ export const getDecreasedCoverage = (
                 coverageLessThan(headDetails[filename], baseDetails[filename])
         )
         .reduce<{
-            headDetails: ParsedCoverageDetails;
-            baseDetails: ParsedCoverageDetails;
+            headDetails: CoverageDetailsMap;
+            baseDetails: CoverageDetailsMap;
         }>(
             (acc, filename) => {
                 acc.headDetails[filename] = headDetails[filename];

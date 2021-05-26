@@ -1,37 +1,25 @@
 import { setFailed } from '@actions/core';
 import { getOctokit } from '@actions/github';
+import { context } from '@actions/github';
 
 import { fetchPreviousReport } from './fetchPreviousReport';
-import { ParsedCoverageDetails } from '../collect/parseCoverageDetails';
-import { ParsedCoverageSummary } from '../collect/parseCoverageSummary';
-import { MESSAGE_HEADING } from '../constants/MESSAGE_HEADING';
+import { getReportTag } from '../constants/getReportTag';
 import { getFormattedCoverage } from '../format/getFormattedCoverage';
 import { getFormattedFailReason } from '../format/getFormattedFailReason';
-
-export enum FailReason {
-    TESTS_FAILED = 'testsFailed',
-    INVALID_COVERAGE_FORMAT = 'invalidFormat',
-    UNDER_THRESHOLD = 'underThreshold',
-    UNKNOWN_ERROR = 'unknownError',
-}
-
-export type ReportData = {
-    summary?: ParsedCoverageSummary;
-    details?: ParsedCoverageDetails;
-    success?: boolean;
-    failReason?: FailReason;
-    error?: Error;
-};
+import { insertArgs } from '../format/insertArgs';
+import REPORT from '../format/REPORT.md';
+import { FailReason, Report } from '../typings/Report';
 
 export const generateReport = async (
-    headReport: ReportData,
-    baseReport: ReportData,
+    headReport: Report,
+    baseReport: Report,
     coverageThreshold: number | undefined,
     repo: { owner: string; repo: string },
     pr: { number: number },
-    octokit: ReturnType<typeof getOctokit>
+    octokit: ReturnType<typeof getOctokit>,
+    dir?: string
 ) => {
-    const previousReport = await fetchPreviousReport(octokit, repo, pr);
+    const previousReport = await fetchPreviousReport(octokit, repo, pr, dir);
 
     try {
         let reportContent = '';
@@ -76,7 +64,9 @@ export const generateReport = async (
             reportContent = getFormattedFailReason(
                 failReason,
                 coverageThreshold,
-                headReport.summary?.lines.percentage,
+                headReport.summary?.find(
+                    (value) => value.title === 'Statements'
+                )?.percentage,
                 headReport.error
             );
             if (
@@ -99,7 +89,12 @@ export const generateReport = async (
             }
         }
 
-        const reportBody = [MESSAGE_HEADING, reportContent].join('\n');
+        const reportBody = insertArgs(REPORT, {
+            head: getReportTag(dir),
+            body: reportContent,
+            sha: context.payload.after,
+            dir: dir ? `for \`${dir}\`` : '',
+        });
 
         if (previousReport) {
             await octokit.issues.updateComment({

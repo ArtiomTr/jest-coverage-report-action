@@ -12,5 +12,5 @@ module.exports = {
     collectCoverage: true,
     collectCoverageFrom: ['src/**/*.ts'],
     coveragePathIgnorePatterns: ['/node_modules/'],
-    coverageReporters: ['text-summary'],
+    coverageReporters: [],
 };

@@ -1,4 +1,4 @@
-FROM node:12
+FROM node:14
 
 COPY dist/index.js /index.js
 

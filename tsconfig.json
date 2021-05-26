@@ -10,6 +10,6 @@
         "rootDir": "src",
         "resolveJsonModule": true
     },
-    "include": ["src"],
+    "include": ["src", "index.d.ts"],
     "exclude": ["node_modules", "tests", "example"]
 }
