@@ -40,9 +40,11 @@ export const totalLinesCounter = (value: FileCoverage) => {
 export const coveredLinesCounter = (value: FileCoverage) => {
     let lastEndLine = 0;
 
-    return Object.entries(value.statementMap).reduce(
+    const totalLines = totalLinesCounter(value);
+
+    const notCoveredLines = Object.entries(value.statementMap).reduce(
         (acc, [key, statement]) => {
-            if (value.s[+key] > 0) {
+            if (value.s[+key] <= 0) {
                 const newLines = lineDiff(
                     statement.start.line,
                     statement.end.line,
@@ -60,4 +62,6 @@ export const coveredLinesCounter = (value: FileCoverage) => {
         },
         0
     );
+
+    return Math.max(totalLines, totalLines - notCoveredLines);
 };
