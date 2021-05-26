@@ -19,6 +19,10 @@ module.exports = (env, args) => ({
                 test: /\.ts$/,
                 loader: 'ts-loader',
             },
+            {
+                test: /\.md$/,
+                loader: 'raw-loader',
+            },
         ],
     },
 });

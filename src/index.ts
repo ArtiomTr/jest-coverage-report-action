@@ -59,9 +59,8 @@ async function run() {
             headReport.summary &&
             headReport.details &&
             !headReport.failReason &&
-            true
-            // FIXME
-            // headReport.summary.lines.percentage < coverageThreshold
+            headReport.summary.find((value) => value.title === 'Statements')!
+                .percentage < coverageThreshold
         ) {
             headReport.success = false;
             headReport.failReason = FailReason.UNDER_THRESHOLD;

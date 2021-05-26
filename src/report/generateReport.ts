@@ -5,6 +5,8 @@ import { fetchPreviousReport } from './fetchPreviousReport';
 import { MESSAGE_HEADING } from '../constants/MESSAGE_HEADING';
 import { getFormattedCoverage } from '../format/getFormattedCoverage';
 import { getFormattedFailReason } from '../format/getFormattedFailReason';
+import { insertArgs } from '../format/insertArgs';
+import REPORT from '../format/REPORT.md';
 import { FailReason, Report } from '../typings/Report';
 
 export const generateReport = async (
@@ -60,7 +62,9 @@ export const generateReport = async (
             reportContent = getFormattedFailReason(
                 failReason,
                 coverageThreshold,
-                1, // FIXME
+                headReport.summary?.find(
+                    (value) => value.title === 'Statements'
+                )?.percentage,
                 headReport.error
             );
             if (
@@ -83,7 +87,10 @@ export const generateReport = async (
             }
         }
 
-        const reportBody = [MESSAGE_HEADING, reportContent].join('\n');
+        const reportBody = insertArgs(REPORT, {
+            head: MESSAGE_HEADING,
+            body: reportContent,
+        });
 
         if (previousReport) {
             await octokit.issues.updateComment({
