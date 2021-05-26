@@ -72,7 +72,8 @@ async function run() {
             coverageThreshold,
             repo,
             pull_request,
-            octokit
+            octokit,
+            workingDirectory
         );
     } catch (error) {
         setFailed(error.message);

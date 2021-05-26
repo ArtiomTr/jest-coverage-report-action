@@ -3,7 +3,7 @@ import { getOctokit } from '@actions/github';
 import { context } from '@actions/github';
 
 import { fetchPreviousReport } from './fetchPreviousReport';
-import { MESSAGE_HEADING } from '../constants/MESSAGE_HEADING';
+import { getReportTag } from '../constants/getReportTag';
 import { getFormattedCoverage } from '../format/getFormattedCoverage';
 import { getFormattedFailReason } from '../format/getFormattedFailReason';
 import { insertArgs } from '../format/insertArgs';
@@ -16,9 +16,10 @@ export const generateReport = async (
     coverageThreshold: number | undefined,
     repo: { owner: string; repo: string },
     pr: { number: number },
-    octokit: ReturnType<typeof getOctokit>
+    octokit: ReturnType<typeof getOctokit>,
+    dir?: string
 ) => {
-    const previousReport = await fetchPreviousReport(octokit, repo, pr);
+    const previousReport = await fetchPreviousReport(octokit, repo, pr, dir);
 
     try {
         let reportContent = '';
@@ -88,12 +89,11 @@ export const generateReport = async (
             }
         }
 
-        console.log(context);
-
         const reportBody = insertArgs(REPORT, {
-            head: MESSAGE_HEADING,
+            head: getReportTag(dir),
             body: reportContent,
             sha: context.sha,
+            dir: dir ? `for \`${dir}\`` : '',
         });
 
         if (previousReport) {

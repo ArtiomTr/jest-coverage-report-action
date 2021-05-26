@@ -1,6 +1,6 @@
 {{ head }}
 
-## Coverage report
+## Coverage report {{ dir }}
 
 {{ body }}
 
