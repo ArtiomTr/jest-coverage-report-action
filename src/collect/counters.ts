@@ -63,5 +63,5 @@ export const coveredLinesCounter = (value: FileCoverage) => {
         0
     );
 
-    return Math.max(totalLines, totalLines - notCoveredLines);
+    return Math.max(0, totalLines - notCoveredLines);
 };
