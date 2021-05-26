@@ -1,3 +1,4 @@
+import { decimalToString } from './utils/decimalToString';
 import { insertArgs } from './insertArgs';
 import { errorIcon, errors } from './strings.json';
 import { FailReason } from '../typings/Report';
@@ -12,7 +13,8 @@ export const getFormattedFailReason = (
     error?: Error
 ): string =>
     `${errorIcon} ${insertArgs(errors[reason], {
-        coverageThreshold,
-        currentCoverage,
+        coverageThreshold:
+            coverageThreshold && decimalToString(coverageThreshold),
+        currentCoverage: currentCoverage && decimalToString(currentCoverage),
         coveragePath: 'report.json',
     })}${errorToDisplay(error)}`;
