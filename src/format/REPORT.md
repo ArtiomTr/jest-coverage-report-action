@@ -1,6 +1,6 @@
 {{ head }}
 
-## Coverage report {{ runId }}
+## Coverage report
 
 {{ body }}
 

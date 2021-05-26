@@ -88,11 +88,12 @@ export const generateReport = async (
             }
         }
 
+        console.log(context);
+
         const reportBody = insertArgs(REPORT, {
             head: MESSAGE_HEADING,
             body: reportContent,
             sha: context.sha,
-            runId: context.runId,
         });
 
         if (previousReport) {
