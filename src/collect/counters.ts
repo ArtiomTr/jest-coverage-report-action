@@ -48,7 +48,7 @@ export const coveredLinesCounter = (value: FileCoverage) => {
                     lastEndLine
                 );
 
-                console.log(newLines);
+                console.log(statement, newLines);
 
                 lastEndLine = statement.end.line;
 
