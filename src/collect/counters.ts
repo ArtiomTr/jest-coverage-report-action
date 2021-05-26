@@ -29,7 +29,6 @@ export const totalLinesCounter = (value: FileCoverage) => {
             statement.end.line,
             lastEndLine
         );
-        console.log(statement, newLines, lastEndLine);
 
         lastEndLine = Math.max(statement.end.line, lastEndLine);
 
@@ -50,9 +49,6 @@ export const coveredLinesCounter = (value: FileCoverage) => {
                     statement.end.line,
                     lastEndLine
                 );
-
-                console.log(statement, newLines, lastEndLine);
-
                 lastEndLine = Math.max(statement.end.line, lastEndLine);
 
                 return acc + newLines;
