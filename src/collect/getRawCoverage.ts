@@ -18,8 +18,12 @@ export const getRawCoverage = async (
     | { success: false; failReason: FailReason.TESTS_FAILED; error?: Error }
 > => {
     if (branch) {
-        // NOTE: It is possible that the 'git fetch -all' command will fail due to different file permissions, but this is unlikely to happen with github actions, so the 'try ~ catch' block is not used.
-        await exec(`git fetch --all --depth=1`);
+        // NOTE: It is possible that the 'git fetch -all' command will fail due to different file permissions, so allow that to fail silently
+        try {
+            await exec(`git fetch --all --depth=1`);
+        } catch (err) {
+            //fail silently
+        }
         await exec(`git checkout -f ${branch}`);
     }
 
