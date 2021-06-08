@@ -2,7 +2,7 @@ import { JsonReport } from '../../typings/JsonReport';
 import { insertArgs } from '../insertArgs';
 import { testsFailSummary, testsSuccessSummary } from '../strings.json';
 
-export const getFailedAnnotationsSummary = (jsonReport: JsonReport) => {
+export const getFailedAnnotationsSummary = (jsonReport: JsonReport) =>
     jsonReport.success
         ? insertArgs(testsSuccessSummary, {
               numPassedTests: jsonReport.numPassedTests,
@@ -15,4 +15,3 @@ export const getFailedAnnotationsSummary = (jsonReport: JsonReport) => {
               numFailedTestSuites: jsonReport.numFailedTestSuites,
               numTotalTestSuites: jsonReport.numTotalTestSuites,
           });
-};
