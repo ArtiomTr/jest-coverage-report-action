@@ -1,3 +1,5 @@
+import { relative } from 'path';
+
 import type { operations } from '@octokit/openapi-types';
 import stripAnsi from 'strip-ansi';
 
@@ -33,7 +35,7 @@ export const createFailedTestsAnnotations = (
                 .map<Annotation>(
                     ({ location, ancestorTitles, title, failureMessages }) => ({
                         annotation_level: 'failure',
-                        path: testResultFilename.replace(cwd, ''),
+                        path: relative(cwd, testResultFilename),
                         start_line: location?.line ?? 0,
                         end_line: location?.line ?? 0,
                         title: ancestorTitles?.concat(title).join(' > '),
