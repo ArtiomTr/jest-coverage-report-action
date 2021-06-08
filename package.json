@@ -20,7 +20,8 @@
         "@actions/exec": "^1.0.4",
         "@actions/github": "^4.0.0",
         "fs-extra": "^10.0.0",
-        "markdown-table": "^2.0.0"
+        "markdown-table": "^2.0.0",
+        "strip-ansi": "^6.0.0"
     },
     "devDependencies": {
         "@types/fs-extra": "^9.0.11",

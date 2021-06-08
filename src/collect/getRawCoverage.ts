@@ -22,7 +22,7 @@ export const getRawCoverage = async (
         try {
             await exec(`git fetch --all --depth=1`);
         } catch (err) {
-            console.warn ('Error loading git repository', err)
+            console.warn('Error fetching git repository', err);
         }
         await exec(`git checkout -f ${branch}`);
     }

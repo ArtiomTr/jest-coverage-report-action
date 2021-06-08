@@ -3,7 +3,11 @@ import { argv } from 'process';
 import { setFailed } from '@actions/core';
 import { context, getOctokit } from '@actions/github';
 
+import { createFailedTestsAnnotations } from './annotations/createFailedTestsAnnotations';
+import { isAnnotationEnabled } from './annotations/isAnnotationEnabled';
+import { isAnnotationsOptionValid } from './annotations/isAnnotationsOptionValid';
 import { collectCoverage } from './collect/collectCoverage';
+import { formatFailedTestsAnnotations } from './format/annotations/formatFailedTestsAnnotations';
 import { Icons } from './format/Icons';
 import { icons } from './format/strings.json';
 import { generateReport } from './report/generateReport';
@@ -28,6 +32,7 @@ async function run() {
             coverageThresholdStr,
             workingDirectory,
             iconType,
+            annotations,
         ] = argv.slice(2);
 
         const coverageThreshold = coverageThresholdStr
@@ -42,6 +47,12 @@ async function run() {
             );
         }
 
+        if (!isAnnotationsOptionValid(annotations)) {
+            throw new Error(
+                `Annotations option has invalid value: "${annotations}". Please, check documentation for proper configuration.`
+            );
+        }
+
         if (
             coverageThreshold !== undefined &&
             (coverageThreshold > 100 || coverageThreshold < 0)
@@ -53,12 +64,12 @@ async function run() {
 
         const octokit = getOctokit(token);
 
-        const headReport = await collectCoverage(
+        const [headReport, jsonReport] = await collectCoverage(
             testScript,
             undefined,
             workingDirectory
         );
-        const baseReport = await collectCoverage(
+        const [baseReport] = await collectCoverage(
             testScript,
             pull_request.base.ref,
             workingDirectory
@@ -75,6 +86,17 @@ async function run() {
         ) {
             headReport.success = false;
             headReport.failReason = FailReason.UNDER_THRESHOLD;
+        }
+
+        if (jsonReport && isAnnotationEnabled(annotations, 'failed-tests')) {
+            const failedAnnotations = createFailedTestsAnnotations(jsonReport);
+            try {
+                await octokit.checks.create(
+                    formatFailedTestsAnnotations(jsonReport, failedAnnotations)
+                );
+            } catch (err) {
+                console.error('Failed to create annotations', err);
+            }
         }
 
         await generateReport(

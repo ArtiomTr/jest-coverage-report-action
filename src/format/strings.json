@@ -28,6 +28,11 @@
             "new": ""
         }
     },
+    "testsFail": "Test suite run failed",
+    "testsSuccess": "Test suite run success",
+    "testsFailSummary": "Failed tests: {{ numFailedTests }}/{{ numTotalTests }}. Failed suites: {{ numFailedTestSuites }}/{{ numTotalTestSuites }}.",
+    "testsSuccessSummary": "{{ numPassedTests }} tests passing in {{ numPassedTestSuites }} suite{{ ending }}.",
+    "failedTestsCheckName": "Tests' annotations (🧪 jest-coverage-report-action)",
     "hint": "Status of coverage: {{ coverageGood }} - ok, {{ coverageNormal }} - slightly more than threshold, {{ coverageBad }} - under the threshold",
     "errors": {
         "testsFailed": "The test suite failed. Please, check the console output for more details.",
