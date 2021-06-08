@@ -17,7 +17,10 @@ export const collectCoverage = async (
 
     const jsonReport = parseJsonReport(source);
 
-    if (jsonReport.success === false) {
+    if (
+        jsonReport.success === false &&
+        (jsonReport as { failReason: unknown }).failReason !== undefined
+    ) {
         return [jsonReport, undefined];
     }
 
