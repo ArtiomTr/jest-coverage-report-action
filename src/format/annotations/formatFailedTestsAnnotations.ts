@@ -5,7 +5,7 @@ import { getFailedAnnotationsSummary } from './getFailedAnnotationsSummary';
 import { getFailedTestsAnnotationsBody } from './getFailedTestsAnnotationsBody';
 import { Annotation } from '../../annotations/createFailedTestsAnnotations';
 import { JsonReport } from '../../typings/JsonReport';
-import { testsFail, testsSuccess } from '../strings.json';
+import { failedTestsCheckName, testsFail, testsSuccess } from '../strings.json';
 
 type Octokit = ReturnType<typeof getOctokit>;
 
@@ -15,9 +15,11 @@ export const formatFailedTestsAnnotations = (
     jsonReport: JsonReport,
     annotations: Array<Annotation>
 ): CreateCheckOptions => ({
+    ...context.repo,
     status: 'completed',
     head_sha: context.payload.pull_request?.head.sha ?? context.sha,
     conclusion: jsonReport.success ? 'success' : 'failure',
+    name: failedTestsCheckName,
     output: {
         title: jsonReport.success ? testsSuccess : testsFail,
         text: getFailedTestsAnnotationsBody(jsonReport),
