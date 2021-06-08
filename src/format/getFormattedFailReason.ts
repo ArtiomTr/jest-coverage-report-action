@@ -1,6 +1,7 @@
 import { decimalToString } from './utils/decimalToString';
+import { Icons } from './Icons';
 import { insertArgs } from './insertArgs';
-import { errorIcon, errors } from './strings.json';
+import { errors } from './strings.json';
 import { FailReason } from '../typings/Report';
 
 const errorToDisplay = (error?: Error) =>
@@ -8,11 +9,12 @@ const errorToDisplay = (error?: Error) =>
 
 export const getFormattedFailReason = (
     reason: FailReason,
+    icons: Icons,
     coverageThreshold?: number,
     currentCoverage?: number,
     error?: Error
 ): string =>
-    `${errorIcon} ${insertArgs(errors[reason], {
+    `${icons.errorIcon} ${insertArgs(errors[reason], {
         coverageThreshold:
             coverageThreshold && decimalToString(coverageThreshold),
         currentCoverage: currentCoverage && decimalToString(currentCoverage),

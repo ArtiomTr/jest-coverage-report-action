@@ -2,6 +2,8 @@ import markdownTable from 'markdown-table';
 
 import { getFileCoverageDetailRow } from './getFileCoverageDetailRow';
 import { CoverageDetailsMap } from '../../typings/Coverage';
+import { Icons } from '../Icons';
+import { insertArgs } from '../insertArgs';
 import { details } from '../strings.json';
 import { hint } from '../strings.json';
 import { createMarkdownSpoiler } from '../utils/createMarkdownSpoiler';
@@ -13,6 +15,7 @@ export type DetailsFormatOptions = {
 };
 
 export const formatCoverageDetailsPart = (
+    icons: Icons,
     formatOptions: DetailsFormatOptions,
     headDetails: CoverageDetailsMap,
     baseDetails?: CoverageDetailsMap,
@@ -22,6 +25,7 @@ export const formatCoverageDetailsPart = (
 
     const tableContent = Object.keys(headDetails).map((filename) =>
         getFileCoverageDetailRow(
+            icons,
             filename,
             headDetails[filename],
             baseDetails?.[filename],
@@ -36,7 +40,11 @@ export const formatCoverageDetailsPart = (
                 markdownTable([details.columnHeaders, ...tableContent], {
                     align: details.columnAlignment,
                 }),
-                hint
+                insertArgs(hint, {
+                    coverageGood: icons.coverageGood,
+                    coverageNormal: icons.coverageNormal,
+                    coverageBad: icons.coverageBad,
+                })
             ),
             summary,
         });

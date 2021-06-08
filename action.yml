@@ -18,6 +18,10 @@ inputs:
     working_directory:
         required: false
         description: 'Custom working directory'
+    icons:
+        required: false
+        description: 'Which icons to use. Available choices: emoji, ascii'
+        default: emoji
 runs:
     using: 'docker'
     image: 'Dockerfile'
@@ -26,3 +30,4 @@ runs:
         - ${{ inputs.test_script }}
         - ${{ inputs.threshold }}
         - ${{ inputs.working_directory }}
+        - ${{ inputs.icons }}

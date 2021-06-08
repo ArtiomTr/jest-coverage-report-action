@@ -1,13 +1,34 @@
 {
-    "increaseIcon": "🔼",
-    "decreaseIcon": "🔻",
-    "errorIcon": "❌",
-    "coverageStatusIcons": {
-        "good": "🟢",
-        "normal": "🟡",
-        "bad": "🔴"
+    "icons": {
+        "emoji": {
+            "increaseIcon": "🔼",
+            "decreaseIcon": "🔻",
+            "errorIcon": "❌",
+            "coverageGood": "🟢",
+            "coverageNormal": "🟡",
+            "coverageBad": "🔴",
+            "new": "🌑"
+        },
+        "ascii": {
+            "increaseIcon": "",
+            "decreaseIcon": "",
+            "errorIcon": "[ !!! ]",
+            "coverageGood": "(+)",
+            "coverageNormal": "(~)",
+            "coverageBad": "(-)",
+            "new": ""
+        },
+        "unicode": {
+            "increaseIcon": "↑",
+            "decreaseIcon": "↓",
+            "errorIcon": "×",
+            "coverageGood": "(+)",
+            "coverageNormal": "(~)",
+            "coverageBad": "(-)",
+            "new": ""
+        }
     },
-    "hint": "Status of coverage: 🟢 - ok, 🟡 - slightly more than threshold, 🔴 - under the threshold",
+    "hint": "Status of coverage: {{ coverageGood }} - ok, {{ coverageNormal }} - slightly more than threshold, {{ coverageBad }} - under the threshold",
     "errors": {
         "testsFailed": "The test suite failed. Please, check the console output for more details.",
         "invalidFormat": "Output of test script has invalid format. Check [documentation](https://github.com/ArtiomTr/jest-coverage-report-action#jest-coverage-report-) for more details.",
@@ -27,11 +48,11 @@
     },
     "details": {
         "newFiles": {
-            "summary": "Show new covered files 🌑",
+            "summary": "Show new covered files {{ new }}",
             "heading": "Coverage of new files"
         },
         "decreasedCoverageFiles": {
-            "summary": "Show files with reduced coverage 🔻",
+            "summary": "Show files with reduced coverage {{ decreaseIcon }}",
             "heading": "Reduced coverage"
         },
         "columnHeaders": [
