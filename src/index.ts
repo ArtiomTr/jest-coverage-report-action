@@ -79,12 +79,16 @@ async function run() {
             headReport.failReason = FailReason.UNDER_THRESHOLD;
         }
 
+        console.log(jsonReport);
+
         if (jsonReport) {
             const failedAnnotations = createFailedTestsAnnotations(jsonReport);
             try {
-                await octokit.checks.create(
+                const result = await octokit.checks.create(
                     formatFailedTestsAnnotations(jsonReport, failedAnnotations)
                 );
+
+                console.log(result);
             } catch (err) {
                 console.error('Failed to create annotations', err);
             }
