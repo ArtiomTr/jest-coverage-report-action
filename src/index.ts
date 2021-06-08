@@ -3,7 +3,9 @@ import { argv } from 'process';
 import { setFailed } from '@actions/core';
 import { context, getOctokit } from '@actions/github';
 
+import { createFailedTestsAnnotations } from './annotations/createFailedTestsAnnotations';
 import { collectCoverage } from './collect/collectCoverage';
+import { formatFailedTestsAnnotations } from './format/annotations/formatFailedTestsAnnotations';
 import { Icons } from './format/Icons';
 import { icons } from './format/strings.json';
 import { generateReport } from './report/generateReport';
@@ -53,12 +55,12 @@ async function run() {
 
         const octokit = getOctokit(token);
 
-        const headReport = await collectCoverage(
+        const [headReport, jsonReport] = await collectCoverage(
             testScript,
             undefined,
             workingDirectory
         );
-        const baseReport = await collectCoverage(
+        const [baseReport] = await collectCoverage(
             testScript,
             pull_request.base.ref,
             workingDirectory
@@ -75,6 +77,13 @@ async function run() {
         ) {
             headReport.success = false;
             headReport.failReason = FailReason.UNDER_THRESHOLD;
+        }
+
+        if (jsonReport) {
+            const failedAnnotations = createFailedTestsAnnotations(jsonReport);
+            octokit.checks.create(
+                formatFailedTestsAnnotations(jsonReport, failedAnnotations)
+            );
         }
 
         await generateReport(
