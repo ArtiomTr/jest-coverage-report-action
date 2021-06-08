@@ -4,6 +4,8 @@ import { setFailed } from '@actions/core';
 import { context, getOctokit } from '@actions/github';
 
 import { createFailedTestsAnnotations } from './annotations/createFailedTestsAnnotations';
+import { isAnnotationEnabled } from './annotations/isAnnotationEnabled';
+import { isAnnotationsOptionValid } from './annotations/isAnnotationsOptionValid';
 import { collectCoverage } from './collect/collectCoverage';
 import { formatFailedTestsAnnotations } from './format/annotations/formatFailedTestsAnnotations';
 import { Icons } from './format/Icons';
@@ -30,6 +32,7 @@ async function run() {
             coverageThresholdStr,
             workingDirectory,
             iconType,
+            annotations,
         ] = argv.slice(2);
 
         const coverageThreshold = coverageThresholdStr
@@ -41,6 +44,12 @@ async function run() {
                 `Specify icons type (${iconType}) is not supported. Available options: ${Object.keys(
                     icons
                 ).join(', ')}.`
+            );
+        }
+
+        if (!isAnnotationsOptionValid(annotations)) {
+            throw new Error(
+                `Annotations option has invalid value: "${annotations}". Please, check documentation for proper configuration.`
             );
         }
 
@@ -79,7 +88,7 @@ async function run() {
             headReport.failReason = FailReason.UNDER_THRESHOLD;
         }
 
-        if (jsonReport) {
+        if (jsonReport && isAnnotationEnabled(annotations, 'failed-tests')) {
             const failedAnnotations = createFailedTestsAnnotations(jsonReport);
             try {
                 await octokit.checks.create(
