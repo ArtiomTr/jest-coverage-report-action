@@ -81,13 +81,13 @@ async function run() {
 
         if (jsonReport) {
             const failedAnnotations = createFailedTestsAnnotations(jsonReport);
-            octokit.checks
-                .create(
+            try {
+                await octokit.checks.create(
                     formatFailedTestsAnnotations(jsonReport, failedAnnotations)
-                )
-                .catch((err) =>
-                    console.error('Failed to create annotations', err)
                 );
+            } catch (err) {
+                console.error('Failed to create annotations', err);
+            }
         }
 
         await generateReport(
