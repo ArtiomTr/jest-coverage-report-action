@@ -1,8 +1,12 @@
-import { coverageStatusIcons } from '../strings.json';
+import { Icons } from '../Icons';
 
 const DEFAULT_STEP = 20;
 
-export const getStatusOfPercents = (percentage: number, threshold = 60) => {
+export const getStatusOfPercents = (
+    icons: Icons,
+    percentage: number,
+    threshold = 60
+) => {
     let step = DEFAULT_STEP;
 
     if (threshold > 100 - DEFAULT_STEP * 2) {
@@ -10,10 +14,10 @@ export const getStatusOfPercents = (percentage: number, threshold = 60) => {
     }
 
     if (percentage < threshold) {
-        return coverageStatusIcons.bad;
+        return icons.coverageBad;
     } else if (percentage < threshold + step) {
-        return coverageStatusIcons.normal;
+        return icons.coverageNormal;
     } else {
-        return coverageStatusIcons.good;
+        return icons.coverageGood;
     }
 };

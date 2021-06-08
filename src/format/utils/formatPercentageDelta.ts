@@ -1,7 +1,7 @@
 import { decimalToString } from './decimalToString';
-import { decreaseIcon, increaseIcon } from '../strings.json';
+import { Icons } from '../Icons';
 
-export const formatPercentageDelta = (delta: number): string =>
+export const formatPercentageDelta = (delta: number, icons: Icons): string =>
     delta > 0
-        ? `(+${decimalToString(delta)}% ${increaseIcon})`
-        : `(${decimalToString(delta)}% ${decreaseIcon})`;
+        ? `(+${decimalToString(delta)}% ${icons.increaseIcon})`
+        : `(${decimalToString(delta)}% ${icons.decreaseIcon})`;

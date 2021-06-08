@@ -4,6 +4,8 @@ import { setFailed } from '@actions/core';
 import { context, getOctokit } from '@actions/github';
 
 import { collectCoverage } from './collect/collectCoverage';
+import { Icons } from './format/Icons';
+import { icons } from './format/strings.json';
 import { generateReport } from './report/generateReport';
 import { FailReason } from './typings/Report';
 
@@ -25,11 +27,20 @@ async function run() {
             testScript,
             coverageThresholdStr,
             workingDirectory,
+            iconType,
         ] = argv.slice(2);
 
         const coverageThreshold = coverageThresholdStr
             ? parseFloat(coverageThresholdStr)
             : undefined;
+
+        if (!Object.keys(icons).includes(iconType)) {
+            throw new Error(
+                `Specify icons type (${iconType}) is not supported. Available options: ${Object.keys(
+                    icons
+                ).join(', ')}.`
+            );
+        }
 
         if (
             coverageThreshold !== undefined &&
@@ -67,6 +78,7 @@ async function run() {
         }
 
         await generateReport(
+            (icons as Record<string, Icons>)[iconType],
             headReport,
             baseReport,
             coverageThreshold,
