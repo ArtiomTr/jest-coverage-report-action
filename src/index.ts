@@ -3,10 +3,12 @@ import { argv } from 'process';
 import { setFailed } from '@actions/core';
 import { context, getOctokit } from '@actions/github';
 
+import { createCoverageAnnotations } from './annotations/createCoverageAnnotations';
 import { createFailedTestsAnnotations } from './annotations/createFailedTestsAnnotations';
 import { isAnnotationEnabled } from './annotations/isAnnotationEnabled';
 import { isAnnotationsOptionValid } from './annotations/isAnnotationsOptionValid';
 import { collectCoverage } from './collect/collectCoverage';
+import { formatCoverageAnnotations } from './format/annotations/formatCoverageAnnotations';
 import { formatFailedTestsAnnotations } from './format/annotations/formatFailedTestsAnnotations';
 import { Icons } from './format/Icons';
 import { icons } from './format/strings.json';
@@ -93,6 +95,17 @@ async function run() {
             try {
                 await octokit.checks.create(
                     formatFailedTestsAnnotations(jsonReport, failedAnnotations)
+                );
+            } catch (err) {
+                console.error('Failed to create annotations', err);
+            }
+        }
+
+        if (jsonReport && isAnnotationEnabled(annotations, 'coverage')) {
+            const failedAnnotations = createCoverageAnnotations(jsonReport);
+            try {
+                await octokit.checks.create(
+                    formatCoverageAnnotations(jsonReport, failedAnnotations)
                 );
             } catch (err) {
                 console.error('Failed to create annotations', err);

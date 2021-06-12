@@ -1,13 +1,11 @@
 import { context } from '@actions/github';
 
 import { CreateCheckOptions } from './CreateCheckOptions';
-import { getFailedAnnotationsSummary } from './getFailedAnnotationsSummary';
-import { getFailedTestsAnnotationsBody } from './getFailedTestsAnnotationsBody';
 import { Annotation } from '../../annotations/Annotation';
 import { JsonReport } from '../../typings/JsonReport';
-import { failedTestsCheckName, testsFail, testsSuccess } from '../strings.json';
+import { failedTestsCheckName } from '../strings.json';
 
-export const formatFailedTestsAnnotations = (
+export const formatCoverageAnnotations = (
     jsonReport: JsonReport,
     annotations: Array<Annotation>
 ): CreateCheckOptions => ({
@@ -17,9 +15,8 @@ export const formatFailedTestsAnnotations = (
     conclusion: jsonReport.success ? 'success' : 'failure',
     name: failedTestsCheckName,
     output: {
-        title: jsonReport.success ? testsSuccess : testsFail,
-        text: getFailedTestsAnnotationsBody(jsonReport),
-        summary: getFailedAnnotationsSummary(jsonReport),
+        title: 'Coverage report annotations',
+        summary: 'Annotations',
         annotations,
     },
 });

@@ -4,6 +4,7 @@ node_modules
 .cache
 build
 .rpt2_cache
+coverage
 
 # misc
 .DS_Store

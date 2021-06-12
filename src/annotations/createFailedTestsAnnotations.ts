@@ -1,15 +1,9 @@
 import { relative } from 'path';
 
-import type { operations } from '@octokit/openapi-types';
 import stripAnsi from 'strip-ansi';
 
+import { Annotation } from './Annotation';
 import { JsonReport } from '../typings/JsonReport';
-
-export type Annotation = Required<
-    Required<
-        operations['checks/create']['requestBody']['content']['application/json']
-    >['output']
->['annotations'][number];
 
 export const createFailedTestsAnnotations = (
     jsonReport: JsonReport
