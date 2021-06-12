@@ -6,8 +6,8 @@ import { Annotation } from './Annotation';
 import { JsonReport, Location } from '../typings/JsonReport';
 
 const getLocation = (
-    start: Location,
-    end: Location
+    start: Location = { line: 0 },
+    end: Location = { line: 0 }
 ): {
     start_line: number;
     end_line: number;
@@ -47,16 +47,37 @@ export const createCoverageAnnotations = (
                                 statementCoverage.end
                             ),
                             path: normalizedFilename,
-                            start_line: statementCoverage.start.line,
-                            // start_column:
-                            //     statementCoverage.start.column ?? undefined,
-                            end_line: statementCoverage.end.line,
-                            // end_column:
-                            //     statementCoverage.end.column ?? undefined,
                             annotation_level: 'warning',
                             title: 'Statement is not covered',
-                            message: 'Statement is not covered',
+                            message: 'Warning! Not covered statement',
                         });
+                    }
+                }
+            );
+
+            Object.entries(fileCoverage.branchMap).forEach(
+                ([branchIndex, branchCoverage]) => {
+                    if (branchCoverage.locations) {
+                        branchCoverage.locations.forEach(
+                            (location, locationIndex) => {
+                                if (
+                                    fileCoverage.b[+branchIndex][
+                                        locationIndex
+                                    ] === 0
+                                ) {
+                                    annotations.push({
+                                        ...getLocation(
+                                            location.start,
+                                            location.end
+                                        ),
+                                        path: normalizedFilename,
+                                        annotation_level: 'warning',
+                                        title: 'Branch is not covered',
+                                        message: 'Warning! Not covered branch',
+                                    });
+                                }
+                            }
+                        );
                     }
                 }
             );
