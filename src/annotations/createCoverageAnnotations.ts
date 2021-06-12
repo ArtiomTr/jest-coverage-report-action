@@ -1,7 +1,34 @@
 import { relative } from 'path';
 
+import {} from '@actions/exec';
+
 import { Annotation } from './Annotation';
-import { JsonReport } from '../typings/JsonReport';
+import { JsonReport, Location } from '../typings/JsonReport';
+
+const getLocation = (
+    start: Location,
+    end: Location
+): {
+    start_line: number;
+    end_line: number;
+    start_column?: number;
+    end_column?: number;
+} => ({
+    start_line: start.line,
+    end_line: end.line,
+    start_column:
+        start.line === end.line &&
+        start.column !== undefined &&
+        end.column !== undefined
+            ? start.column
+            : undefined,
+    end_column:
+        start.line === end.line &&
+        start.column !== undefined &&
+        end.column !== undefined
+            ? end.column
+            : undefined,
+});
 
 export const createCoverageAnnotations = (
     jsonReport: JsonReport
@@ -15,6 +42,10 @@ export const createCoverageAnnotations = (
                 ([statementIndex, statementCoverage]) => {
                     if (fileCoverage.s[+statementIndex] === 0) {
                         annotations.push({
+                            ...getLocation(
+                                statementCoverage.start,
+                                statementCoverage.end
+                            ),
                             path: normalizedFilename,
                             start_line: statementCoverage.start.line,
                             // start_column:
