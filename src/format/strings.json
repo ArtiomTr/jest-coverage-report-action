@@ -36,6 +36,7 @@
     "notCoveredFunctionMessage": "Warning! Not covered function",
     "testsFail": "Test suite run failed",
     "testsSuccess": "Test suite run success",
+    "testsFailSummaryPt2": "Created failed tests' annotations. To disable them, see [documentation](https://github.com/ArtiomTr/jest-coverage-report-action#jest-coverage-report-).",
     "testsFailSummary": "Failed tests: {{ numFailedTests }}/{{ numTotalTests }}. Failed suites: {{ numFailedTestSuites }}/{{ numTotalTestSuites }}.",
     "testsSuccessSummary": "{{ numPassedTests }} tests passing in {{ numPassedTestSuites }} suite{{ ending }}.",
     "coveredCheckName": "Coverage annotations (🧪 jest-coverage-report-action)",
