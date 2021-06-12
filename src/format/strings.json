@@ -42,7 +42,10 @@
     "coveredCheckName": "Coverage annotations (🧪 jest-coverage-report-action)",
     "failedTestsCheckName": "Tests' annotations (🧪 jest-coverage-report-action)",
     "coverageTitle": "Coverage report annotations",
-    "coverageSummary": "Created coverage report annotations. To disable them, see [documentation](https://github.com/ArtiomTr/jest-coverage-report-action#jest-coverage-report-).",
+    "coverageOk": "✔ Coverage is good {{ coverage }}",
+    "coverageFail": "❌ Coverage is under threshold - {{ coverage }}%, threshold {{ threshold }}%",
+    "coverageAnnotationsText": "Created coverage report annotations. To disable them, see [documentation](https://github.com/ArtiomTr/jest-coverage-report-action#jest-coverage-report-).",
+    "tooMuchAnnotations": "{{ hiddenCount }} annotations hidden. Only 50 can be displayed at once.",
     "hint": "Status of coverage: {{ coverageGood }} - ok, {{ coverageNormal }} - slightly more than threshold, {{ coverageBad }} - under the threshold",
     "errors": {
         "testsFailed": "The test suite failed. Please, check the console output for more details.",

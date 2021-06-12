@@ -2,16 +2,20 @@ import { context } from '@actions/github';
 
 import { CreateCheckOptions } from './CreateCheckOptions';
 import { Annotation } from '../../annotations/Annotation';
-import { JsonReport } from '../../typings/JsonReport';
+import { insertArgs } from '../insertArgs';
 import {
-    coverageSummary,
+    coverageAnnotationsText,
+    coverageFail,
+    coverageOk,
     coverageTitle,
     coveredCheckName,
+    tooMuchAnnotations,
 } from '../strings.json';
 
 export const formatCoverageAnnotations = (
-    jsonReport: JsonReport,
     success: boolean,
+    coverage: number,
+    threshold: number,
     annotations: Array<Annotation>
 ): CreateCheckOptions => ({
     ...context.repo,
@@ -21,7 +25,18 @@ export const formatCoverageAnnotations = (
     name: coveredCheckName,
     output: {
         title: coverageTitle,
-        summary: coverageSummary,
-        annotations,
+        summary: insertArgs(success ? coverageOk : coverageFail, {
+            coverage,
+            threshold,
+        }),
+        text: [
+            coverageAnnotationsText,
+            insertArgs(tooMuchAnnotations, {
+                hiddenCount: annotations.length - 50,
+            }),
+        ]
+            .filter(Boolean)
+            .join('\n'),
+        annotations: annotations.slice(0, 49),
     },
 });

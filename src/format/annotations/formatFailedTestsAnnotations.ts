@@ -5,7 +5,13 @@ import { getFailedAnnotationsSummary } from './getFailedAnnotationsSummary';
 import { getFailedTestsAnnotationsBody } from './getFailedTestsAnnotationsBody';
 import { Annotation } from '../../annotations/Annotation';
 import { JsonReport } from '../../typings/JsonReport';
-import { failedTestsCheckName, testsFail, testsSuccess } from '../strings.json';
+import { insertArgs } from '../insertArgs';
+import {
+    failedTestsCheckName,
+    testsFail,
+    testsSuccess,
+    tooMuchAnnotations,
+} from '../strings.json';
 
 export const formatFailedTestsAnnotations = (
     jsonReport: JsonReport,
@@ -18,8 +24,16 @@ export const formatFailedTestsAnnotations = (
     name: failedTestsCheckName,
     output: {
         title: jsonReport.success ? testsSuccess : testsFail,
-        text: getFailedTestsAnnotationsBody(jsonReport),
+        text: [
+            getFailedTestsAnnotationsBody(jsonReport),
+            insertArgs(tooMuchAnnotations, {
+                hiddenCount: annotations.length - 50,
+            }),
+        ]
+            .filter(Boolean)
+            .join('\n'),
         summary: getFailedAnnotationsSummary(jsonReport),
+
         annotations,
     },
 });

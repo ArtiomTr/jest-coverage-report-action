@@ -113,14 +113,15 @@ async function run() {
         ) {
             const coverageAnnotations = createCoverageAnnotations(jsonReport);
             if (coverageAnnotations.length > 0) {
+                const coverage = headReport.summary.find(
+                    (value) => value.title === 'Statements'
+                )!.percentage;
                 try {
                     await octokit.checks.create(
                         formatCoverageAnnotations(
-                            jsonReport,
-                            !coverageThreshold ||
-                                headReport.summary.find(
-                                    (value) => value.title === 'Statements'
-                                )!.percentage > coverageThreshold,
+                            !coverageThreshold || coverage > coverageThreshold,
+                            coverage,
+                            coverageThreshold!,
                             coverageAnnotations
                         )
                     );
