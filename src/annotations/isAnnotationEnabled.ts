@@ -1,5 +1,6 @@
+import { ValidAnnotationsOption } from './isAnnotationsOptionValid';
+
 export const isAnnotationEnabled = (
     option: string,
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    annotationName: string
-): boolean => option === 'all';
+    annotationName: ValidAnnotationsOption
+): boolean => option === 'all' || option === annotationName;

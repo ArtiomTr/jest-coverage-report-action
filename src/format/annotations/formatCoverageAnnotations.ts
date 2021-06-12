@@ -1,31 +1,37 @@
 import { context } from '@actions/github';
 
 import { CreateCheckOptions } from './CreateCheckOptions';
-import { getFailedAnnotationsSummary } from './getFailedAnnotationsSummary';
-import { getFailedTestsAnnotationsBody } from './getFailedTestsAnnotationsBody';
 import { Annotation } from '../../annotations/Annotation';
-import { JsonReport } from '../../typings/JsonReport';
 import { insertArgs } from '../insertArgs';
 import {
-    failedTestsCheckName,
-    testsFail,
-    testsSuccess,
+    coverageAnnotationsText,
+    coverageFail,
+    coverageOk,
+    coverageTitle,
+    coveredCheckName,
     tooMuchAnnotations,
 } from '../strings.json';
+import { decimalToString } from '../utils/decimalToString';
 
-export const formatFailedTestsAnnotations = (
-    jsonReport: JsonReport,
+export const formatCoverageAnnotations = (
+    success: boolean,
+    coverage: number,
+    threshold: number,
     annotations: Array<Annotation>
 ): CreateCheckOptions => ({
     ...context.repo,
     status: 'completed',
     head_sha: context.payload.pull_request?.head.sha ?? context.sha,
-    conclusion: jsonReport.success ? 'success' : 'failure',
-    name: failedTestsCheckName,
+    conclusion: success ? 'success' : 'failure',
+    name: coveredCheckName,
     output: {
-        title: jsonReport.success ? testsSuccess : testsFail,
+        title: coverageTitle,
+        summary: insertArgs(success ? coverageOk : coverageFail, {
+            coverage: decimalToString(coverage ?? 0),
+            threshold: decimalToString(threshold ?? 0),
+        }),
         text: [
-            getFailedTestsAnnotationsBody(jsonReport),
+            coverageAnnotationsText,
             annotations.length > 50 &&
                 insertArgs(tooMuchAnnotations, {
                     hiddenCount: annotations.length - 50,
@@ -33,7 +39,6 @@ export const formatFailedTestsAnnotations = (
         ]
             .filter(Boolean)
             .join('\n'),
-        summary: getFailedAnnotationsSummary(jsonReport),
         annotations: annotations.slice(0, 49),
     },
 });

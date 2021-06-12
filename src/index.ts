@@ -3,10 +3,12 @@ import { argv } from 'process';
 import { setFailed } from '@actions/core';
 import { context, getOctokit } from '@actions/github';
 
+import { createCoverageAnnotations } from './annotations/createCoverageAnnotations';
 import { createFailedTestsAnnotations } from './annotations/createFailedTestsAnnotations';
 import { isAnnotationEnabled } from './annotations/isAnnotationEnabled';
 import { isAnnotationsOptionValid } from './annotations/isAnnotationsOptionValid';
 import { collectCoverage } from './collect/collectCoverage';
+import { formatCoverageAnnotations } from './format/annotations/formatCoverageAnnotations';
 import { formatFailedTestsAnnotations } from './format/annotations/formatFailedTestsAnnotations';
 import { Icons } from './format/Icons';
 import { icons } from './format/strings.json';
@@ -90,12 +92,42 @@ async function run() {
 
         if (jsonReport && isAnnotationEnabled(annotations, 'failed-tests')) {
             const failedAnnotations = createFailedTestsAnnotations(jsonReport);
-            try {
-                await octokit.checks.create(
-                    formatFailedTestsAnnotations(jsonReport, failedAnnotations)
-                );
-            } catch (err) {
-                console.error('Failed to create annotations', err);
+            if (failedAnnotations.length > 0) {
+                try {
+                    await octokit.checks.create(
+                        formatFailedTestsAnnotations(
+                            jsonReport,
+                            failedAnnotations
+                        )
+                    );
+                } catch (err) {
+                    console.error('Failed to create annotations', err);
+                }
+            }
+        }
+
+        if (
+            jsonReport &&
+            isAnnotationEnabled(annotations, 'coverage') &&
+            headReport.summary
+        ) {
+            const coverageAnnotations = createCoverageAnnotations(jsonReport);
+            if (coverageAnnotations.length > 0) {
+                const coverage = headReport.summary.find(
+                    (value) => value.title === 'Statements'
+                )!.percentage;
+                try {
+                    await octokit.checks.create(
+                        formatCoverageAnnotations(
+                            !coverageThreshold || coverage > coverageThreshold,
+                            coverage,
+                            coverageThreshold!,
+                            coverageAnnotations
+                        )
+                    );
+                } catch (err) {
+                    console.error('Failed to create annotations', err);
+                }
             }
         }
 
