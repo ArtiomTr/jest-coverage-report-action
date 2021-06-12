@@ -42,7 +42,7 @@
     "coveredCheckName": "Coverage annotations (🧪 jest-coverage-report-action)",
     "failedTestsCheckName": "Tests' annotations (🧪 jest-coverage-report-action)",
     "coverageTitle": "Coverage report annotations",
-    "coverageOk": "✔ Coverage is good {{ coverage }}",
+    "coverageOk": "✔ Coverage is good {{ coverage }}%",
     "coverageFail": "❌ Coverage is under threshold - {{ coverage }}%, threshold {{ threshold }}%",
     "coverageAnnotationsText": "Created coverage report annotations. To disable them, see [documentation](https://github.com/ArtiomTr/jest-coverage-report-action#jest-coverage-report-).",
     "tooMuchAnnotations": "{{ hiddenCount }} annotations hidden. Only 50 can be displayed at once.",

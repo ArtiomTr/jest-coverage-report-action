@@ -11,6 +11,7 @@ import {
     coveredCheckName,
     tooMuchAnnotations,
 } from '../strings.json';
+import { decimalToString } from '../utils/decimalToString';
 
 export const formatCoverageAnnotations = (
     success: boolean,
@@ -26,8 +27,8 @@ export const formatCoverageAnnotations = (
     output: {
         title: coverageTitle,
         summary: insertArgs(success ? coverageOk : coverageFail, {
-            coverage,
-            threshold,
+            coverage: decimalToString(coverage),
+            threshold: decimalToString(threshold),
         }),
         text: [
             coverageAnnotationsText,
