@@ -1,6 +1,14 @@
 import { relative } from 'path';
 
 import { Annotation } from './Annotation';
+import {
+    notCoveredBranchMessage,
+    notCoveredBranchTitle,
+    notCoveredFunctionMessage,
+    notCoveredFunctionTitle,
+    notCoveredStatementMessage,
+    notCoveredStatementTitle,
+} from '../format/strings.json';
 import { JsonReport, Location } from '../typings/JsonReport';
 
 const getLocation = (
@@ -46,8 +54,8 @@ export const createCoverageAnnotations = (
                             ),
                             path: normalizedFilename,
                             annotation_level: 'warning',
-                            title: '🧾 Statement is not covered',
-                            message: 'Warning! Not covered statement',
+                            title: notCoveredBranchTitle,
+                            message: notCoveredBranchMessage,
                         });
                     }
                 }
@@ -70,8 +78,8 @@ export const createCoverageAnnotations = (
                                         ),
                                         path: normalizedFilename,
                                         annotation_level: 'warning',
-                                        title: '🌿 Branch is not covered',
-                                        message: `Warning! Not covered branch`,
+                                        title: notCoveredFunctionTitle,
+                                        message: notCoveredFunctionMessage,
                                     });
                                 }
                             }
@@ -90,8 +98,8 @@ export const createCoverageAnnotations = (
                             ),
                             path: normalizedFilename,
                             annotation_level: 'warning',
-                            title: '🕹 Function is not covered',
-                            message: 'Warning! Not covered function',
+                            title: notCoveredStatementTitle,
+                            message: notCoveredStatementMessage,
                         });
                     }
                 }

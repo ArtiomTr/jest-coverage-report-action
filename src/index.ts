@@ -92,23 +92,41 @@ async function run() {
 
         if (jsonReport && isAnnotationEnabled(annotations, 'failed-tests')) {
             const failedAnnotations = createFailedTestsAnnotations(jsonReport);
-            try {
-                await octokit.checks.create(
-                    formatFailedTestsAnnotations(jsonReport, failedAnnotations)
-                );
-            } catch (err) {
-                console.error('Failed to create annotations', err);
+            if (failedAnnotations.length > 0) {
+                try {
+                    await octokit.checks.create(
+                        formatFailedTestsAnnotations(
+                            jsonReport,
+                            failedAnnotations
+                        )
+                    );
+                } catch (err) {
+                    console.error('Failed to create annotations', err);
+                }
             }
         }
 
-        if (jsonReport && isAnnotationEnabled(annotations, 'coverage')) {
-            const failedAnnotations = createCoverageAnnotations(jsonReport);
-            try {
-                await octokit.checks.create(
-                    formatCoverageAnnotations(jsonReport, failedAnnotations)
-                );
-            } catch (err) {
-                console.error('Failed to create annotations', err);
+        if (
+            jsonReport &&
+            isAnnotationEnabled(annotations, 'coverage') &&
+            headReport.summary
+        ) {
+            const coverageAnnotations = createCoverageAnnotations(jsonReport);
+            if (coverageAnnotations.length > 0) {
+                try {
+                    await octokit.checks.create(
+                        formatCoverageAnnotations(
+                            jsonReport,
+                            !coverageThreshold ||
+                                headReport.summary.find(
+                                    (value) => value.title === 'Statements'
+                                )!.percentage < coverageThreshold,
+                            coverageAnnotations
+                        )
+                    );
+                } catch (err) {
+                    console.error('Failed to create annotations', err);
+                }
             }
         }
 
