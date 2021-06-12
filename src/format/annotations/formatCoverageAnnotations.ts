@@ -27,8 +27,8 @@ export const formatCoverageAnnotations = (
     output: {
         title: coverageTitle,
         summary: insertArgs(success ? coverageOk : coverageFail, {
-            coverage: decimalToString(coverage),
-            threshold: decimalToString(threshold),
+            coverage: decimalToString(coverage ?? 0),
+            threshold: decimalToString(threshold ?? 0),
         }),
         text: [
             coverageAnnotationsText,
