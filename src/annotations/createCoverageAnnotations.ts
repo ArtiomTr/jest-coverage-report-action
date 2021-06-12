@@ -30,6 +30,8 @@ const getLocation = (
             : undefined,
 });
 
+const ifBranchTypes = ['if', 'cond-expr', 'binary-expr'];
+
 export const createCoverageAnnotations = (
     jsonReport: JsonReport
 ): Array<Annotation> => {
@@ -73,11 +75,34 @@ export const createCoverageAnnotations = (
                                         path: normalizedFilename,
                                         annotation_level: 'warning',
                                         title: 'Branch is not covered',
-                                        message: 'Warning! Not covered branch',
+                                        message: `Warning! Not covered ${
+                                            ifBranchTypes.includes(
+                                                branchCoverage.type
+                                            )
+                                                ? ['if', 'else'][locationIndex]
+                                                : `${branchCoverage.type} statement's ${locationIndex}`
+                                        } branch`,
                                     });
                                 }
                             }
                         );
+                    }
+                }
+            );
+
+            Object.entries(fileCoverage.fnMap).forEach(
+                ([functionIndex, functionCoverage]) => {
+                    if (fileCoverage.f[+functionIndex] === 0) {
+                        annotations.push({
+                            ...getLocation(
+                                functionCoverage.decl.start,
+                                functionCoverage.decl.end
+                            ),
+                            path: normalizedFilename,
+                            annotation_level: 'warning',
+                            title: 'Function is not covered',
+                            message: 'Warning! Not covered function',
+                        });
                     }
                 }
             );
