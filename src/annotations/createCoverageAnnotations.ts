@@ -23,6 +23,7 @@ export const createCoverageAnnotations = (
                             end_column:
                                 statementCoverage.end.column ?? undefined,
                             annotation_level: 'warning',
+                            title: 'Statement is not covered',
                             message: 'Statement is not covered',
                         });
                     }
