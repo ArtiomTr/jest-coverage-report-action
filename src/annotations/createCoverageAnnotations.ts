@@ -50,7 +50,7 @@ export const createCoverageAnnotations = (
                             ),
                             path: normalizedFilename,
                             annotation_level: 'warning',
-                            title: 'Statement is not covered',
+                            title: '🧾 Statement is not covered',
                             message: 'Warning! Not covered statement',
                         });
                     }
@@ -74,7 +74,7 @@ export const createCoverageAnnotations = (
                                         ),
                                         path: normalizedFilename,
                                         annotation_level: 'warning',
-                                        title: 'Branch is not covered',
+                                        title: '🌿 Branch is not covered',
                                         message: `Warning! Not covered ${
                                             ifBranchTypes.includes(
                                                 branchCoverage.type
@@ -100,7 +100,7 @@ export const createCoverageAnnotations = (
                             ),
                             path: normalizedFilename,
                             annotation_level: 'warning',
-                            title: 'Function is not covered',
+                            title: '🕹 Function is not covered',
                             message: 'Warning! Not covered function',
                         });
                     }
