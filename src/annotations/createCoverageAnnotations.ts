@@ -1,7 +1,5 @@
 import { relative } from 'path';
 
-import {} from '@actions/exec';
-
 import { Annotation } from './Annotation';
 import { JsonReport, Location } from '../typings/JsonReport';
 
@@ -29,8 +27,6 @@ const getLocation = (
             ? end.column
             : undefined,
 });
-
-const ifBranchTypes = ['if', 'cond-expr', 'binary-expr'];
 
 export const createCoverageAnnotations = (
     jsonReport: JsonReport
@@ -75,13 +71,7 @@ export const createCoverageAnnotations = (
                                         path: normalizedFilename,
                                         annotation_level: 'warning',
                                         title: '🌿 Branch is not covered',
-                                        message: `Warning! Not covered ${
-                                            ifBranchTypes.includes(
-                                                branchCoverage.type
-                                            )
-                                                ? ['if', 'else'][locationIndex]
-                                                : `${branchCoverage.type} statement's ${locationIndex}`
-                                        } branch`,
+                                        message: `Warning! Not covered branch`,
                                     });
                                 }
                             }
