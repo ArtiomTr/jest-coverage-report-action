@@ -17,11 +17,11 @@ export const createCoverageAnnotations = (
                         annotations.push({
                             path: normalizedFilename,
                             start_line: statementCoverage.start.line,
-                            start_column:
-                                statementCoverage.start.column ?? undefined,
+                            // start_column:
+                            //     statementCoverage.start.column ?? undefined,
                             end_line: statementCoverage.end.line,
-                            end_column:
-                                statementCoverage.end.column ?? undefined,
+                            // end_column:
+                            //     statementCoverage.end.column ?? undefined,
                             annotation_level: 'warning',
                             title: 'Statement is not covered',
                             message: 'Statement is not covered',
