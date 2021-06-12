@@ -54,8 +54,8 @@ export const createCoverageAnnotations = (
                             ),
                             path: normalizedFilename,
                             annotation_level: 'warning',
-                            title: notCoveredBranchTitle,
-                            message: notCoveredBranchMessage,
+                            title: notCoveredStatementTitle,
+                            message: notCoveredStatementMessage,
                         });
                     }
                 }
@@ -78,8 +78,8 @@ export const createCoverageAnnotations = (
                                         ),
                                         path: normalizedFilename,
                                         annotation_level: 'warning',
-                                        title: notCoveredFunctionTitle,
-                                        message: notCoveredFunctionMessage,
+                                        title: notCoveredBranchTitle,
+                                        message: notCoveredBranchMessage,
                                     });
                                 }
                             }
@@ -98,8 +98,8 @@ export const createCoverageAnnotations = (
                             ),
                             path: normalizedFilename,
                             annotation_level: 'warning',
-                            title: notCoveredStatementTitle,
-                            message: notCoveredStatementMessage,
+                            title: notCoveredFunctionTitle,
+                            message: notCoveredFunctionMessage,
                         });
                     }
                 }
