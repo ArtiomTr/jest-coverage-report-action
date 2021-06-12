@@ -23,15 +23,11 @@ const getLocation = (
     start_line: start.line,
     end_line: end.line,
     start_column:
-        start.line === end.line &&
-        start.column !== undefined &&
-        end.column !== undefined
+        start.line === end.line && start.column !== null && end.column !== null
             ? start.column
             : undefined,
     end_column:
-        start.line === end.line &&
-        start.column !== undefined &&
-        end.column !== undefined
+        start.line === end.line && start.column !== null && end.column !== null
             ? end.column
             : undefined,
 });
