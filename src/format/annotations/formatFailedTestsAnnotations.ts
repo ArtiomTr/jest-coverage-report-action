@@ -26,14 +26,14 @@ export const formatFailedTestsAnnotations = (
         title: jsonReport.success ? testsSuccess : testsFail,
         text: [
             getFailedTestsAnnotationsBody(jsonReport),
-            insertArgs(tooMuchAnnotations, {
-                hiddenCount: annotations.length - 50,
-            }),
+            annotations.length > 50 &&
+                insertArgs(tooMuchAnnotations, {
+                    hiddenCount: annotations.length - 50,
+                }),
         ]
             .filter(Boolean)
             .join('\n'),
         summary: getFailedAnnotationsSummary(jsonReport),
-
-        annotations,
+        annotations: annotations.slice(0, 49),
     },
 });

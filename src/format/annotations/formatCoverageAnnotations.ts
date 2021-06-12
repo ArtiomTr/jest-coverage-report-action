@@ -32,9 +32,10 @@ export const formatCoverageAnnotations = (
         }),
         text: [
             coverageAnnotationsText,
-            insertArgs(tooMuchAnnotations, {
-                hiddenCount: annotations.length - 50,
-            }),
+            annotations.length > 50 &&
+                insertArgs(tooMuchAnnotations, {
+                    hiddenCount: annotations.length - 50,
+                }),
         ]
             .filter(Boolean)
             .join('\n'),
