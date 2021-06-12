@@ -1,9 +1,9 @@
 on: [pull_request]
 
 jobs:
-    custom_test:
+    coverage:
         runs-on: ubuntu-latest
-        name: Test locally using act
+        name: Coverage report
         steps:
             - name: Checkout
               uses: actions/checkout@v1
@@ -11,3 +11,4 @@ jobs:
               uses: ./ # Uses an action in the root directory
               with:
                   github_token: ${{ secrets.GITHUB_TOKEN }}
+                  annotations: failed-tests
