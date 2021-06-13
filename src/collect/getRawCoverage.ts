@@ -1,7 +1,7 @@
 import { join } from 'path';
 
 import { exec } from '@actions/exec';
-import { readFile, rm } from 'fs-extra';
+import { readFile, rmdir } from 'fs-extra';
 
 import { REPORT_PATH } from '../constants/REPORT_PATH';
 import { FailReason } from '../typings/Report';
@@ -28,9 +28,8 @@ export const getRawCoverage = async (
     }
 
     // NOTE: The `npm ci` command is not used. Because if your version of npm is old, the generated `package-lock.json` will also be old, and the latest version of `npm ci` will fail.
-    await rm(joinPaths(workingDirectory, 'node_modules'), {
+    await rmdir(joinPaths(workingDirectory, 'node_modules'), {
         recursive: true,
-        force: true,
     });
 
     await exec('npm i', undefined, {

@@ -27,5 +27,5 @@ inputs:
         description: 'What type of annotations show. Options: none, all'
         default: all
 runs:
-    using: 'docker'
-    image: 'Dockerfile'
+    using: 'node12'
+    main: 'dist/index.js'
