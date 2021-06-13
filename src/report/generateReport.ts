@@ -97,7 +97,10 @@ export const generateReport = async (
         const reportBody = insertArgs(REPORT, {
             head: getReportTag(dir),
             body: reportContent,
-            sha: context.payload.after,
+            sha:
+                context.payload.after ??
+                context.payload.pull_request?.head.sha ??
+                context.sha,
             dir: dir ? `for \`${dir}\`` : '',
         });
 
