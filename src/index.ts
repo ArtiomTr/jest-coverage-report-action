@@ -1,18 +1,16 @@
-import { argv } from 'process';
-
 import { setFailed } from '@actions/core';
 import { context, getOctokit } from '@actions/github';
 
 import { createCoverageAnnotations } from './annotations/createCoverageAnnotations';
 import { createFailedTestsAnnotations } from './annotations/createFailedTestsAnnotations';
 import { isAnnotationEnabled } from './annotations/isAnnotationEnabled';
-import { isAnnotationsOptionValid } from './annotations/isAnnotationsOptionValid';
 import { collectCoverage } from './collect/collectCoverage';
 import { formatCoverageAnnotations } from './format/annotations/formatCoverageAnnotations';
 import { formatFailedTestsAnnotations } from './format/annotations/formatFailedTestsAnnotations';
 import { Icons } from './format/Icons';
 import { icons } from './format/strings.json';
 import { generateReport } from './report/generateReport';
+import { getOptions } from './typings/Options';
 import { FailReason } from './typings/Report';
 
 async function run() {
@@ -28,41 +26,14 @@ async function run() {
             );
         }
 
-        const [
+        const {
             token,
             testScript,
-            coverageThresholdStr,
+            threshold,
             workingDirectory,
             iconType,
             annotations,
-        ] = argv.slice(2);
-
-        const coverageThreshold = coverageThresholdStr
-            ? parseFloat(coverageThresholdStr)
-            : undefined;
-
-        if (!Object.keys(icons).includes(iconType)) {
-            throw new Error(
-                `Specify icons type (${iconType}) is not supported. Available options: ${Object.keys(
-                    icons
-                ).join(', ')}.`
-            );
-        }
-
-        if (!isAnnotationsOptionValid(annotations)) {
-            throw new Error(
-                `Annotations option has invalid value: "${annotations}". Please, check documentation for proper configuration.`
-            );
-        }
-
-        if (
-            coverageThreshold !== undefined &&
-            (coverageThreshold > 100 || coverageThreshold < 0)
-        ) {
-            throw new Error(
-                `Specified threshold '${coverageThreshold}' is not valid. Threshold should be more than 0 and less than 100.`
-            );
-        }
+        } = await getOptions();
 
         const octokit = getOctokit(token);
 
@@ -78,13 +49,13 @@ async function run() {
         );
 
         if (
-            coverageThreshold !== undefined &&
+            threshold !== undefined &&
             headReport.success &&
             headReport.summary &&
             headReport.details &&
             !headReport.failReason &&
             headReport.summary.find((value) => value.title === 'Statements')!
-                .percentage < coverageThreshold
+                .percentage < threshold
         ) {
             headReport.success = false;
             headReport.failReason = FailReason.UNDER_THRESHOLD;
@@ -119,9 +90,9 @@ async function run() {
                 try {
                     await octokit.checks.create(
                         formatCoverageAnnotations(
-                            !coverageThreshold || coverage > coverageThreshold,
+                            !threshold || coverage > threshold,
                             coverage,
-                            coverageThreshold!,
+                            threshold!,
                             coverageAnnotations
                         )
                     );
@@ -135,7 +106,7 @@ async function run() {
             (icons as Record<string, Icons>)[iconType],
             headReport,
             baseReport,
-            coverageThreshold,
+            threshold,
             repo,
             pull_request,
             octokit,
