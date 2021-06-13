@@ -1,6 +1,6 @@
-import { ValidAnnotationsOption } from './isAnnotationsOptionValid';
+import { AnnotationType } from '../typings/Options';
 
 export const isAnnotationEnabled = (
     option: string,
-    annotationName: ValidAnnotationsOption
+    annotationName: AnnotationType
 ): boolean => option === 'all' || option === annotationName;
