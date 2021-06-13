@@ -30,7 +30,11 @@ const optionSchema = yup.object().shape({
     testScript: yup.string().required(),
     iconType: yup.string().required().oneOf(validIconOptions),
     annotations: yup.string().required().oneOf(validAnnotationOptions),
-    threshold: yup.number().min(0).max(100),
+    threshold: yup
+        .number()
+        .transform((value) => (isNaN(value) ? undefined : value))
+        .min(0)
+        .max(100),
     workingDirectory: yup.string(),
 });
 
