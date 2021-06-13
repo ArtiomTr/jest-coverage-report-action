@@ -29,10 +29,3 @@ inputs:
 runs:
     using: 'docker'
     image: 'Dockerfile'
-    args:
-        - ${{ inputs.github_token }}
-        - ${{ inputs.test_script }}
-        - ${{ inputs.threshold }}
-        - ${{ inputs.working_directory }}
-        - ${{ inputs.icons }}
-        - ${{ inputs.annotations }}
