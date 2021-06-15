@@ -2,8 +2,6 @@ import table from 'markdown-table';
 
 import { CoverageSummary } from '../../typings/Coverage';
 import { Icons } from '../Icons';
-import { insertArgs } from '../insertArgs';
-import { hint } from '../strings.json';
 import { summary } from '../strings.json';
 import { formatPercentage } from '../utils/formatPercentage';
 import { formatTable } from '../utils/formatTable';
@@ -16,7 +14,6 @@ export const formatCoverageSummary = (
     threshold: number | undefined
 ): string =>
     formatTable(
-        summary.heading,
         table(
             [
                 summary.columnHeaders,
@@ -36,10 +33,5 @@ export const formatCoverageSummary = (
                 ]),
             ],
             { align: summary.columnAlignment }
-        ),
-        insertArgs(hint, {
-            coverageGood: icons.coverageGood,
-            coverageNormal: icons.coverageNormal,
-            coverageBad: icons.coverageBad,
-        })
+        )
     );

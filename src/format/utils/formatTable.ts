@@ -1,8 +1,4 @@
-export const formatTable = (heading: string, table: string, legend?: string) =>
+export const formatTable = (table: string) =>
     `
-### ${heading}
-
 ${table}
-
-${legend ? '> ' + legend : ''}
 `;

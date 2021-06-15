@@ -53,7 +53,7 @@
     },
     "details": {
         "newFiles": {
-            "summary": "Show new covered files {{ new }}",
+            "summary": "Show new tested files {{ new }}",
             "heading": "Coverage of new files"
         },
         "decreasedCoverageFiles": {
