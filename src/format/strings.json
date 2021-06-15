@@ -33,6 +33,7 @@
     "testsFailSummary": "Failed tests: {{ numFailedTests }}/{{ numTotalTests }}. Failed suites: {{ numFailedTestSuites }}/{{ numTotalTestSuites }}.",
     "testsSuccessSummary": "{{ numPassedTests }} tests passing in {{ numPassedTestSuites }} suite{{ ending }}.",
     "failedTestsCheckName": "Tests' annotations (🧪 jest-coverage-report-action)",
+    "hint": "Status of coverage: {{ coverageGood }} - ok, {{ coverageNormal }} - slightly more than threshold, {{ coverageBad }} - under the threshold",
     "errors": {
         "testsFailed": "The test suite failed. Please, check the console output for more details.",
         "invalidFormat": "Output of test script has invalid format. Check [documentation](https://github.com/ArtiomTr/jest-coverage-report-action#jest-coverage-report-) for more details.",
@@ -41,6 +42,7 @@
         "fileNotFound": "Coverage output file not found. (file \"{{ coveragePath }}\" not found)"
     },
     "summary": {
+        "heading": "Total coverage",
         "columnHeaders": [
             "Status",
             "Category",
@@ -51,7 +53,7 @@
     },
     "details": {
         "newFiles": {
-            "summary": "Show new tested files {{ new }}",
+            "summary": "Show new covered files {{ new }}",
             "heading": "Coverage of new files"
         },
         "decreasedCoverageFiles": {
