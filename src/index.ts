@@ -22,7 +22,7 @@ async function run() {
 
         if (!pull_request) {
             throw new Error(
-                'jest-coverage-report-action supports only pull requests.'
+                'jest-coverage-report-action supports only pull requests'
             );
         }
 
