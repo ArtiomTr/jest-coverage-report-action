@@ -1,6 +1,8 @@
 import { Box, Container, HStack, Link, Text } from '@chakra-ui/react';
 import React from 'react';
 
+import Logo from '../../assets/logo.svg';
+
 export const Header = () => (
     <Box
         as="header"
@@ -19,7 +21,7 @@ export const Header = () => (
             display="flex"
             maxW="container.lg"
         >
-            <Text>jest-coverage-report-action</Text>
+            <Logo height={32} viewBox="0 0 267 146" />
             <HStack>
                 <Link>Docs</Link>
             </HStack>

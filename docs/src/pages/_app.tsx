@@ -3,7 +3,7 @@ import ThemeProvider from '@primer/components/lib/ThemeProvider';
 import { AppProps } from 'next/app';
 import React from 'react';
 
-import '../styles/globals.css';
+import '../../styles/globals.css';
 
 import { Header } from '../components/Header';
 import { theme } from '../theme';

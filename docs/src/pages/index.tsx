@@ -7,6 +7,7 @@ import {
     GridItem,
     Heading,
     HeadingProps,
+    Text,
 } from '@chakra-ui/react';
 import { BoxProps, Flex } from '@primer/components';
 import { ArrowRightIcon } from '@primer/octicons-react';
@@ -72,7 +73,7 @@ const Home = () => (
                             WebkitTextFillColor: 'transparent',
                         }}
                     >
-                        in each pull request.
+                        in every pull request.
                     </Heading>
                     <Flex
                         justifyContent={['center', null, null, 'flex-start']}
@@ -105,6 +106,22 @@ const Home = () => (
                 backgroundColor: 'gray.50',
             }}
         >
+            <Heading>Coverage report comments</Heading>
+            <Text></Text>
+        </ScreenContainer>
+        <ScreenContainer>
+            <Heading>Annotations</Heading>
+            <Text></Text>
+        </ScreenContainer>
+        <ScreenContainer
+            boxProps={{
+                backgroundColor: 'gray.50',
+            }}
+        >
+            <Heading>Rich configuration</Heading>
+            <Text></Text>
+        </ScreenContainer>
+        <ScreenContainer>
             <Heading paddingY="16" id="quick-start">
                 Quick start
             </Heading>
