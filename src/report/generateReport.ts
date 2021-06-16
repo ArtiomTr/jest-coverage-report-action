@@ -57,7 +57,6 @@ export const generateReport = async (
                     await octokit.issues.deleteComment({
                         ...repo,
                         comment_id: (previousReport as { id: number }).id,
-                        owner: 'covbot',
                     });
                 }
 
@@ -110,14 +109,12 @@ export const generateReport = async (
                 ...repo,
                 body: reportBody,
                 comment_id: (previousReport as { id: number }).id,
-                owner: 'covbot',
             });
         } else {
             await octokit.issues.createComment({
                 ...repo,
                 body: reportBody,
                 issue_number: pr.number,
-                owner: 'covbot',
             });
         }
 
