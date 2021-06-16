@@ -1,13 +1,15 @@
 {
     "icons": {
         "emoji": {
+            "babyChick": "🐤",
             "increaseIcon": "🔼",
-            "decreaseIcon": "🔻",
+            "decreaseIcon": "🔽",
             "errorIcon": "❌",
             "coverageGood": "🟢",
             "coverageNormal": "🟡",
             "coverageBad": "🔴",
-            "new": "🌑"
+            "new": "🌑",
+            "warning": "⚠️"
         },
         "ascii": {
             "increaseIcon": "",
@@ -53,11 +55,11 @@
     },
     "details": {
         "newFiles": {
-            "summary": "Show new tested files {{ new }}",
-            "heading": "Coverage of new files"
+            "summary": "New files",
+            "heading": "Coverage of new files {{ babyChick }}"
         },
         "decreasedCoverageFiles": {
-            "summary": "Show files with reduced coverage {{ decreaseIcon }}",
+            "summary": "Coverage decreased for the following files {{ warning }}",
             "heading": "Reduced coverage"
         },
         "columnHeaders": [

@@ -1,4 +1,5 @@
 export type Icons = {
+    babyChick: string;
     increaseIcon: string;
     decreaseIcon: string;
     errorIcon: string;
@@ -6,4 +7,5 @@ export type Icons = {
     coverageNormal: string;
     coverageBad: string;
     new: string;
+    warning: string;
 };

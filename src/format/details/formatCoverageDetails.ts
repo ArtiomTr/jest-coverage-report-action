@@ -31,7 +31,7 @@ export const formatCoverageDetails = (
             icons,
             {
                 ...details.decreasedCoverageFiles,
-                summary: insertArgs(details.newFiles.summary, {
+                summary: insertArgs(details.decreasedCoverageFiles.summary, {
                     decreaseIcon: icons.decreaseIcon,
                 }),
             },
