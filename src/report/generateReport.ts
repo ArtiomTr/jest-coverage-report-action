@@ -123,7 +123,8 @@ export const generateReport = async (
         }
     } catch (error) {
         console.error(
-            "Error deleting and/or creating comment. This can happen for PR's originating from a fork without write permissions."
+            "Error deleting and/or creating comment. This can happen for PR's originating from a fork without write permissions.",
+            error
         );
     }
 };
