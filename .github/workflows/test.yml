@@ -1,4 +1,10 @@
-on: [pull_request]
+name: Coverage
+
+on:
+    pull_request:
+        paths-ignore:
+            - 'docs/**'
+    workflow_dispatch:
 
 jobs:
     coverage:
