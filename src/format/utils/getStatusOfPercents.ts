@@ -1,6 +1,6 @@
 import { Icons } from '../Icons';
 
-const DEFAULT_STEP = 20;
+const DEFAULT_STEP = 1;
 
 export const getStatusOfPercents = (
     icons: Icons,
