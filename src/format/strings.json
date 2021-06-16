@@ -12,22 +12,26 @@
             "warning": "⚠️"
         },
         "ascii": {
+            "babyChick": "",
             "increaseIcon": "",
             "decreaseIcon": "",
             "errorIcon": "[ !!! ]",
             "coverageGood": "(+)",
             "coverageNormal": "(~)",
             "coverageBad": "(-)",
-            "new": ""
+            "new": "",
+            "warning": ""
         },
         "unicode": {
+            "babyChick": "",
             "increaseIcon": "↑",
             "decreaseIcon": "↓",
             "errorIcon": "×",
             "coverageGood": "(+)",
             "coverageNormal": "(~)",
             "coverageBad": "(-)",
-            "new": ""
+            "new": "",
+            "warning": ""
         }
     },
     "testsFail": "Test suite run failed",
