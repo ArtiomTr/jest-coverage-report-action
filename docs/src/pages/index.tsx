@@ -1,46 +1,28 @@
 import {
-    Box,
     Button,
-    Container,
-    ContainerProps,
     Grid,
     GridItem,
     Heading,
     HeadingProps,
-    Text,
 } from '@chakra-ui/react';
-import { BoxProps, Flex } from '@primer/components';
-import { ArrowRightIcon } from '@primer/octicons-react';
+import { Flex } from '@primer/components';
+import { ArrowRightIcon, ProjectIcon } from '@primer/octicons-react';
 import Link from 'next/link';
-import React, { ComponentProps, PropsWithChildren } from 'react';
+import React from 'react';
 
 import classes from './Home.module.scss';
+import { GradientHeading } from '../components/GradientHeading';
 import { HomeExample } from '../components/HomeExample';
+import { InfoImageScreen } from '../components/landing/InfoImageScreen';
+import { InfoScreen } from '../components/landing/InfoScreen';
+import { ScreenContainer } from '../components/landing/ScreenContainer';
 
 const sharedHeadingProps: HeadingProps = {
     as: 'h1',
     fontWeight: 'extrabold',
-    fontSize: ['5xl', '6xl', '7xl'],
     textAlign: ['center', null, null, 'left'],
+    size: '4xl',
 };
-
-const ScreenContainer = ({
-    height = '100vh',
-    children,
-    boxProps = {},
-    ...other
-}: PropsWithChildren<{ height?: string; boxProps?: BoxProps }> &
-    ContainerProps) => (
-    <Box overflow="hidden" {...(boxProps as ComponentProps<typeof Box>)}>
-        <Container
-            maxWidth="container.lg"
-            height={`max(${height}, 500px)`}
-            {...other}
-        >
-            {children}
-        </Container>
-    </Box>
-);
 
 const Home = () => (
     <React.Fragment>
@@ -64,17 +46,13 @@ const Home = () => (
                     <Heading {...sharedHeadingProps}>
                         Track your code coverage
                     </Heading>
-                    <Heading
+                    <GradientHeading
                         className={classes['accentText']}
                         {...sharedHeadingProps}
-                        background="linear-gradient(90deg, rgba(131,58,180,1) 0%, rgba(253,29,29,1) 50%, rgba(252,176,69,1) 100%)"
-                        backgroundClip="text"
-                        sx={{
-                            WebkitTextFillColor: 'transparent',
-                        }}
+                        gradient="linear-gradient(90deg, rgba(131,58,180,1) 0%, rgba(253,29,29,1) 50%, rgba(252,176,69,1) 100%)"
                     >
                         in every pull request.
-                    </Heading>
+                    </GradientHeading>
                     <Flex
                         justifyContent={['center', null, null, 'flex-start']}
                         paddingY="4"
@@ -101,31 +79,34 @@ const Home = () => (
                 </GridItem>
             </Grid>
         </ScreenContainer>
-        <ScreenContainer
-            boxProps={{
-                backgroundColor: 'gray.50',
-            }}
+        <InfoImageScreen
+            subtitle="This action is..."
+            title="Responsible"
+            description="Helps you keep track coverage of your project. Forms a reporting comment for each PR. In addition, highlights files with reduced coverage and new files."
+            src="/coverage-comment-example.jpg"
+            even
+        />
+        <InfoImageScreen
+            title="Observant"
+            description="This action will help you to spot uncovered lines of code and failed tests by creating annotations. Annotations are generated for every not covered statement / branch / function and failed test."
+            src="/annotation-example.jpg"
+            shadow
+        />
+        <InfoScreen
+            title="Fast & serious"
+            description="The rich configuration allows you to easily and reliably customize the action to your needs."
+            even
+            shadow
+            alignItems="flex-start"
         >
-            <Heading>Coverage report comments</Heading>
-            <Text></Text>
-        </ScreenContainer>
-        <ScreenContainer>
-            <Heading>Annotations</Heading>
-            <Text></Text>
-        </ScreenContainer>
-        <ScreenContainer
-            boxProps={{
-                backgroundColor: 'gray.50',
-            }}
-        >
-            <Heading>Rich configuration</Heading>
-            <Text></Text>
-        </ScreenContainer>
-        <ScreenContainer>
-            <Heading paddingY="16" id="quick-start">
-                Quick start
-            </Heading>
-        </ScreenContainer>
+            <Button marginTop="10" leftIcon={<ProjectIcon />} variant="outline">
+                Try online configurator
+            </Button>
+        </InfoScreen>
+        <InfoScreen
+            title="Ready to dive in?"
+            description="A „Quick start“ guide will help you set up an action for your project."
+        ></InfoScreen>
     </React.Fragment>
 );
 
