@@ -6,16 +6,39 @@ import {
     HeadingProps,
 } from '@chakra-ui/react';
 import { Flex } from '@primer/components';
-import { ArrowRightIcon, ProjectIcon } from '@primer/octicons-react';
+import {
+    ArrowRightIcon,
+    ChecklistIcon,
+    ProjectIcon,
+} from '@primer/octicons-react';
 import Link from 'next/link';
 import React from 'react';
 
 import classes from './Home.module.scss';
+import { EditorWithCopy } from '../components/EditorWithCopy';
 import { GradientHeading } from '../components/GradientHeading';
 import { HomeExample } from '../components/HomeExample';
 import { InfoImageScreen } from '../components/landing/InfoImageScreen';
 import { InfoScreen } from '../components/landing/InfoScreen';
 import { ScreenContainer } from '../components/landing/ScreenContainer';
+
+const exampleConfiguration = `name: 'coverage'
+on:
+    pull_request:
+        branches:
+            - master
+jobs:
+    coverage:
+        runs-on: ubuntu-latest
+        env:
+            CI_JOB_NUMBER: 1
+        steps:
+            - uses: actions/checkout@v1
+            - uses: artiomtr/jest-coverage-report-action@v1.3
+              with:
+                  github_token: \${{ secrets.GITHUB_TOKEN }}
+                  #   threshold: 80 # optional parameter
+`;
 
 const sharedHeadingProps: HeadingProps = {
     as: 'h1',
@@ -105,8 +128,25 @@ const Home = () => (
         </InfoScreen>
         <InfoScreen
             title="Ready to dive in?"
-            description="A „Quick start“ guide will help you set up an action for your project."
-        ></InfoScreen>
+            description="The „Quick start“ guide will help you set up an action for your project."
+            alignItems="flex-start"
+        >
+            <Button marginBottom="5" leftIcon={<ChecklistIcon />}>
+                Quick start
+            </Button>
+            <EditorWithCopy
+                height="350px"
+                theme="vs-dark"
+                title="example-action.yml"
+                value={exampleConfiguration}
+                language="yaml"
+                options={{
+                    readOnly: true,
+                    scrollBeyondLastLine: false,
+                }}
+                blockClassName={classes['readonlyEditor']}
+            />
+        </InfoScreen>
     </React.Fragment>
 );
 
