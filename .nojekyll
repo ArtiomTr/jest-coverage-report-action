@@ -1,0 +1,1 @@
+This file tells github not to use jekyll. It is required because jekyll not resolves underscore folders, like _next
