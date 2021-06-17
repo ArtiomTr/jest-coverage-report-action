@@ -21,7 +21,8 @@ jobs:
 
             - name: Install deps and build (with cache) for base package
               uses: bahmutov/npm-install@v1
-              working-directory: ./docs
+              with:
+                  working-directory: ./docs
 
             - name: Building
               run: npm run build
