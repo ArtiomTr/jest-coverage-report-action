@@ -16,7 +16,9 @@ import Link from 'next/link';
 import React from 'react';
 
 import classes from './Home.module.scss';
+import AnnotationExampleImage from '../../assets/annotation-example.jpg';
 import Blob1 from '../../assets/blob1.svg';
+import CoverageCommentExampleImage from '../../assets/coverage-comment-example.jpg';
 import Dots from '../../assets/dots.svg';
 import { EditorWithCopy } from '../components/EditorWithCopy';
 import { GradientHeading } from '../components/GradientHeading';
@@ -116,14 +118,14 @@ const Home = () => (
             subtitle="This action is..."
             title="Responsible"
             description="Helps you keep track coverage of your project. Forms a reporting comment for each PR. In addition, highlights files with reduced coverage and new files."
-            src="/coverage-comment-example.jpg"
+            src={CoverageCommentExampleImage}
             alt="Example of coverage comment"
             even
         />
         <InfoImageScreen
             title="Observant"
             description="This action will help you to spot uncovered lines of code and failed tests by creating annotations. Annotations are generated for every not covered statement / branch / function and failed test."
-            src="/annotation-example.jpg"
+            src={AnnotationExampleImage}
             alt="Example of generated annotations"
             shadow
         />

@@ -1,4 +1,4 @@
-import Image from 'next/image';
+// import Image from 'next/image';
 import React from 'react';
 
 import { InfoScreen, InfoScreenProps } from './InfoScreen';
@@ -14,13 +14,6 @@ export const InfoImageScreen = ({
     ...infoScreenProps
 }: InfoImageScreenProps) => (
     <InfoScreen {...infoScreenProps}>
-        <Image
-            src={src}
-            width="100%"
-            height="100%"
-            layout="responsive"
-            objectFit="contain"
-            alt={alt}
-        />
+        <img src={src} width="100%" height="100%" alt={alt} />
     </InfoScreen>
 );

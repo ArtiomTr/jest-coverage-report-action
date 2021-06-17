@@ -1,0 +1,41 @@
+name: Documentation deployment
+on:
+    push:
+        paths:
+            - 'docs/**'
+        branches: [master]
+
+    workflow_dispatch:
+
+jobs:
+    deploy:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Begin job...
+              uses: actions/checkout@v2
+
+            - name: Use Node 12
+              uses: actions/setup-node@v1
+              with:
+                  node-version: 12
+
+            - name: Install deps and build (with cache) for base package
+              uses: bahmutov/npm-install@v1
+
+            - name: Building
+              run: npm run build
+              working-directory: ./docs
+
+            - name: Publishing to github-pages
+              run: |
+                  git config --global user.name $user_name
+                  git config --global user.email $user_email
+                  git remote set-url origin https://${github_token}@github.com/${repository}
+                  npm run deploy
+              working-directory: ./docs
+              env:
+                  user_name: 'Jest Coverage Report bot'
+                  user_email: 'covbot@users.noreply.github.com'
+                  github_token: ${{ secrets.ACTIONS_DEPLOY_ACCESS_TOKEN }}
+                  repository: ${{ github.repository }}
+                  NODE_ENV: 'production'

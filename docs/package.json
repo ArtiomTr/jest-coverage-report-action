@@ -6,6 +6,8 @@
     "main": "index.js",
     "scripts": {
         "dev": "next dev",
+        "build": "next build && next export && echo \"This file tells github not to use jekyll. It is required because jekyll not resolves underscore folders, like _next\" > out/.nojekyll",
+        "deploy": "node scripts/deploy.js",
         "test": "echo \"Error: no test specified\" && exit 1"
     },
     "author": "Artiom Tretjakovas",
@@ -23,6 +25,8 @@
     "devDependencies": {
         "@svgr/webpack": "^5.5.0",
         "@types/react": "^17.0.11",
+        "gh-pages": "^3.2.1",
+        "next-images": "^1.8.1",
         "typescript": "^4.3.2"
     }
 }

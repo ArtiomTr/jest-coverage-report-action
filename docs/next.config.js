@@ -1,5 +1,9 @@
-module.exports = {
+const withImages = require('next-images');
+
+module.exports = withImages({
     webpack5: true,
+    fileExtensions: ['jpg', 'jpeg', 'png'],
+    esModule: true,
     webpack(config) {
         config.module.rules.push({
             test: /\.svg$/,
@@ -11,4 +15,4 @@ module.exports = {
 
         return config;
     },
-};
+});
