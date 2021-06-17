@@ -19,7 +19,7 @@ jobs:
               with:
                   node-version: 12
 
-            - name: Install deps and build (with cache) for base package
+            - name: Install deps (with cache)
               uses: bahmutov/npm-install@v1
               with:
                   working-directory: ./docs
