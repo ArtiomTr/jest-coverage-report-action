@@ -6,7 +6,7 @@
     "main": "index.js",
     "scripts": {
         "dev": "next dev",
-        "build": "next build && next export && echo \"This file tells github not to use jekyll. It is required because jekyll not resolves underscore folders, like _next\" > out/.nojekyll",
+        "build": "next build && next export && echo \"This file tells github not to use jekyll. It is required because jekyll not resolves underscore folders, like _next\" > out/.nojekyll && echo \"www.covbot.dev\" > out/CNAME",
         "deploy": "node scripts/deploy.js",
         "test": "echo \"Error: no test specified\" && exit 1"
     },
