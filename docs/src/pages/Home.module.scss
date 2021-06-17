@@ -1,0 +1,44 @@
+@keyframes text-clip {
+    from {
+        opacity: 0;
+        transform: translateX(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.accentText,
+.tryIt {
+    opacity: 0;
+    animation: text-clip 0.5s ease-in-out forwards;
+    animation-delay: 0.5s;
+}
+
+.tryIt {
+    animation-delay: 0.7s;
+}
+
+.readonlyEditor {
+    border-radius: 10px 10px 0 0;
+    overflow: hidden;
+}
+
+.blob {
+    position: absolute;
+    bottom: 5px;
+    max-width: 1000px;
+    min-width: 400px;
+    left: 0;
+    transform: translateX(-50%) translateY(50%);
+    z-index: 0;
+}
+
+.dots-grid {
+    position: absolute;
+    bottom: -5px;
+    right: -10px;
+    z-index: 0;
+    pointer-events: none;
+}

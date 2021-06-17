@@ -1,0 +1,23 @@
+.table {
+    &,
+    th,
+    td {
+        border: 1px solid #e0e3e6;
+    }
+
+    th,
+    td {
+        padding: 5px 10px;
+    }
+
+    td:nth-child(1),
+    th:nth-child(1),
+    td:nth-child(4),
+    th:nth-child(4) {
+        text-align: center;
+    }
+
+    tbody > tr:nth-child(even) {
+        background-color: #f6f8fa;
+    }
+}
