@@ -15,6 +15,8 @@ import Link from 'next/link';
 import React from 'react';
 
 import classes from './Home.module.scss';
+import Blob1 from '../../assets/blob1.svg';
+import Dots from '../../assets/dots.svg';
 import { EditorWithCopy } from '../components/EditorWithCopy';
 import { GradientHeading } from '../components/GradientHeading';
 import { HomeExample } from '../components/HomeExample';
@@ -72,7 +74,7 @@ const Home = () => (
                     <GradientHeading
                         className={classes['accentText']}
                         {...sharedHeadingProps}
-                        gradient="linear-gradient(90deg, rgba(131,58,180,1) 0%, rgba(253,29,29,1) 50%, rgba(252,176,69,1) 100%)"
+                        gradient="linear-gradient(335deg, rgba(81,10,50,1) 0%, rgba(128,19,54,1) 36%, rgba(238,69,64,1) 100%);"
                     >
                         in every pull request.
                     </GradientHeading>
@@ -121,21 +123,38 @@ const Home = () => (
             even
             shadow
             alignItems="flex-start"
+            position="relative"
         >
-            <Button marginTop="10" leftIcon={<ProjectIcon />} variant="outline">
+            <Button
+                zIndex="1"
+                marginTop="10"
+                leftIcon={<ProjectIcon />}
+                variant="outline"
+            >
                 Try online configurator
             </Button>
+            <Blob1
+                className={classes['blob']}
+                width="50vw"
+                color="var(--chakra-colors-gray-100)"
+            />
+            <Dots
+                width={200}
+                className={classes['dots-grid']}
+                color="var(--chakra-colors-gray-200)"
+            />
         </InfoScreen>
         <InfoScreen
-            title="Ready to dive in?"
+            title="Ready to start?"
             description="The „Quick start“ guide will help you set up an action for your project."
             alignItems="flex-start"
+            maxHeight="auto"
         >
             <Button marginBottom="5" leftIcon={<ChecklistIcon />}>
                 Quick start
             </Button>
             <EditorWithCopy
-                height="350px"
+                height="360px"
                 theme="vs-dark"
                 title="example-action.yml"
                 value={exampleConfiguration}

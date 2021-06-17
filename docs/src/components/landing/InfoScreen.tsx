@@ -44,7 +44,7 @@ export const InfoScreen = ({
             size="3xl"
             marginTop="3"
             marginBottom="5"
-            gradient="linear-gradient(90deg, rgba(131,58,180,1) 0%, rgba(253,29,29,1) 50%, rgba(252,176,69,1) 100%)"
+            gradient="linear-gradient(335deg, rgba(81,10,50,1) 0%, rgba(128,19,54,1) 36%, rgba(238,69,64,1) 100%);"
         >
             {title}
         </GradientHeading>

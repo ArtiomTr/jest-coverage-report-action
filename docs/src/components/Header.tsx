@@ -1,4 +1,4 @@
-import { Box, Container, HStack, Link, Text } from '@chakra-ui/react';
+import { Box, Container, HStack } from '@chakra-ui/react';
 import React from 'react';
 
 import Logo from '../../assets/logo.svg';
@@ -21,10 +21,8 @@ export const Header = () => (
             display="flex"
             maxW="container.lg"
         >
-            <Logo height={32} viewBox="0 0 267 146" />
-            <HStack>
-                <Link>Docs</Link>
-            </HStack>
+            <Logo color="#99425B" height={32} />
+            <HStack></HStack>
         </Container>
     </Box>
 );
