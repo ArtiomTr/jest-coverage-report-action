@@ -71,7 +71,7 @@ export const Footer = () => (
             <Divider marginY="5" />
             <HStack>
                 <Logo color="var(--chakra-colors-gray-400)" height={52} />
-                <Text color="gray.400">Copyright © 2020</Text>
+                <Text color="gray.600">Copyright © 2020</Text>
             </HStack>
         </Container>
     </Box>

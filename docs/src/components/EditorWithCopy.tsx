@@ -59,7 +59,7 @@ export const EditorWithCopy = ({
                         size="sm"
                         fontWeight="normal"
                         color="white"
-                        as="h5"
+                        as="summary"
                     >
                         {title}
                     </Heading>

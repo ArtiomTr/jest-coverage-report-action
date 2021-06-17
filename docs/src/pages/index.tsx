@@ -11,6 +11,7 @@ import {
     ChecklistIcon,
     ProjectIcon,
 } from '@primer/octicons-react';
+import Head from 'next/head';
 import Link from 'next/link';
 import React from 'react';
 
@@ -51,6 +52,13 @@ const sharedHeadingProps: HeadingProps = {
 
 const Home = () => (
     <React.Fragment>
+        <Head>
+            <title>Jest coverage report action | Home</title>
+            <meta
+                name="description"
+                content="Track your code coverage in every pull request"
+            />
+        </Head>
         <ScreenContainer
             height="calc(100vh - 60px)"
             display="flex"
@@ -109,12 +117,14 @@ const Home = () => (
             title="Responsible"
             description="Helps you keep track coverage of your project. Forms a reporting comment for each PR. In addition, highlights files with reduced coverage and new files."
             src="/coverage-comment-example.jpg"
+            alt="Example of coverage comment"
             even
         />
         <InfoImageScreen
             title="Observant"
             description="This action will help you to spot uncovered lines of code and failed tests by creating annotations. Annotations are generated for every not covered statement / branch / function and failed test."
             src="/annotation-example.jpg"
+            alt="Example of generated annotations"
             shadow
         />
         <InfoScreen
