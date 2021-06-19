@@ -11,7 +11,7 @@ export const LayoutDocs = ({ children, meta }: LayoutProps) => (
             <title>{meta.title} | Jest Coverage Report action</title>
             <meta name="description" content={meta.description as string} />
         </Head>
-        <Container minHeight="100vh" maxWidth="container.lg">
+        <Container marginY="5" minHeight="100vh" maxWidth="container.lg">
             <MarkdownWrapper>{children}</MarkdownWrapper>
         </Container>
     </React.Fragment>
