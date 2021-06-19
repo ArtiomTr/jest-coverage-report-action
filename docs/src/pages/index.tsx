@@ -55,7 +55,7 @@ const sharedHeadingProps: HeadingProps = {
 const Home = () => (
     <React.Fragment>
         <Head>
-            <title>Jest coverage report action | Home</title>
+            <title>Jest coverage report action</title>
             <meta
                 name="description"
                 content="Track your code coverage in every pull request"

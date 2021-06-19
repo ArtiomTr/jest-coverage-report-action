@@ -1,0 +1,23 @@
+.heading {
+    $parent-name: &;
+    cursor: pointer;
+    &__anchor {
+        transform: translateY(-65px);
+        align-self: flex-start;
+    }
+    &__icon {
+        color: var(--chakra-colors-gray-900);
+        opacity: 0;
+        margin: 0 5px;
+    }
+    &:hover {
+        #{$parent-name}__icon {
+            opacity: 0.6;
+        }
+    }
+    &:active {
+        #{$parent-name}__icon {
+            opacity: 1;
+        }
+    }
+}
