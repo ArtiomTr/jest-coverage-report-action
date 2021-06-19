@@ -1,11 +1,24 @@
-import { Box, Flex, Heading, IconButton, useClipboard } from '@chakra-ui/react';
-import Editor, { EditorProps, OnChange } from '@monaco-editor/react';
+import {
+    Box,
+    CircularProgress,
+    Flex,
+    Heading,
+    IconButton,
+    useClipboard,
+} from '@chakra-ui/react';
+import type { EditorProps, OnChange } from '@monaco-editor/react';
 import { StyledOcticon } from '@primer/components';
 import {
     CheckIcon,
     ClippyIcon,
 } from '@primer/components/node_modules/@primer/octicons-react';
+import dynamic from 'next/dynamic';
 import React, { useCallback, useReducer, useRef } from 'react';
+
+const Editor = dynamic(import('@monaco-editor/react'), {
+    ssr: false,
+    loading: () => <CircularProgress isIndeterminate color="brand.500" />,
+});
 
 export type EditorWithCopyProps = EditorProps & {
     title?: string;
@@ -84,7 +97,14 @@ export const EditorWithCopy = ({
                         )
                     }
                 />
-                <Editor {...props} onChange={onChange} />
+                <Editor
+                    loading={
+                        <CircularProgress color="brand.500" isIndeterminate />
+                    }
+                    theme="vs-dark"
+                    {...props}
+                    onChange={onChange}
+                />
             </Box>
         </Box>
     );

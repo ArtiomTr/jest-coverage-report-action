@@ -9,6 +9,7 @@ import { Components } from '@mdx-js/react';
 import NextLink from 'next/link';
 import React from 'react';
 
+import { Code } from './Code';
 import { MarkdownHeading } from './MarkdownHeading';
 
 export const components: Components = {
@@ -27,4 +28,5 @@ export const components: Components = {
         </NextLink>
     ),
     p: Text,
+    code: Code,
 };
