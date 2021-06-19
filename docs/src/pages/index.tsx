@@ -55,7 +55,7 @@ const sharedHeadingProps: HeadingProps = {
 const Home = () => (
     <React.Fragment>
         <Head>
-            <title>Jest coverage report action | Home</title>
+            <title>Jest coverage report action</title>
             <meta
                 name="description"
                 content="Track your code coverage in every pull request"
@@ -167,7 +167,6 @@ const Home = () => (
             </Button>
             <EditorWithCopy
                 height="360px"
-                theme="vs-dark"
                 title="example-action.yml"
                 value={exampleConfiguration}
                 language="yaml"
