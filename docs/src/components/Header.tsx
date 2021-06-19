@@ -21,7 +21,7 @@ export const Header = () => (
             display="flex"
             maxW="container.lg"
         >
-            <Logo color="#99425B" height={32} />
+            <Logo color="var(--chakra-colors-brand-600)" height={32} />
             <HStack></HStack>
         </Container>
     </Box>
