@@ -162,9 +162,11 @@ const Home = () => (
             alignItems="flex-start"
             maxHeight="auto"
         >
-            <Button marginBottom="5" leftIcon={<ChecklistIcon />}>
-                Quick start
-            </Button>
+            <Link passHref href="/quick-start">
+                <Button as="a" marginBottom="5" leftIcon={<ChecklistIcon />}>
+                    Quick start
+                </Button>
+            </Link>
             <EditorWithCopy
                 height="360px"
                 title="example-action.yml"

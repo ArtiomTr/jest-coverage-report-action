@@ -1,4 +1,5 @@
 import {
+    Code as ChakraInlineCode,
     Link as ChakraLink,
     ListItem,
     OrderedList,
@@ -29,4 +30,5 @@ export const components: Components = {
     ),
     p: Text,
     code: Code,
+    inlineCode: (props) => <ChakraInlineCode {...props} />,
 };

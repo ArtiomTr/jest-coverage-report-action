@@ -7,7 +7,7 @@ import { EditorWithCopy } from '../EditorWithCopy';
 export const Code = ({ children, className }: CodeProps) => (
     <EditorWithCopy
         options={{
-            readOnly: false,
+            readOnly: true,
             scrollBeyondLastLine: false,
         }}
         blockClassName={classes['code']}
