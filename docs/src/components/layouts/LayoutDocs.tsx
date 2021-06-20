@@ -15,6 +15,7 @@ import React from 'react';
 import { LayoutProps } from './LayoutProps';
 import { MarkdownWrapper } from '../markdown/MarkdownWrapper';
 import { MdLink } from '../markdown/MdLink';
+import { Rating } from '../Rating';
 
 export const LayoutDocs = ({ children, meta }: LayoutProps) => {
     const { pathname } = useRouter();
@@ -27,6 +28,8 @@ export const LayoutDocs = ({ children, meta }: LayoutProps) => {
             </Head>
             <Container marginY="5" minHeight="100vh" maxWidth="container.lg">
                 <MarkdownWrapper>{children}</MarkdownWrapper>
+                <Divider marginY="5" />
+                <Rating />
                 <Divider marginY="5" />
                 <Flex justifyContent="space-between">
                     <Box>
