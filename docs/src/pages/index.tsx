@@ -4,6 +4,7 @@ import {
     GridItem,
     Heading,
     HeadingProps,
+    Text,
 } from '@chakra-ui/react';
 import { Flex } from '@primer/components';
 import {
@@ -162,11 +163,18 @@ const Home = () => (
             alignItems="flex-start"
             maxHeight="auto"
         >
-            <Link passHref href="/quick-start">
-                <Button as="a" marginBottom="5" leftIcon={<ChecklistIcon />}>
-                    Quick start
-                </Button>
-            </Link>
+            <Text>
+                <Link passHref href="/quick-start">
+                    <Button
+                        as="a"
+                        marginBottom="5"
+                        leftIcon={<ChecklistIcon />}
+                    >
+                        Quick start
+                    </Button>
+                </Link>
+                or copy & paste example configuration:
+            </Text>
             <EditorWithCopy
                 height="360px"
                 title="example-action.yml"
@@ -175,6 +183,10 @@ const Home = () => (
                 options={{
                     readOnly: true,
                     scrollBeyondLastLine: false,
+                    scrollbar: {
+                        vertical: 'hidden',
+                        handleMouseWheel: false,
+                    },
                 }}
                 blockClassName={classes['readonlyEditor']}
             />

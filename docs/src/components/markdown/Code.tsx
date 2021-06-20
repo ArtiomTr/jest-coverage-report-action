@@ -9,6 +9,10 @@ export const Code = ({ children, className }: CodeProps) => (
         options={{
             readOnly: true,
             scrollBeyondLastLine: false,
+            scrollbar: {
+                vertical: 'hidden',
+                handleMouseWheel: false,
+            },
         }}
         blockClassName={classes['code']}
         height={Math.max(children.split('\n').length * 19, 80) + 'px'}
