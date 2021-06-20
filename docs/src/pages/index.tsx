@@ -1,12 +1,12 @@
 import {
     Button,
+    Flex,
     Grid,
     GridItem,
     Heading,
     HeadingProps,
     Text,
 } from '@chakra-ui/react';
-import { Flex } from '@primer/components';
 import {
     ArrowRightIcon,
     ChecklistIcon,
@@ -163,18 +163,14 @@ const Home = () => (
             alignItems="flex-start"
             maxHeight="auto"
         >
-            <Text>
+            <Flex marginBottom="5" justifyContent="center" alignItems="center">
                 <Link passHref href="/quick-start">
-                    <Button
-                        as="a"
-                        marginBottom="5"
-                        leftIcon={<ChecklistIcon />}
-                    >
+                    <Button as="a" leftIcon={<ChecklistIcon />}>
                         Quick start
                     </Button>
                 </Link>
-                or copy & paste example configuration:
-            </Text>
+                <Text ml="2">or copy & paste example configuration:</Text>
+            </Flex>
             <EditorWithCopy
                 height="360px"
                 title="example-action.yml"
