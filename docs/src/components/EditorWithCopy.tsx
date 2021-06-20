@@ -73,6 +73,7 @@ export const EditorWithCopy = ({
                         fontWeight="normal"
                         color="white"
                         as="summary"
+                        listStyleType="none"
                     >
                         {title}
                     </Heading>

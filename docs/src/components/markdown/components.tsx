@@ -1,16 +1,16 @@
 import {
-    Link as ChakraLink,
+    Code as ChakraInlineCode,
     ListItem,
     OrderedList,
     Text,
     UnorderedList,
 } from '@chakra-ui/react';
 import { Components } from '@mdx-js/react';
-import NextLink from 'next/link';
 import React from 'react';
 
 import { Code } from './Code';
 import { MarkdownHeading } from './MarkdownHeading';
+import { MdLink } from './MdLink';
 
 export const components: Components = {
     h1: (props) => <MarkdownHeading as="h1" size="2xl" {...props} />,
@@ -22,11 +22,8 @@ export const components: Components = {
     ol: OrderedList,
     ul: UnorderedList,
     li: ListItem,
-    a: ({ href, ...other }) => (
-        <NextLink passHref href={href}>
-            <ChakraLink color="brand.500" {...other} />
-        </NextLink>
-    ),
+    a: MdLink,
     p: Text,
     code: Code,
+    inlineCode: (props) => <ChakraInlineCode {...props} />,
 };

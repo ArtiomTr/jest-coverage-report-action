@@ -1,6 +1,8 @@
 import { Box, Container, HStack } from '@chakra-ui/react';
+import Link from 'next/link';
 import React from 'react';
 
+import classes from './Header.module.scss';
 import Logo from '../../assets/logo.svg';
 
 export const Header = () => (
@@ -21,7 +23,13 @@ export const Header = () => (
             display="flex"
             maxW="container.lg"
         >
-            <Logo color="var(--chakra-colors-brand-600)" height={32} />
+            <Link href="/">
+                <Logo
+                    className={classes['logo']}
+                    color="var(--chakra-colors-brand-600)"
+                    height={32}
+                />
+            </Link>
             <HStack></HStack>
         </Container>
     </Box>
