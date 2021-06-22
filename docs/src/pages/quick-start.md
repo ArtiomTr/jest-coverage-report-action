@@ -48,7 +48,7 @@ jobs:
             - uses: actions/checkout@v1
             - uses: artiomtr/jest-coverage-report-action@v1.3
               with:
-                  github_token: ${{ secrets.GITHUB_TOKEN }}
+                  github-token: ${{ secrets.GITHUB_TOKEN }}
                   #   threshold: 80 # optional parameter
 ```
 

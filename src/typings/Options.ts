@@ -38,20 +38,22 @@ const optionSchema = yup.object().shape({
         .min(0)
         .max(100),
     workingDirectory: yup.string(),
+    skipDeps: yup.boolean(),
+    skipTestScript: yup.boolean(),
 });
 
 export const getOptions = async (): Promise<Options> => {
-    const token = getInput('github_token', {
+    const token = getInput('github-token', {
         required: true,
     });
 
-    const testScript = getInput('test_script');
+    const testScript = getInput('test-script');
     const threshold = getInput('threshold');
-    const workingDirectory = getInput('working_directory');
+    const workingDirectory = getInput('working-directory');
     const iconType = getInput('icons');
     const annotations = getInput('annotations');
-    const skipDeps = getInput('skip_deps') === 'true';
-    const skipTestScript = getInput('skip_test_script') === 'true';
+    const skipDeps = getInput('skip-deps') === 'true';
+    const skipTestScript = getInput('skip-test-script') === 'true';
 
     try {
         const options: Options = (await optionSchema.validate({
