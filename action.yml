@@ -26,6 +26,14 @@ inputs:
         required: false
         description: 'What type of annotations show. Options: none, all'
         default: all
+    skip_deps:
+        required: false
+        description: 'If true, the action will skip installing the project dependencies'
+        default: 'false'
+    skip_test_script:
+        required: false
+        description: 'If true, the action will skip running the test script'
+        default: 'false'
 runs:
     using: 'node12'
     main: 'dist/index.js'

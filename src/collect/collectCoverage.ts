@@ -7,9 +7,17 @@ import { Report } from '../typings/Report';
 export const collectCoverage = async (
     testCommand: string,
     branch?: string,
-    workingDirectory?: string
+    workingDirectory?: string,
+    skipDeps?: boolean,
+    skipTestScript?: boolean
 ): Promise<[Report, JsonReport | undefined]> => {
-    const source = await getRawCoverage(testCommand, branch, workingDirectory);
+    const source = await getRawCoverage(
+        testCommand,
+        branch,
+        workingDirectory,
+        skipDeps,
+        skipTestScript
+    );
 
     if (typeof source !== 'string') {
         return [source, undefined];

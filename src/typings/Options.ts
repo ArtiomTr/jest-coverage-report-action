@@ -14,6 +14,8 @@ export type Options = {
     annotations: AnnotationType;
     threshold?: number;
     workingDirectory?: string;
+    skipDeps?: boolean;
+    skipTestScript?: boolean;
 };
 
 const validAnnotationOptions: Array<AnnotationType> = [
@@ -48,6 +50,8 @@ export const getOptions = async (): Promise<Options> => {
     const workingDirectory = getInput('working_directory');
     const iconType = getInput('icons');
     const annotations = getInput('annotations');
+    const skipDeps = getInput('skip_deps') === 'true';
+    const skipTestScript = getInput('skip_test_script') === 'true';
 
     try {
         const options: Options = (await optionSchema.validate({
@@ -57,6 +61,8 @@ export const getOptions = async (): Promise<Options> => {
             workingDirectory,
             iconType,
             annotations,
+            skipDeps,
+            skipTestScript,
         })) as Options;
 
         return options;

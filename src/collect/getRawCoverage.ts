@@ -12,7 +12,9 @@ const joinPaths = (...segments: Array<string | undefined>) =>
 export const getRawCoverage = async (
     testCommand: string,
     branch?: string,
-    workingDirectory?: string
+    workingDirectory?: string,
+    skipDeps?: boolean,
+    skipTestScript?: boolean
 ): Promise<
     | string
     | { success: false; failReason: FailReason.TESTS_FAILED; error?: Error }
@@ -32,19 +34,23 @@ export const getRawCoverage = async (
         recursive: true,
     });
 
-    await exec('npm i', undefined, {
-        cwd: workingDirectory,
-    });
+    if (!skipDeps) {
+        await exec('npm i', undefined, {
+            cwd: workingDirectory,
+        });
+    }
 
     let executionError: Error | undefined = undefined;
 
-    try {
-        await exec(testCommand, [], {
-            cwd: workingDirectory,
-        });
-    } catch (error) {
-        console.error('Test execution failed with error:', error);
-        executionError = error instanceof Error ? error : undefined;
+    if (!skipTestScript) {
+        try {
+            await exec(testCommand, [], {
+                cwd: workingDirectory,
+            });
+        } catch (error) {
+            console.error('Test execution failed with error:', error);
+            executionError = error instanceof Error ? error : undefined;
+        }
     }
 
     try {

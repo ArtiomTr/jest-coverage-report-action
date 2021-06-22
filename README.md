@@ -96,6 +96,17 @@ with:
     test_script: npm run test:coverage
 ```
 
+## Skipping steps
+
+By default, this action will install dependencies and run the tests for you, generating the coverage report. Alternatively, if you already have dependencies installed and/or the coverage report at hand, you can skip these steps.
+
+```yml
+with:
+    github_token: ${{ secrets.GITHUB_TOKEN }}
+    skip_deps: true
+    skip_test_script: true
+```
+
 ## Contributing
 
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
