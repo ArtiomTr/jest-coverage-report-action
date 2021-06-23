@@ -6,7 +6,7 @@ import { icons } from '../format/strings.json';
 export type IconType = keyof typeof icons;
 
 export type AnnotationType = 'all' | 'none' | 'coverage' | 'failed-tests';
-
+export type PackageManagerType = 'npm' | 'yarn';
 export type SkipStepType = 'all' | 'none' | 'install';
 
 export type Options = {
@@ -16,6 +16,7 @@ export type Options = {
     annotations: AnnotationType;
     threshold?: number;
     workingDirectory?: string;
+    packageManager: PackageManagerType;
     skipStep: SkipStepType;
 };
 
@@ -25,6 +26,8 @@ const validAnnotationOptions: Array<AnnotationType> = [
     'coverage',
     'failed-tests',
 ];
+
+const packageManagerOptions: Array<PackageManagerType> = ['npm', 'yarn'];
 
 const validIconOptions = Object.keys(icons);
 
@@ -41,6 +44,7 @@ const optionSchema = yup.object().shape({
         .min(0)
         .max(100),
     workingDirectory: yup.string(),
+    packageManager: yup.string().required().oneOf(packageManagerOptions),
     skipStep: yup.string().required().oneOf(validSkipStepOptions),
 });
 
@@ -54,6 +58,7 @@ export const getOptions = async (): Promise<Options> => {
     const workingDirectory = getInput('working-directory');
     const iconType = getInput('icons');
     const annotations = getInput('annotations');
+    const packageManager = getInput('package-manager');
     const skipStep = getInput('skip-step');
 
     try {
@@ -64,6 +69,7 @@ export const getOptions = async (): Promise<Options> => {
             workingDirectory,
             iconType,
             annotations,
+            packageManager,
             skipStep,
         })) as Options;
 

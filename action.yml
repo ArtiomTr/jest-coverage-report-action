@@ -26,6 +26,10 @@ inputs:
         required: false
         description: 'What type of annotations show. Options: none, all'
         default: all
+    package-manager:
+        required: false
+        description: 'Which package manager to use; can be either `npm` or `yarn`'
+        default: 'npm'
     skip-step:
         required: false
         description: '`none` for running all steps, `install` to skip installing dependencies or `all` to skip installing dependencies and running the test script'

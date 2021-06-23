@@ -33,6 +33,7 @@ async function run() {
             workingDirectory,
             iconType,
             annotations,
+            packageManager,
             skipStep,
         } = await getOptions();
 
@@ -40,12 +41,15 @@ async function run() {
 
         const [headReport, jsonReport] = await collectCoverage(
             testScript,
+            packageManager,
             skipStep,
             undefined,
             workingDirectory
         );
         const [baseReport] = await collectCoverage(
             testScript,
+            packageManager,
+            skipStep,
             pull_request.base.ref,
             workingDirectory
         );

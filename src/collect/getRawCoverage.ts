@@ -4,11 +4,15 @@ import { exec } from '@actions/exec';
 import { readFile, rmdir } from 'fs-extra';
 
 import { REPORT_PATH } from '../constants/REPORT_PATH';
-import { SkipStepType } from '../typings/Options';
+import { PackageManagerType, SkipStepType } from '../typings/Options';
 import { FailReason } from '../typings/Report';
 
 const joinPaths = (...segments: Array<string | undefined>) =>
     join(...(segments as string[]).filter((segment) => segment !== undefined));
+
+const getPackageManagerInstallCommand = (
+    packageManager: PackageManagerType
+): string => `${packageManager} install`;
 
 const shouldInstallDeps = (skipStep: SkipStepType): Boolean =>
     !['all', 'install'].includes(skipStep);
@@ -18,6 +22,7 @@ const shouldRunTestScript = (skipStep: SkipStepType): Boolean =>
 
 export const getRawCoverage = async (
     testCommand: string,
+    packageManager: PackageManagerType,
     skipStep: SkipStepType,
     branch?: string,
     workingDirectory?: string
@@ -41,7 +46,7 @@ export const getRawCoverage = async (
     });
 
     if (shouldInstallDeps(skipStep)) {
-        await exec('npm i', undefined, {
+        await exec(getPackageManagerInstallCommand(packageManager), undefined, {
             cwd: workingDirectory,
         });
     }

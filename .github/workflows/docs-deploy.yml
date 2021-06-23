@@ -36,6 +36,6 @@ jobs:
                   npm run deploy
               working-directory: ./docs
               env:
-                  github_token: ${{ secrets.ACTIONS_DEPLOY_ACCESS_TOKEN }}
+                  github-token: ${{ secrets.ACTIONS_DEPLOY_ACCESS_TOKEN }}
                   repository: ${{ github.repository }}
                   NODE_ENV: 'production'
