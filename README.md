@@ -98,14 +98,19 @@ with:
 
 ## Skipping steps
 
-By default, this action will install dependencies and run the tests for you, generating the coverage report. Alternatively, if you already have dependencies installed and/or the coverage report at hand, you can skip these steps.
+By default, this action will install dependencies and run the tests for you, generating the coverage report. Alternatively, you can skip these steps using the `skip-steps` option.
 
 ```yml
 with:
     github-token: ${{ secrets.GITHUB_TOKEN }}
-    skip-deps: true
-    skip-test-script: true
+    skip-steps: all
 ```
+
+Accepted values are:
+
+- `none` (default) - all steps will be run
+- `install` - skip installing dependencies
+- `all` - skip installing dependencies *and* and running the test script
 
 ## Contributing
 

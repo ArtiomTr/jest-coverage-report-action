@@ -4,17 +4,23 @@ import { exec } from '@actions/exec';
 import { readFile, rmdir } from 'fs-extra';
 
 import { REPORT_PATH } from '../constants/REPORT_PATH';
+import { SkipStepType } from '../typings/Options';
 import { FailReason } from '../typings/Report';
 
 const joinPaths = (...segments: Array<string | undefined>) =>
     join(...(segments as string[]).filter((segment) => segment !== undefined));
 
+const shouldInstallDeps = (skipStep: SkipStepType): Boolean =>
+    !['all', 'install'].includes(skipStep);
+
+const shouldRunTestScript = (skipStep: SkipStepType): Boolean =>
+    !['all'].includes(skipStep);
+
 export const getRawCoverage = async (
     testCommand: string,
+    skipStep: SkipStepType,
     branch?: string,
-    workingDirectory?: string,
-    skipDeps?: boolean,
-    skipTestScript?: boolean
+    workingDirectory?: string
 ): Promise<
     | string
     | { success: false; failReason: FailReason.TESTS_FAILED; error?: Error }
@@ -34,7 +40,7 @@ export const getRawCoverage = async (
         recursive: true,
     });
 
-    if (!skipDeps) {
+    if (shouldInstallDeps(skipStep)) {
         await exec('npm i', undefined, {
             cwd: workingDirectory,
         });
@@ -42,7 +48,7 @@ export const getRawCoverage = async (
 
     let executionError: Error | undefined = undefined;
 
-    if (!skipTestScript) {
+    if (shouldRunTestScript(skipStep)) {
         try {
             await exec(testCommand, [], {
                 cwd: workingDirectory,

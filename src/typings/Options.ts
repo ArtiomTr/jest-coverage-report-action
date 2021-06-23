@@ -7,6 +7,8 @@ export type IconType = keyof typeof icons;
 
 export type AnnotationType = 'all' | 'none' | 'coverage' | 'failed-tests';
 
+export type SkipStepType = 'all' | 'none' | 'install';
+
 export type Options = {
     token: string;
     testScript: string;
@@ -14,8 +16,7 @@ export type Options = {
     annotations: AnnotationType;
     threshold?: number;
     workingDirectory?: string;
-    skipDeps?: boolean;
-    skipTestScript?: boolean;
+    skipStep: SkipStepType;
 };
 
 const validAnnotationOptions: Array<AnnotationType> = [
@@ -26,6 +27,8 @@ const validAnnotationOptions: Array<AnnotationType> = [
 ];
 
 const validIconOptions = Object.keys(icons);
+
+const validSkipStepOptions: Array<SkipStepType> = ['none', 'install', 'all'];
 
 const optionSchema = yup.object().shape({
     token: yup.string().required(),
@@ -38,8 +41,7 @@ const optionSchema = yup.object().shape({
         .min(0)
         .max(100),
     workingDirectory: yup.string(),
-    skipDeps: yup.boolean(),
-    skipTestScript: yup.boolean(),
+    skipStep: yup.string().required().oneOf(validSkipStepOptions),
 });
 
 export const getOptions = async (): Promise<Options> => {
@@ -52,8 +54,7 @@ export const getOptions = async (): Promise<Options> => {
     const workingDirectory = getInput('working-directory');
     const iconType = getInput('icons');
     const annotations = getInput('annotations');
-    const skipDeps = getInput('skip-deps') === 'true';
-    const skipTestScript = getInput('skip-test-script') === 'true';
+    const skipStep = getInput('skip-step');
 
     try {
         const options: Options = (await optionSchema.validate({
@@ -63,8 +64,7 @@ export const getOptions = async (): Promise<Options> => {
             workingDirectory,
             iconType,
             annotations,
-            skipDeps,
-            skipTestScript,
+            skipStep,
         })) as Options;
 
         return options;

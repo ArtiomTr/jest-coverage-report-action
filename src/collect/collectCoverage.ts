@@ -2,21 +2,20 @@ import { getRawCoverage } from './getRawCoverage';
 import { parseCoverage } from './parseCoverage';
 import { parseJsonReport } from './parseJsonReport';
 import { JsonReport } from '../typings/JsonReport';
+import { SkipStepType } from '../typings/Options';
 import { Report } from '../typings/Report';
 
 export const collectCoverage = async (
     testCommand: string,
+    skipStep: SkipStepType,
     branch?: string,
-    workingDirectory?: string,
-    skipDeps?: boolean,
-    skipTestScript?: boolean
+    workingDirectory?: string
 ): Promise<[Report, JsonReport | undefined]> => {
     const source = await getRawCoverage(
         testCommand,
+        skipStep,
         branch,
-        workingDirectory,
-        skipDeps,
-        skipTestScript
+        workingDirectory
     );
 
     if (typeof source !== 'string') {

@@ -33,18 +33,16 @@ async function run() {
             workingDirectory,
             iconType,
             annotations,
-            skipDeps,
-            skipTestScript,
+            skipStep,
         } = await getOptions();
 
         const octokit = getOctokit(token);
 
         const [headReport, jsonReport] = await collectCoverage(
             testScript,
+            skipStep,
             undefined,
-            workingDirectory,
-            skipDeps,
-            skipTestScript
+            workingDirectory
         );
         const [baseReport] = await collectCoverage(
             testScript,
