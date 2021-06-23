@@ -5,17 +5,17 @@ branding:
     icon: 'activity'
     color: 'gray-dark'
 inputs:
-    github_token:
+    github-token:
         required: true
         description: 'A github access token'
-    test_script:
+    test-script:
         required: false
         description: 'A custom npm script to get coverage'
         default: npx jest --silent --ci --coverage --testLocationInResults --json --outputFile="report.json"
     threshold:
         required: false
         description: 'Coverage threshold. If total coverage is less than threshold, PR will be rejected'
-    working_directory:
+    working-directory:
         required: false
         description: 'Custom working directory'
     icons:
@@ -30,6 +30,10 @@ inputs:
         required: false
         description: 'Which package manager to use; can be either `npm` or `yarn`'
         default: 'npm'
+    skip-step:
+        required: false
+        description: '`none` for running all steps, `install` to skip installing dependencies or `all` to skip installing dependencies and running the test script'
+        default: 'none'
 runs:
     using: 'node12'
     main: 'dist/index.js'
