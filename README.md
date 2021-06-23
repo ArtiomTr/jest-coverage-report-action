@@ -98,12 +98,12 @@ with:
 
 ## Skipping steps
 
-By default, this action will install dependencies and run the tests for you, generating the coverage report. Alternatively, you can skip these steps using the `skip-steps` option.
+By default, this action will install dependencies and run the tests for you, generating the coverage report. Alternatively, you can skip these steps using the `skip-step` option.
 
 ```yml
 with:
     github-token: ${{ secrets.GITHUB_TOKEN }}
-    skip-steps: all
+    skip-step: all
 ```
 
 Accepted values are:
