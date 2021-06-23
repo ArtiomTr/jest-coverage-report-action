@@ -44,6 +44,7 @@ export const InfoScreen = ({
             size="3xl"
             marginTop="3"
             marginBottom="5"
+            zIndex={2}
             gradient="linear-gradient(335deg, rgba(81,10,50,1) 0%, rgba(128,19,54,1) 36%, rgba(238,69,64,1) 100%);"
         >
             {title}
@@ -54,6 +55,7 @@ export const InfoScreen = ({
             size="lg"
             maxWidth="3xl"
             color="gray.600"
+            zIndex={2}
             paddingBottom="5"
         >
             {description}
