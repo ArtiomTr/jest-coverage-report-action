@@ -12,6 +12,16 @@
         "code",
         "doc"
       ]
+    },
+    {
+      "login": "taschetto",
+      "name": "Guilherme Taschetto",
+      "avatar_url": "https://avatars.githubusercontent.com/u/5279182?v=4",
+      "profile": "https://github.com/taschetto",
+      "contributions": [
+        "code",
+        "doc"
+      ]
     }
   ],
   "projectName": "jest-coverage-report-action",
