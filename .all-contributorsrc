@@ -1,6 +1,23 @@
 {
-    "files": [
-        "README.md"
-    ],
-    "contributors": []
+  "files": [
+    "README.md"
+  ],
+  "contributors": [
+    {
+      "login": "ArtiomTr",
+      "name": "Artiom Tretjakovas",
+      "avatar_url": "https://avatars.githubusercontent.com/u/44021713?v=4",
+      "profile": "https://github.com/ArtiomTr",
+      "contributions": [
+        "code",
+        "doc"
+      ]
+    }
+  ],
+  "projectName": "jest-coverage-report-action",
+  "projectOwner": "ArtiomTr",
+  "repoType": "github",
+  "repoHost": "https://github.com",
+  "skipCi": true,
+  "contributorsPerLine": 7
 }
