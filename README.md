@@ -110,7 +110,7 @@ Accepted values are:
 
 - `none` (default) - all steps will be run
 - `install` - skip installing dependencies
-- `all` - skip installing dependencies *and* and running the test script
+- `all` - skip installing dependencies *and* running the test script
 
 ## Contributing
 
