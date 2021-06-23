@@ -31,6 +31,15 @@
       "contributions": [
         "code"
       ]
+    },
+    {
+      "login": "dadayama",
+      "name": "dadayama",
+      "avatar_url": "https://avatars.githubusercontent.com/u/6773164?v=4",
+      "profile": "https://github.com/dadayama",
+      "contributions": [
+        "code"
+      ]
     }
   ],
   "projectName": "jest-coverage-report-action",
