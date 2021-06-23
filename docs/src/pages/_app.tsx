@@ -12,6 +12,10 @@ import { theme } from '../theme';
 
 const links: Array<LinkProps> = [
     {
+        label: 'Home',
+        href: '/',
+    },
+    {
         label: 'Quick start',
         href: '/quick-start',
     },

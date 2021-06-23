@@ -14,6 +14,7 @@ import {
     VStack,
 } from '@chakra-ui/react';
 import { MarkGithubIcon, ThreeBarsIcon } from '@primer/octicons-react';
+import { useRouter } from 'next/dist/client/router';
 import Link from 'next/link';
 import React from 'react';
 
@@ -27,6 +28,8 @@ export type HeaderProps = {
 
 export const Header = ({ links }: HeaderProps) => {
     const { isOpen, onOpen, onClose } = useDisclosure();
+
+    const { pathname } = useRouter();
 
     return (
         <React.Fragment>
@@ -82,7 +85,16 @@ export const Header = ({ links }: HeaderProps) => {
                         <VStack alignItems="stretch">
                             {links.map(({ label, href }, key) => (
                                 <Link href={href} key={key} passHref>
-                                    <Button onClick={onClose} as="a">
+                                    <Button
+                                        borderColor={
+                                            pathname === href
+                                                ? 'brand.500'
+                                                : 'gray.300'
+                                        }
+                                        borderLeftWidth="thick"
+                                        onClick={onClose}
+                                        as="a"
+                                    >
                                         {label}
                                     </Button>
                                 </Link>
