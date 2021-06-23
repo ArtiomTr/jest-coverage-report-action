@@ -6,13 +6,24 @@ import React from 'react';
 import '../../styles/globals.css';
 
 import { Footer } from '../components/Footer';
-import { Header } from '../components/Header';
+import { Header, HeaderLink } from '../components/Header';
 import { theme } from '../theme';
+
+const links: Array<HeaderLink> = [
+    {
+        label: 'Quick start',
+        href: '/quick-start',
+    },
+    {
+        label: 'Upgrading to v2',
+        href: '/migrate',
+    },
+];
 
 const App = ({ Component, pageProps }: AppProps) => (
     <ChakraProvider theme={theme}>
         <ThemeProvider>
-            <Header />
+            <Header links={links} />
             <main>
                 <Component {...pageProps} />
             </main>
