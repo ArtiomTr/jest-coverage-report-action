@@ -18,15 +18,11 @@ import Link from 'next/link';
 import React from 'react';
 
 import classes from './Header.module.scss';
+import { LinkProps } from './LinkProps';
 import Logo from '../../assets/logo.svg';
 
-export type HeaderLink = {
-    href: string;
-    label: string;
-};
-
 export type HeaderProps = {
-    links: Array<HeaderLink>;
+    links: Array<LinkProps>;
 };
 
 export const Header = ({ links }: HeaderProps) => {

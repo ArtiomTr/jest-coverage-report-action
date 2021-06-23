@@ -5,11 +5,12 @@ import React from 'react';
 
 import '../../styles/globals.css';
 
+import { LinkProps } from 'src/components/LinkProps';
 import { Footer } from '../components/Footer';
-import { Header, HeaderLink } from '../components/Header';
+import { Header } from '../components/Header';
 import { theme } from '../theme';
 
-const links: Array<HeaderLink> = [
+const links: Array<LinkProps> = [
     {
         label: 'Quick start',
         href: '/quick-start',
