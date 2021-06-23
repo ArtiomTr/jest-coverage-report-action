@@ -4,13 +4,21 @@ import { exec } from '@actions/exec';
 import { readFile, rmdir } from 'fs-extra';
 
 import { REPORT_PATH } from '../constants/REPORT_PATH';
+import { SkipStepType } from '../typings/Options';
 import { FailReason } from '../typings/Report';
 
 const joinPaths = (...segments: Array<string | undefined>) =>
     join(...(segments as string[]).filter((segment) => segment !== undefined));
 
+const shouldInstallDeps = (skipStep: SkipStepType): Boolean =>
+    !['all', 'install'].includes(skipStep);
+
+const shouldRunTestScript = (skipStep: SkipStepType): Boolean =>
+    !['all'].includes(skipStep);
+
 export const getRawCoverage = async (
     testCommand: string,
+    skipStep: SkipStepType,
     branch?: string,
     workingDirectory?: string
 ): Promise<
@@ -32,19 +40,23 @@ export const getRawCoverage = async (
         recursive: true,
     });
 
-    await exec('npm i', undefined, {
-        cwd: workingDirectory,
-    });
+    if (shouldInstallDeps(skipStep)) {
+        await exec('npm i', undefined, {
+            cwd: workingDirectory,
+        });
+    }
 
     let executionError: Error | undefined = undefined;
 
-    try {
-        await exec(testCommand, [], {
-            cwd: workingDirectory,
-        });
-    } catch (error) {
-        console.error('Test execution failed with error:', error);
-        executionError = error instanceof Error ? error : undefined;
+    if (shouldRunTestScript(skipStep)) {
+        try {
+            await exec(testCommand, [], {
+                cwd: workingDirectory,
+            });
+        } catch (error) {
+            console.error('Test execution failed with error:', error);
+            executionError = error instanceof Error ? error : undefined;
+        }
     }
 
     try {

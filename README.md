@@ -47,7 +47,7 @@ jobs:
             - uses: actions/checkout@v1
             - uses: artiomtr/jest-coverage-report-action@v1.3
               with:
-                  github_token: ${{ secrets.GITHUB_TOKEN }}
+                  github-token: ${{ secrets.GITHUB_TOKEN }}
                   #   threshold: 80 # optional parameter
 ```
 
@@ -62,7 +62,7 @@ For example, if you want to reject every pull request, with total line coverage 
 
 ```yml
 with:
-    github_token: ${{ secrets.GITHUB_TOKEN }}
+    github-token: ${{ secrets.GITHUB_TOKEN }}
     threshold: 80 # value in percents
 ```
 
@@ -72,8 +72,8 @@ If you want to run this action in custom directory, specify `working-directory`:
 
 ```yml
 with:
-    github_token: ${{ secrets.GITHUB_TOKEN }}
-    working_directory: <dir>
+    github-token: ${{ secrets.GITHUB_TOKEN }}
+    working-directory: <dir>
 ```
 
 ## Customizing test script
@@ -84,7 +84,7 @@ By default, this action will run this command, to extract coverage:
 npx jest --silent --ci --coverage --coverageReporters="text" --coverageReporters="text-summary"
 ```
 
-If you're not satisfied with default behaviour, you can specify your own command, by passing custom option `test_script`.
+If you're not satisfied with default behaviour, you can specify your own command, by passing custom option `test-script`.
 
 > **⚠ IMPORTANT ⚠:** Please, note that this is not simple `npx jest --coverage` script call. If you're specify your custom script, **YOU SHOULD PASS SAME COVERAGE REPORTERS** as it does default script (`text` and `text-summary` reporters). Without those options, your action will not work.
 
@@ -92,9 +92,25 @@ For instance, if you want to run `test:coverage` npm script:
 
 ```yml
 with:
-    github_token: ${{ secrets.GITHUB_TOKEN }}
-    test_script: npm run test:coverage
+    github-token: ${{ secrets.GITHUB_TOKEN }}
+    test-script: npm run test:coverage
 ```
+
+## Skipping steps
+
+By default, this action will install dependencies and run the tests for you, generating the coverage report. Alternatively, you can skip these steps using the `skip-step` option.
+
+```yml
+with:
+    github-token: ${{ secrets.GITHUB_TOKEN }}
+    skip-step: all
+```
+
+Accepted values are:
+
+- `none` (default) - all steps will be run
+- `install` - skip installing dependencies
+- `all` - skip installing dependencies *and* running the test script
 
 ## Contributing
 
