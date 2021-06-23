@@ -45,7 +45,7 @@ jobs:
     coverage:
         runs-on: ubuntu-latest
         steps:
-            - uses: actions/checkout@v1
+            - uses: actions/checkout@v2
             - uses: artiomtr/jest-coverage-report-action@v1.3
               with:
                   github-token: ${{ secrets.GITHUB_TOKEN }}
