@@ -102,7 +102,7 @@ By default, this action will install your dependencies using `npm`. If you are u
 
 ```yml
 with:
-    github_token: ${{ secrets.GITHUB_TOKEN }}
+    github-token: ${{ secrets.GITHUB_TOKEN }}
     package-manager: yarn
 ```
 

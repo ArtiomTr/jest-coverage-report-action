@@ -12,12 +12,7 @@ const joinPaths = (...segments: Array<string | undefined>) =>
 
 const getPackageManagerInstallCommand = (
     packageManager: PackageManagerType
-): string =>
-    packageManager === 'npm'
-        ? 'npm i'
-        : packageManager === 'yarn'
-        ? 'yarn install'
-        : '';
+): string => `${packageManager} install`;
 
 const shouldInstallDeps = (skipStep: SkipStepType): Boolean =>
     !['all', 'install'].includes(skipStep);
