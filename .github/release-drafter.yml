@@ -1,0 +1,15 @@
+name-template: v$NEXT_PATCH_VERSION
+tag-template: v$NEXT_PATCH_VERSION
+categories:
+    - title: 💥 Breaking changes
+      label: chore
+    - title: 📰 Documentation
+      label: documentation
+    - title: 🚀 Features
+      label: enhancement
+    - title: 🐛 Bug Fixes
+      label: bug
+template: |
+    ## Changes
+
+    $CHANGES
