@@ -28,7 +28,7 @@ const validAnnotationOptions: Array<AnnotationType> = [
 
 const validIconOptions = Object.keys(icons);
 
-const validSkipStepOptions: Array<SkipStepType> = ['none', 'install', 'all'];
+const validSkipStepOptions: Array<SkipStepType> = ['all', 'none', 'install'];
 
 const optionSchema = yup.object().shape({
     token: yup.string().required(),
