@@ -4,13 +4,24 @@ import { exec } from '@actions/exec';
 import { readFile, rmdir } from 'fs-extra';
 
 import { REPORT_PATH } from '../constants/REPORT_PATH';
+import { PackageManagerType } from '../typings/Options';
 import { FailReason } from '../typings/Report';
 
 const joinPaths = (...segments: Array<string | undefined>) =>
     join(...(segments as string[]).filter((segment) => segment !== undefined));
 
+const getPackageManagerInstallCommand = (
+    packageManager: PackageManagerType
+): string =>
+    packageManager === 'npm'
+        ? 'npm i'
+        : packageManager === 'yarn'
+        ? 'yarn install'
+        : '';
+
 export const getRawCoverage = async (
     testCommand: string,
+    packageManager: PackageManagerType,
     branch?: string,
     workingDirectory?: string
 ): Promise<
@@ -32,7 +43,7 @@ export const getRawCoverage = async (
         recursive: true,
     });
 
-    await exec('npm i', undefined, {
+    await exec(getPackageManagerInstallCommand(packageManager), undefined, {
         cwd: workingDirectory,
     });
 

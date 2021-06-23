@@ -33,12 +33,14 @@ async function run() {
             workingDirectory,
             iconType,
             annotations,
+            packageManager,
         } = await getOptions();
 
         const octokit = getOctokit(token);
 
         const [headReport, jsonReport] = await collectCoverage(
             testScript,
+            packageManager,
             undefined,
             workingDirectory
         );

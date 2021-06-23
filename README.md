@@ -96,6 +96,16 @@ with:
     test_script: npm run test:coverage
 ```
 
+## Usage with `yarn`
+
+By default, this action will install your dependencies using `npm`. If you are using `yarn`, you can specify it in the `package-manager` option:
+
+```yml
+with:
+    github_token: ${{ secrets.GITHUB_TOKEN }}
+    package-manager: yarn
+```
+
 ## Contributing
 
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.

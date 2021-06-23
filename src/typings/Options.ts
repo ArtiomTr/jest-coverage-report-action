@@ -7,6 +7,8 @@ export type IconType = keyof typeof icons;
 
 export type AnnotationType = 'all' | 'none' | 'coverage' | 'failed-tests';
 
+export type PackageManagerType = 'npm' | 'yarn';
+
 export type Options = {
     token: string;
     testScript: string;
@@ -14,6 +16,7 @@ export type Options = {
     annotations: AnnotationType;
     threshold?: number;
     workingDirectory?: string;
+    packageManager: PackageManagerType;
 };
 
 const validAnnotationOptions: Array<AnnotationType> = [
@@ -22,6 +25,8 @@ const validAnnotationOptions: Array<AnnotationType> = [
     'coverage',
     'failed-tests',
 ];
+
+const packageManagerOptions: Array<PackageManagerType> = ['npm', 'yarn'];
 
 const validIconOptions = Object.keys(icons);
 
@@ -36,6 +41,8 @@ const optionSchema = yup.object().shape({
         .min(0)
         .max(100),
     workingDirectory: yup.string(),
+    packageMana: yup.string(),
+    packageManager: yup.string().required().oneOf(packageManagerOptions),
 });
 
 export const getOptions = async (): Promise<Options> => {
@@ -48,6 +55,7 @@ export const getOptions = async (): Promise<Options> => {
     const workingDirectory = getInput('working_directory');
     const iconType = getInput('icons');
     const annotations = getInput('annotations');
+    const packageManager = getInput('package-manager');
 
     try {
         const options: Options = (await optionSchema.validate({
@@ -57,6 +65,7 @@ export const getOptions = async (): Promise<Options> => {
             workingDirectory,
             iconType,
             annotations,
+            packageManager,
         })) as Options;
 
         return options;

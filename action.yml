@@ -26,6 +26,10 @@ inputs:
         required: false
         description: 'What type of annotations show. Options: none, all'
         default: all
+    package-manager:
+        required: false
+        description: 'Which package manager to use; can be either `npm` or `yarn`'
+        default: 'npm'
 runs:
     using: 'node12'
     main: 'dist/index.js'
