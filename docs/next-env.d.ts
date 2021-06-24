@@ -7,12 +7,20 @@ declare module '*.svg' {
     export default SvgComponent;
 }
 
+type ResponsiveImageSource = {
+    srcSet: string;
+    images: Array<{ width: number; height: number; path: string }>;
+    src: string;
+    toString: () => string;
+};
+
 declare module '*.jpeg' {
-    const value: string;
+    const value: ResponsiveImageSource;
+
     export = value;
 }
 
 declare module '*.jpg' {
-    const value: string;
+    const value: ResponsiveImageSource;
     export = value;
 }
