@@ -138,14 +138,17 @@ const Home = () => (
             alignItems="flex-start"
             position="relative"
         >
-            <Button
-                zIndex="1"
-                marginTop="10"
-                leftIcon={<ProjectIcon />}
-                variant="outline"
-            >
-                Try online configurator
-            </Button>
+            <Link passHref href="/configurator">
+                <Button
+                    zIndex="1"
+                    marginTop="10"
+                    leftIcon={<ProjectIcon />}
+                    variant="outline"
+                    as="a"
+                >
+                    Try online configurator
+                </Button>
+            </Link>
             <Blob1
                 className={classes['blob']}
                 width="50vw"
@@ -163,7 +166,15 @@ const Home = () => (
             alignItems="flex-start"
             maxHeight="auto"
         >
-            <Flex marginBottom="5" justifyContent="center" alignItems="center">
+            <Flex
+                flexDirection={{
+                    base: 'column',
+                    sm: 'row',
+                }}
+                marginBottom="5"
+                alignItems="center"
+                width="100%"
+            >
                 <Link passHref href="/quick-start">
                     <Button as="a" leftIcon={<ChecklistIcon />}>
                         Quick start
