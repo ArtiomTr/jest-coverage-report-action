@@ -23,6 +23,10 @@ const links: Array<LinkProps> = [
         label: 'Upgrading to v2',
         href: '/migrate',
     },
+    {
+        label: 'Configuration',
+        href: '/configuration',
+    },
 ];
 
 const App = ({ Component, pageProps }: AppProps) => (
