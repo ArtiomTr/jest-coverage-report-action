@@ -1,5 +1,8 @@
 {
     "editor.codeActionsOnSave": {
         "source.fixAll": true
+    },
+    "files.associations": {
+        "*.md": "mdx"
     }
 }
