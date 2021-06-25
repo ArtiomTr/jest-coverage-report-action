@@ -39,6 +39,8 @@ declare module '@mdx-js/react' {
             children: React.ReactNode;
         }>;
     } & {
+        [key: string]: React.ComponentType;
+    } & {
         a?: React.ComponentType<{ href: string }>;
         h1?: React.ComponentType<HeadingProps>;
         h2?: React.ComponentType<HeadingProps>;

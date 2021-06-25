@@ -11,6 +11,7 @@ import React from 'react';
 import { Code } from './Code';
 import { MarkdownHeading } from './MarkdownHeading';
 import { MdLink } from './MdLink';
+import { ResponsiveImage } from '../ResponsiveImage';
 
 export const components: Components = {
     h1: (props) => <MarkdownHeading as="h1" size="2xl" {...props} />,
@@ -25,5 +26,11 @@ export const components: Components = {
     a: MdLink,
     p: Text,
     code: Code,
-    inlineCode: (props) => <ChakraInlineCode {...props} />,
+    inlineCode: (props) => (
+        <ChakraInlineCode
+            fontSize="var(--children-font-size, var(--chakra-fontSizes-sm))"
+            {...props}
+        />
+    ),
+    ResponsiveImage,
 };

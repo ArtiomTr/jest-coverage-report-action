@@ -50,7 +50,7 @@ export const Header = ({ links }: HeaderProps) => {
                     display="flex"
                     maxW="container.lg"
                 >
-                    <Link href="/">
+                    <Link href="/" passHref>
                         <Logo
                             className={classes['logo']}
                             color="var(--chakra-colors-brand-600)"
