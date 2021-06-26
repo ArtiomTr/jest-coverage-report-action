@@ -45,7 +45,7 @@ jobs:
             CI_JOB_NUMBER: 1
         steps:
             - uses: actions/checkout@v1
-            - uses: artiomtr/jest-coverage-report-action@v1.3
+            - uses: artiomtr/jest-coverage-report-action@v2.0-rc.1
               with:
                   github-token: ${{ secrets.GITHUB_TOKEN }}
                   #   threshold: 80 # optional parameter
