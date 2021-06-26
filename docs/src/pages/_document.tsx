@@ -22,6 +22,11 @@ export default class CustomDocument extends Document {
                         name="google-site-verification"
                         content="e75fzjan1n2eI93J4_tO7zpyk-Bz1MFqalr4okHe7e8"
                     />
+                    <script
+                        async
+                        src="https://www.googletagmanager.com/gtag/js?id=G-BT9580VG7N"
+                    ></script>
+                    <script src="/analytics.js" />
                 </Head>
                 <body>
                     <Main />
