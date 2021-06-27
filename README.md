@@ -41,8 +41,6 @@ on:
 jobs:
     coverage:
         runs-on: ubuntu-latest
-        env:
-            CI_JOB_NUMBER: 1
         steps:
             - uses: actions/checkout@v1
             - uses: artiomtr/jest-coverage-report-action@v2.0-rc.1
