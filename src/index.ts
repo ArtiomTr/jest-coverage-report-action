@@ -16,10 +16,7 @@ import { FailReason, Report } from './typings/Report';
 
 async function run() {
     try {
-        const {
-            payload: { pull_request },
-            repo,
-        } = context;
+        const { payload: { pull_request } = {}, repo } = context;
 
         const {
             token,

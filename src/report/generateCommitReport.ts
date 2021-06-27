@@ -23,7 +23,7 @@ export const generateCommitReport = async (
             dir
         );
 
-        await octokit.rest.repos.createCommitComment({
+        await octokit.repos.createCommitComment({
             ...repo,
             commit_sha: context.sha,
             body: reportBody,
