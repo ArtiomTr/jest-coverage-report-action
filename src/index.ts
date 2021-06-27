@@ -9,9 +9,10 @@ import { formatCoverageAnnotations } from './format/annotations/formatCoverageAn
 import { formatFailedTestsAnnotations } from './format/annotations/formatFailedTestsAnnotations';
 import { Icons } from './format/Icons';
 import { icons } from './format/strings.json';
-import { generateReport } from './report/generateReport';
+import { generateCommitReport } from './report/generateCommitReport';
+import { generatePRReport } from './report/generatePRReport';
 import { getOptions } from './typings/Options';
-import { FailReason } from './typings/Report';
+import { FailReason, Report } from './typings/Report';
 
 async function run() {
     try {
@@ -19,12 +20,6 @@ async function run() {
             payload: { pull_request },
             repo,
         } = context;
-
-        if (!pull_request) {
-            throw new Error(
-                'jest-coverage-report-action supports only pull requests'
-            );
-        }
 
         const {
             token,
@@ -39,6 +34,8 @@ async function run() {
 
         const octokit = getOctokit(token);
 
+        const isInPR = context.eventName === 'pull_request';
+
         const [headReport, jsonReport] = await collectCoverage(
             testScript,
             packageManager,
@@ -46,13 +43,20 @@ async function run() {
             undefined,
             workingDirectory
         );
-        const [baseReport] = await collectCoverage(
-            testScript,
-            packageManager,
-            skipStep,
-            pull_request.base.ref,
-            workingDirectory
-        );
+
+        let baseReport: Report | undefined = undefined;
+
+        if (isInPR && pull_request) {
+            const [generatedBaseReport] = await collectCoverage(
+                testScript,
+                packageManager,
+                skipStep,
+                pull_request.base.ref,
+                workingDirectory
+            );
+
+            baseReport = generatedBaseReport;
+        }
 
         if (
             threshold !== undefined &&
@@ -108,16 +112,31 @@ async function run() {
             }
         }
 
-        await generateReport(
-            (icons as Record<string, Icons>)[iconType],
-            headReport,
-            baseReport,
-            threshold,
-            repo,
-            pull_request,
-            octokit,
-            workingDirectory
-        );
+        if (isInPR && baseReport && pull_request) {
+            await generatePRReport(
+                (icons as Record<string, Icons>)[iconType],
+                headReport,
+                baseReport,
+                threshold,
+                repo,
+                pull_request,
+                octokit,
+                workingDirectory
+            );
+        } else if (!isInPR) {
+            await generateCommitReport(
+                (icons as Record<string, Icons>)[iconType],
+                headReport,
+                threshold,
+                repo,
+                octokit,
+                workingDirectory
+            );
+        } else {
+            throw new Error(
+                'Something went wrong! Looks like action runs in PR, but report for the base branch or pull_request information is missing!'
+            );
+        }
     } catch (error) {
         setFailed(error.message);
     }
