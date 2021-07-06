@@ -1,0 +1,7 @@
+{
+    "stages": {
+        "collect": {
+            "begin": "Collecting coverage..."
+        }
+    }
+}
