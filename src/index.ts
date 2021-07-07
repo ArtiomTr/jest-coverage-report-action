@@ -1,3 +1,4 @@
+import { setFailed } from '@actions/core';
 import { context, getOctokit } from '@actions/github';
 
 import { createCoverageAnnotations } from './annotations/createCoverageAnnotations';
@@ -12,6 +13,7 @@ import { switchBranch } from './stages/switchBranch';
 import { JsonReport } from './typings/JsonReport';
 import { getOptions } from './typings/Options';
 import { createDataCollector } from './utils/DataCollector';
+import { i18n } from './utils/i18n';
 import { runStage } from './utils/runStage';
 
 async function run() {
@@ -137,6 +139,10 @@ async function run() {
             formatCoverageAnnotations(coverageAnnotations)
         );
     });
+
+    if (dataCollector.error.length > 0) {
+        setFailed(i18n('failed'));
+    }
 }
 
 run();
