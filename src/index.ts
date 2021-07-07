@@ -140,7 +140,7 @@ async function run() {
         );
     });
 
-    if (dataCollector.error.length > 0) {
+    if (dataCollector.get().errors.length > 0) {
         setFailed(i18n('failed'));
     }
 }
