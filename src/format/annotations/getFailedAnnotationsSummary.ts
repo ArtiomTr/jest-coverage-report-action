@@ -1,15 +1,14 @@
 import { JsonReport } from '../../typings/JsonReport';
-import { insertArgs } from '../insertArgs';
-import { testsFailSummary, testsSuccessSummary } from '../strings.json';
+import { i18n } from '../../utils/i18n';
 
 export const getFailedAnnotationsSummary = (jsonReport: JsonReport) =>
     jsonReport.success
-        ? insertArgs(testsSuccessSummary, {
+        ? i18n('testsSuccessSummary', {
               numPassedTests: jsonReport.numPassedTests,
               numPassedTestSuites: jsonReport.numPassedTestSuites,
               ending: jsonReport.numPassedTestSuites > 1 ? 's' : '',
           })
-        : insertArgs(testsFailSummary, {
+        : i18n('testsFailSummary', {
               numFailedTests: jsonReport.numFailedTests,
               numTotalTests: jsonReport.numTotalTests,
               numFailedTestSuites: jsonReport.numFailedTestSuites,

@@ -1,39 +1,30 @@
 import { formatCoverageDetailsPart } from './formatCoverageDetailsPart';
+import { getDecreasedCoverage } from './getDecreasedCoverage';
+import { getNewFilesCoverage } from './getNewFilesCoverage';
 import { CoverageDetailsMap } from '../../typings/Coverage';
-import { getDecreasedCoverage } from '../getters/getDecreasedCoverage';
-import { getNewFilesCoverage } from '../getters/getNewFilesCoverage';
-import { Icons } from '../Icons';
-import { insertArgs } from '../insertArgs';
-import { details } from '../strings.json';
+import { i18n } from '../../utils/i18n';
 
 export const formatCoverageDetails = (
-    icons: Icons,
     headDetails: CoverageDetailsMap,
-    baseDetails: CoverageDetailsMap,
+    baseDetails: CoverageDetailsMap | undefined,
     threshold: number | undefined
 ): string => {
     const decreasedCoverage = getDecreasedCoverage(headDetails, baseDetails);
 
     return [
         formatCoverageDetailsPart(
-            icons,
             {
-                ...details.newFiles,
-                summary: insertArgs(details.newFiles.summary, {
-                    new: icons.new,
-                }),
+                heading: i18n('details.newFiles.heading'),
+                summary: i18n('details.newFiles.summary'),
             },
             getNewFilesCoverage(headDetails, baseDetails),
             undefined,
             threshold
         ),
         formatCoverageDetailsPart(
-            icons,
             {
-                ...details.decreasedCoverageFiles,
-                summary: insertArgs(details.decreasedCoverageFiles.summary, {
-                    decreaseIcon: icons.decreaseIcon,
-                }),
+                heading: i18n('details.decreasedCoverageFiles.heading'),
+                summary: i18n('details.decreasedCoverageFiles.summary'),
             },
             decreasedCoverage.headDetails,
             decreasedCoverage.baseDetails,

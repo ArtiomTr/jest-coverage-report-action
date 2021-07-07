@@ -1,12 +1,8 @@
-import { Icons } from '../Icons';
+import { i18n } from '../../utils/i18n';
 
 const DEFAULT_STEP = 20;
 
-export const getStatusOfPercents = (
-    icons: Icons,
-    percentage: number,
-    threshold = 60
-) => {
+export const getStatusOfPercents = (percentage: number, threshold = 60) => {
     let step = DEFAULT_STEP;
 
     if (threshold > 100 - DEFAULT_STEP * 2) {
@@ -14,10 +10,10 @@ export const getStatusOfPercents = (
     }
 
     if (percentage < threshold) {
-        return icons.coverageBad;
+        return i18n(':red_circle:');
     } else if (percentage < threshold + step) {
-        return icons.coverageNormal;
+        return i18n(':yellow_circle:');
     } else {
-        return icons.coverageGood;
+        return i18n(':green_circle:');
     }
 };

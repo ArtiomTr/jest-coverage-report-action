@@ -1,8 +1,8 @@
 import { readFile } from 'fs-extra';
 
-import { REPORT_PATH } from './constants/REPORT_PATH';
-import { FailReason } from './typings/Report';
-import { joinPaths } from './joinPaths';
+import { REPORT_PATH } from '../constants/REPORT_PATH';
+import { FailReason } from '../typings/Report';
+import { joinPaths } from '../utils/joinPaths';
 
 export const collectCoverage = async (workingDirectory?: string) => {
     try {

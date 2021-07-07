@@ -1,4 +1,4 @@
-{{ head }}
+{{ tag }}
 
 ## Coverage report {{ dir }}
 

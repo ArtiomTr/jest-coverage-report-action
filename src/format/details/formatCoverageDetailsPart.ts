@@ -2,10 +2,7 @@ import markdownTable from 'markdown-table';
 
 import { getFileCoverageDetailRow } from './getFileCoverageDetailRow';
 import { CoverageDetailsMap } from '../../typings/Coverage';
-import { Icons } from '../Icons';
-import { insertArgs } from '../insertArgs';
-import { details } from '../strings.json';
-import { hint } from '../strings.json';
+import { i18n } from '../../utils/i18n';
 import { createMarkdownSpoiler } from '../utils/createMarkdownSpoiler';
 import { formatTable } from '../utils/formatTable';
 
@@ -15,7 +12,6 @@ export type DetailsFormatOptions = {
 };
 
 export const formatCoverageDetailsPart = (
-    icons: Icons,
     formatOptions: DetailsFormatOptions,
     headDetails: CoverageDetailsMap,
     baseDetails?: CoverageDetailsMap,
@@ -25,7 +21,6 @@ export const formatCoverageDetailsPart = (
 
     const tableContent = Object.keys(headDetails).map((filename) =>
         getFileCoverageDetailRow(
-            icons,
             filename,
             headDetails[filename],
             baseDetails?.[filename],
@@ -37,14 +32,23 @@ export const formatCoverageDetailsPart = (
         return createMarkdownSpoiler({
             body: formatTable(
                 heading,
-                markdownTable([details.columnHeaders, ...tableContent], {
-                    align: details.columnAlignment,
-                }),
-                insertArgs(hint, {
-                    coverageGood: icons.coverageGood,
-                    coverageNormal: icons.coverageNormal,
-                    coverageBad: icons.coverageBad,
-                })
+                markdownTable(
+                    [
+                        [
+                            i18n('status'),
+                            i18n('filename'),
+                            i18n('statements'),
+                            i18n('branches'),
+                            i18n('function'),
+                            i18n('lines'),
+                        ],
+                        ...tableContent,
+                    ],
+                    {
+                        align: ['c', 'l', 'l', 'l', 'l', 'l'],
+                    }
+                ),
+                i18n('hint')
             ),
             summary,
         });

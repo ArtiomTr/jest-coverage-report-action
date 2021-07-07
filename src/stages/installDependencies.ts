@@ -1,8 +1,8 @@
 import { exec } from '@actions/exec';
 import { rmdir } from 'fs-extra';
 
-import { PackageManagerType } from './typings/Options';
-import { joinPaths } from './joinPaths';
+import { PackageManagerType } from '../typings/Options';
+import { joinPaths } from '../utils/joinPaths';
 
 export const installDependencies = async (
     packageManager: PackageManagerType = 'npm',

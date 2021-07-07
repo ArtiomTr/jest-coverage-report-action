@@ -1,8 +1,6 @@
-import { JsonReport } from './typings/JsonReport';
-import { DataCollector } from './DataCollector';
-import { i18n } from './i18n';
+import { i18n } from '../utils/i18n';
 
-const formatErrors = (errors: Array<string | Error>) => {
+export const formatErrors = (errors: Array<string | Error>) => {
     if (errors.length === 0) {
         return '';
     }
@@ -40,12 +38,4 @@ const formatErrors = (errors: Array<string | Error>) => {
                 .join('\n'),
         })
     );
-};
-
-export const createReport = (
-    dataCollector: DataCollector<JsonReport>
-): string => {
-    const { errors } = dataCollector.get();
-
-    const formattedErrors = formatErrors(errors);
 };

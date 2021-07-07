@@ -1,5 +1,5 @@
-import { JsonReport } from './typings/JsonReport';
-import { FailReason } from './typings/Report';
+import { JsonReport } from '../typings/JsonReport';
+import { FailReason } from '../typings/Report';
 
 export const parseCoverage = (src: string): JsonReport => {
     try {

@@ -1,3 +1,5 @@
+import { getSummary } from './getSummary';
+import { JsonReport } from '../../typings/JsonReport';
 import {
     coveredBranchesCounter,
     coveredLinesCounter,
@@ -5,9 +7,7 @@ import {
     standardTotalCounter,
     totalBranchesCounter,
     totalLinesCounter,
-} from './counters';
-import { getSummary } from './getSummary';
-import { JsonReport } from '../typings/JsonReport';
+} from '../counters';
 
 export const parseSummary = (jsonReport: JsonReport) => {
     return [

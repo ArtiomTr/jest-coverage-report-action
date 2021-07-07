@@ -1,15 +1,15 @@
-import { JsonReport } from './typings/JsonReport';
+import { collectCoverage } from './collectCoverage';
+import { installDependencies } from './installDependencies';
+import { parseCoverage } from './parseCoverage';
+import { runTest } from './runTest';
+import { JsonReport } from '../typings/JsonReport';
 import {
     Options,
     shouldInstallDeps,
     shouldRunTestScript,
-} from './typings/Options';
-import { collectCoverage } from './collectCoverage';
-import { DataCollector } from './DataCollector';
-import { installDependencies } from './installDependencies';
-import { parseCoverage } from './parseCoverage';
-import { runStage } from './runStage';
-import { runTest } from './runTest';
+} from '../typings/Options';
+import { DataCollector } from '../utils/DataCollector';
+import { runStage } from '../utils/runStage';
 
 export const getCoverage = async (
     dataCollector: DataCollector<JsonReport>,

@@ -1,5 +1,7 @@
 import { relative } from 'path';
 
+import { CoverageDetailsMap } from '../../typings/Coverage';
+import { JsonReport } from '../../typings/JsonReport';
 import {
     coveredBranchesCounter,
     coveredLinesCounter,
@@ -7,10 +9,8 @@ import {
     standardTotalCounter,
     totalBranchesCounter,
     totalLinesCounter,
-} from './counters';
-import { getPercents } from './getPercents';
-import { CoverageDetailsMap } from '../typings/Coverage';
-import { JsonReport } from '../typings/JsonReport';
+} from '../counters';
+import { getPercents } from '../getPercents';
 
 export const parseDetails = (jsonReport: JsonReport) => {
     return Object.entries(jsonReport.coverageMap).reduce<CoverageDetailsMap>(

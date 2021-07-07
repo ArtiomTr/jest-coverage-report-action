@@ -7,13 +7,13 @@ const coverageLessThan = (first: CoverageDetail, second: CoverageDetail) =>
 
 export const getDecreasedCoverage = (
     headDetails: CoverageDetailsMap,
-    baseDetails: CoverageDetailsMap
+    baseDetails: CoverageDetailsMap | undefined
 ) =>
     Object.keys(headDetails)
         .filter(
             (filename) =>
                 headDetails[filename] &&
-                baseDetails[filename] &&
+                baseDetails?.[filename] &&
                 coverageLessThan(headDetails[filename], baseDetails[filename])
         )
         .reduce<{
@@ -22,7 +22,7 @@ export const getDecreasedCoverage = (
         }>(
             (acc, filename) => {
                 acc.headDetails[filename] = headDetails[filename];
-                acc.baseDetails[filename] = baseDetails[filename];
+                acc.baseDetails[filename] = baseDetails![filename];
                 return acc;
             },
             { headDetails: {}, baseDetails: {} }

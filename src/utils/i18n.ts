@@ -1,8 +1,8 @@
 import { getInput } from '@actions/core';
 import get from 'lodash/get';
 
-import { insertArgs } from './format/insertArgs';
-import strings from './strings.json';
+import { insertArgs } from '../format/insertArgs';
+import strings from '../format/strings.json';
 
 const iconRegex = /:(\w+):/g;
 

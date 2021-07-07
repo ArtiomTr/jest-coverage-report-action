@@ -1,7 +1,12 @@
 import { decimalToString } from './decimalToString';
-import { Icons } from '../Icons';
+import { i18n } from '../../utils/i18n';
 
-export const formatPercentageDelta = (delta: number, icons: Icons): string =>
-    delta > 0
-        ? `(+${decimalToString(delta)}% ${icons.increaseIcon})`
-        : `(${decimalToString(delta)}% ${icons.decreaseIcon})`;
+export const formatPercentageDelta = (delta: number): string =>
+    i18n(
+        delta > 0
+            ? `(+{{ delta }}% :arrow_up_small:)`
+            : `(-{{ delta }}% :small_red_triangle_down:)`,
+        {
+            delta: decimalToString(delta),
+        }
+    );

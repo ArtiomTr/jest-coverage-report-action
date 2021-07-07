@@ -55,14 +55,7 @@
         "fileNotFound": "Coverage output file not found. (file \"{{ coveragePath }}\" not found)"
     },
     "summary": {
-        "heading": "Total coverage",
-        "columnHeaders": [
-            "Status",
-            "Category",
-            "Percentage",
-            "Covered / Total"
-        ],
-        "columnAlignment": ["c", "l", "l", "c"]
+        "heading": "Total coverage"
     },
     "details": {
         "newFiles": {
@@ -72,15 +65,6 @@
         "decreasedCoverageFiles": {
             "summary": "Show files with reduced coverage {{ decreaseIcon }}",
             "heading": "Reduced coverage"
-        },
-        "columnHeaders": [
-            "Status",
-            "Filename",
-            "Statements",
-            "Branches",
-            "Functions",
-            "Lines"
-        ],
-        "columnAlignment": ["c", "l", "l", "l", "l", "l"]
+        }
     }
 }
