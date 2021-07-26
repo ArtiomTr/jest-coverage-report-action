@@ -17,47 +17,31 @@ export const coveredBranchesCounter = (value: FileCoverage) =>
         0
     );
 
-const lineDiff = (startLine: number, endLine: number, lastEndLine: number) =>
-    Math.max(endLine - Math.max(startLine, lastEndLine), 0);
-
 export const totalLinesCounter = (value: FileCoverage) => {
-    let lastEndLine = 0;
-
-    return Object.values(value.statementMap).reduce((acc, statement) => {
-        const newLines = lineDiff(
-            statement.start.line,
-            statement.end.line,
-            lastEndLine
-        );
-
-        lastEndLine = Math.max(statement.end.line, lastEndLine);
-
-        return acc + newLines;
-    }, 0);
+    const stats: Record<string, number> = getLineCoverage(value);
+    return Object.keys(stats).length;
 };
 
 export const coveredLinesCounter = (value: FileCoverage) => {
-    let lastEndLine = 0;
+    const stats: Record<string, number> = getLineCoverage(value);
+    return Object.values(stats).filter((v) => !!v).length;
+};
 
-    const totalLines = totalLinesCounter(value);
+const getLineCoverage = (value: FileCoverage) => {
+    const statementMap = value.statementMap;
+    const statements = value.s;
 
-    const notCoveredLines = Object.entries(value.statementMap).reduce(
-        (acc, [key, statement]) => {
-            if (value.s[+key] <= 0) {
-                const newLines = lineDiff(
-                    statement.start.line,
-                    statement.end.line,
-                    lastEndLine
-                );
-                lastEndLine = Math.max(statement.end.line, lastEndLine);
+    return Object.entries(statements).reduce((acc = {}, [st, count]) => {
+        const _st: number = parseInt(st);
 
-                return acc + newLines;
-            }
-
+        if (!statementMap[_st]) {
             return acc;
-        },
-        0
-    );
-
-    return Math.max(0, totalLines - notCoveredLines);
+        }
+        const { line } = statementMap[_st].start;
+        const prevVal = acc[line];
+        if (prevVal === undefined || prevVal < count) {
+            acc[line] = count;
+        }
+        return acc;
+    }, {} as Record<string, number>);
 };
