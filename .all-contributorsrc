@@ -63,6 +63,15 @@
         "code",
         "doc"
       ]
+    },
+    {
+      "login": "jlim9333",
+      "name": "jlim9333",
+      "avatar_url": "https://avatars.githubusercontent.com/u/85653304?v=4",
+      "profile": "https://github.com/jlim9333",
+      "contributions": [
+        "code"
+      ]
     }
   ],
   "projectName": "jest-coverage-report-action",
