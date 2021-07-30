@@ -14,7 +14,8 @@ export const generatePRReport = async (
     repo: { owner: string; repo: string },
     pr: { number: number },
     octokit: ReturnType<typeof getOctokit>,
-    dir?: string
+    dir?: string,
+    customTitle?: string
 ) => {
     const previousReport = await fetchPreviousReport(octokit, repo, pr, dir);
 
@@ -24,7 +25,8 @@ export const generatePRReport = async (
             headReport,
             baseReport,
             coverageThreshold,
-            dir
+            dir,
+            customTitle
         );
 
         if (previousReport) {
