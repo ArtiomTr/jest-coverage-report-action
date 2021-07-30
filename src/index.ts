@@ -27,6 +27,7 @@ async function run() {
             annotations,
             packageManager,
             skipStep,
+            customTitle,
         } = await getOptions();
 
         const octokit = getOctokit(token);
@@ -118,7 +119,8 @@ async function run() {
                 repo,
                 pull_request,
                 octokit,
-                workingDirectory
+                workingDirectory,
+                customTitle
             );
         } else if (!isInPR) {
             await generateCommitReport(
@@ -127,7 +129,8 @@ async function run() {
                 threshold,
                 repo,
                 octokit,
-                workingDirectory
+                workingDirectory,
+                customTitle
             );
         } else {
             throw new Error(
