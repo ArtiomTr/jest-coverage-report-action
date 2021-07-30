@@ -13,7 +13,8 @@ export const getReportBody = (
     headReport: Report,
     baseReport: Report | undefined,
     coverageThreshold: number | undefined,
-    dir?: string
+    dir?: string,
+    customTitle?: string
 ) => {
     let reportContent: string;
     let failReason = headReport.failReason;
@@ -84,7 +85,7 @@ export const getReportBody = (
             context.payload.after ??
             context.payload.pull_request?.head.sha ??
             context.sha,
-        dir: dir ? `for \`${dir}\`` : '',
+        name: customTitle || (dir ? `for \`${dir}\`` : ''),
     });
 
     return reportBody;
