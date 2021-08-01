@@ -8,6 +8,7 @@ inputs:
     github-token:
         required: true
         description: 'A github access token'
+        default: ${{ github.token }}
     test-script:
         required: false
         description: 'A custom npm script to get coverage'
