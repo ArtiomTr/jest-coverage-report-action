@@ -35,5 +35,7 @@ inputs:
         description: '`none` for running all steps, `install` to skip installing dependencies or `all` to skip installing dependencies and running the test script'
         default: 'none'
 runs:
-    using: 'node12'
-    main: 'dist/index.js'
+    using: composite
+    steps:
+        - run: $GITHUB_ACTION_PATH/run.sh
+          shell: bash
