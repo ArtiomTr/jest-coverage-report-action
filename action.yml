@@ -8,6 +8,7 @@ inputs:
     github-token:
         required: true
         description: 'A github access token'
+        default: ${{ github.token }}
     test-script:
         required: false
         description: 'A custom npm script to get coverage'
@@ -35,5 +36,16 @@ inputs:
         description: '`none` for running all steps, `install` to skip installing dependencies or `all` to skip installing dependencies and running the test script'
         default: 'none'
 runs:
-    using: 'node12'
-    main: 'dist/index.js'
+    using: composite
+    steps:
+        - run: $GITHUB_ACTION_PATH/run.sh
+          shell: bash
+          env:
+              INPUT_GITHUB-TOKEN: ${{ inputs.github-token }}
+              INPUT_TEST-SCRIPT: ${{ inputs.test-script }}
+              INPUT_THRESHOLD: ${{ inputs.threshold }}
+              INPUT_WORKING-DIRECTORY: ${{ inputs.working-directory }}
+              INPUT_ICONS: ${{ inputs.icons }}
+              INPUT_ANNOTATIONS: ${{ inputs.annotations }}
+              INPUT_PACKAGE-MANAGER: ${{ inputs.package-manager }}
+              INPUT_SKIP-STEP: ${{ inputs.skip-step }}
