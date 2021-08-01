@@ -41,11 +41,11 @@ runs:
         - run: $GITHUB_ACTION_PATH/run.sh
           shell: bash
           env:
-              INPUT_GITHUB_TOKEN: ${{ inputs.github-token }}
-              INPUT_TEST_SCRIPT: ${{ inputs.test-script }}
+              INPUT_GITHUB-TOKEN: ${{ inputs.github-token }}
+              INPUT_TEST-SCRIPT: ${{ inputs.test-script }}
               INPUT_THRESHOLD: ${{ inputs.threshold }}
-              INPUT_WORKING_DIRECTORY: ${{ inputs.working-directory }}
+              INPUT_WORKING-DIRECTORY: ${{ inputs.working-directory }}
               INPUT_ICONS: ${{ inputs.icons }}
               INPUT_ANNOTATIONS: ${{ inputs.annotations }}
-              INPUT_PACKAGE_MANAGER: ${{ inputs.package-manager }}
-              INPUT_SKIP_STEP: ${{ inputs.skip-step }}
+              INPUT_PACKAGE-MANAGER: ${{ inputs.package-manager }}
+              INPUT_SKIP-STEP: ${{ inputs.skip-step }}
