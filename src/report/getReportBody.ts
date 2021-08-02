@@ -7,6 +7,7 @@ import { Icons } from '../format/Icons';
 import { insertArgs } from '../format/insertArgs';
 import REPORT from '../format/REPORT.md';
 import { FailReason, Report } from '../typings/Report';
+import strings from '../format/strings.json';
 
 export const getReportBody = (
     icons: Icons,
@@ -80,12 +81,14 @@ export const getReportBody = (
 
     const reportBody = insertArgs(REPORT, {
         head: getReportTag(dir),
+        title: insertArgs(customTitle || strings.summary.title, {
+            dir: dir ? `for \`${dir}\`` : '',
+        }),
         body: reportContent,
         sha:
             context.payload.after ??
             context.payload.pull_request?.head.sha ??
             context.sha,
-        name: customTitle || (dir ? `for \`${dir}\`` : ''),
     });
 
     return reportBody;
