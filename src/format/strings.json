@@ -55,6 +55,7 @@
         "fileNotFound": "Coverage output file not found. (file \"{{ coveragePath }}\" not found)"
     },
     "summary": {
+        "title": "Coverage report {{ dir }}",
         "heading": "Total coverage",
         "columnHeaders": [
             "Status",

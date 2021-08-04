@@ -12,7 +12,8 @@ export const generateCommitReport = async (
     coverageThreshold: number | undefined,
     repo: { owner: string; repo: string },
     octokit: ReturnType<typeof getOctokit>,
-    dir?: string
+    dir?: string,
+    customTitle?: string
 ) => {
     try {
         const reportBody = getReportBody(
@@ -20,7 +21,8 @@ export const generateCommitReport = async (
             headReport,
             undefined,
             coverageThreshold,
-            dir
+            dir,
+            customTitle
         );
 
         await octokit.repos.createCommitComment({

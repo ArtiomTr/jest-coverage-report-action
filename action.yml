@@ -35,6 +35,9 @@ inputs:
         required: false
         description: '`none` for running all steps, `install` to skip installing dependencies or `all` to skip installing dependencies and running the test script'
         default: 'none'
+    custom-title:
+        required: false
+        description: 'Sets the title of the coverage report comment in Github.'
 runs:
     using: composite
     steps:
@@ -49,3 +52,4 @@ runs:
               INPUT_ANNOTATIONS: ${{ inputs.annotations }}
               INPUT_PACKAGE-MANAGER: ${{ inputs.package-manager }}
               INPUT_SKIP-STEP: ${{ inputs.skip-step }}
+              INPUT_CUSTOM-TITLE: ${{ inputs.custom-title }}
