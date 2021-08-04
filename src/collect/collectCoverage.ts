@@ -1,3 +1,4 @@
+import { readFile } from 'fs-extra';
 import { getRawCoverage } from './getRawCoverage';
 import { parseCoverage } from './parseCoverage';
 import { parseJsonReport } from './parseJsonReport';
@@ -10,14 +11,16 @@ export const collectCoverage = async (
     packageManager: PackageManagerType,
     skipStep: SkipStepType,
     branch?: string,
-    workingDirectory?: string
+    workingDirectory?: string,
+    coverageFile?: string
 ): Promise<[Report, JsonReport | undefined]> => {
     const source = await getRawCoverage(
         testCommand,
         packageManager,
         skipStep,
         branch,
-        workingDirectory
+        workingDirectory,
+        coverageFile
     );
 
     if (typeof source !== 'string') {

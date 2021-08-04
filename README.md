@@ -106,6 +106,21 @@ with:
     package-manager: yarn
 ```
 
+## Use existing test report(s)
+
+To bypass running unit tests, you can pass the filepath to the current report.json
+
+```yml
+with:
+    coverage-file: ./coverage/report.json
+    base-coverage-file: ./coverage/master/report.json
+```
+
+-   `coverage-file` is the filepath to the JSON coverage report for the current pull request.
+-   `base-coverage-file` is the filepath to the JSON coverage report from the branch your pull request is merging into.
+
+For example, you can save every test run to an artifact and then download and reference them here.
+
 ## Skipping steps
 
 By default, this action will install dependencies and run the tests for you, generating the coverage report. Alternatively, you can skip these steps using the `skip-step` option.
