@@ -19,6 +19,8 @@ export type Options = {
     packageManager: PackageManagerType;
     skipStep: SkipStepType;
     customTitle?: string;
+    coverageFile?: string;
+    baseCoverageFile?: string;
 };
 
 const validAnnotationOptions: Array<AnnotationType> = [
@@ -48,6 +50,8 @@ const optionSchema = yup.object().shape({
     packageManager: yup.string().required().oneOf(packageManagerOptions),
     skipStep: yup.string().required().oneOf(validSkipStepOptions),
     customTitle: yup.string(),
+    coverageFile: yup.string(),
+    baseCoverageFile: yup.string(),
 });
 
 export const getOptions = async (): Promise<Options> => {
@@ -63,6 +67,8 @@ export const getOptions = async (): Promise<Options> => {
     const packageManager = getInput('package-manager');
     const skipStep = getInput('skip-step');
     const customTitle = getInput('custom-title');
+    const coverageFile = getInput('coverage-file');
+    const baseCoverageFile = getInput('base-coverage-file');
 
     try {
         const options: Options = (await optionSchema.validate({
@@ -74,7 +80,9 @@ export const getOptions = async (): Promise<Options> => {
             annotations,
             packageManager,
             skipStep,
-            customTitle
+            customTitle,
+            coverageFile,
+            baseCoverageFile,
         })) as Options;
 
         return options;

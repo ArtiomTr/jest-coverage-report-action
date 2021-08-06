@@ -28,6 +28,8 @@ async function run() {
             packageManager,
             skipStep,
             customTitle,
+            coverageFile,
+            baseCoverageFile,
         } = await getOptions();
 
         const octokit = getOctokit(token);
@@ -39,7 +41,8 @@ async function run() {
             packageManager,
             skipStep,
             undefined,
-            workingDirectory
+            workingDirectory,
+            coverageFile
         );
 
         let baseReport: Report | undefined = undefined;
@@ -50,7 +53,8 @@ async function run() {
                 packageManager,
                 skipStep,
                 pull_request.base.ref,
-                workingDirectory
+                workingDirectory,
+                baseCoverageFile
             );
 
             baseReport = generatedBaseReport;
