@@ -4,22 +4,14 @@ import { getFileCoverageDetailRow } from './getFileCoverageDetailRow';
 import { CoverageDetailsMap } from '../../typings/Coverage';
 import { i18n } from '../../utils/i18n';
 import { createMarkdownSpoiler } from '../utils/createMarkdownSpoiler';
-import { formatTable } from '../utils/formatTable';
 import { withExplanation } from '../utils/withExplanation';
 
-export type DetailsFormatOptions = {
-    summary: string;
-    heading: string;
-};
-
 export const formatCoverageDetailsPart = (
-    formatOptions: DetailsFormatOptions,
+    summary: string,
     headDetails: CoverageDetailsMap,
     baseDetails?: CoverageDetailsMap,
     threshold?: number
 ): string | undefined => {
-    const { summary, heading } = formatOptions;
-
     const tableContent = Object.keys(headDetails).map((filename) =>
         getFileCoverageDetailRow(
             filename,
@@ -31,27 +23,24 @@ export const formatCoverageDetailsPart = (
 
     if (tableContent.length > 0) {
         return createMarkdownSpoiler({
-            body: formatTable(
-                heading,
-                markdownTable(
+            body: markdownTable(
+                [
                     [
-                        [
-                            withExplanation(
-                                i18n('status'),
-                                i18n('statusExplanation')
-                            ),
-                            i18n('filename'),
-                            i18n('statements'),
-                            i18n('branches'),
-                            i18n('function'),
-                            i18n('lines'),
-                        ],
-                        ...tableContent,
+                        withExplanation(
+                            i18n('status'),
+                            i18n('statusExplanation')
+                        ),
+                        i18n('filename'),
+                        i18n('statements'),
+                        i18n('branches'),
+                        i18n('functions'),
+                        i18n('lines'),
                     ],
-                    {
-                        align: ['c', 'l', 'l', 'l', 'l', 'l'],
-                    }
-                )
+                    ...tableContent,
+                ],
+                {
+                    align: ['c', 'l', 'l', 'l', 'l', 'l'],
+                }
             ),
             summary,
         });

@@ -7,7 +7,7 @@
             "green_circle": "🟢",
             "yellow_circle": "🟡",
             "red_circle": "🔴",
-            "new": "🆕",
+            "hatching_chick": "🐣",
             "joystick": "🕹️",
             "herb": "🌿",
             "receipt": "🧾"
@@ -19,7 +19,7 @@
             "green_circle": "(+)",
             "yellow_circle": "(~)",
             "red_circle": "(-)",
-            "new": "[NEW]",
+            "hatching_chick": "[NEW]",
             "joystick": "",
             "herb": "",
             "receipt": ""
@@ -31,7 +31,7 @@
             "green_circle": "(+)",
             "yellow_circle": "(~)",
             "red_circle": "(-)",
-            "new": "[NEW]",
+            "hatching_chick": "[NEW]",
             "joystick": "",
             "herb": "",
             "receipt": ""
@@ -46,6 +46,7 @@
     "branches": "Branches",
     "functions": "Functions",
     "lines": "Lines",
+    "filename": "File",
     "notCoveredStatementTitle": ":receipt: Statement is not covered",
     "notCoveredStatementMessage": "Warning! Not covered statement",
     "notCoveredBranchTitle": ":herb: Branch is not covered",
@@ -72,14 +73,7 @@
         "fileNotFound": "Coverage output file not found. (file \"{{ coveragePath }}\" not found)",
         "multiple": "Multiple errors occured"
     },
-    "details": {
-        "newFiles": {
-            "summary": "Show new covered files :new:",
-            "heading": "Coverage of new files"
-        },
-        "decreasedCoverageFiles": {
-            "summary": "Show files with reduced coverage :small_red_triangle_down:",
-            "heading": "Reduced coverage"
-        }
-    }
+    "summaryTitle": "Coverage report {{ dir }}",
+    "newFilesCoverage": "Show new covered files :hatching_chick:",
+    "decreasedCoverageFiles": "Show files with reduced coverage :small_red_triangle_down:"
 }

@@ -13,19 +13,13 @@ export const formatCoverageDetails = (
 
     return [
         formatCoverageDetailsPart(
-            {
-                heading: i18n('details.newFiles.heading'),
-                summary: i18n('details.newFiles.summary'),
-            },
+            i18n('newFilesCoverage'),
             getNewFilesCoverage(headDetails, baseDetails),
             undefined,
             threshold
         ),
         formatCoverageDetailsPart(
-            {
-                heading: i18n('details.decreasedCoverageFiles.heading'),
-                summary: i18n('details.decreasedCoverageFiles.summary'),
-            },
+            i18n('decreasedCoverageFiles'),
             decreasedCoverage.headDetails,
             decreasedCoverage.baseDetails,
             threshold
