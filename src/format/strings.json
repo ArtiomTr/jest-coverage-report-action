@@ -40,7 +40,7 @@
     "testsFailSummary": "Failed tests: {{ numFailedTests }}/{{ numTotalTests }}. Failed suites: {{ numFailedTestSuites }}/{{ numTotalTestSuites }}.",
     "testsSuccessSummary": "{{ numPassedTests }} tests passing in {{ numPassedTestSuites }} suite{{ ending }}.",
     "coveredCheckName": "Coverage annotations (🧪 jest-coverage-report-action)",
-    "failedTestsCheckName": "Tests' annotations (🧪 jest-coverage-report-action)",
+    "failedTestsCheckName": "Tests annotations (🧪 jest-coverage-report-action)",
     "coverageTitle": "Coverage report annotations",
     "coverageOk": "✔ Coverage is good {{ coverage }}%",
     "coverageFail": "❌ Coverage is under threshold - {{ coverage }}%, threshold {{ threshold }}%",
@@ -55,7 +55,15 @@
         "fileNotFound": "Coverage output file not found. (file \"{{ coveragePath }}\" not found)"
     },
     "summary": {
-        "heading": "Total coverage"
+        "title": "Coverage report {{ dir }}",
+        "heading": "Total coverage",
+        "columnHeaders": [
+            "Status",
+            "Category",
+            "Percentage",
+            "Covered / Total"
+        ],
+        "columnAlignment": ["c", "l", "l", "c"]
     },
     "details": {
         "newFiles": {

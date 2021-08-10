@@ -93,7 +93,7 @@ export const PrFooter = ({ className }: PrFooterProps) => {
                             </CheckItem>
                             <CheckItem last>
                                 <Text ml="2" fontSize="sm">
-                                    coverage / Tests' annotations (🧪
+                                    coverage / Tests annotations (🧪
                                     jest-coverage-report-action) (p...
                                 </Text>
                             </CheckItem>

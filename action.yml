@@ -8,6 +8,7 @@ inputs:
     github-token:
         required: true
         description: 'A github access token'
+        default: ${{ github.token }}
     test-script:
         required: false
         description: 'A custom npm script to get coverage'
@@ -34,6 +35,29 @@ inputs:
         required: false
         description: '`none` for running all steps, `install` to skip installing dependencies or `all` to skip installing dependencies and running the test script'
         default: 'none'
+    custom-title:
+        required: false
+        description: 'Sets the title of the coverage report comment in Github.'
+    coverage-file:
+        required: false
+        description: Path to file the a previously generated report.json file. (bypasses running the test again)
+    base-coverage-file:
+        required: false
+        description: Path to the report.json file to compare against. This should be from the branch the PR is merging into.
 runs:
-    using: 'node12'
-    main: 'dist/index.js'
+    using: composite
+    steps:
+        - run: $GITHUB_ACTION_PATH/run.sh
+          shell: bash
+          env:
+              INPUT_GITHUB-TOKEN: ${{ inputs.github-token }}
+              INPUT_TEST-SCRIPT: ${{ inputs.test-script }}
+              INPUT_THRESHOLD: ${{ inputs.threshold }}
+              INPUT_WORKING-DIRECTORY: ${{ inputs.working-directory }}
+              INPUT_ICONS: ${{ inputs.icons }}
+              INPUT_ANNOTATIONS: ${{ inputs.annotations }}
+              INPUT_PACKAGE-MANAGER: ${{ inputs.package-manager }}
+              INPUT_SKIP-STEP: ${{ inputs.skip-step }}
+              INPUT_CUSTOM-TITLE: ${{ inputs.custom-title }}
+              INPUT_COVERAGE-FILE: ${{ inputs.coverage-file }}
+              INPUT_BASE-COVERAGE-FILE: ${{ inputs.base-coverage-file }}

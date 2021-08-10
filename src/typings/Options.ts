@@ -18,6 +18,9 @@ export type Options = {
     workingDirectory?: string;
     packageManager: PackageManagerType;
     skipStep: SkipStepType;
+    customTitle?: string;
+    coverageFile?: string;
+    baseCoverageFile?: string;
 };
 
 const validAnnotationOptions: Array<AnnotationType> = [
@@ -46,6 +49,9 @@ const optionSchema = yup.object().shape({
     workingDirectory: yup.string(),
     packageManager: yup.string().required().oneOf(packageManagerOptions),
     skipStep: yup.string().required().oneOf(validSkipStepOptions),
+    customTitle: yup.string(),
+    coverageFile: yup.string(),
+    baseCoverageFile: yup.string(),
 });
 
 export const shouldInstallDeps = (skipStep: SkipStepType): Boolean =>
@@ -66,6 +72,9 @@ export const getOptions = async (): Promise<Options> => {
     const annotations = getInput('annotations');
     const packageManager = getInput('package-manager');
     const skipStep = getInput('skip-step');
+    const customTitle = getInput('custom-title');
+    const coverageFile = getInput('coverage-file');
+    const baseCoverageFile = getInput('base-coverage-file');
 
     try {
         const options: Options = (await optionSchema.validate({
@@ -77,6 +86,9 @@ export const getOptions = async (): Promise<Options> => {
             annotations,
             packageManager,
             skipStep,
+            customTitle,
+            coverageFile,
+            baseCoverageFile,
         })) as Options;
 
         return options;

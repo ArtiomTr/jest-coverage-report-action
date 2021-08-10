@@ -106,6 +106,21 @@ with:
     package-manager: yarn
 ```
 
+## Use existing test report(s)
+
+To bypass running unit tests, you can pass the filepath to the current report.json
+
+```yml
+with:
+    coverage-file: ./coverage/report.json
+    base-coverage-file: ./coverage/master/report.json
+```
+
+-   `coverage-file` is the filepath to the JSON coverage report for the current pull request.
+-   `base-coverage-file` is the filepath to the JSON coverage report from the branch your pull request is merging into.
+
+For example, you can save every test run to an artifact and then download and reference them here.
+
 ## Skipping steps
 
 By default, this action will install dependencies and run the tests for you, generating the coverage report. Alternatively, you can skip these steps using the `skip-step` option.
@@ -141,6 +156,12 @@ Jest Coverage Report action is made with <3 thanks to these wonderful people
     <td align="center"><a href="http://adamtuttle.codes"><img src="https://avatars.githubusercontent.com/u/46990?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Adam Tuttle</b></sub></a><br /><a href="https://github.com/ArtiomTr/jest-coverage-report-action/commits?author=atuttle" title="Code">💻</a></td>
     <td align="center"><a href="https://github.com/dadayama"><img src="https://avatars.githubusercontent.com/u/6773164?v=4?s=100" width="100px;" alt=""/><br /><sub><b>dadayama</b></sub></a><br /><a href="https://github.com/ArtiomTr/jest-coverage-report-action/commits?author=dadayama" title="Code">💻</a></td>
     <td align="center"><a href="http://bluelovers.net"><img src="https://avatars.githubusercontent.com/u/167966?v=4?s=100" width="100px;" alt=""/><br /><sub><b>bluelovers</b></sub></a><br /><a href="https://github.com/ArtiomTr/jest-coverage-report-action/commits?author=bluelovers" title="Documentation">📖</a></td>
+    <td align="center"><a href="https://github.com/gdelahodde-masteos"><img src="https://avatars.githubusercontent.com/u/83218823?v=4?s=100" width="100px;" alt=""/><br /><sub><b>gdelahodde-masteos</b></sub></a><br /><a href="https://github.com/ArtiomTr/jest-coverage-report-action/commits?author=gdelahodde-masteos" title="Code">💻</a> <a href="https://github.com/ArtiomTr/jest-coverage-report-action/commits?author=gdelahodde-masteos" title="Documentation">📖</a></td>
+    <td align="center"><a href="https://github.com/jlim9333"><img src="https://avatars.githubusercontent.com/u/85653304?v=4?s=100" width="100px;" alt=""/><br /><sub><b>jlim9333</b></sub></a><br /><a href="https://github.com/ArtiomTr/jest-coverage-report-action/commits?author=jlim9333" title="Code">💻</a></td>
+  </tr>
+  <tr>
+    <td align="center"><a href="http://blog.mozmonkey.com"><img src="https://avatars.githubusercontent.com/u/35894?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Jeremy Gillick</b></sub></a><br /><a href="https://github.com/ArtiomTr/jest-coverage-report-action/commits?author=jgillick" title="Code">💻</a> <a href="https://github.com/ArtiomTr/jest-coverage-report-action/commits?author=jgillick" title="Documentation">📖</a></td>
+    <td align="center"><a href="http://zajo.io"><img src="https://avatars.githubusercontent.com/u/1835434?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Matej Zajo Kralik</b></sub></a><br /><a href="https://github.com/ArtiomTr/jest-coverage-report-action/commits?author=Zajozor" title="Code">💻</a></td>
   </tr>
 </table>
 
