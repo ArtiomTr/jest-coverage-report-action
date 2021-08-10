@@ -11,7 +11,7 @@ export const formatPercentage = (
     const delta = headPercentage - basePercentage;
 
     return i18n(
-        '<div title="{{ basePercentage }}">{{ percentage }}% {{ delta }}</div>',
+        '<div title="{{ basePercentage }}%">{{ percentage }}% {{ delta }}</div>',
         {
             percentage: decimalToString(headPercentage),
             basePercentage: decimalToString(basePercentage),
