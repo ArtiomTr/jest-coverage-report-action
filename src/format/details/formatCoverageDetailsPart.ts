@@ -5,6 +5,7 @@ import { CoverageDetailsMap } from '../../typings/Coverage';
 import { i18n } from '../../utils/i18n';
 import { createMarkdownSpoiler } from '../utils/createMarkdownSpoiler';
 import { formatTable } from '../utils/formatTable';
+import { withExplanation } from '../utils/withExplanation';
 
 export type DetailsFormatOptions = {
     summary: string;
@@ -35,7 +36,10 @@ export const formatCoverageDetailsPart = (
                 markdownTable(
                     [
                         [
-                            i18n('status'),
+                            withExplanation(
+                                i18n('status'),
+                                i18n('statusExplanation')
+                            ),
                             i18n('filename'),
                             i18n('statements'),
                             i18n('branches'),
@@ -47,8 +51,7 @@ export const formatCoverageDetailsPart = (
                     {
                         align: ['c', 'l', 'l', 'l', 'l', 'l'],
                     }
-                ),
-                i18n('hint')
+                )
             ),
             summary,
         });

@@ -8,6 +8,7 @@ import {
     totalBranchesCounter,
     totalLinesCounter,
 } from '../counters';
+import { i18n } from '../../utils/i18n';
 
 export const parseSummary = (jsonReport: JsonReport) => {
     return [
@@ -15,25 +16,25 @@ export const parseSummary = (jsonReport: JsonReport) => {
             jsonReport.coverageMap,
             standardTotalCounter('s'),
             standardCoveredCounter('s'),
-            'Statements'
+            i18n('statements')
         ),
         getSummary(
             jsonReport.coverageMap,
             totalBranchesCounter,
             coveredBranchesCounter,
-            'Branches'
+            i18n('branches')
         ),
         getSummary(
             jsonReport.coverageMap,
             standardTotalCounter('f'),
             standardCoveredCounter('f'),
-            'Functions'
+            i18n('functions')
         ),
         getSummary(
             jsonReport.coverageMap,
             totalLinesCounter,
             coveredLinesCounter,
-            'Lines'
+            i18n('lines')
         ),
     ];
 };

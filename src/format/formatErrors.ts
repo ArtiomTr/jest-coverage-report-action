@@ -9,10 +9,10 @@ export const formatErrors = (errors: Array<string | Error>) => {
         const error = errors[0];
 
         if (typeof error === 'string') {
-            return i18n(':error: ') + i18n(`errors.${error}`);
+            return i18n(':x: ') + i18n(`errors.${error}`);
         }
 
-        return i18n(':error: \n```\n{{ error }}\n```', {
+        return i18n(':x: \n```\n{{ error }}\n```', {
             error: error.toString(),
         });
     }
