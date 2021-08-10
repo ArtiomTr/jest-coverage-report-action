@@ -11,11 +11,20 @@ import {
     totalLinesCounter,
 } from '../counters';
 import { getPercents } from '../getPercents';
+import { findCommonPath } from './findCommonPath';
 
 export const parseDetails = (jsonReport: JsonReport) => {
+    // Find common root directory
+    let trimPath = 0;
+    const filepaths = Object.keys(jsonReport.coverageMap);
+    if (filepaths.length) {
+        const commonRootPath = findCommonPath(filepaths);
+        trimPath = commonRootPath.length;
+    }
+
     return Object.entries(jsonReport.coverageMap).reduce<CoverageDetailsMap>(
         (acc, [filename, fileCoverage]) => {
-            const normalizedFilename = relative(process.cwd(), filename);
+            const normalizedFilename = filename.substr(trimPath);
             acc[normalizedFilename] = {
                 filename: normalizedFilename,
                 statements: getPercents(
