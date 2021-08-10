@@ -1,4 +1,5 @@
 import { readFile } from 'fs-extra';
+
 import { getRawCoverage } from './getRawCoverage';
 import { parseCoverage } from './parseCoverage';
 import { parseJsonReport } from './parseJsonReport';

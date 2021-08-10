@@ -31,11 +31,12 @@ export const getRawCoverage = async (
     | string
     | { success: false; failReason: FailReason.TESTS_FAILED; error?: Error }
 > => {
-    console.log({ coverageFile });
-
     // Load coverage from file
     if (coverageFile) {
         try {
+            if (coverageFile[0] !== '/') {
+                coverageFile = joinPaths(workingDirectory, coverageFile);
+            }
             console.log(`Loading code coverage from file: ${coverageFile}`);
             const contents = await readFile(coverageFile);
             return contents.toString();
