@@ -10,18 +10,17 @@ export const formatPercentage = (
 ) => {
     const delta = headPercentage - basePercentage;
 
+    const isDeltaValid = Math.abs(delta) > APPROXIMATION_THRESHOLD;
+
     return i18n(
-        Math.abs(delta) > APPROXIMATION_THRESHOLD
+        isDeltaValid
             ? '<div title="{{ basePercentage }}%">{{ percentage }}% {{ delta }}</div>'
             : '{{ percentage }}%',
         {
             percentage: decimalToString(headPercentage),
             basePercentage:
                 i18n('baseCoverage') + decimalToString(basePercentage),
-            delta:
-                Math.abs(delta) > APPROXIMATION_THRESHOLD
-                    ? formatPercentageDelta(delta)
-                    : '',
+            delta: isDeltaValid ? formatPercentageDelta(delta) : '',
         }
     );
 };
