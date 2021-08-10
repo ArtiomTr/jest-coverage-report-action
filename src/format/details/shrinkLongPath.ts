@@ -4,10 +4,10 @@ import { dirname, basename } from 'path';
 const LONG_PATH_LENGTH = 20;
 
 export const shrinkLongPath = (filename: string) => {
-    const dir = dirname(filename);
-
-    if (dir.length >= LONG_PATH_LENGTH) {
-        return `<span title=${dir}>\`...\`</span>/${basename(filename)}`;
+    if (filename.length >= LONG_PATH_LENGTH) {
+        return `<span title=${dirname(filename)}>\`...\`</span>/${basename(
+            filename
+        )}`;
     }
 
     return filename;
