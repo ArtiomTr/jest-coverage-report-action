@@ -1,6 +1,7 @@
 import { CoverageDetail } from '../../typings/Coverage';
 import { formatPercentage } from '../utils/formatPercentage';
 import { getStatusOfPercents } from '../utils/getStatusOfPercents';
+import { hideLongDirectory } from './hideLongDirectory';
 
 export const getFileCoverageDetailRow = (
     filename: string,
@@ -9,7 +10,7 @@ export const getFileCoverageDetailRow = (
     threshold?: number
 ): Array<string> => [
     getStatusOfPercents(headDetail.lines, threshold),
-    filename,
+    hideLongDirectory(filename),
     formatPercentage(headDetail.statements, baseDetail?.statements),
     formatPercentage(headDetail.branches, baseDetail?.branches),
     formatPercentage(headDetail.functions, baseDetail?.functions),
