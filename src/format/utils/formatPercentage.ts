@@ -14,7 +14,8 @@ export const formatPercentage = (
         '<div title="{{ basePercentage }}%">{{ percentage }}% {{ delta }}</div>',
         {
             percentage: decimalToString(headPercentage),
-            basePercentage: decimalToString(basePercentage),
+            basePercentage:
+                i18n('baseCoverage') + decimalToString(basePercentage),
             delta:
                 Math.abs(delta) > APPROXIMATION_THRESHOLD
                     ? formatPercentageDelta(delta)
