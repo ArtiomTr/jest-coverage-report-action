@@ -10,11 +10,15 @@ export const formatPercentage = (
 ) => {
     const delta = headPercentage - basePercentage;
 
-    return i18n('{{ percentage }}% {{ delta }}', {
-        percentage: decimalToString(headPercentage),
-        delta:
-            Math.abs(delta) > APPROXIMATION_THRESHOLD
-                ? formatPercentageDelta(delta)
-                : '',
-    });
+    return i18n(
+        '<div title="{{ basePercentage }}">{{ percentage }}% {{ delta }}</div>',
+        {
+            percentage: decimalToString(headPercentage),
+            basePercentage: decimalToString(basePercentage),
+            delta:
+                Math.abs(delta) > APPROXIMATION_THRESHOLD
+                    ? formatPercentageDelta(delta)
+                    : '',
+        }
+    );
 };

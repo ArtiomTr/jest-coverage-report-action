@@ -1,4 +1,5 @@
 import { i18n } from '../utils/i18n';
+import { getConsoleLink } from './utils/getConsoleLink';
 
 export const formatErrors = (errors: Array<string | Error>) => {
     if (errors.length === 0) {
@@ -12,8 +13,11 @@ export const formatErrors = (errors: Array<string | Error>) => {
             return i18n(':x: ') + i18n(`errors.${error}`);
         }
 
-        return i18n(':x: \n```\n{{ error }}\n```', {
+        return i18n(':x: {{ unexpectedError }} \n```\n{{ error }}\n```', {
             error: error.toString(),
+            unexpectedError: i18n('errors.unexpectedError', {
+                consoleLink: getConsoleLink(),
+            }),
         });
     }
 

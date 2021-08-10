@@ -23,7 +23,7 @@ export const createReport = (
         body: [formattedErrors, coverage].join('\n'),
         dir: workingDirectory || '',
         tag: getReportTag(workingDirectory),
-        title: insertArgs(customTitle || i18n('summary.title'), {
+        title: insertArgs(customTitle || i18n('summaryTitle'), {
             dir: workingDirectory ? `for \`${workingDirectory}\`` : '',
         }),
         sha:
