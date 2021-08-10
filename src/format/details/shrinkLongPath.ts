@@ -5,7 +5,7 @@ const LONG_PATH_LENGTH = 20;
 
 export const shrinkLongPath = (filename: string) => {
     if (filename.length >= LONG_PATH_LENGTH) {
-        return `<span title=${dirname(filename)}>\`...\`</span>/${basename(
+        return `<span title=${dirname(filename)}>\`…\`</span> / ${basename(
             filename
         )}`;
     }

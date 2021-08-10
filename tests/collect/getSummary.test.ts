@@ -2,8 +2,8 @@ import jsonReport from './jsonReport.json';
 import {
     coveredLinesCounter,
     totalLinesCounter,
-} from '../../src/collect/counters';
-import { getSummary } from '../../src/collect/getSummary';
+} from '../../src/format/counters';
+import { getSummary } from '../../src/format/summary/getSummary';
 
 describe('getSummary', () => {
     it('Should generate a line number coverage report', () => {
