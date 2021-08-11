@@ -1,7 +1,7 @@
 import { getInput } from '@actions/core';
 import get from 'lodash/get';
 
-import { insertArgs } from '../format/insertArgs';
+import { insertArgs } from './insertArgs';
 import strings from '../format/strings.json';
 
 const iconRegex = /:(\w+):/g;
@@ -9,7 +9,7 @@ const iconRegex = /:(\w+):/g;
 const iconType = getInput('icons');
 
 const icons = (strings.icons as Record<string, Record<string, string>>)[
-    iconType
+    iconType || 'emoji'
 ];
 
 export const i18n = (key: string, args?: Record<string, unknown>) => {

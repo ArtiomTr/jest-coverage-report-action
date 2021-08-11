@@ -1,5 +1,5 @@
 import { i18n } from '../utils/i18n';
-import { getConsoleLink } from './utils/getConsoleLink';
+import { getConsoleLink } from '../utils/getConsoleLink';
 
 export const formatErrors = (errors: Array<string | Error>) => {
     if (errors.length === 0) {

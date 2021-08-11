@@ -9,8 +9,6 @@ module.exports = {
             babelConfig: true,
         },
     },
-    collectCoverage: true,
     collectCoverageFrom: ['src/**/*.ts'],
     coveragePathIgnorePatterns: ['/node_modules/'],
-    coverageReporters: [],
 };

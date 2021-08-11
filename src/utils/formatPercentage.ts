@@ -1,6 +1,6 @@
 import { decimalToString } from './decimalToString';
 import { formatPercentageDelta } from './formatPercentageDelta';
-import { i18n } from '../../utils/i18n';
+import { i18n } from './i18n';
 
 const APPROXIMATION_THRESHOLD = 1;
 
@@ -14,11 +14,11 @@ export const formatPercentage = (
 
     return i18n(
         isDeltaValid
-            ? '<div title="{{ basePercentage }}%">{{ percentage }}% {{ delta }}</div>'
+            ? '<div title="{{ baseCoverage }}%">{{ percentage }}% {{ delta }}</div>'
             : '{{ percentage }}%',
         {
             percentage: decimalToString(headPercentage),
-            basePercentage:
+            baseCoverage:
                 i18n('baseCoverage') + decimalToString(basePercentage),
             delta: isDeltaValid ? formatPercentageDelta(delta) : '',
         }

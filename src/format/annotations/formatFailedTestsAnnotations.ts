@@ -5,7 +5,7 @@ import { getFailedAnnotationsSummary } from './getFailedAnnotationsSummary';
 import { getFailedTestsAnnotationsBody } from './getFailedTestsAnnotationsBody';
 import { Annotation } from '../../annotations/Annotation';
 import { JsonReport } from '../../typings/JsonReport';
-import { insertArgs } from '../insertArgs';
+import { insertArgs } from '../../utils/insertArgs';
 import {
     failedTestsCheckName,
     testsFail,

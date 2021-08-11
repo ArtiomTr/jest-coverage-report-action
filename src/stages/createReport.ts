@@ -1,7 +1,7 @@
 import { getReportTag } from '../constants/getReportTag';
 import { formatCoverage } from '../format/formatCoverage';
 import { formatErrors } from '../format/formatErrors';
-import { insertArgs } from '../format/insertArgs';
+import { insertArgs } from '../utils/insertArgs';
 import template from '../format/template.md';
 import { JsonReport } from '../typings/JsonReport';
 import { DataCollector } from '../utils/DataCollector';

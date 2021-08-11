@@ -10,7 +10,8 @@
             "hatching_chick": "🐣",
             "joystick": "🕹️",
             "herb": "🌿",
-            "receipt": "🧾"
+            "receipt": "🧾",
+            "grey_question": "❔"
         },
         "ascii": {
             "x": "[ !!! ]",
@@ -22,7 +23,8 @@
             "hatching_chick": "[NEW]",
             "joystick": "",
             "herb": "",
-            "receipt": ""
+            "receipt": "",
+            "grey_question": "?"
         },
         "unicode": {
             "x": "×",
@@ -34,9 +36,31 @@
             "hatching_chick": "[NEW]",
             "joystick": "",
             "herb": "",
-            "receipt": ""
+            "receipt": "",
+            "grey_question": "?"
         }
     },
+    "stages": {
+        "defaults": {
+            "begin": "Begin {{ stage }}...",
+            "skip": "{{ stage }} skipped",
+            "fail": "{{ stage }} failed",
+            "end": "{{ stage }} ended"
+        },
+        "initialize": "Initialization stage",
+        "headCoverage": "Head coverage collection",
+        "baseCoverage": "Base coverage collection",
+        "switchToBase": "Switching to base branch",
+        "generateReportContent": "Generating report",
+        "publishReport": "Report publish",
+        "failedTestsAnnotations": "Failed tests' annotations publication",
+        "coverageAnnotations": "Coverage annotations publication",
+        "install": "Installing dependencies",
+        "runTest": "Running tests",
+        "collectCoverage": "Collecting coverage",
+        "parseCoverage": "Parsing coverage"
+    },
+    "failed": "Jest coverage report action failed",
     "status": "St.",
     "statusExplanation": "Status of coverage: :green_circle: - ok, :yellow_circle: - slightly more than threshold, :red_circle: - under the threshold",
     "category": "Category",
