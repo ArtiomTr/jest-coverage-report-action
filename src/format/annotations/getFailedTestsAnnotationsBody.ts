@@ -8,12 +8,12 @@ export const getFailedTestsAnnotationsBody = (jsonReport: JsonReport) => {
         return '';
     }
 
-    const bash = (code: string) => '```bash \n' + code + '```';
+    const code = (code: string) => '``` \n' + code + '```';
     const codeBlocks = jsonReport.testResults
         .map(({ message }) => {
             const messageStripped = stripAnsi(message);
             if (messageStripped.trim() != '') {
-                return bash(messageStripped);
+                return code(messageStripped);
             }
             return null;
         })
