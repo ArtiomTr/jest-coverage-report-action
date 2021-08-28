@@ -1,11 +1,18 @@
 {
     "root": true,
+    "env": {
+        "node": true,
+        "commonjs": true
+    },
     "parser": "@typescript-eslint/parser",
     "parserOptions": {
         "ecmaVersion": 2020,
         "sourceType": "module"
     },
-    "plugins": ["@typescript-eslint", "simple-import-sort"],
+    "plugins": [
+        "@typescript-eslint",
+        "simple-import-sort"
+    ],
     "extends": [
         "prettier/@typescript-eslint",
         "plugin:prettier/recommended",
@@ -36,9 +43,14 @@
                         "^(assert|buffer|child_process|cluster|console|constants|crypto|dgram|dns|domain|events|fs|http|https|module|net|os|path|punycode|querystring|readline|repl|stream|string_decoder|sys|timers|tls|tty|typescript|url|util|vm|zlib|freelist|v8|process|async_hooks|http2|perf_hooks)(/.*|$)"
                     ],
                     // Packages.
-                    ["markdown-table", "^@?\\w"],
+                    [
+                        "markdown-table",
+                        "^@?\\w"
+                    ],
                     // Side effect imports.
-                    ["^\\u0000"],
+                    [
+                        "^\\u0000"
+                    ],
                     // Parent imports.
                     [
                         "^src",

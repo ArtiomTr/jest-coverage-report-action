@@ -1,7 +1,7 @@
 import { DataCollector } from './DataCollector';
 import { i18n } from './i18n';
 
-export type SuccessfulStageResult<T> = [success: true, ouptut: T];
+export type SuccessfulStageResult<T> = [success: true, output: T];
 
 export type FailedStageResult = [success: false, output: undefined];
 
@@ -15,7 +15,6 @@ export const runStage = async <T, V>(
     action: (skip: () => never) => Promise<T> | T
 ): Promise<StageResult<T>> => {
     const stageKey = `stages.${stage}`;
-
     dataCollector.info(
         i18n('stages.defaults.begin', {
             stage: i18n(stageKey).toLowerCase(),
