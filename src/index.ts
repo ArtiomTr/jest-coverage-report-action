@@ -123,7 +123,7 @@ async function run() {
             skip();
         }
 
-        const octokit = getOctokit(options!.token);
+        const octokit = getOctokit(options.token);
         await octokit.checks.create(
             formatFailedTestsAnnotations(
                 summaryReport!.runReport,
@@ -146,7 +146,7 @@ async function run() {
             skip();
         }
 
-        const octokit = getOctokit(options!.token);
+        const octokit = getOctokit(options.token);
         await octokit.checks.create(
             formatCoverageAnnotations(coverageAnnotations)
         );

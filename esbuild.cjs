@@ -2,8 +2,8 @@
 const { build } = require('esbuild');
 build({
     bundle: true,
-    target: 'es5',
     minify: true,
+    target: 'es5',
     platform: 'node',
     entryPoints: ['src/index.ts'],
     outfile: 'dist/index.js',
