@@ -35,12 +35,9 @@ export const getCoverage = async (
             // const reportPath = getReportPath(options.workingDirectory);
             const paths = [REPORT_PATH];
             const restoreKeys = ['covbot-report-'];
-            const cacheKey = await restoreCache(
-                paths,
-                getCacheKey(),
-                restoreKeys
-            );
-            console.log({ cacheKey });
+            const key = getCacheKey();
+            const cacheKey = await restoreCache(paths, key, restoreKeys);
+            console.log({ key, cacheKey });
             if (cacheKey === undefined) {
                 throw Error('Cache not found');
             }
