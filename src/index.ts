@@ -80,7 +80,7 @@ async function run() {
         dataCollector,
         // eslint-disable-next-line @typescript-eslint/no-unused-vars
         async (_skip) => {
-            return createReport(dataCollector, options?.workingDirectory);
+            return createReport(dataCollector, options.workingDirectory);
         }
     );
 
@@ -122,7 +122,7 @@ async function run() {
             skip();
         }
 
-        const octokit = getOctokit(options!.token);
+        const octokit = getOctokit(options.token);
         await octokit.checks.create(
             formatFailedTestsAnnotations(
                 summaryReport!.runReport,
@@ -145,7 +145,7 @@ async function run() {
             skip();
         }
 
-        const octokit = getOctokit(options!.token);
+        const octokit = getOctokit(options.token);
         await octokit.checks.create(
             formatCoverageAnnotations(coverageAnnotations)
         );

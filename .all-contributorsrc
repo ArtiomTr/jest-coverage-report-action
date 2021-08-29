@@ -91,6 +91,15 @@
       "contributions": [
         "code"
       ]
+    },
+    {
+      "login": "sidharthv96",
+      "name": "Sidharth Vinod",
+      "avatar_url": "https://avatars.githubusercontent.com/u/10703445?v=4",
+      "profile": "http://sidharth.dev",
+      "contributions": [
+        "code"
+      ]
     }
   ],
   "projectName": "jest-coverage-report-action",

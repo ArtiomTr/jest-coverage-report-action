@@ -1,4 +1,4 @@
-import jsonReport from './jsonReport.json';
+import jsonReport from '../mock-data/jsonReport.json';
 import {
     coveredLinesCounter,
     totalLinesCounter,
