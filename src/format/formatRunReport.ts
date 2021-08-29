@@ -6,7 +6,7 @@ export const formatRunReport = (report: TestRunReport): string => {
     if (report.failures) {
         parts.push(
             createMarkdownSpoiler({
-                summary: report.getSummary,
+                summary: report.summary,
                 body: report.failures,
             })
         );
