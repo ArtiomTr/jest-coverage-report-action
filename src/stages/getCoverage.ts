@@ -5,6 +5,7 @@ import { collectCoverage } from './collectCoverage';
 import { installDependencies } from './installDependencies';
 import { parseCoverage } from './parseCoverage';
 import { runTest } from './runTest';
+import { REPORT_PATH } from '../constants/REPORT_PATH';
 import { JsonReport } from '../typings/JsonReport';
 import {
     Options,
@@ -31,8 +32,8 @@ export const getCoverage = async (
             if (!checkCache) {
                 skip();
             }
-            const reportPath = getReportPath(options.workingDirectory);
-            const paths = [reportPath];
+            // const reportPath = getReportPath(options.workingDirectory);
+            const paths = [REPORT_PATH];
             const restoreKeys = ['covbot-report-'];
             const cacheKey = await restoreCache(
                 paths,
@@ -98,8 +99,12 @@ export const getCoverage = async (
         }
         const reportPath = getReportPath(options.workingDirectory);
         const paths = [reportPath];
-        const cacheId = await saveCache(paths, getCacheKey());
-        console.log({ cacheId });
+        try {
+            const cacheId = await saveCache(paths, getCacheKey());
+            console.log({ cacheId });
+        } catch (error) {
+            console.log(error);
+        }
     });
 
     return jsonReport!;
