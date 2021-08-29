@@ -17,7 +17,15 @@ module.exports = (env, args) => ({
         rules: [
             {
                 test: /\.ts$/,
+                exclude: /node_modules/,
                 loader: 'ts-loader',
+                options: {
+                    compilerOptions: {
+                        target: 'es5',
+                        incremental: true, // this could also be in tsconfig.json directly
+                    },
+                    experimentalWatchApi: true, // this enables .tsbuildinfo in the loader
+                },
             },
             {
                 test: /\.md$/,

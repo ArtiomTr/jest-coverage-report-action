@@ -15,13 +15,17 @@ import { DataCollector } from '../utils/DataCollector';
 import { getReportPath } from '../utils/getReportPath';
 import { runStage } from '../utils/runStage';
 
+const getCacheKey = () => {
+    return `covbot-report-${process.env['RUNNER_OS']}-${context.payload.pull_request?.base.sha}`;
+};
 export const getCoverage = async (
     dataCollector: DataCollector<JsonReport>,
     options: Options,
     runAll: boolean,
     checkCache: boolean
 ): Promise<JsonReport> => {
-    console.log({ checkCache });
+    console.log(context.payload);
+    console.log(context.payload.pull_request?.base);
     const [isCached, _] = await runStage(
         'checkCache',
         dataCollector,
@@ -29,12 +33,14 @@ export const getCoverage = async (
             if (!checkCache) {
                 skip();
             }
-            const baseSha = context.payload.pull_request?.base.sha;
             const reportPath = getReportPath(options.workingDirectory);
             const paths = [reportPath];
-            const key = `covbot-report-${baseSha}`;
             const restoreKeys = ['covbot-report-'];
-            const cacheKey = await restoreCache(paths, key, restoreKeys);
+            const cacheKey = await restoreCache(
+                paths,
+                getCacheKey(),
+                restoreKeys
+            );
             console.log({ cacheKey });
             if (cacheKey === undefined) {
                 throw Error('Cache not found');
@@ -92,11 +98,9 @@ export const getCoverage = async (
         if (!checkCache || isCached) {
             skip();
         }
-        const baseSha = context.payload.pull_request?.base.sha;
         const reportPath = getReportPath(options.workingDirectory);
         const paths = [reportPath];
-        const key = `covbot-report-${baseSha}`;
-        const cacheId = await saveCache(paths, key);
+        const cacheId = await saveCache(paths, getCacheKey());
         console.log({ cacheId });
     });
 
