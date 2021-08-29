@@ -38,6 +38,7 @@ export const runStage = async <T, V>(
                 })
             );
         } else {
+            console.log(error);
             dataCollector.info(
                 i18n('stages.defaults.fail', {
                     stage: i18n(stageKey),
