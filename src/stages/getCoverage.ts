@@ -21,6 +21,7 @@ export const getCoverage = async (
     runAll: boolean,
     checkCache: boolean
 ): Promise<JsonReport> => {
+    console.log({ checkCache });
     const [isCached, _] = await runStage(
         'checkCache',
         dataCollector,
