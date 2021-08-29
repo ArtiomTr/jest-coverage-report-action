@@ -45,20 +45,5 @@ inputs:
         required: false
         description: Path to the report.json file to compare against. This should be from the branch the PR is merging into.
 runs:
-    using: composite
-    steps:
-        - run: $GITHUB_ACTION_PATH/run.sh
-          shell: bash
-          env:
-              INPUT_GITHUB-TOKEN: ${{ inputs.github-token }}
-              INPUT_TEST-SCRIPT: ${{ inputs.test-script }}
-              INPUT_THRESHOLD: ${{ inputs.threshold }}
-              INPUT_WORKING-DIRECTORY: ${{ inputs.working-directory }}
-              INPUT_ICONS: ${{ inputs.icons }}
-              INPUT_ANNOTATIONS: ${{ inputs.annotations }}
-              INPUT_PACKAGE-MANAGER: ${{ inputs.package-manager }}
-              INPUT_SKIP-STEP: ${{ inputs.skip-step }}
-              INPUT_CUSTOM-TITLE: ${{ inputs.custom-title }}
-              INPUT_COVERAGE-FILE: ${{ inputs.coverage-file }}
-              INPUT_BASE-COVERAGE-FILE: ${{ inputs.base-coverage-file }}
-              ACTIONS_CACHE_URL: ${{ env.ACTIONS_CACHE_URL }}
+    using: 'node12'
+    main: 'dist/index.js'
