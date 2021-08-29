@@ -1,5 +1,5 @@
-import { rmdir } from 'fs-extra';
 import { exec } from '@actions/exec';
+import { rmdir } from 'fs-extra';
 
 import { installDependencies } from '../../src/stages/installDependencies';
 
@@ -65,7 +65,9 @@ describe('installDependencies', () => {
                 throw 0;
             });
             await installDependencies();
-        } catch {}
+        } catch {
+            /** ignore error */
+        }
 
         expect(exec).not.toBeCalled();
     });

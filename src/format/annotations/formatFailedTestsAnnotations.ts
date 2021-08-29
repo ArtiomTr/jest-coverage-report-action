@@ -4,12 +4,7 @@ import { CreateCheckOptions } from './CreateCheckOptions';
 import { getFailedTestsAnnotationsBody } from './getFailedTestsAnnotationsBody';
 import { Annotation } from '../../annotations/Annotation';
 import { TestRunReport } from '../../typings/Report';
-import { insertArgs } from '../../utils/insertArgs';
-import {
-    failedTestsCheckName,
-    testsFail,
-    tooMuchAnnotations,
-} from '../strings.json';
+import { i18n } from '../../utils/i18n';
 
 export const formatFailedTestsAnnotations = (
     runReport: TestRunReport,
@@ -19,13 +14,13 @@ export const formatFailedTestsAnnotations = (
     status: 'completed',
     head_sha: context.payload.pull_request?.head.sha ?? context.sha,
     conclusion: 'failure',
-    name: failedTestsCheckName,
+    name: i18n('failedTestsCheckName'),
     output: {
-        title: testsFail,
+        title: i18n('testsFail'),
         text: [
             getFailedTestsAnnotationsBody(runReport),
             annotations.length > 50 &&
-                insertArgs(tooMuchAnnotations, {
+                i18n('tooMuchAnnotations', {
                     hiddenCount: annotations.length - 50,
                 }),
         ]

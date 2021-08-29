@@ -1,10 +1,12 @@
-import { i18n } from '../utils/i18n';
 import { getConsoleLink } from '../utils/getConsoleLink';
+import { i18n } from '../utils/i18n';
 
 export const formatErrors = (errors: Array<string | Error>) => {
     if (errors.length === 0) {
         return '';
     }
+
+    console.log(errors);
 
     if (errors.length === 1) {
         const error = errors[0];

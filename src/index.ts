@@ -81,7 +81,7 @@ async function run() {
         dataCollector,
         // eslint-disable-next-line @typescript-eslint/no-unused-vars
         async (_skip) => {
-            return createReport(dataCollector, options?.workingDirectory);
+            return createReport(dataCollector, options.workingDirectory);
         }
     );
 

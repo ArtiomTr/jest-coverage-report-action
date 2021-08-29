@@ -5,7 +5,6 @@ import { formatCoverage } from '../format/formatCoverage';
 import { formatErrors } from '../format/formatErrors';
 import { formatRunReport } from '../format/formatRunReport';
 import { getFailureDetails } from '../format/getFormattedFailures';
-import { testsFail, testsSuccess } from '../format/strings.json';
 import { getTestRunSummary } from '../format/summary/getTestRunSummary';
 import template from '../format/template.md';
 import { JsonReport } from '../typings/JsonReport';
@@ -30,7 +29,7 @@ export const createReport = (
 
     const coverage = formatCoverage(headReport, baseReport, undefined);
     const runReport: TestRunReport = {
-        title: headReport.success ? testsSuccess : testsFail,
+        title: i18n(headReport.success ? 'testsSuccess' : 'testsFail'),
         summary: getTestRunSummary(headReport),
         failures: getFailureDetails(headReport),
     };

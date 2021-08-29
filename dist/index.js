@@ -4530,29 +4530,6 @@ var require_github = __commonJS({
   }
 });
 
-// node_modules/ansi-regex/index.js
-var require_ansi_regex = __commonJS({
-  "node_modules/ansi-regex/index.js"(exports2, module2) {
-    "use strict";
-    module2.exports = ({ onlyFirst = false } = {}) => {
-      const pattern = [
-        "[\\u001B\\u009B][[\\]()#;?]*(?:(?:(?:[a-zA-Z\\d]*(?:;[-a-zA-Z\\d\\/#&.:=?%@~_]*)*)?\\u0007)",
-        "(?:(?:\\d{1,4}(?:;\\d{0,4})*)?[\\dA-PR-TZcf-ntqry=><~]))"
-      ].join("|");
-      return new RegExp(pattern, onlyFirst ? void 0 : "g");
-    };
-  }
-});
-
-// node_modules/strip-ansi/index.js
-var require_strip_ansi = __commonJS({
-  "node_modules/strip-ansi/index.js"(exports2, module2) {
-    "use strict";
-    var ansiRegex = require_ansi_regex();
-    module2.exports = (string2) => typeof string2 === "string" ? string2.replace(ansiRegex(), "") : string2;
-  }
-});
-
 // node_modules/lodash/isArray.js
 var require_isArray = __commonJS({
   "node_modules/lodash/isArray.js"(exports2, module2) {
@@ -5352,6 +5329,29 @@ var require_get = __commonJS({
       return result === void 0 ? defaultValue : result;
     }
     module2.exports = get2;
+  }
+});
+
+// node_modules/ansi-regex/index.js
+var require_ansi_regex = __commonJS({
+  "node_modules/ansi-regex/index.js"(exports2, module2) {
+    "use strict";
+    module2.exports = ({ onlyFirst = false } = {}) => {
+      const pattern = [
+        "[\\u001B\\u009B][[\\]()#;?]*(?:(?:(?:[a-zA-Z\\d]*(?:;[-a-zA-Z\\d\\/#&.:=?%@~_]*)*)?\\u0007)",
+        "(?:(?:\\d{1,4}(?:;\\d{0,4})*)?[\\dA-PR-TZcf-ntqry=><~]))"
+      ].join("|");
+      return new RegExp(pattern, onlyFirst ? void 0 : "g");
+    };
+  }
+});
+
+// node_modules/strip-ansi/index.js
+var require_strip_ansi = __commonJS({
+  "node_modules/strip-ansi/index.js"(exports2, module2) {
+    "use strict";
+    var ansiRegex = require_ansi_regex();
+    module2.exports = (string2) => typeof string2 === "string" ? string2.replace(ansiRegex(), "") : string2;
   }
 });
 
@@ -70872,6 +70872,16 @@ var import_github7 = __toModule(require_github());
 // src/annotations/createCoverageAnnotations.ts
 var import_path = __toModule(require("path"));
 
+// src/utils/i18n.ts
+var import_core = __toModule(require_core());
+var import_get = __toModule(require_get());
+
+// src/utils/insertArgs.ts
+var insertArgs = (text, args) => {
+  Object.keys(args).forEach((argName) => args[argName] !== void 0 && args[argName] !== null && (text = text.replace(`{{ ${argName} }}`, args[argName])));
+  return text;
+};
+
 // src/format/strings.json
 var icons = {
   emoji: {
@@ -71015,6 +71025,25 @@ var strings_default = {
   baseCoverage
 };
 
+// src/utils/i18n.ts
+var iconRegex = /:(\w+):/g;
+var iconType = (0, import_core.getInput)("icons");
+var icons2 = strings_default.icons[iconType || "emoji"];
+var i18n = (key, args) => {
+  const string2 = (0, import_get.default)(strings_default, key, key);
+  const normalizedIconsString = string2.replace(iconRegex, (initialValue, key2) => {
+    if (key2 in icons2) {
+      return icons2[key2];
+    } else {
+      return initialValue;
+    }
+  });
+  if (!args) {
+    return normalizedIconsString;
+  }
+  return insertArgs(normalizedIconsString, args);
+};
+
 // src/annotations/createCoverageAnnotations.ts
 var getLocation = (start = { line: 0 }, end = { line: 0 }) => ({
   start_line: start.line,
@@ -71032,8 +71061,8 @@ var createCoverageAnnotations = (jsonReport) => {
           ...getLocation(statementCoverage.start, statementCoverage.end),
           path: normalizedFilename,
           annotation_level: "warning",
-          title: notCoveredStatementTitle,
-          message: notCoveredStatementMessage
+          title: i18n("notCoveredStatementTitle"),
+          message: i18n("notCoveredStatementMessage")
         });
       }
     });
@@ -71045,8 +71074,8 @@ var createCoverageAnnotations = (jsonReport) => {
               ...getLocation(location.start, location.end),
               path: normalizedFilename,
               annotation_level: "warning",
-              title: notCoveredBranchTitle,
-              message: notCoveredBranchMessage
+              title: i18n("notCoveredBranchTitle"),
+              message: i18n("notCoveredBranchMessage")
             });
           }
         });
@@ -71058,8 +71087,8 @@ var createCoverageAnnotations = (jsonReport) => {
           ...getLocation(functionCoverage.decl.start, functionCoverage.decl.end),
           path: normalizedFilename,
           annotation_level: "warning",
-          title: notCoveredFunctionTitle,
-          message: notCoveredFunctionMessage
+          title: i18n("notCoveredFunctionTitle"),
+          message: i18n("notCoveredFunctionMessage")
         });
       }
     });
@@ -71098,37 +71127,6 @@ var createFailedTestsAnnotations = (jsonReport) => {
 
 // src/format/annotations/formatCoverageAnnotations.ts
 var import_github = __toModule(require_github());
-
-// src/utils/i18n.ts
-var import_core = __toModule(require_core());
-var import_get = __toModule(require_get());
-
-// src/utils/insertArgs.ts
-var insertArgs = (text, args) => {
-  Object.keys(args).forEach((argName) => args[argName] !== void 0 && args[argName] !== null && (text = text.replace(`{{ ${argName} }}`, args[argName])));
-  return text;
-};
-
-// src/utils/i18n.ts
-var iconRegex = /:(\w+):/g;
-var iconType = (0, import_core.getInput)("icons");
-var icons2 = strings_default.icons[iconType || "emoji"];
-var i18n = (key, args) => {
-  const string2 = (0, import_get.default)(strings_default, key, key);
-  const normalizedIconsString = string2.replace(iconRegex, (initialValue, key2) => {
-    if (key2 in icons2) {
-      return icons2[key2];
-    } else {
-      return initialValue;
-    }
-  });
-  if (!args) {
-    return normalizedIconsString;
-  }
-  return insertArgs(normalizedIconsString, args);
-};
-
-// src/format/annotations/formatCoverageAnnotations.ts
 var formatCoverageAnnotations = (annotations) => {
   var _a, _b;
   return {
@@ -71155,7 +71153,7 @@ var formatCoverageAnnotations = (annotations) => {
 var import_github2 = __toModule(require_github());
 
 // src/format/annotations/getFailedTestsAnnotationsBody.ts
-var getFailedTestsAnnotationsBody = (report) => i18n("testsFailSummaryPt2") + report.failures;
+var getFailedTestsAnnotationsBody = (report) => i18n("testsFailSummaryPt2") + "\n" + report.failures;
 
 // src/format/annotations/formatFailedTestsAnnotations.ts
 var formatFailedTestsAnnotations = (runReport, annotations) => {
@@ -71165,12 +71163,12 @@ var formatFailedTestsAnnotations = (runReport, annotations) => {
     status: "completed",
     head_sha: (_b = (_a = import_github2.context.payload.pull_request) == null ? void 0 : _a.head.sha) != null ? _b : import_github2.context.sha,
     conclusion: "failure",
-    name: failedTestsCheckName,
+    name: i18n("failedTestsCheckName"),
     output: {
-      title: testsFail,
+      title: i18n("testsFail"),
       text: [
         getFailedTestsAnnotationsBody(runReport),
-        annotations.length > 50 && insertArgs(tooMuchAnnotations, {
+        annotations.length > 50 && i18n("tooMuchAnnotations", {
           hiddenCount: annotations.length - 50
         })
       ].filter(Boolean).join("\n"),
@@ -71494,6 +71492,7 @@ var formatErrors = (errors2) => {
   if (errors2.length === 0) {
     return "";
   }
+  console.log(errors2);
   if (errors2.length === 1) {
     const error = errors2[0];
     if (typeof error === "string") {
@@ -71523,7 +71522,10 @@ var formatErrors = (errors2) => {
 var formatRunReport = (report) => {
   const parts = [`# ${report.title}`];
   if (report.failures) {
-    parts.push("<details>", `<summary>${report.summary}</summary>`, report.failures, "</details>");
+    parts.push(createMarkdownSpoiler({
+      summary: report.summary,
+      body: report.failures
+    }));
   } else {
     parts.push(`## ${report.summary}`);
   }
@@ -71532,9 +71534,19 @@ var formatRunReport = (report) => {
 
 // src/format/getFormattedFailures.ts
 var import_strip_ansi2 = __toModule(require_strip_ansi());
-var getFailureDetails = (report) => {
-  var _a;
-  return report.testResults && report.testResults.some(({ message }) => message.length > 0) ? "\n```bash\n" + ((_a = report.testResults) == null ? void 0 : _a.map(({ message }) => (0, import_strip_ansi2.default)(message)).join("```\n---\n```bash\n")) + "```" : "";
+var getFailureDetails = ({ testResults }) => {
+  if (!(testResults == null ? void 0 : testResults.some(({ message }) => message.length > 0))) {
+    return "";
+  }
+  const wrapCode = (code) => "``` \n" + code + "```";
+  const codeBlocks = testResults.map(({ message }) => {
+    const stripped = (0, import_strip_ansi2.default)(message);
+    if (stripped.length === 0 || stripped.trim().length === 0) {
+      return "";
+    }
+    return wrapCode(stripped);
+  }).filter(({ length }) => length > 0);
+  return codeBlocks.join("\n---");
 };
 
 // src/format/summary/getTestRunSummary.ts
@@ -71563,7 +71575,7 @@ var createReport = (dataCollector, workingDirectory, customTitle) => {
   const formattedErrors = formatErrors(errors2);
   const coverage = formatCoverage(headReport, baseReport, void 0);
   const runReport = {
-    title: headReport.success ? testsSuccess : testsFail,
+    title: i18n(headReport.success ? "testsSuccess" : "testsFail"),
     summary: getTestRunSummary(headReport),
     failures: getFailureDetails(headReport)
   };
@@ -71719,7 +71731,6 @@ var getOptions = async () => {
 var SKIP_SYMBOL = Symbol();
 var runStage = async (stage, dataCollector, action) => {
   const stageKey = `stages.${stage}`;
-  console.log(stageKey);
   dataCollector.info(i18n("stages.defaults.begin", {
     stage: i18n(stageKey).toLowerCase()
   }));
@@ -71881,7 +71892,7 @@ async function run() {
     dataCollector.add(baseCoverage2);
   }
   const [isReportContentGenerated, summaryReport] = await runStage("generateReportContent", dataCollector, async (_skip) => {
-    return createReport(dataCollector, options == null ? void 0 : options.workingDirectory);
+    return createReport(dataCollector, options.workingDirectory);
   });
   await runStage("publishReport", dataCollector, async (skip) => {
     if (!isReportContentGenerated) {
