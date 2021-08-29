@@ -35,7 +35,7 @@ async function run() {
         dataCollector,
         // eslint-disable-next-line @typescript-eslint/no-unused-vars
         async (_skip) => {
-            return await getCoverage(dataCollector, options, false);
+            return await getCoverage(dataCollector, options, false, false);
         }
     );
 
@@ -67,7 +67,7 @@ async function run() {
                 skip();
             }
 
-            return await getCoverage(ignoreCollector, options, true);
+            return await getCoverage(ignoreCollector, options, true, true);
         }
     );
 
