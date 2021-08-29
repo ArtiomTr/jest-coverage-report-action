@@ -26,15 +26,16 @@ async function run() {
         getOptions
     );
 
+    if (!isInitialized || !options) {
+        throw Error('Initialization failed.');
+    }
+
     const [isHeadCoverageGenerated, headCoverage] = await runStage(
         'headCoverage',
         dataCollector,
-        async (skip) => {
-            if (!isInitialized) {
-                skip();
-            }
-
-            return await getCoverage(dataCollector, options!, false);
+        // eslint-disable-next-line @typescript-eslint/no-unused-vars
+        async (_skip) => {
+            return await getCoverage(dataCollector, options, false);
         }
     );
 
@@ -48,7 +49,7 @@ async function run() {
         async (skip) => {
             const baseBranch = context.payload.pull_request?.base.ref;
 
-            if (!isInitialized || !isInPR || !baseBranch) {
+            if (!isInPR || !baseBranch) {
                 skip();
             }
 
@@ -66,7 +67,7 @@ async function run() {
                 skip();
             }
 
-            return await getCoverage(ignoreCollector, options!, true);
+            return await getCoverage(ignoreCollector, options, true);
         }
     );
 
@@ -77,11 +78,8 @@ async function run() {
     const [isReportContentGenerated, reportContent] = await runStage(
         'generateReportContent',
         dataCollector,
-        async (skip) => {
-            if (!isInitialized) {
-                skip();
-            }
-
+        // eslint-disable-next-line @typescript-eslint/no-unused-vars
+        async (_skip) => {
             return createReport(dataCollector, options?.workingDirectory);
         }
     );
@@ -91,12 +89,12 @@ async function run() {
             skip();
         }
 
-        const octokit = getOctokit(options!.token);
+        const octokit = getOctokit(options.token);
 
         if (isInPR) {
             await generatePRReport(
                 reportContent!,
-                options!.workingDirectory,
+                options.workingDirectory,
                 context.repo,
                 context.payload.pull_request!,
                 octokit
@@ -107,11 +105,14 @@ async function run() {
     });
 
     await runStage('failedTestsAnnotations', dataCollector, async (skip) => {
-        if (!isInitialized || isHeadCoverageGenerated) {
+        if (
+            !isHeadCoverageGenerated ||
+            !['all', 'failed-tests'].includes(options.annotations)
+        ) {
             skip();
         }
 
-        const octokit = getOctokit(options!.token);
+        const octokit = getOctokit(options.token);
         const failedAnnotations = createFailedTestsAnnotations(headCoverage!);
 
         if (failedAnnotations.length === 0) {
@@ -124,11 +125,14 @@ async function run() {
     });
 
     await runStage('coverageAnnotations', dataCollector, async (skip) => {
-        if (!isInitialized || isHeadCoverageGenerated) {
+        if (
+            !isHeadCoverageGenerated ||
+            !['all', 'coverage'].includes(options.annotations)
+        ) {
             skip();
         }
 
-        const octokit = getOctokit(options!.token);
+        const octokit = getOctokit(options.token);
         const coverageAnnotations = createCoverageAnnotations(headCoverage!);
 
         if (coverageAnnotations.length === 0) {
