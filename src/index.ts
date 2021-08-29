@@ -17,7 +17,6 @@ import { i18n } from './utils/i18n';
 import { runStage } from './utils/runStage';
 
 async function run() {
-    console.log(process.env);
     const dataCollector = createDataCollector<JsonReport>();
     const isInPR = context.eventName === 'pull_request';
 
