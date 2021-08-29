@@ -32,6 +32,7 @@ describe('getCoverage', () => {
         const jsonReport = await getCoverage(
             dataCollector,
             defaultOptions,
+            false,
             false
         );
 
@@ -53,6 +54,7 @@ describe('getCoverage', () => {
         const jsonReport = await getCoverage(
             dataCollector,
             { ...defaultOptions, skipStep: 'install' },
+            false,
             false
         );
 
@@ -74,6 +76,7 @@ describe('getCoverage', () => {
         const jsonReport = await getCoverage(
             dataCollector,
             { ...defaultOptions, skipStep: 'all' },
+            false,
             false
         );
 
@@ -97,7 +100,8 @@ describe('getCoverage', () => {
         const jsonReport = await getCoverage(
             dataCollector,
             { ...defaultOptions, skipStep: 'all' },
-            true
+            true,
+            false
         );
 
         expect(rmdir).toBeCalledWith('node_modules', { recursive: true });
@@ -120,7 +124,8 @@ describe('getCoverage', () => {
         const jsonReport = await getCoverage(
             dataCollector,
             { ...defaultOptions, skipStep: 'all' },
-            true
+            true,
+            false
         );
 
         expect(rmdir).toBeCalledWith('node_modules', { recursive: true });
