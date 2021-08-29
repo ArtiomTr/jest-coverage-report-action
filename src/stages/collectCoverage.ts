@@ -1,14 +1,11 @@
 import { readFile } from 'fs-extra';
 
-import { REPORT_PATH } from '../constants/REPORT_PATH';
 import { FailReason } from '../typings/Report';
-import { joinPaths } from '../utils/joinPaths';
+import { getReportPath } from '../utils/getReportPath';
 
 export const collectCoverage = async (workingDirectory?: string) => {
     try {
-        const outBuff = await readFile(
-            joinPaths(workingDirectory, REPORT_PATH)
-        );
+        const outBuff = await readFile(getReportPath(workingDirectory));
         return outBuff.toString();
     } catch (err) {
         if ((err as NodeJS.ErrnoException)?.code === 'ENOENT') {
