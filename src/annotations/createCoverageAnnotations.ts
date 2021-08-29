@@ -1,15 +1,8 @@
 import { relative } from 'path';
 
 import { Annotation } from './Annotation';
-import {
-    notCoveredBranchMessage,
-    notCoveredBranchTitle,
-    notCoveredFunctionMessage,
-    notCoveredFunctionTitle,
-    notCoveredStatementMessage,
-    notCoveredStatementTitle,
-} from '../format/strings.json';
 import { JsonReport, Location } from '../typings/JsonReport';
+import { i18n } from '../utils/i18n';
 
 const getLocation = (
     start: Location = { line: 0 },
@@ -50,8 +43,8 @@ export const createCoverageAnnotations = (
                             ),
                             path: normalizedFilename,
                             annotation_level: 'warning',
-                            title: notCoveredStatementTitle,
-                            message: notCoveredStatementMessage,
+                            title: i18n('notCoveredStatementTitle'),
+                            message: i18n('notCoveredStatementMessage'),
                         });
                     }
                 }
@@ -74,8 +67,10 @@ export const createCoverageAnnotations = (
                                         ),
                                         path: normalizedFilename,
                                         annotation_level: 'warning',
-                                        title: notCoveredBranchTitle,
-                                        message: notCoveredBranchMessage,
+                                        title: i18n('notCoveredBranchTitle'),
+                                        message: i18n(
+                                            'notCoveredBranchMessage'
+                                        ),
                                     });
                                 }
                             }
@@ -94,8 +89,8 @@ export const createCoverageAnnotations = (
                             ),
                             path: normalizedFilename,
                             annotation_level: 'warning',
-                            title: notCoveredFunctionTitle,
-                            message: notCoveredFunctionMessage,
+                            title: i18n('notCoveredFunctionTitle'),
+                            message: i18n('notCoveredFunctionMessage'),
                         });
                     }
                 }
