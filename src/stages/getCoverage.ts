@@ -17,29 +17,29 @@ export const getCoverage = async (
     runAll: boolean
 ): Promise<JsonReport> => {
     await runStage('install', dataCollector, async (skip) => {
-        if (!runAll && !shouldInstallDeps(options!.skipStep)) {
+        if (!runAll && !shouldInstallDeps(options.skipStep)) {
             skip();
         }
 
         await installDependencies(
-            options?.packageManager,
-            options?.workingDirectory
+            options.packageManager,
+            options.workingDirectory
         );
     });
 
     await runStage('runTest', dataCollector, async (skip) => {
-        if (!runAll && !shouldRunTestScript(options!.skipStep)) {
+        if (!runAll && !shouldRunTestScript(options.skipStep)) {
             skip();
         }
 
-        await runTest(options!.testScript, options?.workingDirectory);
+        await runTest(options.testScript, options.workingDirectory);
     });
 
     const [isCoverageCollected, rawCoverage] = await runStage(
         'collectCoverage',
         dataCollector,
         async () => {
-            return await collectCoverage(options!.workingDirectory);
+            return await collectCoverage(options.workingDirectory);
         }
     );
 
@@ -57,10 +57,10 @@ export const getCoverage = async (
         }
     );
 
-    if (!coverageParsed) {
+    if (!coverageParsed || !jsonReport) {
         // TODO: set normal error
         throw 0;
     }
 
-    return jsonReport!;
+    return jsonReport;
 };

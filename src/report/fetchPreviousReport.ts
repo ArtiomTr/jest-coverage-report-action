@@ -16,9 +16,9 @@ export async function fetchPreviousReport(
         }
     );
 
-    const sizeLimitComment = commentList.find((comment) =>
+    const previousReport = commentList.find((comment) =>
         (comment as { body: string }).body.startsWith(getReportTag(dir))
     );
 
-    return !sizeLimitComment ? null : sizeLimitComment;
+    return !previousReport ? null : previousReport;
 }

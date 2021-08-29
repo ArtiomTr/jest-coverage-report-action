@@ -1,10 +1,9 @@
-import report from '../mock-data/jsonReport.json';
+import * as all from '@actions/github';
 
 import { createReport, getSha } from '../../src/stages/createReport';
-import { createDataCollector } from '../../src/utils/DataCollector';
 import { JsonReport } from '../../src/typings/JsonReport';
-
-import * as all from '@actions/github';
+import { createDataCollector } from '../../src/utils/DataCollector';
+import report from '../mock-data/jsonReport.json';
 
 const { mockContext, clearContextMock } = all as any;
 
@@ -12,11 +11,13 @@ describe('createReport', () => {
     it('should match snapshots', async () => {
         const dataCollector = createDataCollector<JsonReport>();
         dataCollector.add(report);
+
         mockContext({ payload: { after: '123456' } });
         expect(await createReport(dataCollector)).toMatchSnapshot();
         expect(
             await createReport(dataCollector, 'custom directory')
         ).toMatchSnapshot();
+
         expect(
             await createReport(
                 dataCollector,
@@ -24,6 +25,18 @@ describe('createReport', () => {
                 'Custom title with directory - {{ dir }}'
             )
         ).toMatchSnapshot();
+
+        clearContextMock();
+    });
+
+    it('should match snapshots (failed report)', async () => {
+        const dataCollector = createDataCollector<JsonReport>();
+        dataCollector.add({ ...report, success: false });
+
+        mockContext({ payload: { after: '123456' } });
+
+        expect(await createReport(dataCollector)).toMatchSnapshot();
+
         clearContextMock();
     });
 
