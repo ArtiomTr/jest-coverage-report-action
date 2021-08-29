@@ -24,6 +24,7 @@ module.exports = (env, args) => ({
                         target: 'es5',
                         incremental: true, // this could also be in tsconfig.json directly
                     },
+                    transpileOnly: true,
                     experimentalWatchApi: true, // this enables .tsbuildinfo in the loader
                 },
             },
