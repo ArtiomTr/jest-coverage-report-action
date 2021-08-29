@@ -15,7 +15,6 @@ export const runStage = async <T, V>(
     action: (skip: () => never) => Promise<T> | T
 ): Promise<StageResult<T>> => {
     const stageKey = `stages.${stage}`;
-
     dataCollector.info(
         i18n('stages.defaults.begin', {
             stage: i18n(stageKey).toLowerCase(),

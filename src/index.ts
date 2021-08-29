@@ -74,12 +74,12 @@ async function run() {
         dataCollector.add(baseCoverage);
     }
 
-    const [isReportContentGenerated, reportContent] = await runStage(
+    const [isReportContentGenerated, summaryReport] = await runStage(
         'generateReportContent',
         dataCollector,
         // eslint-disable-next-line @typescript-eslint/no-unused-vars
         async (_skip) => {
-            return createReport(dataCollector, options?.workingDirectory);
+            return createReport(dataCollector, options.workingDirectory);
         }
     );
 
@@ -92,14 +92,18 @@ async function run() {
 
         if (isInPR) {
             await generatePRReport(
-                reportContent!,
+                summaryReport!.text,
                 options.workingDirectory,
                 context.repo,
                 context.payload.pull_request!,
                 octokit
             );
         } else {
-            await generateCommitReport(reportContent!, context.repo, octokit);
+            await generateCommitReport(
+                summaryReport!.text,
+                context.repo,
+                octokit
+            );
         }
     });
 
@@ -111,15 +115,18 @@ async function run() {
             skip();
         }
 
-        const octokit = getOctokit(options.token);
         const failedAnnotations = createFailedTestsAnnotations(headCoverage!);
 
         if (failedAnnotations.length === 0) {
             skip();
         }
 
+        const octokit = getOctokit(options.token);
         await octokit.checks.create(
-            formatFailedTestsAnnotations(headCoverage!, failedAnnotations)
+            formatFailedTestsAnnotations(
+                summaryReport!.runReport,
+                failedAnnotations
+            )
         );
     });
 
@@ -131,13 +138,13 @@ async function run() {
             skip();
         }
 
-        const octokit = getOctokit(options.token);
         const coverageAnnotations = createCoverageAnnotations(headCoverage!);
 
         if (coverageAnnotations.length === 0) {
             skip();
         }
 
+        const octokit = getOctokit(options.token);
         await octokit.checks.create(
             formatCoverageAnnotations(coverageAnnotations)
         );
