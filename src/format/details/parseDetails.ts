@@ -13,12 +13,8 @@ import { getPercents } from '../getPercents';
 
 export const parseDetails = (jsonReport: JsonReport) => {
     // Find common root directory
-    let trimPath = 0;
     const filepaths = Object.keys(jsonReport.coverageMap);
-    if (filepaths.length) {
-        const commonRootPath = findCommonPath(filepaths);
-        trimPath = commonRootPath.length;
-    }
+    const trimPath = findCommonPath(filepaths).length;
 
     return Object.entries(jsonReport.coverageMap).reduce<CoverageDetailsMap>(
         (acc, [filename, fileCoverage]) => {

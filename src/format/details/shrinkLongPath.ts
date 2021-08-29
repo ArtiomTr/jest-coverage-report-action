@@ -4,8 +4,10 @@ import { basename } from 'path';
 const LONG_PATH_LENGTH = 20;
 
 export const shrinkLongPath = (filename: string) => {
-    if (filename.length >= LONG_PATH_LENGTH) {
-        return `<div title=${filename}>\`...\` / ${basename(filename)}</div>`;
+    const base = basename(filename);
+
+    if (filename.length >= LONG_PATH_LENGTH && base !== filename) {
+        return `<div title="${filename}">\`...\` / ${base}</div>`;
     }
 
     return filename;

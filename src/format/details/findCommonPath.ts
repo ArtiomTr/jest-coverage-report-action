@@ -1,4 +1,4 @@
-import { basename } from 'path';
+import { dirname } from 'path';
 
 /**
  * Find a common path from a list of filepaths.
@@ -24,7 +24,7 @@ export const findCommonPath = (filepaths: string[]): string => {
 
         // If it doesn't appear to be a directory (partial filename), get the parent directory
         if (commonRoot.length && commonRoot[commonRoot.length - 1] !== '/') {
-            commonRoot = basename(commonRoot);
+            commonRoot = dirname(commonRoot) + '/';
         }
     }
     return commonRoot;
