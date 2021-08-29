@@ -1454,8 +1454,8 @@ var require_dist_node2 = __commonJS({
     function isKeyOperator(operator) {
       return operator === ";" || operator === "&" || operator === "?";
     }
-    function getValues(context6, operator, key, modifier) {
-      var value = context6[key], result = [];
+    function getValues(context8, operator, key, modifier) {
+      var value = context8[key], result = [];
       if (isDefined(value) && value !== "") {
         if (typeof value === "string" || typeof value === "number" || typeof value === "boolean") {
           value = value.toString();
@@ -1515,7 +1515,7 @@ var require_dist_node2 = __commonJS({
         expand: expand.bind(null, template)
       };
     }
-    function expand(template, context6) {
+    function expand(template, context8) {
       var operators = ["+", "#", ".", "/", ";", "?", "&"];
       return template.replace(/\{([^\{\}]+)\}|([^\{\}]+)/g, function(_, expression, literal) {
         if (expression) {
@@ -1527,7 +1527,7 @@ var require_dist_node2 = __commonJS({
           }
           expression.split(/,/g).forEach(function(variable) {
             var tmp = /([^:\*]*)(?::(\d+)|(\*))?/.exec(variable);
-            values.push(getValues(context6, operator, tmp[1], tmp[2] || tmp[3]));
+            values.push(getValues(context8, operator, tmp[1], tmp[2] || tmp[3]));
           });
           if (operator && operator !== "+") {
             var separator = ",";
@@ -5355,6 +5355,225 @@ var require_strip_ansi = __commonJS({
   }
 });
 
+// node_modules/repeat-string/index.js
+var require_repeat_string = __commonJS({
+  "node_modules/repeat-string/index.js"(exports2, module2) {
+    "use strict";
+    var res = "";
+    var cache;
+    module2.exports = repeat;
+    function repeat(str, num) {
+      if (typeof str !== "string") {
+        throw new TypeError("expected a string");
+      }
+      if (num === 1)
+        return str;
+      if (num === 2)
+        return str + str;
+      var max = str.length * num;
+      if (cache !== str || typeof cache === "undefined") {
+        cache = str;
+        res = "";
+      } else if (res.length >= max) {
+        return res.substr(0, max);
+      }
+      while (max > res.length && num > 1) {
+        if (num & 1) {
+          res += str;
+        }
+        num >>= 1;
+        str += str;
+      }
+      res += str;
+      res = res.substr(0, max);
+      return res;
+    }
+  }
+});
+
+// node_modules/markdown-table/index.js
+var require_markdown_table = __commonJS({
+  "node_modules/markdown-table/index.js"(exports2, module2) {
+    "use strict";
+    var repeat = require_repeat_string();
+    module2.exports = markdownTable2;
+    var trailingWhitespace = / +$/;
+    var space = " ";
+    var lineFeed = "\n";
+    var dash = "-";
+    var colon = ":";
+    var verticalBar = "|";
+    var x = 0;
+    var C = 67;
+    var L = 76;
+    var R = 82;
+    var c = 99;
+    var l = 108;
+    var r = 114;
+    function markdownTable2(table2, options) {
+      var settings = options || {};
+      var padding = settings.padding !== false;
+      var start = settings.delimiterStart !== false;
+      var end = settings.delimiterEnd !== false;
+      var align = (settings.align || []).concat();
+      var alignDelimiters = settings.alignDelimiters !== false;
+      var alignments = [];
+      var stringLength = settings.stringLength || defaultStringLength;
+      var rowIndex = -1;
+      var rowLength = table2.length;
+      var cellMatrix = [];
+      var sizeMatrix = [];
+      var row = [];
+      var sizes = [];
+      var longestCellByColumn = [];
+      var mostCellsPerRow = 0;
+      var cells;
+      var columnIndex;
+      var columnLength;
+      var largest;
+      var size;
+      var cell;
+      var lines2;
+      var line;
+      var before;
+      var after;
+      var code;
+      while (++rowIndex < rowLength) {
+        cells = table2[rowIndex];
+        columnIndex = -1;
+        columnLength = cells.length;
+        row = [];
+        sizes = [];
+        if (columnLength > mostCellsPerRow) {
+          mostCellsPerRow = columnLength;
+        }
+        while (++columnIndex < columnLength) {
+          cell = serialize(cells[columnIndex]);
+          if (alignDelimiters === true) {
+            size = stringLength(cell);
+            sizes[columnIndex] = size;
+            largest = longestCellByColumn[columnIndex];
+            if (largest === void 0 || size > largest) {
+              longestCellByColumn[columnIndex] = size;
+            }
+          }
+          row.push(cell);
+        }
+        cellMatrix[rowIndex] = row;
+        sizeMatrix[rowIndex] = sizes;
+      }
+      columnIndex = -1;
+      columnLength = mostCellsPerRow;
+      if (typeof align === "object" && "length" in align) {
+        while (++columnIndex < columnLength) {
+          alignments[columnIndex] = toAlignment(align[columnIndex]);
+        }
+      } else {
+        code = toAlignment(align);
+        while (++columnIndex < columnLength) {
+          alignments[columnIndex] = code;
+        }
+      }
+      columnIndex = -1;
+      columnLength = mostCellsPerRow;
+      row = [];
+      sizes = [];
+      while (++columnIndex < columnLength) {
+        code = alignments[columnIndex];
+        before = "";
+        after = "";
+        if (code === l) {
+          before = colon;
+        } else if (code === r) {
+          after = colon;
+        } else if (code === c) {
+          before = colon;
+          after = colon;
+        }
+        size = alignDelimiters ? Math.max(1, longestCellByColumn[columnIndex] - before.length - after.length) : 1;
+        cell = before + repeat(dash, size) + after;
+        if (alignDelimiters === true) {
+          size = before.length + size + after.length;
+          if (size > longestCellByColumn[columnIndex]) {
+            longestCellByColumn[columnIndex] = size;
+          }
+          sizes[columnIndex] = size;
+        }
+        row[columnIndex] = cell;
+      }
+      cellMatrix.splice(1, 0, row);
+      sizeMatrix.splice(1, 0, sizes);
+      rowIndex = -1;
+      rowLength = cellMatrix.length;
+      lines2 = [];
+      while (++rowIndex < rowLength) {
+        row = cellMatrix[rowIndex];
+        sizes = sizeMatrix[rowIndex];
+        columnIndex = -1;
+        columnLength = mostCellsPerRow;
+        line = [];
+        while (++columnIndex < columnLength) {
+          cell = row[columnIndex] || "";
+          before = "";
+          after = "";
+          if (alignDelimiters === true) {
+            size = longestCellByColumn[columnIndex] - (sizes[columnIndex] || 0);
+            code = alignments[columnIndex];
+            if (code === r) {
+              before = repeat(space, size);
+            } else if (code === c) {
+              if (size % 2 === 0) {
+                before = repeat(space, size / 2);
+                after = before;
+              } else {
+                before = repeat(space, size / 2 + 0.5);
+                after = repeat(space, size / 2 - 0.5);
+              }
+            } else {
+              after = repeat(space, size);
+            }
+          }
+          if (start === true && columnIndex === 0) {
+            line.push(verticalBar);
+          }
+          if (padding === true && !(alignDelimiters === false && cell === "") && (start === true || columnIndex !== 0)) {
+            line.push(space);
+          }
+          if (alignDelimiters === true) {
+            line.push(before);
+          }
+          line.push(cell);
+          if (alignDelimiters === true) {
+            line.push(after);
+          }
+          if (padding === true) {
+            line.push(space);
+          }
+          if (end === true || columnIndex !== columnLength - 1) {
+            line.push(verticalBar);
+          }
+        }
+        line = line.join("");
+        if (end === false) {
+          line = line.replace(trailingWhitespace, "");
+        }
+        lines2.push(line);
+      }
+      return lines2.join(lineFeed);
+    }
+    function serialize(value) {
+      return value === null || value === void 0 ? "" : String(value);
+    }
+    function defaultStringLength(value) {
+      return value.length;
+    }
+    function toAlignment(value) {
+      var code = typeof value === "string" ? value.charCodeAt(0) : x;
+      return code === L || code === l ? l : code === R || code === r ? r : code === C || code === c ? c : x;
+    }
+  }
+});
+
 // node_modules/@actions/io/lib/io-util.js
 var require_io_util = __commonJS({
   "node_modules/@actions/io/lib/io-util.js"(exports2) {
@@ -7422,8 +7641,8 @@ var require_internal_path = __commonJS({
             let remaining = itemPath;
             let dir = pathHelper.dirname(remaining);
             while (dir !== remaining) {
-              const basename = path.basename(remaining);
-              this.segments.unshift(basename);
+              const basename3 = path.basename(remaining);
+              this.segments.unshift(basename3);
               remaining = dir;
               dir = pathHelper.dirname(remaining);
             }
@@ -19351,9 +19570,9 @@ var require_cookie = __commonJS({
     var MIN_TIME = 0;
     var SAME_SITE_CONTEXT_VAL_ERR = 'Invalid sameSiteContext option for getCookies(); expected one of "strict", "lax", or "none"';
     function checkSameSiteContext(value) {
-      const context6 = String(value).toLowerCase();
-      if (context6 === "none" || context6 === "lax" || context6 === "strict") {
-        return context6;
+      const context8 = String(value).toLowerCase();
+      if (context8 === "none" || context8 === "lax" || context8 === "strict") {
+        return context8;
       } else {
         return null;
       }
@@ -19977,12 +20196,12 @@ var require_cookie = __commonJS({
       }
       setCookie(cookie, url, options, cb) {
         let err;
-        const context6 = getCookieContext(url);
+        const context8 = getCookieContext(url);
         if (typeof options === "function") {
           cb = options;
           options = {};
         }
-        const host = canonicalDomain(context6.hostname);
+        const host = canonicalDomain(context8.hostname);
         const loose = options.loose || this.enableLooseMode;
         let sameSiteContext = null;
         if (options.sameSiteContext) {
@@ -20022,7 +20241,7 @@ var require_cookie = __commonJS({
           cookie.domain = host;
         }
         if (!cookie.path || cookie.path[0] !== "/") {
-          cookie.path = defaultPath(context6.pathname);
+          cookie.path = defaultPath(context8.pathname);
           cookie.pathIsDefault = true;
         }
         if (options.http === false && cookie.httpOnly) {
@@ -20085,15 +20304,15 @@ var require_cookie = __commonJS({
         store.findCookie(cookie.domain, cookie.path, cookie.key, withCookie);
       }
       getCookies(url, options, cb) {
-        const context6 = getCookieContext(url);
+        const context8 = getCookieContext(url);
         if (typeof options === "function") {
           cb = options;
           options = {};
         }
-        const host = canonicalDomain(context6.hostname);
-        const path = context6.pathname || "/";
+        const host = canonicalDomain(context8.hostname);
+        const path = context8.pathname || "/";
         let secure = options.secure;
-        if (secure == null && context6.protocol && (context6.protocol == "https:" || context6.protocol == "wss:")) {
+        if (secure == null && context8.protocol && (context8.protocol == "https:" || context8.protocol == "wss:")) {
           secure = true;
         }
         let sameSiteLevel = 0;
@@ -37415,14 +37634,14 @@ var require_context2 = __commonJS({
           return self2._currentContext.get(key);
         };
         self2.setValue = function(key, value) {
-          var context6 = new BaseContext2(self2._currentContext);
-          context6._currentContext.set(key, value);
-          return context6;
+          var context8 = new BaseContext2(self2._currentContext);
+          context8._currentContext.set(key, value);
+          return context8;
         };
         self2.deleteValue = function(key) {
-          var context6 = new BaseContext2(self2._currentContext);
-          context6._currentContext.delete(key);
-          return context6;
+          var context8 = new BaseContext2(self2._currentContext);
+          context8._currentContext.delete(key);
+          return context8;
         };
       }
       return BaseContext2;
@@ -37535,25 +37754,25 @@ var require_context_utils = __commonJS({
     var context_1 = require_context2();
     var NonRecordingSpan_1 = require_NonRecordingSpan();
     var SPAN_KEY = context_1.createContextKey("OpenTelemetry Context Key SPAN");
-    function getSpan(context6) {
-      return context6.getValue(SPAN_KEY) || void 0;
+    function getSpan(context8) {
+      return context8.getValue(SPAN_KEY) || void 0;
     }
     exports2.getSpan = getSpan;
-    function setSpan(context6, span) {
-      return context6.setValue(SPAN_KEY, span);
+    function setSpan(context8, span) {
+      return context8.setValue(SPAN_KEY, span);
     }
     exports2.setSpan = setSpan;
-    function deleteSpan(context6) {
-      return context6.deleteValue(SPAN_KEY);
+    function deleteSpan(context8) {
+      return context8.deleteValue(SPAN_KEY);
     }
     exports2.deleteSpan = deleteSpan;
-    function setSpanContext(context6, spanContext) {
-      return setSpan(context6, new NonRecordingSpan_1.NonRecordingSpan(spanContext));
+    function setSpanContext(context8, spanContext) {
+      return setSpan(context8, new NonRecordingSpan_1.NonRecordingSpan(spanContext));
     }
     exports2.setSpanContext = setSpanContext;
-    function getSpanContext(context6) {
+    function getSpanContext(context8) {
       var _a;
-      return (_a = getSpan(context6)) === null || _a === void 0 ? void 0 : _a.spanContext();
+      return (_a = getSpan(context8)) === null || _a === void 0 ? void 0 : _a.spanContext();
     }
     exports2.getSpanContext = getSpanContext;
   }
@@ -37572,12 +37791,12 @@ var require_NoopTracer = __commonJS({
     var NoopTracer = function() {
       function NoopTracer2() {
       }
-      NoopTracer2.prototype.startSpan = function(name, options, context6) {
+      NoopTracer2.prototype.startSpan = function(name, options, context8) {
         var root = Boolean(options === null || options === void 0 ? void 0 : options.root);
         if (root) {
           return new NonRecordingSpan_1.NonRecordingSpan();
         }
-        var parentFromContext = context6 && context_utils_1.getSpanContext(context6);
+        var parentFromContext = context8 && context_utils_1.getSpanContext(context8);
         if (isSpanContext(parentFromContext) && spancontext_utils_1.isSpanContextValid(parentFromContext)) {
           return new NonRecordingSpan_1.NonRecordingSpan(parentFromContext);
         } else {
@@ -37628,8 +37847,8 @@ var require_ProxyTracer = __commonJS({
         this.name = name;
         this.version = version;
       }
-      ProxyTracer2.prototype.startSpan = function(name, options, context6) {
-        return this._getTracer().startSpan(name, options, context6);
+      ProxyTracer2.prototype.startSpan = function(name, options, context8) {
+        return this._getTracer().startSpan(name, options, context8);
       };
       ProxyTracer2.prototype.startActiveSpan = function(_name, _options, _context, _fn) {
         var tracer = this._getTracer();
@@ -38246,16 +38465,16 @@ var require_context3 = __commonJS({
       ContextAPI2.prototype.active = function() {
         return this._getContextManager().active();
       };
-      ContextAPI2.prototype.with = function(context6, fn, thisArg) {
+      ContextAPI2.prototype.with = function(context8, fn, thisArg) {
         var _a;
         var args = [];
         for (var _i = 3; _i < arguments.length; _i++) {
           args[_i - 3] = arguments[_i];
         }
-        return (_a = this._getContextManager()).with.apply(_a, __spreadArray([context6, fn, thisArg], args));
+        return (_a = this._getContextManager()).with.apply(_a, __spreadArray([context8, fn, thisArg], args));
       };
-      ContextAPI2.prototype.bind = function(context6, target) {
-        return this._getContextManager().bind(context6, target);
+      ContextAPI2.prototype.bind = function(context8, target) {
+        return this._getContextManager().bind(context8, target);
       };
       ContextAPI2.prototype._getContextManager = function() {
         return global_utils_1.getGlobal(API_NAME) || NOOP_CONTEXT_MANAGER;
@@ -38333,8 +38552,8 @@ var require_NoopTextMapPropagator = __commonJS({
       }
       NoopTextMapPropagator2.prototype.inject = function(_context, _carrier) {
       };
-      NoopTextMapPropagator2.prototype.extract = function(context6, _carrier) {
-        return context6;
+      NoopTextMapPropagator2.prototype.extract = function(context8, _carrier) {
+        return context8;
       };
       NoopTextMapPropagator2.prototype.fields = function() {
         return [];
@@ -38353,16 +38572,16 @@ var require_context_helpers = __commonJS({
     exports2.deleteBaggage = exports2.setBaggage = exports2.getBaggage = void 0;
     var context_1 = require_context2();
     var BAGGAGE_KEY = context_1.createContextKey("OpenTelemetry Baggage Key");
-    function getBaggage(context6) {
-      return context6.getValue(BAGGAGE_KEY) || void 0;
+    function getBaggage(context8) {
+      return context8.getValue(BAGGAGE_KEY) || void 0;
     }
     exports2.getBaggage = getBaggage;
-    function setBaggage(context6, baggage) {
-      return context6.setValue(BAGGAGE_KEY, baggage);
+    function setBaggage(context8, baggage) {
+      return context8.setValue(BAGGAGE_KEY, baggage);
     }
     exports2.setBaggage = setBaggage;
-    function deleteBaggage(context6) {
-      return context6.deleteValue(BAGGAGE_KEY);
+    function deleteBaggage(context8) {
+      return context8.deleteValue(BAGGAGE_KEY);
     }
     exports2.deleteBaggage = deleteBaggage;
   }
@@ -38398,17 +38617,17 @@ var require_propagation = __commonJS({
       PropagationAPI2.prototype.setGlobalPropagator = function(propagator) {
         return global_utils_1.registerGlobal(API_NAME, propagator, diag_1.DiagAPI.instance());
       };
-      PropagationAPI2.prototype.inject = function(context6, carrier, setter) {
+      PropagationAPI2.prototype.inject = function(context8, carrier, setter) {
         if (setter === void 0) {
           setter = TextMapPropagator_1.defaultTextMapSetter;
         }
-        return this._getGlobalPropagator().inject(context6, carrier, setter);
+        return this._getGlobalPropagator().inject(context8, carrier, setter);
       };
-      PropagationAPI2.prototype.extract = function(context6, carrier, getter) {
+      PropagationAPI2.prototype.extract = function(context8, carrier, getter) {
         if (getter === void 0) {
           getter = TextMapPropagator_1.defaultTextMapGetter;
         }
-        return this._getGlobalPropagator().extract(context6, carrier, getter);
+        return this._getGlobalPropagator().extract(context8, carrier, getter);
       };
       PropagationAPI2.prototype.fields = function() {
         return this._getGlobalPropagator().fields();
@@ -38522,25 +38741,25 @@ var require_dist5 = __commonJS({
       SpanKind[SpanKind["PRODUCER"] = 3] = "PRODUCER";
       SpanKind[SpanKind["CONSUMER"] = 4] = "CONSUMER";
     })(exports2.SpanKind || (exports2.SpanKind = {}));
-    function getSpan(context7) {
-      return api.trace.getSpan(context7);
+    function getSpan(context9) {
+      return api.trace.getSpan(context9);
     }
-    function setSpan(context7, span) {
-      return api.trace.setSpan(context7, span);
+    function setSpan(context9, span) {
+      return api.trace.setSpan(context9, span);
     }
-    function setSpanContext(context7, spanContext) {
-      return api.trace.setSpanContext(context7, spanContext);
+    function setSpanContext(context9, spanContext) {
+      return api.trace.setSpanContext(context9, spanContext);
     }
-    function getSpanContext(context7) {
-      return api.trace.getSpanContext(context7);
+    function getSpanContext(context9) {
+      return api.trace.getSpanContext(context9);
     }
-    function isSpanContextValid(context7) {
-      return api.trace.isSpanContextValid(context7);
+    function isSpanContextValid(context9) {
+      return api.trace.isSpanContextValid(context9);
     }
     function getTracer(name, version) {
       return api.trace.getTracer(name || "azure/core-tracing", version);
     }
-    var context6 = api.context;
+    var context8 = api.context;
     (function(SpanStatusCode) {
       SpanStatusCode[SpanStatusCode["UNSET"] = 0] = "UNSET";
       SpanStatusCode[SpanStatusCode["OK"] = 1] = "OK";
@@ -38576,7 +38795,7 @@ var require_dist5 = __commonJS({
         if (span.isRecording() && args.namespace) {
           newSpanOptions = Object.assign(Object.assign({}, tracingOptions.spanOptions), { attributes: Object.assign(Object.assign({}, spanOptions.attributes), { "az.namespace": args.namespace }) });
         }
-        const newTracingOptions = Object.assign(Object.assign({}, tracingOptions), { spanOptions: newSpanOptions, tracingContext: setSpan(tracingOptions.tracingContext || context6.active(), span) });
+        const newTracingOptions = Object.assign(Object.assign({}, tracingOptions), { spanOptions: newSpanOptions, tracingContext: setSpan(tracingOptions.tracingContext || context8.active(), span) });
         const newOperationOptions = Object.assign(Object.assign({}, operationOptions), { tracingOptions: newTracingOptions });
         return {
           span,
@@ -38618,7 +38837,7 @@ var require_dist5 = __commonJS({
       const traceFlags = hexFlags.length === 1 ? `0${hexFlags}` : hexFlags;
       return `${VERSION}-${spanContext.traceId}-${spanContext.spanId}-${traceFlags}`;
     }
-    exports2.context = context6;
+    exports2.context = context8;
     exports2.createSpanFunction = createSpanFunction;
     exports2.extractSpanContextFromTraceParentHeader = extractSpanContextFromTraceParentHeader;
     exports2.getSpan = getSpan;
@@ -63927,8 +64146,8 @@ var require_graceful_fs = __commonJS({
     }
     function noop() {
     }
-    function publishQueue(context6, queue2) {
-      Object.defineProperty(context6, gracefulQueue, {
+    function publishQueue(context8, queue2) {
+      Object.defineProperty(context8, gracefulQueue, {
         get: function() {
           return queue2;
         }
@@ -67829,8 +68048,8 @@ var require_Reference = __commonJS({
         this.getter = this.path && (0, _propertyExpr.getter)(this.path, true);
         this.map = options.map;
       }
-      getValue(value, parent, context6) {
-        let result = this.isContext ? context6 : this.isValue ? value : parent;
+      getValue(value, parent, context8) {
+        let result = this.isContext ? context8 : this.isValue ? value : parent;
         if (this.getter)
           result = this.getter(result || {});
         if (this.map)
@@ -67921,10 +68140,10 @@ var require_createValidation = __commonJS({
         } = config;
         let {
           parent,
-          context: context6
+          context: context8
         } = options;
         function resolve(item) {
-          return _Reference.default.isRef(item) ? item.getValue(value, parent, context6) : item;
+          return _Reference.default.isRef(item) ? item.getValue(value, parent, context8) : item;
         }
         function createError(overrides = {}) {
           const nextParams = (0, _mapValues.default)(_extends({
@@ -67996,7 +68215,7 @@ var require_reach = __commonJS({
     exports2.default = void 0;
     var _propertyExpr = require_property_expr();
     var trim = (part) => part.substr(0, part.length - 1).substr(1);
-    function getIn(schema, path, value, context6 = value) {
+    function getIn(schema, path, value, context8 = value) {
       let parent, lastPart, lastPartDebug;
       if (!path)
         return {
@@ -68007,7 +68226,7 @@ var require_reach = __commonJS({
       (0, _propertyExpr.forEach)(path, (_part, isBracket, isArray) => {
         let part = isBracket ? trim(_part) : _part;
         schema = schema.resolve({
-          context: context6,
+          context: context8,
           parent,
           value
         });
@@ -68036,7 +68255,7 @@ var require_reach = __commonJS({
         parentPath: lastPart
       };
     }
-    var reach = (obj, path, value, context6) => getIn(obj, path, value, context6).schema;
+    var reach = (obj, path, value, context8) => getIn(obj, path, value, context8).schema;
     var _default = reach;
     exports2.default = _default;
   }
@@ -70648,7 +70867,7 @@ var require_lib4 = __commonJS({
 
 // src/index.ts
 var import_core3 = __toModule(require_core());
-var import_github5 = __toModule(require_github());
+var import_github7 = __toModule(require_github());
 
 // src/annotations/createCoverageAnnotations.ts
 var import_path = __toModule(require("path"));
@@ -71000,9 +71219,384 @@ var generatePRReport = async (report, dir, repo, pr, octokit) => {
   }
 };
 
+// src/stages/createReport.ts
+var import_github5 = __toModule(require_github());
+
+// src/format/counters.ts
+var standardTotalCounter = (key) => (value) => Object.values(value[key]).length;
+var standardCoveredCounter = (key) => (value) => Object.values(value[key]).filter((hits) => hits > 0).length;
+var totalBranchesCounter = (value) => Object.values(value.b).reduce((acc, branch) => acc + branch.length, 0);
+var coveredBranchesCounter = (value) => Object.values(value.b).reduce((acc, branch) => acc + branch.filter((hits) => hits > 0).length, 0);
+var totalLinesCounter = (value) => {
+  const stats = getLineCoverage(value);
+  return Object.keys(stats).length;
+};
+var coveredLinesCounter = (value) => {
+  const stats = getLineCoverage(value);
+  return Object.values(stats).filter((v) => !!v).length;
+};
+var getLineCoverage = (value) => {
+  const statementMap = value.statementMap;
+  const statements2 = value.s;
+  return Object.entries(statements2).reduce((acc = {}, [st, count]) => {
+    const _st = parseInt(st);
+    if (!statementMap[_st]) {
+      return acc;
+    }
+    const { line } = statementMap[_st].start;
+    const prevVal = acc[line];
+    if (prevVal === void 0 || prevVal < count) {
+      acc[line] = count;
+    }
+    return acc;
+  }, {});
+};
+
+// src/format/getPercents.ts
+var getPercents = (covered, total) => {
+  if (total === 0)
+    return 100;
+  return covered / total * 100;
+};
+
+// src/format/details/findCommonPath.ts
+var import_path3 = __toModule(require("path"));
+var findCommonPath = (filepaths) => {
+  let commonRoot = "";
+  if (filepaths.length) {
+    const sortedPaths = [...filepaths].sort();
+    const first = sortedPaths[0];
+    const last = sortedPaths[sortedPaths.length - 1];
+    const len = Math.min(first.length, last.length);
+    for (let i = 0; i < len; i++) {
+      const ch1 = first[i];
+      const ch2 = last[i];
+      if (ch1 == ch2) {
+        commonRoot += ch1;
+      } else {
+        break;
+      }
+    }
+    if (commonRoot.length && commonRoot[commonRoot.length - 1] !== "/") {
+      commonRoot = (0, import_path3.basename)(commonRoot);
+    }
+  }
+  return commonRoot;
+};
+
+// src/format/details/parseDetails.ts
+var parseDetails = (jsonReport) => {
+  let trimPath = 0;
+  const filepaths = Object.keys(jsonReport.coverageMap);
+  if (filepaths.length) {
+    const commonRootPath = findCommonPath(filepaths);
+    trimPath = commonRootPath.length;
+  }
+  return Object.entries(jsonReport.coverageMap).reduce((acc, [filename2, fileCoverage]) => {
+    const normalizedFilename = filename2.substr(trimPath);
+    acc[normalizedFilename] = {
+      filename: normalizedFilename,
+      statements: getPercents(standardCoveredCounter("s")(fileCoverage), standardTotalCounter("s")(fileCoverage)),
+      functions: getPercents(standardCoveredCounter("f")(fileCoverage), standardTotalCounter("f")(fileCoverage)),
+      branches: getPercents(coveredBranchesCounter(fileCoverage), totalBranchesCounter(fileCoverage)),
+      lines: getPercents(coveredLinesCounter(fileCoverage), totalLinesCounter(fileCoverage))
+    };
+    return acc;
+  }, {});
+};
+
+// src/format/summary/getSummary.ts
+var getSummary = (map, totalCounter, coveredCounter, title) => {
+  const total = Object.values(map).reduce((acc, currValue) => acc + totalCounter(currValue), 0);
+  const covered = Object.values(map).reduce((acc, currValue) => acc + coveredCounter(currValue), 0);
+  return {
+    title,
+    total,
+    covered,
+    percentage: getPercents(covered, total)
+  };
+};
+
+// src/format/summary/parseSummary.ts
+var parseSummary = (jsonReport) => {
+  return [
+    getSummary(jsonReport.coverageMap, standardTotalCounter("s"), standardCoveredCounter("s"), i18n("statements")),
+    getSummary(jsonReport.coverageMap, totalBranchesCounter, coveredBranchesCounter, i18n("branches")),
+    getSummary(jsonReport.coverageMap, standardTotalCounter("f"), standardCoveredCounter("f"), i18n("functions")),
+    getSummary(jsonReport.coverageMap, totalLinesCounter, coveredLinesCounter, i18n("lines"))
+  ];
+};
+
+// src/format/details/formatCoverageDetailsPart.ts
+var import_markdown_table = __toModule(require_markdown_table());
+
+// src/utils/decimalToString.ts
+var decimalToString = (n, digitsAfterDot = 2) => n.toFixed(digitsAfterDot).replace(/\.?0+$/, "");
+
+// src/utils/formatPercentageDelta.ts
+var formatPercentageDelta = (delta) => i18n(delta > 0 ? `(+{{ delta }}% :arrow_up_small:)` : `({{ delta }}% :small_red_triangle_down:)`, {
+  delta: decimalToString(delta)
+});
+
+// src/utils/formatPercentage.ts
+var APPROXIMATION_THRESHOLD = 1;
+var formatPercentage = (headPercentage, basePercentage = headPercentage) => {
+  const delta = headPercentage - basePercentage;
+  const isDeltaValid = Math.abs(delta) > APPROXIMATION_THRESHOLD;
+  return i18n(isDeltaValid ? '<div title="{{ baseCoverage }}%">{{ percentage }}% {{ delta }}</div>' : "{{ percentage }}%", {
+    percentage: decimalToString(headPercentage),
+    baseCoverage: i18n("baseCoverage") + decimalToString(basePercentage),
+    delta: isDeltaValid ? formatPercentageDelta(delta) : ""
+  });
+};
+
+// src/utils/getStatusOfPercents.ts
+var DEFAULT_STEP = 20;
+var getStatusOfPercents = (percentage2, threshold = 60) => {
+  let step = DEFAULT_STEP;
+  if (threshold > 100 - DEFAULT_STEP * 2) {
+    step = (100 - threshold) / 2;
+  }
+  if (percentage2 < threshold) {
+    return i18n(":red_circle:");
+  } else if (percentage2 < threshold + step) {
+    return i18n(":yellow_circle:");
+  } else {
+    return i18n(":green_circle:");
+  }
+};
+
+// src/format/details/shrinkLongPath.ts
+var import_path4 = __toModule(require("path"));
+var LONG_PATH_LENGTH = 20;
+var shrinkLongPath = (filename2) => {
+  if (filename2.length >= LONG_PATH_LENGTH) {
+    return `<div title=${filename2}>\`...\` / ${(0, import_path4.basename)(filename2)}</div>`;
+  }
+  return filename2;
+};
+
+// src/format/details/getFileCoverageDetailRow.ts
+var getFileCoverageDetailRow = (filename2, headDetail, baseDetail, threshold) => [
+  getStatusOfPercents(headDetail.lines, threshold),
+  shrinkLongPath(filename2),
+  formatPercentage(headDetail.statements, baseDetail == null ? void 0 : baseDetail.statements),
+  formatPercentage(headDetail.branches, baseDetail == null ? void 0 : baseDetail.branches),
+  formatPercentage(headDetail.functions, baseDetail == null ? void 0 : baseDetail.functions),
+  formatPercentage(headDetail.lines, baseDetail == null ? void 0 : baseDetail.lines)
+];
+
+// src/utils/createMarkdownSpoiler.ts
+var createMarkdownSpoiler = ({
+  body,
+  summary
+}) => `
+<details><summary>${summary}</summary>
+
+${body}
+
+</details>
+`;
+
+// src/utils/withExplanation.ts
+var withExplanation = (text, explanation) => `<div title="${explanation}">${text}<sup>:grey_question:</sup></div>`;
+
+// src/format/details/formatCoverageDetailsPart.ts
+var formatCoverageDetailsPart = (summary, headDetails, baseDetails, threshold) => {
+  const tableContent = Object.keys(headDetails).map((filename2) => getFileCoverageDetailRow(filename2, headDetails[filename2], baseDetails == null ? void 0 : baseDetails[filename2], threshold));
+  if (tableContent.length > 0) {
+    return createMarkdownSpoiler({
+      body: (0, import_markdown_table.default)([
+        [
+          withExplanation(i18n("status"), i18n("statusExplanation")),
+          i18n("filename"),
+          i18n("statements"),
+          i18n("branches"),
+          i18n("functions"),
+          i18n("lines")
+        ],
+        ...tableContent
+      ], {
+        align: ["c", "l", "l", "l", "l", "l"]
+      }),
+      summary
+    });
+  }
+  return void 0;
+};
+
+// src/format/details/getDecreasedCoverage.ts
+var coverageLessThan = (first, second) => first.statements < second.statements || first.branches < second.branches || first.functions < second.functions;
+var getDecreasedCoverage = (headDetails, baseDetails) => Object.keys(headDetails).filter((filename2) => headDetails[filename2] && (baseDetails == null ? void 0 : baseDetails[filename2]) && coverageLessThan(headDetails[filename2], baseDetails[filename2])).reduce((acc, filename2) => {
+  acc.headDetails[filename2] = headDetails[filename2];
+  acc.baseDetails[filename2] = baseDetails[filename2];
+  return acc;
+}, { headDetails: {}, baseDetails: {} });
+
+// src/format/details/getNewFilesCoverage.ts
+var getNewFilesCoverage = (headDetails, baseDetails) => baseDetails ? Object.keys(headDetails).filter((filename2) => baseDetails[filename2] === void 0).reduce((acc, filename2) => {
+  acc[filename2] = headDetails[filename2];
+  return acc;
+}, {}) : {};
+
+// src/format/details/formatCoverageDetails.ts
+var formatCoverageDetails = (headDetails, baseDetails, threshold) => {
+  const decreasedCoverage = getDecreasedCoverage(headDetails, baseDetails);
+  return [
+    formatCoverageDetailsPart(i18n("newFilesCoverage"), getNewFilesCoverage(headDetails, baseDetails), void 0, threshold),
+    formatCoverageDetailsPart(i18n("decreasedCoverageFiles"), decreasedCoverage.headDetails, decreasedCoverage.baseDetails, threshold)
+  ].join("\n");
+};
+
+// src/format/summary/formatCoverageSummary.ts
+var import_markdown_table2 = __toModule(require_markdown_table());
+var formatCoverageSummary = (headSummary, baseSummary, threshold) => (0, import_markdown_table2.default)([
+  [
+    withExplanation(i18n("status"), i18n("statusExplanation")),
+    i18n("category"),
+    i18n("percentage"),
+    i18n("ratio")
+  ],
+  ...headSummary.map((currSummary, index) => [
+    getStatusOfPercents(currSummary.percentage, threshold),
+    currSummary.title,
+    formatPercentage(currSummary.percentage, baseSummary == null ? void 0 : baseSummary[index].percentage),
+    `${currSummary.covered}/${currSummary.total}`
+  ])
+], { align: ["c", "l", "l", "c"] });
+
+// src/format/getFormattedCoverage.ts
+var getFormattedCoverage = (headSummary, baseSummary, headDetails, baseDetails, threshold) => [
+  formatCoverageSummary(headSummary, baseSummary, threshold),
+  formatCoverageDetails(headDetails, baseDetails, threshold)
+].filter(Boolean).join("\n");
+
+// src/format/formatCoverage.ts
+var formatCoverage = (headReport, baseReport, threshold) => {
+  if (headReport) {
+    return getFormattedCoverage(parseSummary(headReport), baseReport ? parseSummary(baseReport) : void 0, parseDetails(headReport), baseReport ? parseDetails(baseReport) : void 0, threshold);
+  }
+  return "";
+};
+
+// src/utils/getConsoleLink.ts
+var import_github4 = __toModule(require_github());
+var getConsoleLink = () => {
+  var _a, _b;
+  const repositoryUrl = (_b = (_a = import_github4.context.payload.repository) == null ? void 0 : _a.html_url) != null ? _b : `https://github.com/${import_github4.context.repo.owner}/${import_github4.context.repo.repo}`;
+  return `${repositoryUrl}/actions/runs/${import_github4.context.runId}`;
+};
+
+// src/format/formatErrors.ts
+var formatErrors = (errors2) => {
+  if (errors2.length === 0) {
+    return "";
+  }
+  console.log(errors2);
+  if (errors2.length === 1) {
+    const error = errors2[0];
+    if (typeof error === "string") {
+      return i18n(":x: ") + i18n(`errors.${error}`);
+    }
+    return i18n(":x: {{ unexpectedError }} \n```\n{{ error }}\n```", {
+      error: error.toString(),
+      unexpectedError: i18n("errors.unexpectedError", {
+        consoleLink: getConsoleLink()
+      })
+    });
+  }
+  return i18n("errors.multiple") + i18n("\n```\n{{ errors }}```\n", {
+    errors: errors2.map((error, index) => {
+      let stringifiedError = "";
+      if (typeof error === "string") {
+        stringifiedError = i18n(`errors.${error}`);
+      } else {
+        stringifiedError = error.toString();
+      }
+      return ` ${String(index).padEnd(2 - Math.floor(Math.log10(index)), " ")} | ${stringifiedError}`;
+    }).join("\n")
+  });
+};
+
+// src/format/formatRunReport.ts
+var formatRunReport = (report) => {
+  const parts = [`# ${report.title}`];
+  if (report.failures) {
+    parts.push(createMarkdownSpoiler({
+      summary: report.summary,
+      body: report.failures
+    }));
+  } else {
+    parts.push(`## ${report.summary}`);
+  }
+  return parts.join("\n");
+};
+
+// src/format/getFormattedFailures.ts
+var import_strip_ansi2 = __toModule(require_strip_ansi());
+var getFailureDetails = ({ testResults }) => {
+  if (!(testResults == null ? void 0 : testResults.some(({ message }) => message.length > 0))) {
+    return "";
+  }
+  const wrapCode = (code) => "``` \n" + code + "```";
+  const codeBlocks = testResults.map(({ message }) => {
+    const stripped = (0, import_strip_ansi2.default)(message);
+    if (stripped.length === 0 || stripped.trim().length === 0) {
+      return "";
+    }
+    return wrapCode(stripped);
+  }).filter(({ length }) => length > 0);
+  return codeBlocks.join("\n---");
+};
+
+// src/format/summary/getTestRunSummary.ts
+var getTestRunSummary = (jsonReport) => jsonReport.success ? i18n("testsSuccessSummary", {
+  numPassedTests: jsonReport.numPassedTests,
+  numPassedTestSuites: jsonReport.numPassedTestSuites,
+  ending: jsonReport.numPassedTestSuites > 1 ? "s" : ""
+}) : i18n("testsFailSummary", {
+  numFailedTests: jsonReport.numFailedTests,
+  numTotalTests: jsonReport.numTotalTests,
+  numFailedTestSuites: jsonReport.numFailedTestSuites,
+  numTotalTestSuites: jsonReport.numTotalTestSuites
+});
+
+// src/format/template.md
+var template_default = '{{ tag }}\n\n## {{ title }}\n\n{{ body }}\n\n<p align="right">Report generated by <a href="https://github.com/ArtiomTr/jest-coverage-report-action">\u{1F9EA}jest coverage report action</a> from {{ sha }}</p>\n';
+
+// src/stages/createReport.ts
+var getSha = () => {
+  var _a, _b, _c;
+  return (_c = (_b = import_github5.context.payload.after) != null ? _b : (_a = import_github5.context.payload.pull_request) == null ? void 0 : _a.head.sha) != null ? _c : import_github5.context.sha;
+};
+var createReport = (dataCollector, workingDirectory, customTitle) => {
+  const { errors: errors2, data } = dataCollector.get();
+  const [headReport, baseReport] = data;
+  const formattedErrors = formatErrors(errors2);
+  const coverage = formatCoverage(headReport, baseReport, void 0);
+  const runReport = {
+    title: i18n(headReport.success ? "testsSuccess" : "testsFail"),
+    summary: getTestRunSummary(headReport),
+    failures: getFailureDetails(headReport)
+  };
+  const formattedReport = formatRunReport(runReport);
+  return {
+    text: insertArgs(template_default, {
+      body: [formattedErrors, coverage, formattedReport].join("\n"),
+      dir: workingDirectory || "",
+      tag: getReportTag(workingDirectory),
+      title: insertArgs(customTitle || i18n("summaryTitle"), {
+        dir: workingDirectory ? `for \`${workingDirectory}\`` : ""
+      }),
+      sha: getSha()
+    }),
+    runReport
+  };
+};
+
 // src/stages/getCoverage.ts
 var import_cache = __toModule(require_cache());
-var import_github4 = __toModule(require_github());
+var import_github6 = __toModule(require_github());
 
 // src/stages/collectCoverage.ts
 var import_fs_extra = __toModule(require_lib3());
@@ -71018,8 +71612,8 @@ var FailReason;
 })(FailReason || (FailReason = {}));
 
 // src/utils/joinPaths.ts
-var import_path3 = __toModule(require("path"));
-var joinPaths = (...segments) => (0, import_path3.join)(...segments.filter((segment) => segment !== void 0));
+var import_path5 = __toModule(require("path"));
+var joinPaths = (...segments) => (0, import_path5.join)(...segments.filter((segment) => segment !== void 0));
 
 // src/constants/REPORT_PATH.ts
 var REPORT_PATH = "report.json";
@@ -71169,7 +71763,7 @@ var runStage = async (stage, dataCollector, action) => {
 var getCacheConfig = (options) => {
   var _a;
   return {
-    primaryKey: `covbot-report-${process.env["RUNNER_OS"]}-${(_a = import_github4.context.payload.pull_request) == null ? void 0 : _a.base.sha}`,
+    primaryKey: `covbot-report-${process.env["RUNNER_OS"]}-${(_a = import_github6.context.payload.pull_request) == null ? void 0 : _a.base.sha}`,
     paths: [getReportPath(options.workingDirectory)]
   };
 };
@@ -71264,14 +71858,13 @@ var createDataCollector = () => {
 
 // src/index.ts
 async function run() {
-  console.log(process.env);
   const dataCollector = createDataCollector();
-  const isInPR = import_github5.context.eventName === "pull_request";
+  const isInPR = import_github7.context.eventName === "pull_request";
   const [isInitialized, options] = await runStage("initialize", dataCollector, getOptions);
   if (!isInitialized || !options) {
     throw Error("Initialization failed.");
   }
-  const [isHeadCoverageGenerated, headCoverage] = await runStage("headCoverage", dataCollector, async (_skip) => {
+  const [isHeadCoverageGenerated, headCoverage] = await runStage("headCoverage", dataCollector, async () => {
     return await getCoverage(dataCollector, options, false, false);
   });
   if (headCoverage) {
@@ -71279,7 +71872,7 @@ async function run() {
   }
   const [isSwitched] = await runStage("switchToBase", dataCollector, async (skip) => {
     var _a;
-    const baseBranch = (_a = import_github5.context.payload.pull_request) == null ? void 0 : _a.base.ref;
+    const baseBranch = (_a = import_github7.context.payload.pull_request) == null ? void 0 : _a.base.ref;
     if (!isInPR || !baseBranch) {
       skip();
     }
@@ -71296,17 +71889,17 @@ async function run() {
     dataCollector.add(baseCoverage2);
   }
   const [isReportContentGenerated, summaryReport] = await runStage("generateReportContent", dataCollector, async () => {
-    return await getCoverage(dataCollector, options, false, false);
+    return createReport(dataCollector, options.workingDirectory);
   });
   await runStage("publishReport", dataCollector, async (skip) => {
     if (!isReportContentGenerated) {
       skip();
     }
-    const octokit = (0, import_github5.getOctokit)(options.token);
+    const octokit = (0, import_github7.getOctokit)(options.token);
     if (isInPR) {
-      await generatePRReport(summaryReport.text, options.workingDirectory, import_github5.context.repo, import_github5.context.payload.pull_request, octokit);
+      await generatePRReport(summaryReport.text, options.workingDirectory, import_github7.context.repo, import_github7.context.payload.pull_request, octokit);
     } else {
-      await generateCommitReport(summaryReport.text, import_github5.context.repo, octokit);
+      await generateCommitReport(summaryReport.text, import_github7.context.repo, octokit);
     }
   });
   await runStage("failedTestsAnnotations", dataCollector, async (skip) => {
@@ -71317,7 +71910,7 @@ async function run() {
     if (failedAnnotations.length === 0) {
       skip();
     }
-    const octokit = (0, import_github5.getOctokit)(options.token);
+    const octokit = (0, import_github7.getOctokit)(options.token);
     await octokit.checks.create(formatFailedTestsAnnotations(summaryReport.runReport, failedAnnotations));
   });
   await runStage("coverageAnnotations", dataCollector, async (skip) => {
@@ -71328,7 +71921,7 @@ async function run() {
     if (coverageAnnotations.length === 0) {
       skip();
     }
-    const octokit = (0, import_github5.getOctokit)(options.token);
+    const octokit = (0, import_github7.getOctokit)(options.token);
     await octokit.checks.create(formatCoverageAnnotations(coverageAnnotations));
   });
   if (dataCollector.get().errors.length > 0) {
@@ -71412,6 +72005,12 @@ run();
  * Copyright(c) 2014 Jonathan Ong
  * Copyright(c) 2015 Douglas Christopher Wilson
  * MIT Licensed
+ */
+/*!
+ * repeat-string <https://github.com/jonschlinkert/repeat-string>
+ *
+ * Copyright (c) 2014-2015, Jon Schlinkert.
+ * Licensed under the MIT License.
  */
 /*! *****************************************************************************
 Copyright (c) Microsoft Corporation.
