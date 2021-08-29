@@ -5,7 +5,7 @@ import { collectCoverage } from './collectCoverage';
 import { installDependencies } from './installDependencies';
 import { parseCoverage } from './parseCoverage';
 import { runTest } from './runTest';
-import { REPORT_PATH } from '../constants/REPORT_PATH';
+import { CacheConfig } from '../typings/CacheConfig';
 import { JsonReport } from '../typings/JsonReport';
 import {
     Options,
@@ -16,30 +16,33 @@ import { DataCollector } from '../utils/DataCollector';
 import { getReportPath } from '../utils/getReportPath';
 import { runStage } from '../utils/runStage';
 
-const getCacheKey = () => {
-    return `covbot-report-4${process.env['RUNNER_OS']}-${context.payload.pull_request?.base.sha}`;
+const getCacheConfig = (options: Options): CacheConfig => {
+    return {
+        primaryKey: `covbot-report-${process.env['RUNNER_OS']}-${context.payload.pull_request?.base.sha}`,
+        paths: [getReportPath(options.workingDirectory)],
+    };
 };
+
 export const getCoverage = async (
     dataCollector: DataCollector<JsonReport>,
     options: Options,
     runAll: boolean,
     checkCache: boolean
 ): Promise<JsonReport> => {
-    const [isCached, _] = await runStage(
+    const [isCached] = await runStage(
         'checkCache',
         dataCollector,
         async (skip) => {
             if (!checkCache) {
                 skip();
             }
-            const reportPath = getReportPath(options.workingDirectory);
-            const paths = [reportPath];
-            const restoreKeys = ['covbot-report-'];
-            const key = getCacheKey();
-            const cacheKey = await restoreCache(paths, key, restoreKeys);
-            console.log({ key, cacheKey });
+            const cacheConfig = getCacheConfig(options);
+            const cacheKey = await restoreCache(
+                cacheConfig.paths,
+                cacheConfig.primaryKey
+            );
             if (cacheKey === undefined) {
-                throw Error('Cache not found');
+                skip();
             }
         }
     );
@@ -94,13 +97,14 @@ export const getCoverage = async (
         if (!checkCache || isCached) {
             skip();
         }
-        const reportPath = getReportPath(options.workingDirectory);
-        const paths = [reportPath];
         try {
-            const cacheId = await saveCache(paths, getCacheKey());
-            console.log({ cacheId });
+            const cacheConfig = getCacheConfig(options);
+            await saveCache(cacheConfig.paths, cacheConfig.primaryKey);
         } catch (error) {
-            console.log(error);
+            dataCollector.info(
+                `Caching test result failed: ${JSON.stringify(error)}`
+            );
+            skip();
         }
     });
 
