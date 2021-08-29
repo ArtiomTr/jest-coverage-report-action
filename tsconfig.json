@@ -1,6 +1,6 @@
 {
     "compilerOptions": {
-        "target": "ES2020",
+        "target": "ES5",
         "module": "commonjs",
         "declaration": false,
         "outDir": "./dist",
@@ -8,7 +8,8 @@
         "esModuleInterop": true,
         "lib": ["ES2015"],
         "rootDir": "src",
-        "resolveJsonModule": true
+        "resolveJsonModule": true,
+        "incremental": true
     },
     "include": ["src", "index.d.ts"],
     "exclude": ["node_modules", "tests", "example"]

@@ -2,6 +2,7 @@
 const { build } = require('esbuild');
 build({
     bundle: true,
+    target: 'es5',
     minify: true,
     platform: 'node',
     entryPoints: ['src/index.ts'],
