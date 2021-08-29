@@ -17,7 +17,7 @@ import { getReportPath } from '../utils/getReportPath';
 import { runStage } from '../utils/runStage';
 
 const getCacheKey = () => {
-    return `covbot-report-3${process.env['RUNNER_OS']}-${context.payload.pull_request?.base.sha}`;
+    return `covbot-report-4${process.env['RUNNER_OS']}-${context.payload.pull_request?.base.sha}`;
 };
 export const getCoverage = async (
     dataCollector: DataCollector<JsonReport>,
@@ -32,8 +32,8 @@ export const getCoverage = async (
             if (!checkCache) {
                 skip();
             }
-            // const reportPath = getReportPath(options.workingDirectory);
-            const paths = [options.workingDirectory!];
+            const reportPath = getReportPath(options.workingDirectory);
+            const paths = [reportPath];
             const restoreKeys = ['covbot-report-'];
             const key = getCacheKey();
             const cacheKey = await restoreCache(paths, key, restoreKeys);
@@ -94,8 +94,8 @@ export const getCoverage = async (
         if (!checkCache || isCached) {
             skip();
         }
-        // const reportPath = getReportPath(options.workingDirectory);
-        const paths = [options.workingDirectory!];
+        const reportPath = getReportPath(options.workingDirectory);
+        const paths = [reportPath];
         try {
             const cacheId = await saveCache(paths, getCacheKey());
             console.log({ cacheId });
