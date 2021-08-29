@@ -4,10 +4,7 @@ module.exports = (env, args) => ({
     entry: './src/index.ts',
     output: {
         filename: `index.js`,
-        path: path.resolve(
-            __dirname,
-            args.mode === 'production' ? 'dist' : 'build'
-        ),
+        path: path.resolve(__dirname, 'dist'),
     },
     target: 'node',
     resolve: {
