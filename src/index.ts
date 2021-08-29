@@ -80,7 +80,7 @@ async function run() {
         'generateReportContent',
         dataCollector,
         async () => {
-            return await getCoverage(dataCollector, options, false, false);
+            return createReport(dataCollector, options.workingDirectory);
         }
     );
 
