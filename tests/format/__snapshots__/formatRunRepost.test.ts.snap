@@ -4,11 +4,9 @@ exports[`should generate summary as markdown failure tests 1`] = `
 "# Tests Failed
 <details>
 <summary>2 Tests Passed, 1 Test Failed</summary>
-
-\`\`\`bash
+\`\`\` 
 fail 1\`\`\`
----
-\`\`\`bash
+---\`\`\` 
 fail 2\`\`\`
 </details>"
 `;
