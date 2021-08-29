@@ -6,8 +6,6 @@ export const formatErrors = (errors: Array<string | Error>) => {
         return '';
     }
 
-    console.log(errors);
-
     if (errors.length === 1) {
         const error = errors[0];
 
