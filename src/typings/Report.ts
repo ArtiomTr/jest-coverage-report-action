@@ -15,3 +15,14 @@ export type Report = {
     failReason?: FailReason;
     error?: Error;
 };
+
+export type TestRunReport = {
+    title: string;
+    summary: string;
+    failures?: string;
+};
+
+export type SummaryReport = {
+    text: string;
+    runReport: TestRunReport;
+};
