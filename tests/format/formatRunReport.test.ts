@@ -1,8 +1,9 @@
 import { formatRunReport } from '../../src/format/formatRunReport';
 import { getFailureDetails } from '../../src/format/getFormattedFailures';
 import { JsonReport } from '../../src/typings/JsonReport';
-describe('should generate summary as markdown', () => {
-    it('successful tests', () => {
+
+describe('formatRunReport', () => {
+    it('should generate summary as markdown (successful tests)', () => {
         expect(
             formatRunReport({
                 summary: '2 Tests Passed',
@@ -10,7 +11,7 @@ describe('should generate summary as markdown', () => {
             })
         ).toMatchSnapshot();
     });
-    it('failure tests', () => {
+    it('should generate summary as markdown (failure tests)', () => {
         expect(
             formatRunReport({
                 summary: '2 Tests Passed, 1 Test Failed',
