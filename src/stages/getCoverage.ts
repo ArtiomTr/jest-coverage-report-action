@@ -16,7 +16,7 @@ import { getReportPath } from '../utils/getReportPath';
 import { runStage } from '../utils/runStage';
 
 const getCacheKey = () => {
-    return `covbot-report-${process.env['RUNNER_OS']}-${context.payload.pull_request?.base.sha}`;
+    return `covbot-report-2${process.env['RUNNER_OS']}-${context.payload.pull_request?.base.sha}`;
 };
 export const getCoverage = async (
     dataCollector: DataCollector<JsonReport>,
