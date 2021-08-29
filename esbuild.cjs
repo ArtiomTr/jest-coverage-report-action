@@ -2,9 +2,9 @@
 const { build } = require('esbuild');
 build({
     bundle: true,
-    minify: true,
-    target: 'es5',
+    minify: false,
     platform: 'node',
+    target: 'es2019',
     entryPoints: ['src/index.ts'],
     outfile: 'dist/index.js',
     loader: {
