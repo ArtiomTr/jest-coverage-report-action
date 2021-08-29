@@ -8,6 +8,11 @@ import { DataCollector } from '../utils/DataCollector';
 import { i18n } from '../utils/i18n';
 import { context } from '@actions/github';
 
+export const getSha = () =>
+    context.payload.after ??
+    context.payload.pull_request?.head.sha ??
+    context.sha;
+
 export const createReport = (
     dataCollector: DataCollector<JsonReport>,
     workingDirectory?: string,
@@ -26,9 +31,6 @@ export const createReport = (
         title: insertArgs(customTitle || i18n('summaryTitle'), {
             dir: workingDirectory ? `for \`${workingDirectory}\`` : '',
         }),
-        sha:
-            context.payload.after ??
-            context.payload.pull_request?.head.sha ??
-            context.sha,
+        sha: getSha(),
     });
 };

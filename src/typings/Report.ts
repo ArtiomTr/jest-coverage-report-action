@@ -5,6 +5,7 @@ export enum FailReason {
     INVALID_COVERAGE_FORMAT = 'invalidFormat',
     UNDER_THRESHOLD = 'underThreshold',
     UNKNOWN_ERROR = 'unknownError',
+    REPORT_NOT_FOUND = 'reportNotFound',
 }
 
 export type Report = {

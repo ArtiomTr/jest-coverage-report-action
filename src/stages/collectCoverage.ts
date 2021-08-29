@@ -11,9 +11,8 @@ export const collectCoverage = async (workingDirectory?: string) => {
         );
         return outBuff.toString();
     } catch (err) {
-        if ((err as NodeJS.ErrnoException)?.code === 'ENOENT') {
-            // TODO: replace with normal error
-            throw FailReason.INVALID_COVERAGE_FORMAT;
+        if ((err as NodeJS.ErrnoException).code === 'ENOENT') {
+            throw FailReason.REPORT_NOT_FOUND;
         }
 
         throw err;

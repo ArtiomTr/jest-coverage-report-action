@@ -2,6 +2,7 @@ module.exports = {
     moduleFileExtensions: ['ts', 'js'],
     transform: {
         '^.+\\.ts$': 'ts-jest',
+        '^.+\\.md$': '<rootDir>/fileTransformer.js',
     },
     testMatch: ['**/*.(test|spec).ts'],
     globals: {
