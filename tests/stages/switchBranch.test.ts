@@ -1,5 +1,6 @@
-import { switchBranch } from '../../src/stages/switchBranch';
 import { exec } from '@actions/exec';
+
+import { switchBranch } from '../../src/stages/switchBranch';
 
 const clearMocks = () => {
     (exec as jest.Mock<any, any>).mockClear();

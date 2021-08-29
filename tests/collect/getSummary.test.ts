@@ -1,9 +1,9 @@
-import jsonReport from '../mock-data/jsonReport.json';
 import {
     coveredLinesCounter,
     totalLinesCounter,
 } from '../../src/format/counters';
 import { getSummary } from '../../src/format/summary/getSummary';
+import jsonReport from '../mock-data/jsonReport.json';
 
 describe('getSummary', () => {
     it('Should generate a line number coverage report', () => {

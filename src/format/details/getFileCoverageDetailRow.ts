@@ -1,7 +1,7 @@
+import { shrinkLongPath } from './shrinkLongPath';
 import { CoverageDetail } from '../../typings/Coverage';
 import { formatPercentage } from '../../utils/formatPercentage';
 import { getStatusOfPercents } from '../../utils/getStatusOfPercents';
-import { shrinkLongPath } from './shrinkLongPath';
 
 export const getFileCoverageDetailRow = (
     filename: string,

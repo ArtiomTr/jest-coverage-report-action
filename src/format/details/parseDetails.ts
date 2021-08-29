@@ -1,5 +1,4 @@
-import { relative } from 'path';
-
+import { findCommonPath } from './findCommonPath';
 import { CoverageDetailsMap } from '../../typings/Coverage';
 import { JsonReport } from '../../typings/JsonReport';
 import {
@@ -11,7 +10,6 @@ import {
     totalLinesCounter,
 } from '../counters';
 import { getPercents } from '../getPercents';
-import { findCommonPath } from './findCommonPath';
 
 export const parseDetails = (jsonReport: JsonReport) => {
     // Find common root directory

@@ -1,9 +1,9 @@
 import table from 'markdown-table';
 
 import { CoverageSummary } from '../../typings/Coverage';
-import { i18n } from '../../utils/i18n';
 import { formatPercentage } from '../../utils/formatPercentage';
 import { getStatusOfPercents } from '../../utils/getStatusOfPercents';
+import { i18n } from '../../utils/i18n';
 import { withExplanation } from '../../utils/withExplanation';
 
 export const formatCoverageSummary = (

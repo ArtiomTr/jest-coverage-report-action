@@ -2,8 +2,8 @@ import markdownTable from 'markdown-table';
 
 import { getFileCoverageDetailRow } from './getFileCoverageDetailRow';
 import { CoverageDetailsMap } from '../../typings/Coverage';
-import { i18n } from '../../utils/i18n';
 import { createMarkdownSpoiler } from '../../utils/createMarkdownSpoiler';
+import { i18n } from '../../utils/i18n';
 import { withExplanation } from '../../utils/withExplanation';
 
 export const formatCoverageDetailsPart = (

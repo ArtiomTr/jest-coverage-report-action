@@ -1,5 +1,6 @@
-import { joinPaths } from '../../src/utils/joinPaths';
 import { join } from 'path';
+
+import { joinPaths } from '../../src/utils/joinPaths';
 
 describe('joinPaths', () => {
     it('should filter undefined paths', () => {

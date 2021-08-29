@@ -1,4 +1,5 @@
 import * as all from '@actions/core';
+
 import {
     getOptions,
     shouldInstallDeps,

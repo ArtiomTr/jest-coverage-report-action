@@ -1,7 +1,5 @@
-const path = require('path');
-
 module.exports = {
-    process(src, filename, config, options) {
+    process(src) {
         return 'module.exports = `' + src + '`;';
     },
 };

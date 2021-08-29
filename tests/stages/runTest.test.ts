@@ -1,4 +1,5 @@
 import { exec } from '@actions/exec';
+
 import { runTest } from '../../src/stages/runTest';
 
 const clearMocks = () => {

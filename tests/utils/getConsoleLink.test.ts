@@ -1,5 +1,6 @@
-import { getConsoleLink } from '../../src/utils/getConsoleLink';
 import * as all from '@actions/github';
+
+import { getConsoleLink } from '../../src/utils/getConsoleLink';
 
 const { mockContext, clearContextMock } = all as any;
 
