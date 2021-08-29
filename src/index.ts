@@ -33,8 +33,7 @@ async function run() {
     const [isHeadCoverageGenerated, headCoverage] = await runStage(
         'headCoverage',
         dataCollector,
-        // eslint-disable-next-line @typescript-eslint/no-unused-vars
-        async (_skip) => {
+        async () => {
             return await getCoverage(dataCollector, options, false);
         }
     );
