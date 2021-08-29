@@ -9,6 +9,7 @@
         "test:coverage": "jest --silent --testLocationInResults --coverage --json --outputFile=\"report.json\"",
         "test:watch": "jest --watch",
         "build": "tsc --noEmit --incremental && node esbuild.cjs",
+        "build:dev": "node esbuild.cjs",
         "lint": "eslint ."
     },
     "keywords": [],
