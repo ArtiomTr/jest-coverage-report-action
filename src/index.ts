@@ -79,9 +79,8 @@ async function run() {
     const [isReportContentGenerated, summaryReport] = await runStage(
         'generateReportContent',
         dataCollector,
-        // eslint-disable-next-line @typescript-eslint/no-unused-vars
-        async (_skip) => {
-            return createReport(dataCollector, options.workingDirectory);
+        async () => {
+            return await getCoverage(dataCollector, options, false, false);
         }
     );
 
