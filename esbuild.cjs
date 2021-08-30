@@ -2,11 +2,12 @@
 const { build } = require('esbuild');
 build({
     bundle: true,
-    minify: false, // Cannot minify due to https://github.com/node-fetch/node-fetch/issues/784
+    minify: true,
     platform: 'node',
     target: 'es2019',
     entryPoints: ['src/index.ts'],
     outfile: 'dist/index.js',
+    keepNames: true,
     loader: {
         '.md': 'text',
     },
