@@ -30,7 +30,7 @@ export const getReportBody = (
         baseReport?.failReason
     ) {
         console.log(
-            'Head is ok, but base branch has not valid coverage. Some features will be disabled.'
+            'Head is ok, but the base branch does not have valid coverage. Some features will be disabled.'
         );
 
         normalizedBaseReport = headReport;
