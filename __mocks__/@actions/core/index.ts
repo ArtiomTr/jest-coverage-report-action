@@ -11,3 +11,5 @@ export const clearInputMock = () => {
         delete input[key];
     });
 };
+
+export const setFailed = jest.fn();

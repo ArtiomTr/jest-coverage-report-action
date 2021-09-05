@@ -85,18 +85,17 @@
     "coveredCheckName": "Coverage annotations (🧪 jest-coverage-report-action)",
     "failedTestsCheckName": "Tests annotations (🧪 jest-coverage-report-action)",
     "coverageTitle": "Coverage report annotations",
-    "coverageOk": "✔ Coverage is good {{ coverage }}%",
-    "coverageFail": ":x: Coverage is under threshold - {{ coverage }}%, threshold {{ threshold }}%",
+    "coverageAnnotations": "Coverage report annotations",
     "coverageAnnotationsText": "Created coverage report annotations. To disable them, see [documentation](https://github.com/ArtiomTr/jest-coverage-report-action#jest-coverage-report-).",
     "tooMuchAnnotations": "{{ hiddenCount }} annotations hidden. Only 50 can be displayed at once.",
     "errors": {
-        "unexpectedError": "An unexpected error occured. For more details, [check console]({{ consoleLink }})",
+        "unexpectedError": "An unexpected error occurred. For more details, [check console]({{ consoleLink }})",
         "testsFailed": "The test suite failed. Please, check the console output for more details.",
         "invalidFormat": "Output of test script has invalid format. Check [documentation](https://github.com/ArtiomTr/jest-coverage-report-action#jest-coverage-report-) for more details.",
         "underThreshold": "Total statement coverage is less than specified threshold. Current coverage is {{ currentCoverage }}%, but the minimum is {{ coverageThreshold }}%.",
         "unknownError": "Something went wrong. If this is an issue of jest-coverage-report-action, please report about it [here](https://github.com/ArtiomTr/jest-coverage-report-action/issues/new).",
         "reportNotFound": "Coverage output file not found. (file \"{{ coveragePath }}\" not found)",
-        "multiple": "Multiple errors occured"
+        "multiple": "Multiple errors occurred"
     },
     "summaryTitle": "Coverage report {{ dir }}",
     "newFilesCoverage": "Show new covered files :hatching_chick:",

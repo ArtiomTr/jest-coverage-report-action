@@ -31,7 +31,7 @@ const getLineCoverage = (value: FileCoverage) => {
     const statementMap = value.statementMap;
     const statements = value.s;
 
-    return Object.entries(statements).reduce((acc = {}, [st, count]) => {
+    return Object.entries(statements).reduce((acc, [st, count]) => {
         const _st: number = parseInt(st);
 
         if (!statementMap[_st]) {

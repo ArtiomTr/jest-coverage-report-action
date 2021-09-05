@@ -5,10 +5,13 @@ exports[`formatRunReport should generate summary as markdown (failure tests) 1`]
 
 <details><summary>2 Tests Passed, 1 Test Failed</summary>
 
-\`\`\` 
-fail 1\`\`\`
----\`\`\` 
-fail 2\`\`\`
+\`\`\`
+fail 1
+\`\`\`
+---
+\`\`\`
+fail 2
+\`\`\`
 
 </details>
 "

@@ -4,7 +4,7 @@ import { getReportTag } from '../constants/getReportTag';
 import { formatCoverage } from '../format/formatCoverage';
 import { formatErrors } from '../format/formatErrors';
 import { formatRunReport } from '../format/formatRunReport';
-import { getFailureDetails } from '../format/getFormattedFailures';
+import { getFailureDetails } from '../format/getFailureDetails';
 import { getTestRunSummary } from '../format/summary/getTestRunSummary';
 import template from '../format/template.md';
 import { JsonReport } from '../typings/JsonReport';

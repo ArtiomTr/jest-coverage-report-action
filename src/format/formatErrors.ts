@@ -1,6 +1,8 @@
 import { getConsoleLink } from '../utils/getConsoleLink';
 import { i18n } from '../utils/i18n';
 
+const getNumberWidth = (index: number) => Math.floor(Math.log10(index));
+
 export const formatErrors = (errors: Array<string | Error>) => {
     if (errors.length === 0) {
         return '';
@@ -23,10 +25,10 @@ export const formatErrors = (errors: Array<string | Error>) => {
 
     return (
         i18n('errors.multiple') +
-        i18n('\n```\n{{ errors }}```\n', {
+        i18n('\n```\n{{ errors }}\n```\n', {
             errors: errors
                 .map((error, index) => {
-                    let stringifiedError = '';
+                    let stringifiedError;
 
                     if (typeof error === 'string') {
                         stringifiedError = i18n(`errors.${error}`);
@@ -34,8 +36,8 @@ export const formatErrors = (errors: Array<string | Error>) => {
                         stringifiedError = error.toString();
                     }
 
-                    return ` ${String(index).padEnd(
-                        2 - Math.floor(Math.log10(index)),
+                    return ` ${String(1 + index).padEnd(
+                        1 + getNumberWidth(errors.length),
                         ' '
                     )} | ${stringifiedError}`;
                 })

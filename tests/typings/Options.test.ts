@@ -1,4 +1,5 @@
 import * as all from '@actions/core';
+import { ObjectSchema } from 'yup';
 
 import {
     getOptions,
@@ -71,6 +72,24 @@ describe('getOptions', () => {
         mockInput({ ...options, ['skip-step']: 'asdf' });
         await expect(getOptions()).rejects.toBeDefined();
         clearInputMock();
+
+        mockInput({ ...options, ['threshold']: 'asdf' });
+        await expect(getOptions()).resolves.toBeDefined();
+        clearInputMock();
+    });
+
+    it('should throw non-validation error', async () => {
+        const validate = ObjectSchema.prototype.validate;
+
+        ObjectSchema.prototype.validate = jest.fn(() => {
+            throw new Error('Any error');
+        });
+
+        await expect(getOptions()).rejects.toStrictEqual(
+            new Error('Any error')
+        );
+
+        ObjectSchema.prototype.validate = validate;
     });
 });
 

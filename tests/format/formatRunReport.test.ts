@@ -1,5 +1,5 @@
 import { formatRunReport } from '../../src/format/formatRunReport';
-import { getFailureDetails } from '../../src/format/getFormattedFailures';
+import { getFailureDetails } from '../../src/format/getFailureDetails';
 import { JsonReport } from '../../src/typings/JsonReport';
 
 describe('formatRunReport', () => {

@@ -9,3 +9,5 @@ export const clearContextMock = () => {
         delete context[key];
     });
 };
+
+export const getOctokit = jest.fn();

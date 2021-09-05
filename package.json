@@ -6,6 +6,7 @@
     "main": "dist/index.js",
     "scripts": {
         "test": "jest",
+        "test:log-coverage": "jest --coverage",
         "test:coverage": "jest --silent --testLocationInResults --coverage --json --outputFile=\"report.json\"",
         "test:watch": "jest --watch",
         "build": "tsc --noEmit --incremental && node esbuild.cjs",

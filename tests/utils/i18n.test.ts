@@ -9,6 +9,6 @@ describe('i18n', () => {
 
     it('should read string from strings.json', () => {
         expect(i18n('status')).toBe('St.');
-        expect(i18n('errors.multiple')).toBe('Multiple errors occured');
+        expect(i18n('errors.multiple')).toBe('Multiple errors occurred');
     });
 });
