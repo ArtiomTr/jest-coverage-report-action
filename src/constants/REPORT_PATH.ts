@@ -1,1 +1,1 @@
-export const REPORT_PATH = 'report.json';
+export const REPORT_PATH = "report.json";

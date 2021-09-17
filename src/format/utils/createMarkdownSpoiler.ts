@@ -1,11 +1,11 @@
 export type SpoilerConfig = {
-    body: string;
-    summary: string;
+  body: string;
+  summary: string;
 };
 
 export const createMarkdownSpoiler = ({
-    body,
-    summary,
+  body,
+  summary,
 }: SpoilerConfig): string => `
 <details><summary>${summary}</summary>
 

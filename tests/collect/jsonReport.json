@@ -53,9 +53,7 @@
     {
       "assertionResults": [
         {
-          "ancestorTitles": [
-            "calc - mocks"
-          ],
+          "ancestorTitles": ["calc - mocks"],
           "failureMessages": [],
           "fullName": "calc - mocks returns result from subtract",
           "location": {
@@ -66,9 +64,7 @@
           "title": "returns result from subtract"
         },
         {
-          "ancestorTitles": [
-            "calc - mocks"
-          ],
+          "ancestorTitles": ["calc - mocks"],
           "failureMessages": [],
           "fullName": "calc - mocks returns result from sum",
           "location": {
@@ -79,9 +75,7 @@
           "title": "returns result from sum"
         },
         {
-          "ancestorTitles": [
-            "calc - mocks"
-          ],
+          "ancestorTitles": ["calc - mocks"],
           "failureMessages": [],
           "fullName": "calc - mocks adds last result to memory",
           "location": {
@@ -92,9 +86,7 @@
           "title": "adds last result to memory"
         },
         {
-          "ancestorTitles": [
-            "calc - mocks"
-          ],
+          "ancestorTitles": ["calc - mocks"],
           "failureMessages": [],
           "fullName": "calc - mocks subtracts last result to memory",
           "location": {
@@ -105,9 +97,7 @@
           "title": "subtracts last result to memory"
         },
         {
-          "ancestorTitles": [
-            "calc - mocks"
-          ],
+          "ancestorTitles": ["calc - mocks"],
           "failureMessages": [],
           "fullName": "calc - mocks clears the memory",
           "location": {
@@ -118,9 +108,7 @@
           "title": "clears the memory"
         },
         {
-          "ancestorTitles": [
-            "calc - mocks"
-          ],
+          "ancestorTitles": ["calc - mocks"],
           "failureMessages": [],
           "fullName": "calc - mocks throws an error when invalid Op is passed",
           "location": {
@@ -380,10 +368,7 @@
         "1": 1
       },
       "b": {
-        "0": [
-          1,
-          1
-        ]
+        "0": [1, 1]
       },
       "_coverageSchema": "1a1c01bbd47fc00a2c39e90264f33305004495a9",
       "hash": "11a3f9ce2a01eb444f023b8a63926f73f3dc5300"
@@ -1008,14 +993,7 @@
         "1": 11
       },
       "b": {
-        "0": [
-          2,
-          1,
-          1,
-          1,
-          5,
-          1
-        ]
+        "0": [2, 1, 1, 1, 5, 1]
       },
       "_coverageSchema": "1a1c01bbd47fc00a2c39e90264f33305004495a9",
       "hash": "4024ade0fc7ad3b8ee4d284ee8cbd12b61be07d0"

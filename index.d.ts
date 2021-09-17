@@ -1,5 +1,5 @@
-declare module '*.md' {
-    const text: string;
+declare module "*.md" {
+  const text: string;
 
-    export default text;
+  export default text;
 }

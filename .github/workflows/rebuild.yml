@@ -1,34 +1,34 @@
 name: Build
 
 on:
-    push:
-        paths:
-            - 'src/**'
-        branches: [master]
-    workflow_dispatch:
+  push:
+    paths:
+      - 'src/**'
+    branches: [master]
+  workflow_dispatch:
 
 jobs:
-    build:
-        name: Build
-        runs-on: ubuntu-latest
-        steps:
-            - uses: actions/checkout@v2
+  build:
+    name: Build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
 
-            - name: Use Node.js 12.x
-              uses: actions/setup-node@v2
-              with:
-                  node-version: '12'
-                  cache: 'npm'
+      - name: Use Node.js 12.x
+        uses: actions/setup-node@v2
+        with:
+          node-version: '12'
+          cache: 'npm'
 
-            - name: Installing dependencies
-              run: npm install
+      - name: Installing dependencies
+        run: npm install
 
-            - name: Building
-              run: npm run build
+      - name: Building
+        run: npm run build
 
-            - name: Committing & pushing
-              run: |
-                  git config --global user.name 'Jest Coverage Report bot'
-                  git config --global user.email 'covbot@users.noreply.github.com'
-                  git commit -am "Build $(date +'%F %T')"
-                  git push origin master
+      - name: Committing & pushing
+        run: |
+          git config --global user.name 'Jest Coverage Report bot'
+          git config --global user.email 'covbot@users.noreply.github.com'
+          git commit -am "Build $(date +'%F %T')"
+          git push origin master

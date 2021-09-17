@@ -1,5 +1,5 @@
-import { PropsWithChildren } from 'react';
+import { PropsWithChildren } from "react";
 
 export type LayoutProps = PropsWithChildren<{
-    meta: Record<string, unknown>;
+  meta: Record<string, unknown>;
 }>;
