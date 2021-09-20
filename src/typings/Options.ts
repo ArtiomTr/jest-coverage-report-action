@@ -21,6 +21,7 @@ export type Options = {
   customTitle?: string;
   coverageFile?: string;
   baseCoverageFile?: string;
+  preTestScript?: string;
 };
 
 const validAnnotationOptions: Array<AnnotationType> = [
@@ -38,6 +39,7 @@ const validSkipStepOptions: Array<SkipStepType> = ["all", "none", "install"];
 
 const optionSchema = yup.object().shape({
   token: yup.string().required(),
+  preTestScript: yup.string(),
   testScript: yup.string().required(),
   iconType: yup.string().required().oneOf(validIconOptions),
   annotations: yup.string().required().oneOf(validAnnotationOptions),
@@ -59,6 +61,7 @@ export const getOptions = async (): Promise<Options> => {
     required: true,
   });
 
+  const preTestScript = getInput("pre-test-script");
   const testScript = getInput("test-script");
   const threshold = getInput("threshold");
   const workingDirectory = getInput("working-directory");
@@ -73,6 +76,7 @@ export const getOptions = async (): Promise<Options> => {
   try {
     const options: Options = (await optionSchema.validate({
       token,
+      preTestScript,
       testScript,
       threshold,
       workingDirectory,

@@ -20,6 +20,7 @@ async function run() {
 
     const {
       token,
+      preTestScript,
       testScript,
       threshold,
       workingDirectory,
@@ -42,7 +43,8 @@ async function run() {
       skipStep,
       undefined,
       workingDirectory,
-      coverageFile
+      coverageFile,
+      preTestScript
     );
 
     let baseReport: Report | undefined = undefined;
@@ -54,7 +56,8 @@ async function run() {
         skipStep,
         pull_request.base.ref,
         workingDirectory,
-        baseCoverageFile
+        baseCoverageFile,
+        preTestScript
       );
 
       baseReport = generatedBaseReport;

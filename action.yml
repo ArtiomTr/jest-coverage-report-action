@@ -9,6 +9,9 @@ inputs:
     required: true
     description: 'A github access token'
     default: ${{ github.token }}
+  pre-test-script:
+    required: false
+    description: 'A custom npm script to run before the test-script'
   test-script:
     required: false
     description: 'A custom npm script to get coverage'
@@ -51,6 +54,7 @@ runs:
       shell: bash
       env:
         INPUT_GITHUB-TOKEN: ${{ inputs.github-token }}
+        INPUT_PRE-TEST-SCRIPT: ${{ inputs.pre-test-script }}
         INPUT_TEST-SCRIPT: ${{ inputs.test-script }}
         INPUT_THRESHOLD: ${{ inputs.threshold }}
         INPUT_WORKING-DIRECTORY: ${{ inputs.working-directory }}

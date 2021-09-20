@@ -15,11 +15,11 @@
 
 This action uses [Jest](https://github.com/facebook/jest) to extract code coverage, and comments it on pull request. Inspired by [Size-limit action](https://github.com/andresz1/size-limit-action/). Features:
 
--   **Reporting** code coverage on each pull request. 📃
--   **Rejecting** pull request, if coverage is under threshold. ❌
--   **Comparing** coverage with base branch. 🔍
--   Showing spoiler in the comment for all **new covered files**. 🆕
--   Showing spoiler in the comment for all files, in which **coverage was reduced**. 🔻
+- **Reporting** code coverage on each pull request. 📃
+- **Rejecting** pull request, if coverage is under threshold. ❌
+- **Comparing** coverage with base branch. 🔍
+- Showing spoiler in the comment for all **new covered files**. 🆕
+- Showing spoiler in the comment for all files, in which **coverage was reduced**. 🔻
 
 <p align="center">
   <img alt="PR Comment example" width="540" src="./img/Rejected-PR-screenshot.png">
@@ -33,25 +33,25 @@ This action uses [Jest](https://github.com/facebook/jest) to extract code covera
 **Minimal configuration**
 
 ```yml
-name: 'coverage'
+name: "coverage"
 on:
-    pull_request:
-        branches:
-            - master
-            - main
+  pull_request:
+    branches:
+      - master
+      - main
 jobs:
-    coverage:
-        runs-on: ubuntu-latest
-        if: "!contains(github.event.head_commit.message, '[skip ci]')"
-        steps:
-            - uses: actions/checkout@v1
-            - uses: artiomtr/jest-coverage-report-action@v2.0-rc.1
-              with:
-                  github-token: ${{ secrets.GITHUB_TOKEN }}
-                  #   threshold: 80 # optional parameter
+  coverage:
+    runs-on: ubuntu-latest
+    if: "!contains(github.event.head_commit.message, '[skip ci]')"
+    steps:
+      - uses: actions/checkout@v1
+      - uses: artiomtr/jest-coverage-report-action@v2.0-rc.1
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          #   threshold: 80 # optional parameter
 ```
 
-3. Pay attention to the action parameters. You can specify custom [threshold](#specify-threshold) or [test script](#customizing-test-script)
+3. Pay attention to the action parameters. You can specify custom [threshold](#specify-threshold), [pre-test-script](#specify-pre-test-script) or [test script](#customizing-test-script)
 4. That's it!
 
 ## Specify threshold
@@ -62,8 +62,8 @@ For example, if you want to reject every pull request, with total line coverage 
 
 ```yml
 with:
-    github-token: ${{ secrets.GITHUB_TOKEN }}
-    threshold: 80 # value in percents
+  github-token: ${{ secrets.GITHUB_TOKEN }}
+  threshold: 80 # value in percents
 ```
 
 ## Custom working directory
@@ -72,8 +72,21 @@ If you want to run this action in custom directory, specify `working-directory`:
 
 ```yml
 with:
-    github-token: ${{ secrets.GITHUB_TOKEN }}
-    working-directory: <dir>
+  github-token: ${{ secrets.GITHUB_TOKEN }}
+  working-directory: <dir>
+```
+
+## Specify pre test script
+
+By default, this action does nothing
+
+If you want to run any command before the test-script is run, pass the custom option `pre-test-script`.
+
+```yml
+with:
+  github-token: ${{ secrets.GITHUB_TOKEN }}
+  pre-test-script: npm run codegen
+  test-script: npm run test:coverage
 ```
 
 ## Customizing test script
@@ -92,8 +105,8 @@ For instance, if you want to run `test:coverage` npm script:
 
 ```yml
 with:
-    github-token: ${{ secrets.GITHUB_TOKEN }}
-    test-script: npm run test:coverage
+  github-token: ${{ secrets.GITHUB_TOKEN }}
+  test-script: npm run test:coverage
 ```
 
 ## Usage with `yarn`
@@ -102,8 +115,8 @@ By default, this action will install your dependencies using `npm`. If you are u
 
 ```yml
 with:
-    github-token: ${{ secrets.GITHUB_TOKEN }}
-    package-manager: yarn
+  github-token: ${{ secrets.GITHUB_TOKEN }}
+  package-manager: yarn
 ```
 
 ## Use existing test report(s)
@@ -112,12 +125,12 @@ To bypass running unit tests, you can pass the filepath to the current report.js
 
 ```yml
 with:
-    coverage-file: ./coverage/report.json
-    base-coverage-file: ./coverage/master/report.json
+  coverage-file: ./coverage/report.json
+  base-coverage-file: ./coverage/master/report.json
 ```
 
--   `coverage-file` is the filepath to the JSON coverage report for the current pull request.
--   `base-coverage-file` is the filepath to the JSON coverage report from the branch your pull request is merging into.
+- `coverage-file` is the filepath to the JSON coverage report for the current pull request.
+- `base-coverage-file` is the filepath to the JSON coverage report from the branch your pull request is merging into.
 
 For example, you can save every test run to an artifact and then download and reference them here.
 
@@ -127,15 +140,15 @@ By default, this action will install dependencies and run the tests for you, gen
 
 ```yml
 with:
-    github-token: ${{ secrets.GITHUB_TOKEN }}
-    skip-step: all
+  github-token: ${{ secrets.GITHUB_TOKEN }}
+  skip-step: all
 ```
 
 Accepted values are:
 
--   `none` (default) - all steps will be run
--   `install` - skip installing dependencies
--   `all` - skip installing dependencies _and_ running the test script
+- `none` (default) - all steps will be run
+- `install` - skip installing dependencies
+- `all` - skip installing dependencies _and_ running the test script
 
 ## Contributing
 

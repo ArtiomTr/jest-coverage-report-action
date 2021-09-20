@@ -26,7 +26,8 @@ export const getRawCoverage = async (
   skipStep: SkipStepType,
   branch?: string,
   workingDirectory?: string,
-  coverageFile?: string
+  coverageFile?: string,
+  preTestCommand?: string
 ): Promise<
   | string
   | { success: false; failReason: FailReason.TESTS_FAILED; error?: Error }
@@ -68,6 +69,12 @@ export const getRawCoverage = async (
   }
 
   let executionError: Error | undefined = undefined;
+
+  if (preTestCommand) {
+    await exec(preTestCommand, [], {
+      cwd: workingDirectory,
+    });
+  }
 
   if (shouldRunTestScript(skipStep)) {
     try {

@@ -38,8 +38,21 @@ If you want to run this action in custom directory, specify `working-directory`:
 
 ```yaml
 with:
-    github-token: ${{ secrets.GITHUB_TOKEN }}
-    working-directory: <dir>
+  github-token: ${{ secrets.GITHUB_TOKEN }}
+  working-directory: <dir>
+```
+
+## pre-test-script
+
+By default, this action does nothing
+
+If you want to run any command before the test-script is run, pass the custom option `pre-test-script`.
+
+```yml
+with:
+  github-token: ${{ secrets.GITHUB_TOKEN }}
+  pre-test-script: npm run codegen
+  test-script: npm run test:coverage
 ```
 
 ## test-script
@@ -60,8 +73,8 @@ For instance, if you want to run `test:coverage` npm script:
 
 ```yaml
 with:
-    github-token: ${{ secrets.GITHUB_TOKEN }}
-    test-script: npm run test:coverage
+  github-token: ${{ secrets.GITHUB_TOKEN }}
+  test-script: npm run test:coverage
 ```
 
 ## icons
@@ -70,8 +83,8 @@ If you don't satisfied with the standard icons, you can replace them with `icons
 
 ```yaml
 with:
-    github-token: ${{ secrets.GITHUB_TOKEN }}
-    icons: ascii
+  github-token: ${{ secrets.GITHUB_TOKEN }}
+  icons: ascii
 ```
 
 Available options: `emoji` (standard), `ascii`, `unicode`.
@@ -82,8 +95,8 @@ Annotations are enabled by default. To disable them, specify `annotations: none`
 
 ```yaml
 with:
-    github-token: ${{ secrets.GITHUB_TOKEN }}
-    annotations: none
+  github-token: ${{ secrets.GITHUB_TOKEN }}
+  annotations: none
 ```
 
 If you want to enable only specific annotations, you can specify following choices:
@@ -102,8 +115,8 @@ By default, action uses [npm](https://github.com/npm/cli#readme) package manager
 
 ```yaml
 with:
-    github-token: ${{ secrets.GITHUB_TOKEN }}
-    package-manager: yarn
+  github-token: ${{ secrets.GITHUB_TOKEN }}
+  package-manager: yarn
 ```
 
 ### skip-step
@@ -112,6 +125,6 @@ If you've installed dependencies in previous step, or you already have `report.j
 
 ```yaml
 with:
-    github-token: ${{ secrets.GITHUB_TOKEN }}
-    skip-step: install
+  github-token: ${{ secrets.GITHUB_TOKEN }}
+  skip-step: install
 ```
