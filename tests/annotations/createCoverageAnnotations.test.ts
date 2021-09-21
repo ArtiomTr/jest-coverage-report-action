@@ -1,16 +1,18 @@
+import { relative } from 'path';
+
 import { createCoverageAnnotations } from '../../src/annotations/createCoverageAnnotations';
 import { JsonReport } from '../../src/typings/JsonReport';
 import jsonReport from '../mock-data/jsonReport.json';
 import jsonReport2 from '../mock-data/jsonReport2.json';
 import jsonReport3 from '../mock-data/jsonReport3.json';
 
+jest.mock('path');
+
 describe('createCoverageAnnotations', () => {
     it('should match snapshot', () => {
-        const oldCwd = process.cwd;
-
-        const currentWorkingDir = '.';
-
-        process.cwd = jest.fn(() => currentWorkingDir);
+        (relative as jest.Mock<any, any>).mockImplementation(
+            (_, second) => second
+        );
 
         expect(createCoverageAnnotations(jsonReport)).toMatchSnapshot();
 
@@ -22,6 +24,6 @@ describe('createCoverageAnnotations', () => {
             createCoverageAnnotations((jsonReport3 as unknown) as JsonReport)
         ).toMatchSnapshot();
 
-        process.cwd = oldCwd;
+        (relative as jest.Mock<any, any>).mockClear();
     });
 });

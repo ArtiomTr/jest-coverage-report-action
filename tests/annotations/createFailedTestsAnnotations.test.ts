@@ -1,20 +1,22 @@
+import { relative } from 'path';
+
 import { createFailedTestsAnnotations } from '../../src/annotations/createFailedTestsAnnotations';
 import { JsonReport } from '../../src/typings/JsonReport';
 import jsonReport from '../mock-data/jsonReport3.json';
 
+jest.mock('path');
+
 describe('createFailedTestsAnnotations', () => {
     it('should create failed tests annotations', () => {
-        const oldCwd = process.cwd;
-
-        const currentWorkingDir = '.';
-
-        process.cwd = jest.fn(() => currentWorkingDir);
+        (relative as jest.Mock<any, any>).mockImplementation(
+            (_, second) => second
+        );
 
         expect(
             createFailedTestsAnnotations((jsonReport as unknown) as JsonReport)
         ).toMatchSnapshot();
 
-        process.cwd = oldCwd;
+        (relative as jest.Mock<any, any>).mockClear();
     });
 
     it('should return empty array', () => {
