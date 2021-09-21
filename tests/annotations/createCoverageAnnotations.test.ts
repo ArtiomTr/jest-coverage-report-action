@@ -1,5 +1,3 @@
-import { resolve } from 'path';
-
 import { createCoverageAnnotations } from '../../src/annotations/createCoverageAnnotations';
 import { JsonReport } from '../../src/typings/JsonReport';
 import jsonReport from '../mock-data/jsonReport.json';
@@ -10,7 +8,7 @@ describe('createCoverageAnnotations', () => {
     it('should match snapshot', () => {
         const oldCwd = process.cwd;
 
-        const currentWorkingDir = resolve(__dirname, '..', '..');
+        const currentWorkingDir = '.';
 
         process.cwd = jest.fn(() => currentWorkingDir);
 
