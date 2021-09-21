@@ -50,7 +50,7 @@
             ],
             "endTime": 1630266384545,
             "message": "",
-            "name": "/home/sirse/projects/jest-coverage-report-action/tests/format/details/getNewFilesCoverage.test.ts",
+            "name": "tests/format/details/getNewFilesCoverage.test.ts",
             "startTime": 1630266374083,
             "status": "passed",
             "summary": ""
@@ -76,7 +76,7 @@
             ],
             "endTime": 1630266386177,
             "message": "",
-            "name": "/home/sirse/projects/jest-coverage-report-action/tests/format/summary/getTestRunSummary.test.ts",
+            "name": "tests/format/summary/getTestRunSummary.test.ts",
             "startTime": 1630266374105,
             "status": "passed",
             "summary": ""
@@ -110,7 +110,7 @@
             ],
             "endTime": 1630266386326,
             "message": "",
-            "name": "/home/sirse/projects/jest-coverage-report-action/tests/format/details/getFileCoverageDetailRow.test.ts",
+            "name": "tests/format/details/getFileCoverageDetailRow.test.ts",
             "startTime": 1630266374085,
             "status": "passed",
             "summary": ""
@@ -128,7 +128,7 @@
             ],
             "endTime": 1630266386498,
             "message": "",
-            "name": "/home/sirse/projects/jest-coverage-report-action/tests/format/summary/parseSummary.test.ts",
+            "name": "tests/format/summary/parseSummary.test.ts",
             "startTime": 1630266374171,
             "status": "passed",
             "summary": ""
@@ -146,7 +146,7 @@
             ],
             "endTime": 1630266386657,
             "message": "",
-            "name": "/home/sirse/projects/jest-coverage-report-action/tests/format/details/formatCoverageDetails.test.ts",
+            "name": "tests/format/details/formatCoverageDetails.test.ts",
             "startTime": 1630266374103,
             "status": "passed",
             "summary": ""
@@ -164,7 +164,7 @@
             ],
             "endTime": 1630266387036,
             "message": "",
-            "name": "/home/sirse/projects/jest-coverage-report-action/tests/format/summary/getSummary.test.ts",
+            "name": "tests/format/summary/getSummary.test.ts",
             "startTime": 1630266386387,
             "status": "passed",
             "summary": ""
@@ -222,7 +222,7 @@
             ],
             "endTime": 1630266387044,
             "message": "",
-            "name": "/home/sirse/projects/jest-coverage-report-action/tests/typings/Options.test.ts",
+            "name": "tests/typings/Options.test.ts",
             "startTime": 1630266374125,
             "status": "passed",
             "summary": ""
@@ -240,7 +240,7 @@
             ],
             "endTime": 1630266387122,
             "message": "",
-            "name": "/home/sirse/projects/jest-coverage-report-action/tests/utils/withExplanation.test.ts",
+            "name": "tests/utils/withExplanation.test.ts",
             "startTime": 1630266386605,
             "status": "passed",
             "summary": ""
@@ -258,7 +258,7 @@
             ],
             "endTime": 1630266387403,
             "message": "",
-            "name": "/home/sirse/projects/jest-coverage-report-action/tests/typings/Report.test.ts",
+            "name": "tests/typings/Report.test.ts",
             "startTime": 1630266386806,
             "status": "passed",
             "summary": ""
@@ -292,7 +292,7 @@
             ],
             "endTime": 1630266387752,
             "message": "",
-            "name": "/home/sirse/projects/jest-coverage-report-action/tests/utils/decimalToString.test.ts",
+            "name": "tests/utils/decimalToString.test.ts",
             "startTime": 1630266387097,
             "status": "passed",
             "summary": ""
@@ -326,7 +326,7 @@
             ],
             "endTime": 1630266387944,
             "message": "",
-            "name": "/home/sirse/projects/jest-coverage-report-action/tests/format/details/findCommonPath.test.ts",
+            "name": "tests/format/details/findCommonPath.test.ts",
             "startTime": 1630266387081,
             "status": "passed",
             "summary": ""
@@ -360,7 +360,7 @@
             ],
             "endTime": 1630266387899,
             "message": "",
-            "name": "/home/sirse/projects/jest-coverage-report-action/tests/utils/formatPercentage.test.ts",
+            "name": "tests/utils/formatPercentage.test.ts",
             "startTime": 1630266387159,
             "status": "passed",
             "summary": ""
@@ -386,7 +386,7 @@
             ],
             "endTime": 1630266388004,
             "message": "",
-            "name": "/home/sirse/projects/jest-coverage-report-action/tests/utils/formatPercentageDelta.test.ts",
+            "name": "tests/utils/formatPercentageDelta.test.ts",
             "startTime": 1630266387450,
             "status": "passed",
             "summary": ""
@@ -412,7 +412,7 @@
             ],
             "endTime": 1630266388342,
             "message": "",
-            "name": "/home/sirse/projects/jest-coverage-report-action/tests/report/generatePRReport.test.ts",
+            "name": "tests/report/generatePRReport.test.ts",
             "startTime": 1630266386227,
             "status": "passed",
             "summary": ""
@@ -438,7 +438,7 @@
             ],
             "endTime": 1630266388352,
             "message": "",
-            "name": "/home/sirse/projects/jest-coverage-report-action/tests/format/details/getDecreasedCoverage.test.ts",
+            "name": "tests/format/details/getDecreasedCoverage.test.ts",
             "startTime": 1630266387791,
             "status": "passed",
             "summary": ""
@@ -528,7 +528,7 @@
             ],
             "endTime": 1630266388404,
             "message": "",
-            "name": "/home/sirse/projects/jest-coverage-report-action/tests/stages/getCoverage.test.ts",
+            "name": "tests/stages/getCoverage.test.ts",
             "startTime": 1630266374169,
             "status": "passed",
             "summary": ""
@@ -554,7 +554,7 @@
             ],
             "endTime": 1630266388472,
             "message": "",
-            "name": "/home/sirse/projects/jest-coverage-report-action/tests/stages/runTest.test.ts",
+            "name": "tests/stages/runTest.test.ts",
             "startTime": 1630266388043,
             "status": "passed",
             "summary": ""
@@ -572,7 +572,7 @@
             ],
             "endTime": 1630266388717,
             "message": "",
-            "name": "/home/sirse/projects/jest-coverage-report-action/tests/report/generateCommitReport.test.ts",
+            "name": "tests/report/generateCommitReport.test.ts",
             "startTime": 1630266387995,
             "status": "passed",
             "summary": ""
@@ -598,7 +598,7 @@
             ],
             "endTime": 1630266389094,
             "message": "",
-            "name": "/home/sirse/projects/jest-coverage-report-action/tests/stages/parseCoverage.test.ts",
+            "name": "tests/stages/parseCoverage.test.ts",
             "startTime": 1630266388497,
             "status": "passed",
             "summary": ""
@@ -624,7 +624,7 @@
             ],
             "endTime": 1630266389120,
             "message": "",
-            "name": "/home/sirse/projects/jest-coverage-report-action/tests/utils/insertArgs.test.ts",
+            "name": "tests/utils/insertArgs.test.ts",
             "startTime": 1630266388395,
             "status": "passed",
             "summary": ""
@@ -658,7 +658,7 @@
             ],
             "endTime": 1630266389300,
             "message": "",
-            "name": "/home/sirse/projects/jest-coverage-report-action/tests/stages/createReport.test.ts",
+            "name": "tests/stages/createReport.test.ts",
             "startTime": 1630266384601,
             "status": "passed",
             "summary": ""
@@ -676,7 +676,7 @@
             ],
             "endTime": 1630266389749,
             "message": "",
-            "name": "/home/sirse/projects/jest-coverage-report-action/tests/utils/createMarkdownSpoiler.test.ts",
+            "name": "tests/utils/createMarkdownSpoiler.test.ts",
             "startTime": 1630266388500,
             "status": "passed",
             "summary": ""
@@ -742,7 +742,7 @@
             ],
             "endTime": 1630266389944,
             "message": "",
-            "name": "/home/sirse/projects/jest-coverage-report-action/tests/stages/installDependencies.test.ts",
+            "name": "tests/stages/installDependencies.test.ts",
             "startTime": 1630266388392,
             "status": "passed",
             "summary": ""
@@ -776,7 +776,7 @@
             ],
             "endTime": 1630266390071,
             "message": "",
-            "name": "/home/sirse/projects/jest-coverage-report-action/tests/utils/runStage.test.ts",
+            "name": "tests/utils/runStage.test.ts",
             "startTime": 1630266388755,
             "status": "passed",
             "summary": ""
@@ -802,7 +802,7 @@
             ],
             "endTime": 1630266390184,
             "message": "",
-            "name": "/home/sirse/projects/jest-coverage-report-action/tests/stages/switchBranch.test.ts",
+            "name": "tests/stages/switchBranch.test.ts",
             "startTime": 1630266389223,
             "status": "passed",
             "summary": ""
@@ -828,7 +828,7 @@
             ],
             "endTime": 1630266390250,
             "message": "",
-            "name": "/home/sirse/projects/jest-coverage-report-action/tests/utils/i18n.test.ts",
+            "name": "tests/utils/i18n.test.ts",
             "startTime": 1630266389372,
             "status": "passed",
             "summary": ""
@@ -862,7 +862,7 @@
             ],
             "endTime": 1630266390379,
             "message": "",
-            "name": "/home/sirse/projects/jest-coverage-report-action/tests/stages/collectCoverage.test.ts",
+            "name": "tests/stages/collectCoverage.test.ts",
             "startTime": 1630266389781,
             "status": "passed",
             "summary": ""
@@ -880,7 +880,7 @@
             ],
             "endTime": 1630266390431,
             "message": "",
-            "name": "/home/sirse/projects/jest-coverage-report-action/tests/constants/getReportTag.test.ts",
+            "name": "tests/constants/getReportTag.test.ts",
             "startTime": 1630266390002,
             "status": "passed",
             "summary": ""
@@ -914,7 +914,7 @@
             ],
             "endTime": 1630266390484,
             "message": "",
-            "name": "/home/sirse/projects/jest-coverage-report-action/tests/report/fetchPreviousReport.test.ts",
+            "name": "tests/report/fetchPreviousReport.test.ts",
             "startTime": 1630266387975,
             "status": "passed",
             "summary": ""
@@ -948,7 +948,7 @@
             ],
             "endTime": 1630266390510,
             "message": "",
-            "name": "/home/sirse/projects/jest-coverage-report-action/tests/format/summary/formatCoverageSummary.test.ts",
+            "name": "tests/format/summary/formatCoverageSummary.test.ts",
             "startTime": 1630266389862,
             "status": "passed",
             "summary": ""
@@ -974,7 +974,7 @@
             ],
             "endTime": 1630266390658,
             "message": "",
-            "name": "/home/sirse/projects/jest-coverage-report-action/tests/utils/getStatusOfPercents.test.ts",
+            "name": "tests/utils/getStatusOfPercents.test.ts",
             "startTime": 1630266390104,
             "status": "passed",
             "summary": ""
@@ -1000,7 +1000,7 @@
             ],
             "endTime": 1630266390731,
             "message": "",
-            "name": "/home/sirse/projects/jest-coverage-report-action/tests/utils/getConsoleLink.test.ts",
+            "name": "tests/utils/getConsoleLink.test.ts",
             "startTime": 1630266390283,
             "status": "passed",
             "summary": ""
@@ -1018,7 +1018,7 @@
             ],
             "endTime": 1630266390758,
             "message": "",
-            "name": "/home/sirse/projects/jest-coverage-report-action/tests/constants/REPORT_PATH.test.ts",
+            "name": "tests/constants/REPORT_PATH.test.ts",
             "startTime": 1630266390216,
             "status": "passed",
             "summary": ""
@@ -1044,7 +1044,7 @@
             ],
             "endTime": 1630266390857,
             "message": "",
-            "name": "/home/sirse/projects/jest-coverage-report-action/tests/format/formatRunReport.test.ts",
+            "name": "tests/format/formatRunReport.test.ts",
             "startTime": 1630266390462,
             "status": "passed",
             "summary": ""
@@ -1062,7 +1062,7 @@
             ],
             "endTime": 1630266390884,
             "message": "",
-            "name": "/home/sirse/projects/jest-coverage-report-action/tests/utils/joinPaths.test.ts",
+            "name": "tests/utils/joinPaths.test.ts",
             "startTime": 1630266390416,
             "status": "passed",
             "summary": ""
@@ -1096,7 +1096,7 @@
             ],
             "endTime": 1630266391069,
             "message": "",
-            "name": "/home/sirse/projects/jest-coverage-report-action/tests/utils/DataCollector.test.ts",
+            "name": "tests/utils/DataCollector.test.ts",
             "startTime": 1630266390530,
             "status": "passed",
             "summary": ""
@@ -1114,7 +1114,7 @@
             ],
             "endTime": 1630266391167,
             "message": "",
-            "name": "/home/sirse/projects/jest-coverage-report-action/tests/format/details/parseDetails.test.ts",
+            "name": "tests/format/details/parseDetails.test.ts",
             "startTime": 1630266390565,
             "status": "passed",
             "summary": ""
@@ -1122,8 +1122,8 @@
     ],
     "wasInterrupted": false,
     "coverageMap": {
-        "/home/sirse/projects/jest-coverage-report-action/src/format/details/getNewFilesCoverage.ts": {
-            "path": "/home/sirse/projects/jest-coverage-report-action/src/format/details/getNewFilesCoverage.ts",
+        "src/format/details/getNewFilesCoverage.ts": {
+            "path": "src/format/details/getNewFilesCoverage.ts",
             "statementMap": {
                 "0": {
                     "start": { "line": 3, "column": 35 },
@@ -1208,8 +1208,8 @@
             "f": { "0": 7, "1": 4, "2": 2 },
             "b": { "0": [2, 5] }
         },
-        "/home/sirse/projects/jest-coverage-report-action/src/format/summary/getTestRunSummary.ts": {
-            "path": "/home/sirse/projects/jest-coverage-report-action/src/format/summary/getTestRunSummary.ts",
+        "src/format/summary/getTestRunSummary.ts": {
+            "path": "src/format/summary/getTestRunSummary.ts",
             "statementMap": {
                 "0": {
                     "start": { "line": 2, "column": 0 },
@@ -1281,8 +1281,8 @@
             "f": { "0": 7 },
             "b": { "0": [5, 2], "1": [4, 1] }
         },
-        "/home/sirse/projects/jest-coverage-report-action/src/utils/i18n.ts": {
-            "path": "/home/sirse/projects/jest-coverage-report-action/src/utils/i18n.ts",
+        "src/utils/i18n.ts": {
+            "path": "src/utils/i18n.ts",
             "statementMap": {
                 "0": {
                     "start": { "line": 1, "column": 0 },
@@ -1452,8 +1452,8 @@
             "f": { "0": 488, "1": 125 },
             "b": { "0": [12, 12], "1": [124, 1], "2": [300, 188] }
         },
-        "/home/sirse/projects/jest-coverage-report-action/src/utils/insertArgs.ts": {
-            "path": "/home/sirse/projects/jest-coverage-report-action/src/utils/insertArgs.ts",
+        "src/utils/insertArgs.ts": {
+            "path": "src/utils/insertArgs.ts",
             "statementMap": {
                 "0": {
                     "start": { "line": 1, "column": 26 },
@@ -1527,8 +1527,8 @@
             "f": { "0": 201, "1": 339 },
             "b": { "0": [339, 339, 339] }
         },
-        "/home/sirse/projects/jest-coverage-report-action/src/format/details/getFileCoverageDetailRow.ts": {
-            "path": "/home/sirse/projects/jest-coverage-report-action/src/format/details/getFileCoverageDetailRow.ts",
+        "src/format/details/getFileCoverageDetailRow.ts": {
+            "path": "src/format/details/getFileCoverageDetailRow.ts",
             "statementMap": {
                 "0": {
                     "start": { "line": 1, "column": 0 },
@@ -1719,8 +1719,8 @@
                 "7": [5, 5]
             }
         },
-        "/home/sirse/projects/jest-coverage-report-action/src/format/details/shrinkLongPath.ts": {
-            "path": "/home/sirse/projects/jest-coverage-report-action/src/format/details/shrinkLongPath.ts",
+        "src/format/details/shrinkLongPath.ts": {
+            "path": "src/format/details/shrinkLongPath.ts",
             "statementMap": {
                 "0": {
                     "start": { "line": 1, "column": 0 },
@@ -1787,8 +1787,8 @@
             "f": { "0": 5 },
             "b": { "0": [0, 5] }
         },
-        "/home/sirse/projects/jest-coverage-report-action/src/utils/formatPercentage.ts": {
-            "path": "/home/sirse/projects/jest-coverage-report-action/src/utils/formatPercentage.ts",
+        "src/utils/formatPercentage.ts": {
+            "path": "src/utils/formatPercentage.ts",
             "statementMap": {
                 "0": {
                     "start": { "line": 1, "column": 0 },
@@ -1903,8 +1903,8 @@
             "f": { "0": 53 },
             "b": { "0": [29], "1": [22, 31], "2": [22, 31] }
         },
-        "/home/sirse/projects/jest-coverage-report-action/src/utils/decimalToString.ts": {
-            "path": "/home/sirse/projects/jest-coverage-report-action/src/utils/decimalToString.ts",
+        "src/utils/decimalToString.ts": {
+            "path": "src/utils/decimalToString.ts",
             "statementMap": {
                 "0": {
                     "start": { "line": 1, "column": 31 },
@@ -1951,8 +1951,8 @@
             "f": { "0": 150 },
             "b": { "0": [145] }
         },
-        "/home/sirse/projects/jest-coverage-report-action/src/utils/formatPercentageDelta.ts": {
-            "path": "/home/sirse/projects/jest-coverage-report-action/src/utils/formatPercentageDelta.ts",
+        "src/utils/formatPercentageDelta.ts": {
+            "path": "src/utils/formatPercentageDelta.ts",
             "statementMap": {
                 "0": {
                     "start": { "line": 1, "column": 0 },
@@ -2011,8 +2011,8 @@
             "f": { "0": 30 },
             "b": { "0": [13, 17] }
         },
-        "/home/sirse/projects/jest-coverage-report-action/src/utils/getStatusOfPercents.ts": {
-            "path": "/home/sirse/projects/jest-coverage-report-action/src/utils/getStatusOfPercents.ts",
+        "src/utils/getStatusOfPercents.ts": {
+            "path": "src/utils/getStatusOfPercents.ts",
             "statementMap": {
                 "0": {
                     "start": { "line": 1, "column": 0 },
@@ -2159,8 +2159,8 @@
             "f": { "0": 47 },
             "b": { "0": [26], "1": [21, 26], "2": [12, 35], "3": [14, 21] }
         },
-        "/home/sirse/projects/jest-coverage-report-action/src/format/summary/parseSummary.ts": {
-            "path": "/home/sirse/projects/jest-coverage-report-action/src/format/summary/parseSummary.ts",
+        "src/format/summary/parseSummary.ts": {
+            "path": "src/format/summary/parseSummary.ts",
             "statementMap": {
                 "0": {
                     "start": { "line": 1, "column": 0 },
@@ -2205,8 +2205,8 @@
             "f": { "0": 5 },
             "b": {}
         },
-        "/home/sirse/projects/jest-coverage-report-action/src/format/summary/getSummary.ts": {
-            "path": "/home/sirse/projects/jest-coverage-report-action/src/format/summary/getSummary.ts",
+        "src/format/summary/getSummary.ts": {
+            "path": "src/format/summary/getSummary.ts",
             "statementMap": {
                 "0": {
                     "start": { "line": 3, "column": 0 },
@@ -2290,8 +2290,8 @@
             "f": { "0": 21, "1": 126, "2": 126 },
             "b": {}
         },
-        "/home/sirse/projects/jest-coverage-report-action/src/format/getPercents.ts": {
-            "path": "/home/sirse/projects/jest-coverage-report-action/src/format/getPercents.ts",
+        "src/format/getPercents.ts": {
+            "path": "src/format/getPercents.ts",
             "statementMap": {
                 "0": {
                     "start": { "line": 1, "column": 27 },
@@ -2350,8 +2350,8 @@
             "f": { "0": 165 },
             "b": { "0": [24, 141] }
         },
-        "/home/sirse/projects/jest-coverage-report-action/src/format/counters.ts": {
-            "path": "/home/sirse/projects/jest-coverage-report-action/src/format/counters.ts",
+        "src/format/counters.ts": {
+            "path": "src/format/counters.ts",
             "statementMap": {
                 "0": {
                     "start": { "line": 3, "column": 37 },
@@ -2803,8 +2803,8 @@
             },
             "b": { "0": [0], "1": [0, 726], "2": [682, 44], "3": [726, 44] }
         },
-        "/home/sirse/projects/jest-coverage-report-action/src/format/details/formatCoverageDetails.ts": {
-            "path": "/home/sirse/projects/jest-coverage-report-action/src/format/details/formatCoverageDetails.ts",
+        "src/format/details/formatCoverageDetails.ts": {
+            "path": "src/format/details/formatCoverageDetails.ts",
             "statementMap": {
                 "0": {
                     "start": { "line": 1, "column": 0 },
@@ -2866,8 +2866,8 @@
             "f": { "0": 5 },
             "b": {}
         },
-        "/home/sirse/projects/jest-coverage-report-action/src/format/details/formatCoverageDetailsPart.ts": {
-            "path": "/home/sirse/projects/jest-coverage-report-action/src/format/details/formatCoverageDetailsPart.ts",
+        "src/format/details/formatCoverageDetailsPart.ts": {
+            "path": "src/format/details/formatCoverageDetailsPart.ts",
             "statementMap": {
                 "0": {
                     "start": { "line": 1, "column": 0 },
@@ -3012,8 +3012,8 @@
             "f": { "0": 10, "1": 2 },
             "b": { "0": [1, 1], "1": [2, 2], "2": [2, 8] }
         },
-        "/home/sirse/projects/jest-coverage-report-action/src/utils/createMarkdownSpoiler.ts": {
-            "path": "/home/sirse/projects/jest-coverage-report-action/src/utils/createMarkdownSpoiler.ts",
+        "src/utils/createMarkdownSpoiler.ts": {
+            "path": "src/utils/createMarkdownSpoiler.ts",
             "statementMap": {
                 "0": {
                     "start": { "line": 6, "column": 37 },
@@ -3046,8 +3046,8 @@
             "f": { "0": 4 },
             "b": {}
         },
-        "/home/sirse/projects/jest-coverage-report-action/src/utils/withExplanation.ts": {
-            "path": "/home/sirse/projects/jest-coverage-report-action/src/utils/withExplanation.ts",
+        "src/utils/withExplanation.ts": {
+            "path": "src/utils/withExplanation.ts",
             "statementMap": {
                 "0": {
                     "start": { "line": 1, "column": 31 },
@@ -3080,8 +3080,8 @@
             "f": { "0": 13 },
             "b": {}
         },
-        "/home/sirse/projects/jest-coverage-report-action/src/format/details/getDecreasedCoverage.ts": {
-            "path": "/home/sirse/projects/jest-coverage-report-action/src/format/details/getDecreasedCoverage.ts",
+        "src/format/details/getDecreasedCoverage.ts": {
+            "path": "src/format/details/getDecreasedCoverage.ts",
             "statementMap": {
                 "0": {
                     "start": { "line": 3, "column": 25 },
@@ -3263,8 +3263,8 @@
                 "3": [31, 31]
             }
         },
-        "/home/sirse/projects/jest-coverage-report-action/src/typings/Options.ts": {
-            "path": "/home/sirse/projects/jest-coverage-report-action/src/typings/Options.ts",
+        "src/typings/Options.ts": {
+            "path": "src/typings/Options.ts",
             "statementMap": {
                 "0": {
                     "start": { "line": 1, "column": 0 },
@@ -3524,8 +3524,8 @@
             "f": { "0": 8, "1": 8, "2": 8, "3": 8 },
             "b": { "0": [0, 8], "1": [7, 0] }
         },
-        "/home/sirse/projects/jest-coverage-report-action/src/typings/Report.ts": {
-            "path": "/home/sirse/projects/jest-coverage-report-action/src/typings/Report.ts",
+        "src/typings/Report.ts": {
+            "path": "src/typings/Report.ts",
             "statementMap": {
                 "0": {
                     "start": { "line": 3, "column": 0 },
@@ -3588,8 +3588,8 @@
             "f": { "0": 4 },
             "b": { "0": [4, 4] }
         },
-        "/home/sirse/projects/jest-coverage-report-action/src/format/details/findCommonPath.ts": {
-            "path": "/home/sirse/projects/jest-coverage-report-action/src/format/details/findCommonPath.ts",
+        "src/format/details/findCommonPath.ts": {
+            "path": "src/format/details/findCommonPath.ts",
             "statementMap": {
                 "0": {
                     "start": { "line": 1, "column": 0 },
@@ -3775,8 +3775,8 @@
             "f": { "0": 13 },
             "b": { "0": [12, 1], "1": [234, 12], "2": [2, 10], "3": [12, 11] }
         },
-        "/home/sirse/projects/jest-coverage-report-action/src/constants/getReportTag.ts": {
-            "path": "/home/sirse/projects/jest-coverage-report-action/src/constants/getReportTag.ts",
+        "src/constants/getReportTag.ts": {
+            "path": "src/constants/getReportTag.ts",
             "statementMap": {
                 "0": {
                     "start": { "line": 1, "column": 29 },
@@ -3844,8 +3844,8 @@
             "f": { "0": 23 },
             "b": { "0": [13, 10], "1": [23, 23] }
         },
-        "/home/sirse/projects/jest-coverage-report-action/src/report/generatePRReport.ts": {
-            "path": "/home/sirse/projects/jest-coverage-report-action/src/report/generatePRReport.ts",
+        "src/report/generatePRReport.ts": {
+            "path": "src/report/generatePRReport.ts",
             "statementMap": {
                 "0": {
                     "start": { "line": 3, "column": 0 },
@@ -3912,8 +3912,8 @@
             "f": { "0": 2 },
             "b": { "0": [1, 1] }
         },
-        "/home/sirse/projects/jest-coverage-report-action/src/report/fetchPreviousReport.ts": {
-            "path": "/home/sirse/projects/jest-coverage-report-action/src/report/fetchPreviousReport.ts",
+        "src/report/fetchPreviousReport.ts": {
+            "path": "src/report/fetchPreviousReport.ts",
             "statementMap": {
                 "0": {
                     "start": { "line": 3, "column": 0 },
@@ -3987,8 +3987,8 @@
             "f": { "0": 5, "1": 11 },
             "b": { "0": [2, 3] }
         },
-        "/home/sirse/projects/jest-coverage-report-action/src/stages/getCoverage.ts": {
-            "path": "/home/sirse/projects/jest-coverage-report-action/src/stages/getCoverage.ts",
+        "src/stages/getCoverage.ts": {
+            "path": "src/stages/getCoverage.ts",
             "statementMap": {
                 "0": {
                     "start": { "line": 1, "column": 0 },
@@ -4312,8 +4312,8 @@
                 "6": [10, 9]
             }
         },
-        "/home/sirse/projects/jest-coverage-report-action/src/stages/collectCoverage.ts": {
-            "path": "/home/sirse/projects/jest-coverage-report-action/src/stages/collectCoverage.ts",
+        "src/stages/collectCoverage.ts": {
+            "path": "src/stages/collectCoverage.ts",
             "statementMap": {
                 "0": {
                     "start": { "line": 1, "column": 0 },
@@ -4413,8 +4413,8 @@
             "f": { "0": 14 },
             "b": { "0": [1, 2] }
         },
-        "/home/sirse/projects/jest-coverage-report-action/src/constants/REPORT_PATH.ts": {
-            "path": "/home/sirse/projects/jest-coverage-report-action/src/constants/REPORT_PATH.ts",
+        "src/constants/REPORT_PATH.ts": {
+            "path": "src/constants/REPORT_PATH.ts",
             "statementMap": {
                 "0": {
                     "start": { "line": 1, "column": 13 },
@@ -4427,8 +4427,8 @@
             "f": {},
             "b": {}
         },
-        "/home/sirse/projects/jest-coverage-report-action/src/utils/joinPaths.ts": {
-            "path": "/home/sirse/projects/jest-coverage-report-action/src/utils/joinPaths.ts",
+        "src/utils/joinPaths.ts": {
+            "path": "src/utils/joinPaths.ts",
             "statementMap": {
                 "0": {
                     "start": { "line": 1, "column": 0 },
@@ -4480,8 +4480,8 @@
             "f": { "0": 31, "1": 67 },
             "b": {}
         },
-        "/home/sirse/projects/jest-coverage-report-action/src/stages/installDependencies.ts": {
-            "path": "/home/sirse/projects/jest-coverage-report-action/src/stages/installDependencies.ts",
+        "src/stages/installDependencies.ts": {
+            "path": "src/stages/installDependencies.ts",
             "statementMap": {
                 "0": {
                     "start": { "line": 1, "column": 0 },
@@ -4544,8 +4544,8 @@
             "f": { "0": 15 },
             "b": { "0": [5] }
         },
-        "/home/sirse/projects/jest-coverage-report-action/src/stages/parseCoverage.ts": {
-            "path": "/home/sirse/projects/jest-coverage-report-action/src/stages/parseCoverage.ts",
+        "src/stages/parseCoverage.ts": {
+            "path": "src/stages/parseCoverage.ts",
             "statementMap": {
                 "0": {
                     "start": { "line": 2, "column": 0 },
@@ -4590,8 +4590,8 @@
             "f": { "0": 11 },
             "b": {}
         },
-        "/home/sirse/projects/jest-coverage-report-action/src/stages/runTest.ts": {
-            "path": "/home/sirse/projects/jest-coverage-report-action/src/stages/runTest.ts",
+        "src/stages/runTest.ts": {
+            "path": "src/stages/runTest.ts",
             "statementMap": {
                 "0": {
                     "start": { "line": 1, "column": 0 },
@@ -4628,8 +4628,8 @@
             "f": { "0": 11 },
             "b": {}
         },
-        "/home/sirse/projects/jest-coverage-report-action/src/utils/runStage.ts": {
-            "path": "/home/sirse/projects/jest-coverage-report-action/src/utils/runStage.ts",
+        "src/utils/runStage.ts": {
+            "path": "src/utils/runStage.ts",
             "statementMap": {
                 "0": {
                     "start": { "line": 2, "column": 0 },
@@ -4765,8 +4765,8 @@
             "f": { "0": 43, "1": 5 },
             "b": { "0": [5, 5] }
         },
-        "/home/sirse/projects/jest-coverage-report-action/src/utils/DataCollector.ts": {
-            "path": "/home/sirse/projects/jest-coverage-report-action/src/utils/DataCollector.ts",
+        "src/utils/DataCollector.ts": {
+            "path": "src/utils/DataCollector.ts",
             "statementMap": {
                 "0": {
                     "start": { "line": 1, "column": 35 },
@@ -4902,8 +4902,8 @@
             "f": { "0": 18, "1": 8, "2": 5, "3": 99, "4": 11 },
             "b": {}
         },
-        "/home/sirse/projects/jest-coverage-report-action/src/report/generateCommitReport.ts": {
-            "path": "/home/sirse/projects/jest-coverage-report-action/src/report/generateCommitReport.ts",
+        "src/report/generateCommitReport.ts": {
+            "path": "src/report/generateCommitReport.ts",
             "statementMap": {
                 "0": {
                     "start": { "line": 1, "column": 0 },
@@ -4940,8 +4940,8 @@
             "f": { "0": 1 },
             "b": {}
         },
-        "/home/sirse/projects/jest-coverage-report-action/src/stages/createReport.ts": {
-            "path": "/home/sirse/projects/jest-coverage-report-action/src/stages/createReport.ts",
+        "src/stages/createReport.ts": {
+            "path": "src/stages/createReport.ts",
             "statementMap": {
                 "0": {
                     "start": { "line": 1, "column": 0 },
@@ -5266,8 +5266,8 @@
                 "9": [2, 2]
             }
         },
-        "/home/sirse/projects/jest-coverage-report-action/src/format/formatCoverage.ts": {
-            "path": "/home/sirse/projects/jest-coverage-report-action/src/format/formatCoverage.ts",
+        "src/format/formatCoverage.ts": {
+            "path": "src/format/formatCoverage.ts",
             "statementMap": {
                 "0": {
                     "start": { "line": 1, "column": 0 },
@@ -5381,8 +5381,8 @@
             "f": { "0": 4 },
             "b": { "0": [4, 0], "1": [0, 4], "2": [0, 4] }
         },
-        "/home/sirse/projects/jest-coverage-report-action/src/format/details/parseDetails.ts": {
-            "path": "/home/sirse/projects/jest-coverage-report-action/src/format/details/parseDetails.ts",
+        "src/format/details/parseDetails.ts": {
+            "path": "src/format/details/parseDetails.ts",
             "statementMap": {
                 "0": {
                     "start": { "line": 1, "column": 0 },
@@ -5503,8 +5503,8 @@
             "f": { "0": 6, "1": 36 },
             "b": { "0": [6, 0] }
         },
-        "/home/sirse/projects/jest-coverage-report-action/src/format/getFormattedCoverage.ts": {
-            "path": "/home/sirse/projects/jest-coverage-report-action/src/format/getFormattedCoverage.ts",
+        "src/format/getFormattedCoverage.ts": {
+            "path": "src/format/getFormattedCoverage.ts",
             "statementMap": {
                 "0": {
                     "start": { "line": 1, "column": 0 },
@@ -5545,8 +5545,8 @@
             "f": { "0": 4 },
             "b": {}
         },
-        "/home/sirse/projects/jest-coverage-report-action/src/format/summary/formatCoverageSummary.ts": {
-            "path": "/home/sirse/projects/jest-coverage-report-action/src/format/summary/formatCoverageSummary.ts",
+        "src/format/summary/formatCoverageSummary.ts": {
+            "path": "src/format/summary/formatCoverageSummary.ts",
             "statementMap": {
                 "0": {
                     "start": { "line": 1, "column": 0 },
@@ -5659,8 +5659,8 @@
             "f": { "0": 10, "1": 22 },
             "b": { "0": [18, 4], "1": [22, 22] }
         },
-        "/home/sirse/projects/jest-coverage-report-action/src/format/formatErrors.ts": {
-            "path": "/home/sirse/projects/jest-coverage-report-action/src/format/formatErrors.ts",
+        "src/format/formatErrors.ts": {
+            "path": "src/format/formatErrors.ts",
             "statementMap": {
                 "0": {
                     "start": { "line": 1, "column": 0 },
@@ -5847,8 +5847,8 @@
             "f": { "0": 4, "1": 0 },
             "b": { "0": [4, 0], "1": [0, 0], "2": [0, 0], "3": [0, 0] }
         },
-        "/home/sirse/projects/jest-coverage-report-action/src/utils/getConsoleLink.ts": {
-            "path": "/home/sirse/projects/jest-coverage-report-action/src/utils/getConsoleLink.ts",
+        "src/utils/getConsoleLink.ts": {
+            "path": "src/utils/getConsoleLink.ts",
             "statementMap": {
                 "0": {
                     "start": { "line": 1, "column": 0 },
@@ -5958,8 +5958,8 @@
             "f": { "0": 2 },
             "b": { "0": [1, 1], "1": [2, 2], "2": [1, 1], "3": [2, 2] }
         },
-        "/home/sirse/projects/jest-coverage-report-action/src/format/formatRunReport.ts": {
-            "path": "/home/sirse/projects/jest-coverage-report-action/src/format/formatRunReport.ts",
+        "src/format/formatRunReport.ts": {
+            "path": "src/format/formatRunReport.ts",
             "statementMap": {
                 "0": {
                     "start": { "line": 2, "column": 0 },
@@ -6039,8 +6039,8 @@
             "f": { "0": 6 },
             "b": { "0": [1, 5] }
         },
-        "/home/sirse/projects/jest-coverage-report-action/src/format/getFormattedFailures.ts": {
-            "path": "/home/sirse/projects/jest-coverage-report-action/src/format/getFormattedFailures.ts",
+        "src/format/getFormattedFailures.ts": {
+            "path": "src/format/getFormattedFailures.ts",
             "statementMap": {
                 "0": {
                     "start": { "line": 1, "column": 0 },
@@ -6273,8 +6273,8 @@
                 "4": [2, 2]
             }
         },
-        "/home/sirse/projects/jest-coverage-report-action/src/stages/switchBranch.ts": {
-            "path": "/home/sirse/projects/jest-coverage-report-action/src/stages/switchBranch.ts",
+        "src/stages/switchBranch.ts": {
+            "path": "src/stages/switchBranch.ts",
             "statementMap": {
                 "0": {
                     "start": { "line": 1, "column": 0 },
@@ -6323,8 +6323,8 @@
             "f": { "0": 2 },
             "b": {}
         },
-        "/home/sirse/projects/jest-coverage-report-action/src/annotations/isAnnotationEnabled.ts": {
-            "path": "/home/sirse/projects/jest-coverage-report-action/src/annotations/isAnnotationEnabled.ts",
+        "src/annotations/isAnnotationEnabled.ts": {
+            "path": "src/annotations/isAnnotationEnabled.ts",
             "statementMap": {
                 "0": {
                     "start": { "line": 3, "column": 35 },
@@ -6375,8 +6375,8 @@
             "f": { "0": 0 },
             "b": { "0": [0, 0] }
         },
-        "/home/sirse/projects/jest-coverage-report-action/src/format/annotations/getFailedTestsAnnotationsBody.ts": {
-            "path": "/home/sirse/projects/jest-coverage-report-action/src/format/annotations/getFailedTestsAnnotationsBody.ts",
+        "src/format/annotations/getFailedTestsAnnotationsBody.ts": {
+            "path": "src/format/annotations/getFailedTestsAnnotationsBody.ts",
             "statementMap": {
                 "0": {
                     "start": { "line": 2, "column": 0 },
@@ -6413,8 +6413,8 @@
             "f": { "0": 0 },
             "b": {}
         },
-        "/home/sirse/projects/jest-coverage-report-action/src/format/annotations/getFailedAnnotationsSummary.ts": {
-            "path": "/home/sirse/projects/jest-coverage-report-action/src/format/annotations/getFailedAnnotationsSummary.ts",
+        "src/format/annotations/getFailedAnnotationsSummary.ts": {
+            "path": "src/format/annotations/getFailedAnnotationsSummary.ts",
             "statementMap": {
                 "0": {
                     "start": { "line": 2, "column": 0 },
@@ -6486,8 +6486,8 @@
             "f": { "0": 0 },
             "b": { "0": [0, 0], "1": [0, 0] }
         },
-        "/home/sirse/projects/jest-coverage-report-action/src/format/annotations/formatFailedTestsAnnotations.ts": {
-            "path": "/home/sirse/projects/jest-coverage-report-action/src/format/annotations/formatFailedTestsAnnotations.ts",
+        "src/format/annotations/formatFailedTestsAnnotations.ts": {
+            "path": "src/format/annotations/formatFailedTestsAnnotations.ts",
             "statementMap": {
                 "0": {
                     "start": { "line": 1, "column": 0 },
@@ -6624,8 +6624,8 @@
                 "4": [0, 0]
             }
         },
-        "/home/sirse/projects/jest-coverage-report-action/src/format/annotations/formatCoverageAnnotations.ts": {
-            "path": "/home/sirse/projects/jest-coverage-report-action/src/format/annotations/formatCoverageAnnotations.ts",
+        "src/format/annotations/formatCoverageAnnotations.ts": {
+            "path": "src/format/annotations/formatCoverageAnnotations.ts",
             "statementMap": {
                 "0": {
                     "start": { "line": 1, "column": 0 },
@@ -6758,8 +6758,8 @@
                 "4": [0, 0]
             }
         },
-        "/home/sirse/projects/jest-coverage-report-action/src/annotations/createCoverageAnnotations.ts": {
-            "path": "/home/sirse/projects/jest-coverage-report-action/src/annotations/createCoverageAnnotations.ts",
+        "src/annotations/createCoverageAnnotations.ts": {
+            "path": "src/annotations/createCoverageAnnotations.ts",
             "statementMap": {
                 "0": {
                     "start": { "line": 1, "column": 0 },
@@ -7134,8 +7134,8 @@
                 "9": [0, 0]
             }
         },
-        "/home/sirse/projects/jest-coverage-report-action/src/annotations/createFailedTestsAnnotations.ts": {
-            "path": "/home/sirse/projects/jest-coverage-report-action/src/annotations/createFailedTestsAnnotations.ts",
+        "src/annotations/createFailedTestsAnnotations.ts": {
+            "path": "src/annotations/createFailedTestsAnnotations.ts",
             "statementMap": {
                 "0": {
                     "start": { "line": 1, "column": 0 },
@@ -7560,8 +7560,8 @@
                 "15": [0, 0]
             }
         },
-        "/home/sirse/projects/jest-coverage-report-action/src/index.ts": {
-            "path": "/home/sirse/projects/jest-coverage-report-action/src/index.ts",
+        "src/index.ts": {
+            "path": "src/index.ts",
             "statementMap": {
                 "0": {
                     "start": { "line": 1, "column": 0 },
