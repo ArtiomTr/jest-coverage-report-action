@@ -1,17 +1,26 @@
+import * as allCore from '@actions/core';
+import * as all from '@actions/github';
+import { mocked } from 'ts-jest/utils';
+
+import { Annotation } from '../src/annotations/Annotation';
+import { createCoverageAnnotations } from '../src/annotations/createCoverageAnnotations';
+import { createFailedTestsAnnotations } from '../src/annotations/createFailedTestsAnnotations';
+import { formatCoverageAnnotations } from '../src/format/annotations/formatCoverageAnnotations';
+import { formatFailedTestsAnnotations } from '../src/format/annotations/formatFailedTestsAnnotations';
 import { run } from '../src/run';
+import { createReport } from '../src/stages/createReport';
 import { getCoverage } from '../src/stages/getCoverage';
-
-jest.mock('../src/typings/Options.ts');
-jest.mock('../src/stages/getCoverage.ts');
-jest.mock('../src/stages/switchBranch.ts');
-jest.mock('../src/stages/createReport.ts');
-jest.mock('../src/report/generatePRReport.ts');
-jest.mock('../src/report/generateCommitReport.ts');
-jest.mock('../src/annotations/createFailedTestsAnnotations.ts');
-jest.mock('../src/annotations/createCoverageAnnotations.ts');
-jest.mock('../src/format/annotations/formatFailedTestsAnnotations.ts');
-jest.mock('../src/format/annotations/formatCoverageAnnotations.ts');
-
+import { switchBranch } from '../src/stages/switchBranch';
+import { JsonReport } from '../src/typings/JsonReport';
+import { getOptions, Options } from '../src/typings/Options';
+import { SummaryReport, TestRunReport } from '../src/typings/Report';
+import {
+    CollectedData,
+    createDataCollector,
+    DataCollector,
+} from '../src/utils/DataCollector';
+const { mockContext, clearContextMock } = all as any;
+const { setFailed } = allCore;
 const standardReport = {
     numFailedTestSuites: 0,
     numFailedTests: 0,
@@ -172,10 +181,192 @@ const standardReport = {
     },
 };
 
-describe('run', () => {
-    it('should run in PR', async () => {
-        (getCoverage as jest.Mock).mockReturnValueOnce(standardReport);
+const defaultOptions: Options = {
+    token: '',
+    testScript: '',
+    iconType: 'emoji',
+    annotations: 'all',
+    packageManager: 'npm',
+    skipStep: 'all',
+};
 
+jest.mock('../src/typings/Options.ts');
+jest.mock('../src/stages/getCoverage.ts');
+jest.mock('../src/stages/switchBranch.ts');
+jest.mock('../src/stages/createReport.ts');
+jest.mock('../src/report/generatePRReport.ts');
+jest.mock('../src/report/generateCommitReport.ts');
+jest.mock('../src/annotations/createFailedTestsAnnotations.ts');
+jest.mock('../src/annotations/createCoverageAnnotations.ts');
+jest.mock('../src/format/annotations/formatFailedTestsAnnotations.ts');
+jest.mock('../src/format/annotations/formatCoverageAnnotations.ts');
+
+const getOptionsMock = mocked(getOptions);
+const getCoverageMock = mocked(getCoverage);
+const switchBranchMock = mocked(switchBranch);
+const createReportMock = mocked(createReport);
+
+beforeEach(() => {
+    switchBranchMock.mockClear();
+    getOptionsMock.mockClear();
+    getCoverageMock.mockClear();
+    createReportMock.mockClear();
+    (setFailed as jest.Mock).mockClear();
+
+    getOptionsMock.mockResolvedValue(defaultOptions);
+    getCoverageMock.mockResolvedValue(standardReport);
+    createReportMock.mockReturnValue({
+        runReport: {} as TestRunReport,
+    } as SummaryReport);
+    clearContextMock();
+});
+
+describe('run', () => {
+    beforeEach(() => {
+        mockContext({
+            eventName: 'pull_request',
+            payload: {
+                pull_request: {
+                    base: {
+                        ref: '123',
+                    },
+                },
+            },
+        });
+    });
+    it('should fail if not initialized', async () => {
+        getOptionsMock.mockRejectedValue({});
+        await expect(run()).rejects.toThrowError('Initialization failed.');
+    });
+
+    it('should run in PR', async () => {
+        const dataCollector = createDataCollector<JsonReport>();
+        const dataCollectorAddSpy = jest.spyOn(dataCollector, 'add');
+        await run(dataCollector);
+        expect(getCoverageMock).toBeCalledTimes(2);
+        expect(switchBranchMock).toBeCalledWith('123');
+        expect(dataCollectorAddSpy).toBeCalledTimes(2);
+    });
+
+    it('should skip if report is not generated', async () => {
+        createReportMock.mockImplementation(() => {
+            throw new Error();
+        });
         await run();
+        expect(getCoverageMock).toBeCalledTimes(2);
+        expect(switchBranchMock).toBeCalledWith('123');
+    });
+
+    it('should skip if headCoverage is not generated', async () => {
+        const dataCollector = createDataCollector<JsonReport>();
+        const dataCollectorAddSpy = jest.spyOn(dataCollector, 'add');
+        getCoverageMock.mockRejectedValue('');
+        await run(dataCollector);
+        expect(dataCollectorAddSpy).toBeCalledTimes(0);
+    });
+
+    it('should set failed if there are errors in dataCollector', async () => {
+        const dataCollector = createDataCollector<JsonReport>();
+        const dataCollectorMock = {
+            ...dataCollector,
+            get: jest.fn(),
+        };
+        dataCollectorMock.get.mockReturnValue({
+            errors: ['error'],
+        } as CollectedData<JsonReport>);
+        await run(dataCollectorMock);
+        expect(setFailed).toBeCalledWith('Jest coverage report action failed');
+    });
+
+    it('should succeed if there are no errors in dataCollector', async () => {
+        const dataCollector = createDataCollector<JsonReport>();
+        const dataCollectorMock = {
+            ...dataCollector,
+            get: jest.fn(),
+        };
+        dataCollectorMock.get.mockReturnValue(({
+            errors: [],
+        } as unknown) as CollectedData<JsonReport>);
+        await run(dataCollectorMock);
+        expect(setFailed).not.toBeCalled();
+    });
+
+    it('should run if not in PR', async () => {
+        mockContext({
+            eventName: 'push',
+            payload: {},
+        });
+        await run();
+        expect(getCoverageMock).toBeCalledTimes(1);
+        expect(switchBranchMock).not.toBeCalled();
+    });
+
+    describe('failedAnnotations', () => {
+        const createFailedTestsAnnotationsMock = mocked(
+            createFailedTestsAnnotations
+        );
+
+        const formatFailedTestsAnnotationsMock = mocked(
+            formatFailedTestsAnnotations
+        );
+
+        beforeEach(() => {
+            createFailedTestsAnnotationsMock.mockClear();
+            formatFailedTestsAnnotationsMock.mockClear();
+        });
+
+        it('should skip failed test annotations if only coverage is selected', async () => {
+            getOptionsMock.mockResolvedValue({
+                ...defaultOptions,
+                annotations: 'coverage',
+            });
+            await run();
+            expect(createFailedTestsAnnotationsMock).not.toBeCalled();
+        });
+
+        it('should skip if there are no failed tests', async () => {
+            createFailedTestsAnnotationsMock.mockReturnValue([]);
+            await run();
+            expect(formatFailedTestsAnnotationsMock).not.toBeCalled();
+        });
+
+        it('should generate failed test annotations', async () => {
+            createFailedTestsAnnotationsMock.mockReturnValue([
+                {} as Annotation,
+            ]);
+            await run();
+            expect(formatFailedTestsAnnotationsMock).toBeCalled();
+        });
+    });
+
+    describe('coverageAnnotations', () => {
+        const createCoverageAnnotationsMock = mocked(createCoverageAnnotations);
+        const formatCoverageAnnotationsMock = mocked(formatCoverageAnnotations);
+
+        beforeEach(() => {
+            createCoverageAnnotationsMock.mockClear();
+            formatCoverageAnnotationsMock.mockClear();
+        });
+
+        it('should skip coverage annotations if only failed test is selected', async () => {
+            getOptionsMock.mockResolvedValue({
+                ...defaultOptions,
+                annotations: 'failed-tests',
+            });
+            await run();
+            expect(createCoverageAnnotationsMock).not.toBeCalled();
+        });
+
+        it('should skip if there are no coverage annotations', async () => {
+            createCoverageAnnotationsMock.mockReturnValue([]);
+            await run();
+            expect(formatCoverageAnnotationsMock).not.toBeCalled();
+        });
+
+        it('should generate coverage annotations', async () => {
+            createCoverageAnnotationsMock.mockReturnValue([{} as Annotation]);
+            await run();
+            expect(formatCoverageAnnotationsMock).toBeCalled();
+        });
     });
 });

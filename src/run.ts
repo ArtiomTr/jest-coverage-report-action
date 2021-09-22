@@ -16,8 +16,9 @@ import { createDataCollector } from './utils/DataCollector';
 import { i18n } from './utils/i18n';
 import { runStage } from './utils/runStage';
 
-export const run = async () => {
-    const dataCollector = createDataCollector<JsonReport>();
+export const run = async (
+    dataCollector = createDataCollector<JsonReport>()
+) => {
     const isInPR = context.eventName === 'pull_request';
 
     const [isInitialized, options] = await runStage(
@@ -77,8 +78,7 @@ export const run = async () => {
     const [isReportContentGenerated, summaryReport] = await runStage(
         'generateReportContent',
         dataCollector,
-        // eslint-disable-next-line @typescript-eslint/no-unused-vars
-        async (_skip) => {
+        async () => {
             return createReport(dataCollector, options.workingDirectory);
         }
     );
