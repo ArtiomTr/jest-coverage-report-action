@@ -1,38 +1,81 @@
 {
     "icons": {
         "emoji": {
-            "increaseIcon": "🔼",
-            "decreaseIcon": "🔻",
-            "errorIcon": "❌",
-            "coverageGood": "🟢",
-            "coverageNormal": "🟡",
-            "coverageBad": "🔴",
-            "new": "🌑"
+            "x": "❌",
+            "arrow_up_small": "🔼",
+            "small_red_triangle_down": "🔻",
+            "green_circle": "🟢",
+            "yellow_circle": "🟡",
+            "red_circle": "🔴",
+            "hatching_chick": "🐣",
+            "joystick": "🕹️",
+            "herb": "🌿",
+            "receipt": "🧾",
+            "grey_question": "❔"
         },
         "ascii": {
-            "increaseIcon": "",
-            "decreaseIcon": "",
-            "errorIcon": "[ !!! ]",
-            "coverageGood": "(+)",
-            "coverageNormal": "(~)",
-            "coverageBad": "(-)",
-            "new": ""
+            "x": "[ !!! ]",
+            "arrow_up_small": "",
+            "small_red_triangle_down": "",
+            "green_circle": "(+)",
+            "yellow_circle": "(~)",
+            "red_circle": "(-)",
+            "hatching_chick": "[NEW]",
+            "joystick": "",
+            "herb": "",
+            "receipt": "",
+            "grey_question": "?"
         },
         "unicode": {
-            "increaseIcon": "↑",
-            "decreaseIcon": "↓",
-            "errorIcon": "×",
-            "coverageGood": "(+)",
-            "coverageNormal": "(~)",
-            "coverageBad": "(-)",
-            "new": ""
+            "x": "×",
+            "arrow_up_small": "↑",
+            "small_red_triangle_down": "↓",
+            "green_circle": "(+)",
+            "yellow_circle": "(~)",
+            "red_circle": "(-)",
+            "hatching_chick": "[NEW]",
+            "joystick": "",
+            "herb": "",
+            "receipt": "",
+            "grey_question": "?"
         }
     },
-    "notCoveredStatementTitle": "🧾 Statement is not covered",
+    "stages": {
+        "defaults": {
+            "begin": "Begin {{ stage }}...",
+            "skip": "{{ stage }} skipped",
+            "fail": "{{ stage }} failed",
+            "end": "{{ stage }} ended"
+        },
+        "initialize": "Initialization stage",
+        "headCoverage": "Head coverage collection",
+        "baseCoverage": "Base coverage collection",
+        "switchToBase": "Switching to base branch",
+        "generateReportContent": "Generating report",
+        "publishReport": "Report publish",
+        "failedTestsAnnotations": "Failed tests' annotations publication",
+        "coverageAnnotations": "Coverage annotations publication",
+        "install": "Installing dependencies",
+        "runTest": "Running tests",
+        "collectCoverage": "Collecting coverage",
+        "parseCoverage": "Parsing coverage"
+    },
+    "failed": "Jest coverage report action failed",
+    "status": "St.",
+    "statusExplanation": "Status of coverage: :green_circle: - ok, :yellow_circle: - slightly more than threshold, :red_circle: - under the threshold",
+    "category": "Category",
+    "percentage": "Percentage",
+    "ratio": "Covered / Total",
+    "statements": "Statements",
+    "branches": "Branches",
+    "functions": "Functions",
+    "lines": "Lines",
+    "filename": "File",
+    "notCoveredStatementTitle": ":receipt: Statement is not covered",
     "notCoveredStatementMessage": "Warning! Not covered statement",
-    "notCoveredBranchTitle": "🌿 Branch is not covered",
+    "notCoveredBranchTitle": ":herb: Branch is not covered",
     "notCoveredBranchMessage": "Warning! Not covered branch",
-    "notCoveredFunctionTitle": "🕹 Function is not covered",
+    "notCoveredFunctionTitle": ":joystick: Function is not covered",
     "notCoveredFunctionMessage": "Warning! Not covered function",
     "testsFail": "Test suite run failed",
     "testsSuccess": "Test suite run success",
@@ -42,46 +85,20 @@
     "coveredCheckName": "Coverage annotations (🧪 jest-coverage-report-action)",
     "failedTestsCheckName": "Tests annotations (🧪 jest-coverage-report-action)",
     "coverageTitle": "Coverage report annotations",
-    "coverageOk": "✔ Coverage is good {{ coverage }}%",
-    "coverageFail": "❌ Coverage is under threshold - {{ coverage }}%, threshold {{ threshold }}%",
+    "coverageAnnotations": "Coverage report annotations",
     "coverageAnnotationsText": "Created coverage report annotations. To disable them, see [documentation](https://github.com/ArtiomTr/jest-coverage-report-action#jest-coverage-report-).",
     "tooMuchAnnotations": "{{ hiddenCount }} annotations hidden. Only 50 can be displayed at once.",
-    "hint": "Status of coverage: {{ coverageGood }} - ok, {{ coverageNormal }} - slightly more than threshold, {{ coverageBad }} - under the threshold",
     "errors": {
+        "unexpectedError": "An unexpected error occurred. For more details, [check console]({{ consoleLink }})",
         "testsFailed": "The test suite failed. Please, check the console output for more details.",
         "invalidFormat": "Output of test script has invalid format. Check [documentation](https://github.com/ArtiomTr/jest-coverage-report-action#jest-coverage-report-) for more details.",
         "underThreshold": "Total statement coverage is less than specified threshold. Current coverage is {{ currentCoverage }}%, but the minimum is {{ coverageThreshold }}%.",
         "unknownError": "Something went wrong. If this is an issue of jest-coverage-report-action, please report about it [here](https://github.com/ArtiomTr/jest-coverage-report-action/issues/new).",
-        "fileNotFound": "Coverage output file not found. (file \"{{ coveragePath }}\" not found)"
+        "reportNotFound": "Coverage output file not found. (file \"{{ coveragePath }}\" not found)",
+        "multiple": "Multiple errors occurred"
     },
-    "summary": {
-        "title": "Coverage report {{ dir }}",
-        "heading": "Total coverage",
-        "columnHeaders": [
-            "Status",
-            "Category",
-            "Percentage",
-            "Covered / Total"
-        ],
-        "columnAlignment": ["c", "l", "l", "c"]
-    },
-    "details": {
-        "newFiles": {
-            "summary": "Show new covered files {{ new }}",
-            "heading": "Coverage of new files"
-        },
-        "decreasedCoverageFiles": {
-            "summary": "Show files with reduced coverage {{ decreaseIcon }}",
-            "heading": "Reduced coverage"
-        },
-        "columnHeaders": [
-            "Status",
-            "Filename",
-            "Statements",
-            "Branches",
-            "Functions",
-            "Lines"
-        ],
-        "columnAlignment": ["c", "l", "l", "l", "l", "l"]
-    }
+    "summaryTitle": "Coverage report {{ dir }}",
+    "newFilesCoverage": "Show new covered files :hatching_chick:",
+    "decreasedCoverageFiles": "Show files with reduced coverage :small_red_triangle_down:",
+    "baseCoverage": "Base coverage is: "
 }

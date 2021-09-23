@@ -18,3 +18,4 @@ jobs:
               with:
                   github-token: ${{ secrets.BOT_TOKEN }}
                   annotations: failed-tests
+                  test-script: npm run test:coverage

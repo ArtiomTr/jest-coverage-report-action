@@ -1,0 +1,167 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`formatErrors should format multiple errors 1`] = `
+"Multiple errors occurred
+\`\`\`
+ 1 | The test suite failed. Please, check the console output for more details.
+ 2 | Error: hello
+ 3 | errors.a a a a a a a a
+ 4 | errors.simple error
+ 5 | EvalError: aaa
+\`\`\`
+"
+`;
+
+exports[`formatErrors should format multiple errors 2`] = `
+"Multiple errors occurred
+\`\`\`
+ 1  | errors.error
+ 2  | errors.error
+ 3  | errors.error
+ 4  | errors.error
+ 5  | errors.error
+ 6  | errors.error
+ 7  | errors.error
+ 8  | errors.error
+ 9  | errors.error
+ 10 | errors.error
+ 11 | errors.error
+ 12 | errors.error
+ 13 | errors.error
+ 14 | errors.error
+ 15 | errors.error
+ 16 | errors.error
+ 17 | errors.error
+ 18 | errors.error
+ 19 | errors.error
+ 20 | errors.error
+ 21 | errors.error
+ 22 | errors.error
+ 23 | errors.error
+ 24 | errors.error
+ 25 | errors.error
+ 26 | errors.error
+ 27 | errors.error
+ 28 | errors.error
+ 29 | errors.error
+ 30 | errors.error
+ 31 | errors.error
+ 32 | errors.error
+ 33 | errors.error
+ 34 | errors.error
+ 35 | errors.error
+ 36 | errors.error
+ 37 | errors.error
+ 38 | errors.error
+ 39 | errors.error
+ 40 | errors.error
+\`\`\`
+"
+`;
+
+exports[`formatErrors should format multiple errors 3`] = `
+"Multiple errors occurred
+\`\`\`
+ 1   | errors.error
+ 2   | errors.error
+ 3   | errors.error
+ 4   | errors.error
+ 5   | errors.error
+ 6   | errors.error
+ 7   | errors.error
+ 8   | errors.error
+ 9   | errors.error
+ 10  | errors.error
+ 11  | errors.error
+ 12  | errors.error
+ 13  | errors.error
+ 14  | errors.error
+ 15  | errors.error
+ 16  | errors.error
+ 17  | errors.error
+ 18  | errors.error
+ 19  | errors.error
+ 20  | errors.error
+ 21  | errors.error
+ 22  | errors.error
+ 23  | errors.error
+ 24  | errors.error
+ 25  | errors.error
+ 26  | errors.error
+ 27  | errors.error
+ 28  | errors.error
+ 29  | errors.error
+ 30  | errors.error
+ 31  | errors.error
+ 32  | errors.error
+ 33  | errors.error
+ 34  | errors.error
+ 35  | errors.error
+ 36  | errors.error
+ 37  | errors.error
+ 38  | errors.error
+ 39  | errors.error
+ 40  | errors.error
+ 41  | errors.error
+ 42  | errors.error
+ 43  | errors.error
+ 44  | errors.error
+ 45  | errors.error
+ 46  | errors.error
+ 47  | errors.error
+ 48  | errors.error
+ 49  | errors.error
+ 50  | errors.error
+ 51  | errors.error
+ 52  | errors.error
+ 53  | errors.error
+ 54  | errors.error
+ 55  | errors.error
+ 56  | errors.error
+ 57  | errors.error
+ 58  | errors.error
+ 59  | errors.error
+ 60  | errors.error
+ 61  | errors.error
+ 62  | errors.error
+ 63  | errors.error
+ 64  | errors.error
+ 65  | errors.error
+ 66  | errors.error
+ 67  | errors.error
+ 68  | errors.error
+ 69  | errors.error
+ 70  | errors.error
+ 71  | errors.error
+ 72  | errors.error
+ 73  | errors.error
+ 74  | errors.error
+ 75  | errors.error
+ 76  | errors.error
+ 77  | errors.error
+ 78  | errors.error
+ 79  | errors.error
+ 80  | errors.error
+ 81  | errors.error
+ 82  | errors.error
+ 83  | errors.error
+ 84  | errors.error
+ 85  | errors.error
+ 86  | errors.error
+ 87  | errors.error
+ 88  | errors.error
+ 89  | errors.error
+ 90  | errors.error
+ 91  | errors.error
+ 92  | errors.error
+ 93  | errors.error
+ 94  | errors.error
+ 95  | errors.error
+ 96  | errors.error
+ 97  | errors.error
+ 98  | errors.error
+ 99  | errors.error
+ 100 | errors.error
+\`\`\`
+"
+`;

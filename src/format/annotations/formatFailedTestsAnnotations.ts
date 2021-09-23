@@ -1,39 +1,32 @@
 import { context } from '@actions/github';
 
 import { CreateCheckOptions } from './CreateCheckOptions';
-import { getFailedAnnotationsSummary } from './getFailedAnnotationsSummary';
 import { getFailedTestsAnnotationsBody } from './getFailedTestsAnnotationsBody';
 import { Annotation } from '../../annotations/Annotation';
-import { JsonReport } from '../../typings/JsonReport';
-import { insertArgs } from '../insertArgs';
-import {
-    failedTestsCheckName,
-    testsFail,
-    testsSuccess,
-    tooMuchAnnotations,
-} from '../strings.json';
+import { TestRunReport } from '../../typings/Report';
+import { i18n } from '../../utils/i18n';
 
 export const formatFailedTestsAnnotations = (
-    jsonReport: JsonReport,
+    runReport: TestRunReport,
     annotations: Array<Annotation>
 ): CreateCheckOptions => ({
     ...context.repo,
     status: 'completed',
     head_sha: context.payload.pull_request?.head.sha ?? context.sha,
-    conclusion: jsonReport.success ? 'success' : 'failure',
-    name: failedTestsCheckName,
+    conclusion: 'failure',
+    name: i18n('failedTestsCheckName'),
     output: {
-        title: jsonReport.success ? testsSuccess : testsFail,
+        title: i18n('testsFail'),
         text: [
-            getFailedTestsAnnotationsBody(jsonReport),
+            getFailedTestsAnnotationsBody(runReport),
             annotations.length > 50 &&
-                insertArgs(tooMuchAnnotations, {
+                i18n('tooMuchAnnotations', {
                     hiddenCount: annotations.length - 50,
                 }),
         ]
             .filter(Boolean)
             .join('\n'),
-        summary: getFailedAnnotationsSummary(jsonReport),
+        summary: runReport.summary,
         annotations: annotations.slice(0, 49),
     },
 });
