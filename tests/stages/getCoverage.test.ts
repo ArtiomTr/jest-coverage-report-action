@@ -32,7 +32,8 @@ describe('getCoverage', () => {
         const jsonReport = await getCoverage(
             dataCollector,
             defaultOptions,
-            false
+            false,
+            undefined
         );
 
         expect(rmdir).toBeCalledWith('node_modules', { recursive: true });
@@ -53,7 +54,8 @@ describe('getCoverage', () => {
         const jsonReport = await getCoverage(
             dataCollector,
             { ...defaultOptions, workingDirectory: 'testDir' },
-            false
+            false,
+            undefined
         );
 
         expect(rmdir).toBeCalledWith('testDir/node_modules', {
@@ -76,7 +78,8 @@ describe('getCoverage', () => {
         const jsonReport = await getCoverage(
             dataCollector,
             { ...defaultOptions, packageManager: 'yarn' },
-            false
+            false,
+            undefined
         );
 
         expect(exec).toBeCalledWith('yarn install', undefined, {
@@ -94,7 +97,8 @@ describe('getCoverage', () => {
         const jsonReport = await getCoverage(
             dataCollector,
             { ...defaultOptions, skipStep: 'install' },
-            false
+            false,
+            undefined
         );
 
         expect(rmdir).not.toBeCalledWith('node_modules', { recursive: true });
@@ -115,7 +119,8 @@ describe('getCoverage', () => {
         const jsonReport = await getCoverage(
             dataCollector,
             { ...defaultOptions, skipStep: 'all' },
-            false
+            false,
+            undefined
         );
 
         expect(rmdir).not.toBeCalledWith('node_modules', { recursive: true });
@@ -138,7 +143,8 @@ describe('getCoverage', () => {
         const jsonReport = await getCoverage(
             dataCollector,
             { ...defaultOptions, skipStep: 'all' },
-            true
+            true,
+            undefined
         );
 
         expect(rmdir).toBeCalledWith('node_modules', { recursive: true });
@@ -161,7 +167,8 @@ describe('getCoverage', () => {
         const jsonReport = await getCoverage(
             dataCollector,
             { ...defaultOptions, skipStep: 'all' },
-            true
+            true,
+            undefined
         );
 
         expect(rmdir).toBeCalledWith('node_modules', { recursive: true });
@@ -187,7 +194,8 @@ describe('getCoverage', () => {
         const jsonReport = await getCoverage(
             dataCollector,
             { ...defaultOptions, skipStep: 'all' },
-            true
+            true,
+            undefined
         );
 
         expect(rmdir).toBeCalledWith('node_modules', { recursive: true });
@@ -215,7 +223,8 @@ describe('getCoverage', () => {
         const jsonReport = await getCoverage(
             dataCollector,
             { ...defaultOptions, skipStep: 'all' },
-            true
+            true,
+            undefined
         );
 
         expect(rmdir).toBeCalledWith('node_modules', { recursive: true });
@@ -241,8 +250,50 @@ describe('getCoverage', () => {
             getCoverage(
                 dataCollector,
                 { ...defaultOptions, skipStep: 'all' },
-                true
+                true,
+                undefined
             )
         ).rejects.toBeDefined();
+    });
+
+    it('should read coverage from specified coverage file', async () => {
+        const dataCollector = createDataCollector<JsonReport>();
+
+        (readFile as jest.Mock<any, any>).mockImplementationOnce(() => '{}');
+
+        const jsonReport = await getCoverage(
+            dataCollector,
+            defaultOptions,
+            false,
+            'custom filepath'
+        );
+
+        expect(rmdir).not.toBeCalled();
+        expect(exec).not.toBeCalled();
+        expect(readFile).toBeCalledWith('custom filepath');
+        expect(readFile).toBeCalledTimes(1);
+
+        expect(jsonReport).toStrictEqual({});
+    });
+
+    it('should return error, if reading from specified coverage file failed', async () => {
+        const dataCollector = createDataCollector<JsonReport>();
+
+        (readFile as jest.Mock<any, any>).mockImplementationOnce(() => {
+            throw 'some error';
+        });
+
+        await expect(
+            getCoverage(dataCollector, defaultOptions, false, 'custom filepath')
+        ).rejects.toBe('failedGettingCoverage');
+
+        expect(rmdir).not.toBeCalled();
+        expect(exec).not.toBeCalled();
+        expect(readFile).toBeCalledWith('custom filepath');
+        expect(readFile).toBeCalledTimes(1);
+        expect(dataCollector.get().errors).toStrictEqual([
+            'readingCoverageFileFailed',
+            'some error',
+        ]);
     });
 });

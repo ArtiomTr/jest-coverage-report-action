@@ -95,10 +95,13 @@
         "underThreshold": "Total statement coverage is less than specified threshold. Current coverage is {{ currentCoverage }}%, but the minimum is {{ coverageThreshold }}%.",
         "unknownError": "Something went wrong. If this is an issue of jest-coverage-report-action, please report about it [here](https://github.com/ArtiomTr/jest-coverage-report-action/issues/new).",
         "reportNotFound": "Coverage output file not found. (file \"{{ coveragePath }}\" not found)",
-        "multiple": "Multiple errors occurred"
+        "multiple": "Multiple errors occurred",
+        "readingCoverageFileFailed": "Failed reading coverage file.",
+        "failedGettingCoverage": "Getting code coverage data failed."
     },
     "summaryTitle": "Coverage report {{ dir }}",
     "newFilesCoverage": "Show new covered files :hatching_chick:",
     "decreasedCoverageFiles": "Show files with reduced coverage :small_red_triangle_down:",
-    "baseCoverage": "Base coverage is: "
+    "baseCoverage": "Base coverage is: ",
+    "loadingCoverageFromFile": "Loading code coverage from file: {{ coverageFile }}"
 }
