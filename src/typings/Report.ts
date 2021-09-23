@@ -6,6 +6,8 @@ export enum FailReason {
     UNDER_THRESHOLD = 'underThreshold',
     UNKNOWN_ERROR = 'unknownError',
     REPORT_NOT_FOUND = 'reportNotFound',
+    READING_COVERAGE_FILE_FAILED = 'readingCoverageFileFailed',
+    FAILED_GETTING_COVERAGE = 'failedGettingCoverage',
 }
 
 export type Report = {

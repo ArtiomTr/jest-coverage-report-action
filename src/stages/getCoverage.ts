@@ -8,16 +8,21 @@ import {
     shouldInstallDeps,
     shouldRunTestScript,
 } from '../typings/Options';
+import { FailReason } from '../typings/Report';
 import { DataCollector } from '../utils/DataCollector';
 import { runStage } from '../utils/runStage';
 
 export const getCoverage = async (
     dataCollector: DataCollector<JsonReport>,
     options: Options,
-    runAll: boolean
+    runAll: boolean,
+    coverageFilePath: string | undefined
 ): Promise<JsonReport> => {
     await runStage('install', dataCollector, async (skip) => {
-        if (!runAll && !shouldInstallDeps(options.skipStep)) {
+        if (
+            coverageFilePath ||
+            (!runAll && !shouldInstallDeps(options.skipStep))
+        ) {
             skip();
         }
 
@@ -28,7 +33,10 @@ export const getCoverage = async (
     });
 
     await runStage('runTest', dataCollector, async (skip) => {
-        if (!runAll && !shouldRunTestScript(options.skipStep)) {
+        if (
+            coverageFilePath ||
+            (!runAll && !shouldRunTestScript(options.skipStep))
+        ) {
             skip();
         }
 
@@ -39,7 +47,11 @@ export const getCoverage = async (
         'collectCoverage',
         dataCollector,
         async () => {
-            return await collectCoverage(options.workingDirectory);
+            return await collectCoverage(
+                dataCollector as DataCollector<unknown>,
+                options.workingDirectory,
+                coverageFilePath
+            );
         }
     );
 
@@ -58,8 +70,7 @@ export const getCoverage = async (
     );
 
     if (!coverageParsed || !jsonReport) {
-        // TODO: set normal error
-        throw 0;
+        throw FailReason.FAILED_GETTING_COVERAGE;
     }
 
     return jsonReport;
