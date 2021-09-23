@@ -1,5 +1,6 @@
 import * as allCore from '@actions/core';
 import * as all from '@actions/github';
+import { getOctokit } from '@actions/github';
 import { mocked } from 'ts-jest/utils';
 
 import { Annotation } from '../src/annotations/Annotation';
@@ -14,11 +15,8 @@ import { switchBranch } from '../src/stages/switchBranch';
 import { JsonReport } from '../src/typings/JsonReport';
 import { getOptions, Options } from '../src/typings/Options';
 import { SummaryReport, TestRunReport } from '../src/typings/Report';
-import {
-    CollectedData,
-    createDataCollector,
-    DataCollector,
-} from '../src/utils/DataCollector';
+import { CollectedData, createDataCollector } from '../src/utils/DataCollector';
+
 const { mockContext, clearContextMock } = all as any;
 const { setFailed } = allCore;
 const standardReport = {
@@ -205,6 +203,14 @@ const getOptionsMock = mocked(getOptions);
 const getCoverageMock = mocked(getCoverage);
 const switchBranchMock = mocked(switchBranch);
 const createReportMock = mocked(createReport);
+
+(getOctokit as jest.Mock<any, any>).mockReturnValue({
+    checks: {
+        create: (fn: () => any) => {
+            fn();
+        },
+    },
+});
 
 beforeEach(() => {
     switchBranchMock.mockClear();

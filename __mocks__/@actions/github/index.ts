@@ -10,10 +10,4 @@ export const clearContextMock = () => {
     });
 };
 
-export const getOctokit = jest.fn().mockReturnValue({
-    checks: {
-        create: (fn: () => any) => {
-            fn();
-        },
-    },
-});
+export const getOctokit = jest.fn();
