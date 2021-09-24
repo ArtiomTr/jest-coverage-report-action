@@ -10,6 +10,6 @@ module.exports = {
             babelConfig: true,
         },
     },
-    collectCoverageFrom: ['src/**/*.ts'],
+    collectCoverageFrom: ['src/**/{!(index.ts),}.ts'],
     coveragePathIgnorePatterns: ['/node_modules/'],
 };
