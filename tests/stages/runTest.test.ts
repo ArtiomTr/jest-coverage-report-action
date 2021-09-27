@@ -12,15 +12,19 @@ describe('runTest', () => {
     it('should run test script', async () => {
         await runTest('npm run test');
 
-        expect(exec).toBeCalledWith('npm run test', [], {
-            cwd: undefined,
-        });
+        expect(exec).toBeCalledWith(
+            'npm run test -- --ci --json --coverage --testLocationInResults --outputFile="report.json"',
+            [],
+            {
+                cwd: undefined,
+            }
+        );
     });
 
     it('should run test script in custom working directory', async () => {
         await runTest('npm run test', 'custom cwd');
 
-        expect(exec).toBeCalledWith('npm run test', [], {
+        expect(exec).toBeCalledWith(expect.any(String), [], {
             cwd: 'custom cwd',
         });
     });
