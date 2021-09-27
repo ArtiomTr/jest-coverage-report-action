@@ -13,9 +13,6 @@ inputs:
         required: false
         description: 'A custom npm script to get coverage'
         default: npx jest
-    threshold:
-        required: false
-        description: 'Coverage threshold. If total coverage is less than threshold, PR will be rejected'
     working-directory:
         required: false
         description: 'Custom working directory'
@@ -52,7 +49,6 @@ runs:
           env:
               INPUT_GITHUB-TOKEN: ${{ inputs.github-token }}
               INPUT_TEST-SCRIPT: ${{ inputs.test-script }}
-              INPUT_THRESHOLD: ${{ inputs.threshold }}
               INPUT_WORKING-DIRECTORY: ${{ inputs.working-directory }}
               INPUT_ICONS: ${{ inputs.icons }}
               INPUT_ANNOTATIONS: ${{ inputs.annotations }}

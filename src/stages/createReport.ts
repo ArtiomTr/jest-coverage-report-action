@@ -7,6 +7,7 @@ import { formatRunReport } from '../format/formatRunReport';
 import { getFailureDetails } from '../format/getFailureDetails';
 import { getTestRunSummary } from '../format/summary/getTestRunSummary';
 import template from '../format/template.md';
+import { CoverageThreshold } from '../typings/Coverage';
 import { JsonReport } from '../typings/JsonReport';
 import { SummaryReport, TestRunReport } from '../typings/Report';
 import { DataCollector } from '../utils/DataCollector';
@@ -20,14 +21,15 @@ export const getSha = () =>
 
 export const createReport = (
     dataCollector: DataCollector<JsonReport>,
-    workingDirectory?: string,
-    customTitle?: string
+    workingDirectory: string | undefined,
+    customTitle: string | undefined,
+    threshold: CoverageThreshold | undefined
 ): SummaryReport => {
     const { errors, data } = dataCollector.get();
     const [headReport, baseReport] = data;
     const formattedErrors = formatErrors(errors);
 
-    const coverage = formatCoverage(headReport, baseReport, undefined);
+    const coverage = formatCoverage(headReport, baseReport, threshold);
     const runReport: TestRunReport = {
         title: i18n(headReport.success ? 'testsSuccess' : 'testsFail'),
         summary: getTestRunSummary(headReport),

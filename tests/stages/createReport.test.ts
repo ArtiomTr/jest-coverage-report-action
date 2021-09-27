@@ -13,16 +13,25 @@ describe('createReport', () => {
         dataCollector.add(report);
 
         mockContext({ payload: { after: '123456' } });
-        expect(await createReport(dataCollector)).toMatchSnapshot();
         expect(
-            await createReport(dataCollector, 'custom directory')
+            await createReport(dataCollector, undefined, undefined, {
+                global: {},
+            })
+        ).toMatchSnapshot();
+        expect(
+            await createReport(dataCollector, 'custom directory', undefined, {
+                global: {},
+            })
         ).toMatchSnapshot();
 
         expect(
             await createReport(
                 dataCollector,
                 'directory',
-                'Custom title with directory - {{ dir }}'
+                'Custom title with directory - {{ dir }}',
+                {
+                    global: {},
+                }
             )
         ).toMatchSnapshot();
 
@@ -35,7 +44,11 @@ describe('createReport', () => {
 
         mockContext({ payload: { after: '123456' } });
 
-        expect(await createReport(dataCollector)).toMatchSnapshot();
+        expect(
+            await createReport(dataCollector, undefined, undefined, {
+                global: {},
+            })
+        ).toMatchSnapshot();
 
         clearContextMock();
     });

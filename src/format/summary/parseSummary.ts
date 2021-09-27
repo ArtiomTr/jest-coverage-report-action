@@ -16,25 +16,29 @@ export const parseSummary = (jsonReport: JsonReport) => {
             jsonReport.coverageMap,
             standardTotalCounter('s'),
             standardCoveredCounter('s'),
-            i18n('statements')
+            i18n('statements'),
+            'statements'
         ),
         getSummary(
             jsonReport.coverageMap,
             totalBranchesCounter,
             coveredBranchesCounter,
-            i18n('branches')
+            i18n('branches'),
+            'branches'
         ),
         getSummary(
             jsonReport.coverageMap,
             standardTotalCounter('f'),
             standardCoveredCounter('f'),
-            i18n('functions')
+            i18n('functions'),
+            'functions'
         ),
         getSummary(
             jsonReport.coverageMap,
             totalLinesCounter,
             coveredLinesCounter,
-            i18n('lines')
+            i18n('lines'),
+            'lines'
         ),
     ];
 };

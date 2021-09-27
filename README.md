@@ -48,7 +48,6 @@ jobs:
             - uses: artiomtr/jest-coverage-report-action@v2.0-rc.1
               with:
                   github-token: ${{ secrets.GITHUB_TOKEN }}
-                  #   threshold: 80 # optional parameter
 ```
 
 3. Pay attention to the action parameters. You can specify custom [threshold](#specify-threshold) or [test script](#customizing-test-script)
@@ -56,15 +55,7 @@ jobs:
 
 ## Specify threshold
 
-If you want to set minimal accepted coverage for the PR, you can pass and optional parameter threshold.
-
-For example, if you want to reject every pull request, with total line coverage less than 80%:
-
-```yml
-with:
-    github-token: ${{ secrets.GITHUB_TOKEN }}
-    threshold: 80 # value in percents
-```
+This action resolves threshold specified in your jest configuration. You can find more information [here](https://jestjs.io/docs/configuration#coveragethreshold-object).
 
 ## Custom working directory
 
@@ -149,10 +140,10 @@ with:
 
 Accepted values are:
 
-- `all` (default) - Will annotate sections of your code that failed tests or test did not cover
-- `none` - Turns off annotaions
-- `coverage` - Will annotate those sections of your code that test did not cover
-- `failed-tests` - Will annotate those sections of your code that failed test
+-   `all` (default) - Will annotate sections of your code that failed tests or test did not cover
+-   `none` - Turns off annotaions
+-   `coverage` - Will annotate those sections of your code that test did not cover
+-   `failed-tests` - Will annotate those sections of your code that failed test
 
 ## Contributing
 

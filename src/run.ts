@@ -13,6 +13,7 @@ import { switchBranch } from './stages/switchBranch';
 import { JsonReport } from './typings/JsonReport';
 import { getOptions } from './typings/Options';
 import { createDataCollector } from './utils/DataCollector';
+import { getThreshold } from './utils/getThreshold';
 import { i18n } from './utils/i18n';
 import { runStage } from './utils/runStage';
 
@@ -31,11 +32,15 @@ export const run = async (
         throw Error('Initialization failed.');
     }
 
+    const [, threshold] = await runStage('threshold', dataCollector, () =>
+        getThreshold(options.workingDirectory ?? process.cwd())
+    );
+
     const [isHeadCoverageGenerated, headCoverage] = await runStage(
         'headCoverage',
         dataCollector,
-        async () => {
-            return await getCoverage(
+        () => {
+            return getCoverage(
                 dataCollector,
                 options,
                 false,
@@ -89,7 +94,12 @@ export const run = async (
         'generateReportContent',
         dataCollector,
         async () => {
-            return createReport(dataCollector, options.workingDirectory);
+            return createReport(
+                dataCollector,
+                options.workingDirectory,
+                options.customTitle,
+                threshold
+            );
         }
     );
 

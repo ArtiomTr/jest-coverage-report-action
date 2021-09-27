@@ -6,12 +6,13 @@ describe('getSummary', () => {
         const counter = jest.fn(() => 1);
 
         expect(
-            getSummary(coverageMap, counter, counter, 'Title')
+            getSummary(coverageMap, counter, counter, 'Title', 'statements')
         ).toStrictEqual({
             title: 'Title',
             total: 6,
             covered: 6,
             percentage: 100,
+            name: 'statements',
         });
     });
 });

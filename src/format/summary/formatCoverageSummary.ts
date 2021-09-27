@@ -1,6 +1,6 @@
 import table from 'markdown-table';
 
-import { CoverageSummary } from '../../typings/Coverage';
+import { CoverageSummary, CoverageThreshold } from '../../typings/Coverage';
 import { formatPercentage } from '../../utils/formatPercentage';
 import { getStatusOfPercents } from '../../utils/getStatusOfPercents';
 import { i18n } from '../../utils/i18n';
@@ -9,7 +9,7 @@ import { withExplanation } from '../../utils/withExplanation';
 export const formatCoverageSummary = (
     headSummary: Array<CoverageSummary>,
     baseSummary: Array<CoverageSummary> | undefined,
-    threshold: number | undefined
+    threshold: CoverageThreshold | undefined
 ): string =>
     table(
         [
@@ -20,7 +20,10 @@ export const formatCoverageSummary = (
                 i18n('ratio'),
             ],
             ...headSummary.map((currSummary, index) => [
-                getStatusOfPercents(currSummary.percentage, threshold),
+                getStatusOfPercents(
+                    currSummary.percentage,
+                    threshold?.global[currSummary.name]
+                ),
                 currSummary.title,
                 formatPercentage(
                     currSummary.percentage,

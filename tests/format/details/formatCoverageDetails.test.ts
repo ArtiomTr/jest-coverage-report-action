@@ -43,7 +43,14 @@ describe('formatCoverageDetails', () => {
                         filename: 'decreased.ts',
                     },
                 },
-                70
+                {
+                    global: {
+                        lines: 70,
+                        statements: 70,
+                        branches: 70,
+                        functions: 70,
+                    },
+                }
             )
         ).toMatchSnapshot();
     });

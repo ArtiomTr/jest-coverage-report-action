@@ -10,6 +10,7 @@ describe('formatCoverageSummary', () => {
                         total: 30,
                         covered: 23,
                         percentage: 76.67,
+                        name: 'statements',
                     },
                 ],
                 [
@@ -18,9 +19,14 @@ describe('formatCoverageSummary', () => {
                         total: 30,
                         covered: 15,
                         percentage: 50,
+                        name: 'statements',
                     },
                 ],
-                70
+                {
+                    global: {
+                        statements: 70,
+                    },
+                }
             )
         ).toMatchSnapshot();
 
@@ -32,6 +38,7 @@ describe('formatCoverageSummary', () => {
                         total: 30,
                         covered: 23,
                         percentage: 76.67,
+                        name: 'statements',
                     },
                 ],
                 [
@@ -40,9 +47,14 @@ describe('formatCoverageSummary', () => {
                         total: 30,
                         covered: 29,
                         percentage: 96.67,
+                        name: 'statements',
                     },
                 ],
-                70
+                {
+                    global: {
+                        statements: 70,
+                    },
+                }
             )
         ).toMatchSnapshot();
     });
@@ -56,6 +68,7 @@ describe('formatCoverageSummary', () => {
                         total: 30,
                         covered: 23,
                         percentage: 76.67,
+                        name: 'statements',
                     },
                 ],
                 [
@@ -64,9 +77,14 @@ describe('formatCoverageSummary', () => {
                         total: 30,
                         covered: 15,
                         percentage: 50,
+                        name: 'statements',
                     },
                 ],
-                70
+                {
+                    global: {
+                        statements: 70,
+                    },
+                }
             )
         ).toMatchSnapshot();
 
@@ -78,6 +96,7 @@ describe('formatCoverageSummary', () => {
                         total: 30,
                         covered: 23,
                         percentage: 76.67,
+                        name: 'statements',
                     },
                 ],
                 [
@@ -86,9 +105,14 @@ describe('formatCoverageSummary', () => {
                         total: 30,
                         covered: 29,
                         percentage: 96.67,
+                        name: 'statements',
                     },
                 ],
-                80
+                {
+                    global: {
+                        statements: 80,
+                    },
+                }
             )
         ).toMatchSnapshot();
     });
@@ -102,10 +126,15 @@ describe('formatCoverageSummary', () => {
                         total: 30,
                         covered: 23,
                         percentage: 76.67,
+                        name: 'statements',
                     },
                 ],
                 undefined,
-                90
+                {
+                    global: {
+                        statements: 90,
+                    },
+                }
             )
         ).toMatchSnapshot();
 
@@ -117,10 +146,15 @@ describe('formatCoverageSummary', () => {
                         total: 30,
                         covered: 29,
                         percentage: 96.67,
+                        name: 'statements',
                     },
                 ],
                 undefined,
-                90
+                {
+                    global: {
+                        statements: 90,
+                    },
+                }
             )
         ).toMatchSnapshot();
     });

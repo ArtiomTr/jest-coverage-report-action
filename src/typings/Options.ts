@@ -14,7 +14,6 @@ export type Options = {
     testScript: string;
     iconType: IconType;
     annotations: AnnotationType;
-    threshold?: number;
     workingDirectory?: string;
     packageManager: PackageManagerType;
     skipStep: SkipStepType;
@@ -41,11 +40,6 @@ const optionSchema = yup.object().shape({
     testScript: yup.string().required(),
     iconType: yup.string().required().oneOf(validIconOptions),
     annotations: yup.string().required().oneOf(validAnnotationOptions),
-    threshold: yup
-        .number()
-        .transform((value) => (isNaN(value) ? undefined : value))
-        .min(0)
-        .max(100),
     workingDirectory: yup.string(),
     packageManager: yup.string().required().oneOf(packageManagerOptions),
     skipStep: yup.string().required().oneOf(validSkipStepOptions),
@@ -66,7 +60,6 @@ export const getOptions = async (): Promise<Options> => {
     });
 
     const testScript = getInput('test-script');
-    const threshold = getInput('threshold');
     const workingDirectory = getInput('working-directory');
     const iconType = getInput('icons');
     const annotations = getInput('annotations');
@@ -80,7 +73,6 @@ export const getOptions = async (): Promise<Options> => {
         const options: Options = (await optionSchema.validate({
             token,
             testScript,
-            threshold,
             workingDirectory,
             iconType,
             annotations,

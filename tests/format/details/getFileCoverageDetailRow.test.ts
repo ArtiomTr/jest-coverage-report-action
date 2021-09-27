@@ -19,7 +19,9 @@ describe('getFileCoverageDetailRow', () => {
                     functions: 60,
                     statements: 60,
                 },
-                70
+                {
+                    lines: 70,
+                }
             )
         ).toMatchSnapshot();
     });
@@ -42,7 +44,9 @@ describe('getFileCoverageDetailRow', () => {
                     functions: 40,
                     statements: 40,
                 },
-                70
+                {
+                    lines: 70,
+                }
             )
         ).toMatchSnapshot();
     });
@@ -59,7 +63,9 @@ describe('getFileCoverageDetailRow', () => {
                     statements: 50,
                 },
                 undefined,
-                70
+                {
+                    lines: 70,
+                }
             )
         ).toMatchSnapshot();
     });
