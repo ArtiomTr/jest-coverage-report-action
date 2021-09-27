@@ -137,6 +137,23 @@ Accepted values are:
 -   `install` - skip installing dependencies
 -   `all` - skip installing dependencies _and_ running the test script
 
+## Change annotaions
+
+To change annotaions, you have to set the annotaions option as shown below:
+
+```yml
+with:
+    github-token: ${{ secrets.GITHUB_TOKEN }}
+    annotations: none
+```
+
+Accepted values are:
+
+- `all` (default) - Will annotate sections of your code that failed tests or test did not cover
+- `none` - Turns off annotaions
+- `coverage` - Will annotate those sections of your code that test did not cover
+- `failed-tests` - Will annotate those sections of your code that failed test
+
 ## Contributing
 
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
