@@ -109,6 +109,15 @@
       "contributions": [
         "doc"
       ]
+    },
+    {
+      "login": "princeIta",
+      "name": "princeIta",
+      "avatar_url": "https://avatars.githubusercontent.com/u/39308646?v=4",
+      "profile": "https://github.com/princeIta",
+      "contributions": [
+        "doc"
+      ]
     }
   ],
   "projectName": "jest-coverage-report-action",
