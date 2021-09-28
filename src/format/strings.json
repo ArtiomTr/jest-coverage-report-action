@@ -96,7 +96,7 @@
         "unknownError": "Something went wrong. If this is an issue of jest-coverage-report-action, please report about it [here](https://github.com/ArtiomTr/jest-coverage-report-action/issues/new).",
         "reportNotFound": "Coverage output file not found. (file \"{{ coveragePath }}\" not found)",
         "multiple": "Multiple errors occurred",
-        "readingCoverageFileFailed": "Failed reading coverage file.",
+        "readingCoverageFileFailed": "Failed reading coverage file. (Error: {{ error }})",
         "failedGettingCoverage": "Getting code coverage data failed."
     },
     "summaryTitle": "Coverage report {{ dir }}",
