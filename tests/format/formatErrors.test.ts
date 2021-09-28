@@ -1,6 +1,8 @@
 import * as all from '@actions/github';
 
 import { formatErrors } from '../../src/format/formatErrors';
+import { ActionError } from '../../src/typings/ActionError';
+import { FailReason } from '../../src/typings/Report';
 
 const { mockContext, clearContextMock } = all as any;
 
@@ -10,7 +12,7 @@ describe('formatErrors', () => {
     });
 
     it('should format 1 error', () => {
-        expect(formatErrors(['testsFailed'])).toBe(
+        expect(formatErrors([new ActionError(FailReason.TESTS_FAILED)])).toBe(
             '❌ The test suite failed. Please, check the console output for more details.'
         );
 
@@ -36,20 +38,19 @@ describe('formatErrors', () => {
     it('should format multiple errors', () => {
         expect(
             formatErrors([
-                'testsFailed',
+                new ActionError(FailReason.TESTS_FAILED),
                 new Error('hello'),
-                'a a a a a a a a',
-                'simple error',
+                new ActionError(FailReason.TESTS_FAILED),
                 new EvalError('aaa'),
             ])
         ).toMatchSnapshot();
 
         expect(
-            formatErrors(new Array(40).fill(0).map(() => 'error'))
+            formatErrors(new Array(40).fill(0).map(() => new Error('error')))
         ).toMatchSnapshot();
 
         expect(
-            formatErrors(new Array(100).fill(0).map(() => 'error'))
+            formatErrors(new Array(100).fill(0).map(() => new Error('error')))
         ).toMatchSnapshot();
     });
 });

@@ -1,9 +1,9 @@
 export const createDataCollector = <T>(): DataCollector<T> => {
-    const errors: Array<string | Error> = [];
+    const errors: Array<Error> = [];
     const collectedData: Array<T> = [];
     const messages: Array<string> = [];
 
-    const error = (error: string | Error) => {
+    const error = (error: Error) => {
         errors.push(error);
     };
 
@@ -30,13 +30,13 @@ export const createDataCollector = <T>(): DataCollector<T> => {
 };
 
 export type CollectedData<T> = {
-    errors: Array<string | Error>;
+    errors: Array<Error>;
     messages: Array<string>;
     data: Array<T>;
 };
 
 export type DataCollector<T> = {
-    error: (error: string | Error) => void;
+    error: (error: Error) => void;
     info: (message: string) => void;
     add: (data: T) => void;
     get: () => CollectedData<T>;

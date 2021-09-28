@@ -1,4 +1,5 @@
 import { parseCoverage } from '../../src/stages/parseCoverage';
+import { ActionError } from '../../src/typings/ActionError';
 import { FailReason } from '../../src/typings/Report';
 
 describe('parseCoverage', () => {
@@ -10,7 +11,7 @@ describe('parseCoverage', () => {
 
     it('should throw error if JSON is not valid', () => {
         expect(() => parseCoverage('not valid json')).toThrowError(
-            FailReason.INVALID_COVERAGE_FORMAT
+            new ActionError(FailReason.INVALID_COVERAGE_FORMAT)
         );
     });
 });

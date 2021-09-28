@@ -6,6 +6,7 @@ build({
     platform: 'node',
     entryPoints: ['src/index.ts'],
     outfile: 'dist/index.js',
+    external: ['jest-config'],
     loader: {
         '.md': 'text',
     },

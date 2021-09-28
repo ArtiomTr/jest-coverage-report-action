@@ -1,6 +1,7 @@
 import { readFile } from 'fs-extra';
 
 import { collectCoverage } from '../../src/stages/collectCoverage';
+import { ActionError } from '../../src/typings/ActionError';
 import { FailReason } from '../../src/typings/Report';
 import { createDataCollector } from '../../src/utils/DataCollector';
 
@@ -46,8 +47,10 @@ describe('collectCoverage', () => {
             };
         });
 
-        await expect(collectCoverage(dataCollector)).rejects.toBe(
-            FailReason.REPORT_NOT_FOUND
+        await expect(collectCoverage(dataCollector)).rejects.toStrictEqual(
+            new ActionError(FailReason.REPORT_NOT_FOUND, {
+                coveragePath: 'report.json',
+            })
         );
     });
 
@@ -58,8 +61,10 @@ describe('collectCoverage', () => {
             throw new Error('Custom error');
         });
 
-        await expect(collectCoverage(dataCollector)).rejects.not.toBe(
-            FailReason.REPORT_NOT_FOUND
+        await expect(collectCoverage(dataCollector)).rejects.not.toStrictEqual(
+            new ActionError(FailReason.REPORT_NOT_FOUND, {
+                coveragePath: 'report.json',
+            })
         );
     });
 });
