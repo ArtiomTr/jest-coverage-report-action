@@ -1,10 +1,9 @@
 import markdownTable from 'markdown-table';
-import { Config } from '@jest/types';
-import { match } from 'micromatch';
 
 import { getFileCoverageDetailRow } from './getFileCoverageDetailRow';
 import { CoverageDetailsMap, CoverageThreshold } from '../../typings/Coverage';
 import { createMarkdownSpoiler } from '../../utils/createMarkdownSpoiler';
+import { getThresholdMap } from '../../utils/getThresholdMap';
 import { i18n } from '../../utils/i18n';
 import { withExplanation } from '../../utils/withExplanation';
 
@@ -14,34 +13,11 @@ export const formatCoverageDetailsPart = (
     baseDetails?: CoverageDetailsMap,
     threshold?: CoverageThreshold
 ): string | undefined => {
-    const thresholdMap: Record<string, Config.CoverageThresholdValue> = {};
+    const filenames = Object.keys(headDetails);
 
-    const allFilenames = Object.keys(headDetails);
+    const thresholdMap = getThresholdMap(filenames, threshold);
 
-    Object.entries(threshold ?? {})
-        .sort(([patternA], [patternB]) => {
-            if (patternA === 'global') {
-                return -1;
-            }
-
-            if (patternB === 'global') {
-                return 1;
-            }
-
-            return 0;
-        })
-        .forEach(([pattern, thresholdValue]) => {
-            const filenames =
-                pattern === 'global'
-                    ? allFilenames
-                    : match(allFilenames, pattern);
-
-            filenames.forEach((filename) => {
-                thresholdMap[filename] = thresholdValue;
-            });
-        });
-
-    const tableContent = allFilenames.map((filename) =>
+    const tableContent = filenames.map((filename) =>
         getFileCoverageDetailRow(
             filename,
             headDetails[filename],

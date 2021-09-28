@@ -9,11 +9,11 @@ import { generateCommitReport } from './report/generateCommitReport';
 import { generatePRReport } from './report/generatePRReport';
 import { createReport } from './stages/createReport';
 import { getCoverage } from './stages/getCoverage';
+import { getThreshold } from './stages/getThreshold';
 import { switchBranch } from './stages/switchBranch';
 import { JsonReport } from './typings/JsonReport';
 import { getOptions } from './typings/Options';
 import { createDataCollector } from './utils/DataCollector';
-import { getThreshold } from './utils/getThreshold';
 import { i18n } from './utils/i18n';
 import { runStage } from './utils/runStage';
 
