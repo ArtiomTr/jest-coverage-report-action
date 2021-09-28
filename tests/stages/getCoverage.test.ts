@@ -2,8 +2,10 @@ import { exec } from '@actions/exec';
 import { readFile, rmdir } from 'fs-extra';
 
 import { getCoverage } from '../../src/stages/getCoverage';
+import { ActionError } from '../../src/typings/ActionError';
 import { JsonReport } from '../../src/typings/JsonReport';
 import { Options } from '../../src/typings/Options';
+import { FailReason } from '../../src/typings/Report';
 import { createDataCollector } from '../../src/utils/DataCollector';
 
 const defaultOptions: Options = {
@@ -318,20 +320,23 @@ describe('getCoverage', () => {
         const dataCollector = createDataCollector<JsonReport>();
 
         (readFile as jest.Mock<any, any>).mockImplementationOnce(() => {
-            throw 'some error';
+            throw new Error('a');
         });
 
         await expect(
             getCoverage(dataCollector, defaultOptions, false, 'custom filepath')
-        ).rejects.toBe('failedGettingCoverage');
+        ).rejects.toStrictEqual(
+            new ActionError(FailReason.FAILED_GETTING_COVERAGE)
+        );
 
         expect(rmdir).not.toBeCalled();
         expect(exec).not.toBeCalled();
         expect(readFile).toBeCalledWith('custom filepath');
         expect(readFile).toBeCalledTimes(1);
         expect(dataCollector.get().errors).toStrictEqual([
-            'readingCoverageFileFailed',
-            'some error',
+            new ActionError(FailReason.READING_COVERAGE_FILE_FAILED, {
+                error: new Error('a').toString(),
+            }),
         ]);
     });
 });

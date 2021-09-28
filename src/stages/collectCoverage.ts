@@ -1,6 +1,7 @@
 import { readFile } from 'fs-extra';
 
 import { REPORT_PATH } from '../constants/REPORT_PATH';
+import { ActionError } from '../typings/ActionError';
 import { FailReason } from '../typings/Report';
 import { DataCollector } from '../utils/DataCollector';
 import { i18n } from '../utils/i18n';
@@ -11,6 +12,8 @@ export const collectCoverage = async (
     workingDirectory?: string,
     coverageFile?: string
 ) => {
+    const pathToCoverageFile = joinPaths(workingDirectory, REPORT_PATH);
+
     try {
         // Originally made by Jeremy Gillick (https://github.com/jgillick)
         // Modified after big refactor by Artiom Tretjakovas (https://github.com/ArtiomTr)
@@ -22,19 +25,21 @@ export const collectCoverage = async (
                 );
                 const contents = await readFile(coverageFile);
                 return contents.toString();
-            } catch (err) {
-                dataCollector.error(FailReason.READING_COVERAGE_FILE_FAILED);
-                throw err;
+            } catch (error) {
+                throw new ActionError(FailReason.READING_COVERAGE_FILE_FAILED, {
+                    error: (error as Error).toString(),
+                });
             }
         }
 
-        const outBuff = await readFile(
-            joinPaths(workingDirectory, REPORT_PATH)
-        );
+        const outBuff = await readFile(pathToCoverageFile);
+
         return outBuff.toString();
     } catch (err) {
         if ((err as NodeJS.ErrnoException).code === 'ENOENT') {
-            throw FailReason.REPORT_NOT_FOUND;
+            throw new ActionError(FailReason.REPORT_NOT_FOUND, {
+                coveragePath: pathToCoverageFile,
+            });
         }
 
         throw err;

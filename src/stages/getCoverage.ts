@@ -2,6 +2,7 @@ import { collectCoverage } from './collectCoverage';
 import { installDependencies } from './installDependencies';
 import { parseCoverage } from './parseCoverage';
 import { runTest } from './runTest';
+import { ActionError } from '../typings/ActionError';
 import { JsonReport } from '../typings/JsonReport';
 import {
     Options,
@@ -46,13 +47,12 @@ export const getCoverage = async (
     const [isCoverageCollected, rawCoverage] = await runStage(
         'collectCoverage',
         dataCollector,
-        async () => {
-            return await collectCoverage(
+        () =>
+            collectCoverage(
                 dataCollector as DataCollector<unknown>,
                 options.workingDirectory,
                 coverageFilePath
-            );
-        }
+            )
     );
 
     const [coverageParsed, jsonReport] = await runStage(
@@ -70,7 +70,7 @@ export const getCoverage = async (
     );
 
     if (!coverageParsed || !jsonReport) {
-        throw FailReason.FAILED_GETTING_COVERAGE;
+        throw new ActionError(FailReason.FAILED_GETTING_COVERAGE);
     }
 
     return jsonReport;

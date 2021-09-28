@@ -278,7 +278,7 @@ describe('run', () => {
             get: jest.fn(),
         };
         dataCollectorMock.get.mockReturnValue({
-            errors: ['error'],
+            errors: [new Error('error')],
         } as CollectedData<JsonReport>);
         await run(dataCollectorMock);
         expect(setFailed).toBeCalledWith('Jest coverage report action failed');

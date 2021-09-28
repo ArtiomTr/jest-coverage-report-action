@@ -1,3 +1,5 @@
+import { ActionError } from '../../src/typings/ActionError';
+import { FailReason } from '../../src/typings/Report';
 import { createDataCollector } from '../../src/utils/DataCollector';
 
 describe('DataCollector', () => {
@@ -18,14 +20,20 @@ describe('DataCollector', () => {
     it('should collect errors', () => {
         const dataCollector = createDataCollector();
 
-        dataCollector.error('hello');
+        dataCollector.error(new ActionError(FailReason.TESTS_FAILED));
         dataCollector.error(new Error('world'));
-        dataCollector.error('this');
+        dataCollector.error(
+            new ActionError(FailReason.REPORT_NOT_FOUND, {
+                coveragePath: 'somepath',
+            })
+        );
 
         expect(dataCollector.get().errors).toStrictEqual([
-            'hello',
+            new ActionError(FailReason.TESTS_FAILED),
             new Error('world'),
-            'this',
+            new ActionError(FailReason.REPORT_NOT_FOUND, {
+                coveragePath: 'somepath',
+            }),
         ]);
     });
 
