@@ -182,6 +182,7 @@ Jest Coverage Report action is made with <3 thanks to these wonderful people
     <td align="center"><a href="http://sidharth.dev"><img src="https://avatars.githubusercontent.com/u/10703445?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Sidharth Vinod</b></sub></a><br /><a href="https://github.com/ArtiomTr/jest-coverage-report-action/commits?author=sidharthv96" title="Code">💻</a></td>
     <td align="center"><a href="https://jaylenwimbish.com"><img src="https://avatars.githubusercontent.com/u/6505395?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Jaylen Wimbish</b></sub></a><br /><a href="https://github.com/ArtiomTr/jest-coverage-report-action/commits?author=jaylenw" title="Documentation">📖</a></td>
     <td align="center"><a href="https://github.com/princeIta"><img src="https://avatars.githubusercontent.com/u/39308646?v=4?s=100" width="100px;" alt=""/><br /><sub><b>princeIta</b></sub></a><br /><a href="https://github.com/ArtiomTr/jest-coverage-report-action/commits?author=princeIta" title="Documentation">📖</a></td>
+    <td align="center"><a href="https://brianwhitton.com"><img src="https://avatars.githubusercontent.com/u/2090382?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Brian Whitton</b></sub></a><br /><a href="https://github.com/ArtiomTr/jest-coverage-report-action/commits?author=noslouch" title="Code">💻</a> <a href="https://github.com/ArtiomTr/jest-coverage-report-action/issues?q=author%3Anoslouch" title="Bug reports">🐛</a></td>
   </tr>
 </table>
 
