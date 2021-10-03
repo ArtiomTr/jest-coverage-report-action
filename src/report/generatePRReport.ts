@@ -1,15 +1,21 @@
 import { getOctokit } from '@actions/github';
 
 import { fetchPreviousReport } from './fetchPreviousReport';
+import { Options } from '../typings/Options';
 
 export const generatePRReport = async (
     report: string,
-    dir: string | undefined,
+    options: Options,
     repo: { owner: string; repo: string },
     pr: { number: number },
     octokit: ReturnType<typeof getOctokit>
 ) => {
-    const previousReport = await fetchPreviousReport(octokit, repo, pr, dir);
+    const previousReport = await fetchPreviousReport(
+        octokit,
+        repo,
+        pr,
+        options
+    );
 
     if (previousReport) {
         await octokit.issues.updateComment({

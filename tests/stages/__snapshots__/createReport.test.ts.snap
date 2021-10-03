@@ -7,7 +7,7 @@ Object {
     "summary": "Failed tests: 0/12. Failed suites: 0/5.",
     "title": "Test suite run failed",
   },
-  "text": "<!-- jest coverage report action at  -->
+  "text": "<!-- jest coverage report action for options with hash 07a2060717d2c01f3ad9c6a8cfe3ca1b -->
 
 ## Coverage report 
 
@@ -35,9 +35,9 @@ Object {
     "summary": "12 tests passing in 5 suites.",
     "title": "Test suite run success",
   },
-  "text": "<!-- jest coverage report action at  -->
+  "text": "<!-- jest coverage report action for options with hash 8f0735414be39738f79dc9c8549004e2 -->
 
-## Coverage report 
+## Coverage report for \`custom directory\`
 
 
 | <div title=\\"Status of coverage: 🟢 - ok, 🟡 - slightly more than threshold, 🔴 - under the threshold\\">St.<sup>:grey_question:</sup></div> | Category   | Percentage | Covered / Total |
@@ -63,9 +63,9 @@ Object {
     "summary": "12 tests passing in 5 suites.",
     "title": "Test suite run success",
   },
-  "text": "<!-- jest coverage report action at custom directory -->
+  "text": "<!-- jest coverage report action for options with hash 07a2060717d2c01f3ad9c6a8cfe3ca1b -->
 
-## Coverage report for \`custom directory\`
+## Coverage report 
 
 
 | <div title=\\"Status of coverage: 🟢 - ok, 🟡 - slightly more than threshold, 🔴 - under the threshold\\">St.<sup>:grey_question:</sup></div> | Category   | Percentage | Covered / Total |
@@ -91,7 +91,7 @@ Object {
     "summary": "12 tests passing in 5 suites.",
     "title": "Test suite run success",
   },
-  "text": "<!-- jest coverage report action at directory -->
+  "text": "<!-- jest coverage report action for options with hash 786d68e69563a4350059172c9bcae6ec -->
 
 ## Custom title with directory - for \`directory\`
 

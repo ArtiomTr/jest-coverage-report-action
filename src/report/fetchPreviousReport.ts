@@ -1,12 +1,13 @@
 import { getOctokit } from '@actions/github';
 
 import { getReportTag } from '../constants/getReportTag';
+import { Options } from '../typings/Options';
 
 export async function fetchPreviousReport(
     octokit: ReturnType<typeof getOctokit>,
     repo: { owner: string; repo: string },
     pr: { number: number },
-    dir?: string
+    options: Options
 ) {
     const commentList = await octokit.paginate(
         'GET /repos/:owner/:repo/issues/:issue_number/comments',
@@ -17,7 +18,7 @@ export async function fetchPreviousReport(
     );
 
     const previousReport = commentList.find((comment) =>
-        (comment as { body: string }).body.startsWith(getReportTag(dir))
+        (comment as { body: string }).body.startsWith(getReportTag(options))
     );
 
     return !previousReport ? null : previousReport;
