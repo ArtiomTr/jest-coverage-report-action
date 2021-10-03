@@ -2,10 +2,20 @@ import * as all from '@actions/github';
 
 import { createReport, getSha } from '../../src/stages/createReport';
 import { JsonReport } from '../../src/typings/JsonReport';
+import { Options } from '../../src/typings/Options';
 import { createDataCollector } from '../../src/utils/DataCollector';
 import report from '../mock-data/jsonReport.json';
 
 const { mockContext, clearContextMock } = all as any;
+
+const DEFAULT_OPTIONS: Options = {
+    token: '',
+    testScript: '',
+    iconType: 'emoji',
+    annotations: 'all',
+    packageManager: 'npm',
+    skipStep: 'all',
+};
 
 describe('createReport', () => {
     it('should match snapshots', async () => {
@@ -13,17 +23,22 @@ describe('createReport', () => {
         dataCollector.add(report);
 
         mockContext({ payload: { after: '123456' } });
-        expect(await createReport(dataCollector)).toMatchSnapshot();
         expect(
-            await createReport(dataCollector, 'custom directory')
+            await createReport(dataCollector, {
+                ...DEFAULT_OPTIONS,
+                workingDirectory: 'custom directory',
+            })
+        ).toMatchSnapshot();
+        expect(
+            await createReport(dataCollector, DEFAULT_OPTIONS)
         ).toMatchSnapshot();
 
         expect(
-            await createReport(
-                dataCollector,
-                'directory',
-                'Custom title with directory - {{ dir }}'
-            )
+            await createReport(dataCollector, {
+                ...DEFAULT_OPTIONS,
+                workingDirectory: 'directory',
+                customTitle: 'Custom title with directory - {{ dir }}',
+            })
         ).toMatchSnapshot();
 
         clearContextMock();
@@ -35,7 +50,9 @@ describe('createReport', () => {
 
         mockContext({ payload: { after: '123456' } });
 
-        expect(await createReport(dataCollector)).toMatchSnapshot();
+        expect(
+            await createReport(dataCollector, DEFAULT_OPTIONS)
+        ).toMatchSnapshot();
 
         clearContextMock();
     });

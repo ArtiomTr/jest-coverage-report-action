@@ -89,7 +89,7 @@ export const run = async (
         'generateReportContent',
         dataCollector,
         async () => {
-            return createReport(dataCollector, options.workingDirectory);
+            return createReport(dataCollector, options);
         }
     );
 

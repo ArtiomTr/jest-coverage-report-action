@@ -8,6 +8,7 @@ import { getFailureDetails } from '../format/getFailureDetails';
 import { getTestRunSummary } from '../format/summary/getTestRunSummary';
 import template from '../format/template.md';
 import { JsonReport } from '../typings/JsonReport';
+import { Options } from '../typings/Options';
 import { SummaryReport, TestRunReport } from '../typings/Report';
 import { DataCollector } from '../utils/DataCollector';
 import { i18n } from '../utils/i18n';
@@ -20,9 +21,10 @@ export const getSha = () =>
 
 export const createReport = (
     dataCollector: DataCollector<JsonReport>,
-    workingDirectory?: string,
-    customTitle?: string
+    options: Options
 ): SummaryReport => {
+    const { workingDirectory, customTitle } = options;
+
     const { errors, data } = dataCollector.get();
     const [headReport, baseReport] = data;
     const formattedErrors = formatErrors(errors);
@@ -38,7 +40,7 @@ export const createReport = (
         text: insertArgs(template, {
             body: [formattedErrors, coverage, formattedReport].join('\n'),
             dir: workingDirectory || '',
-            tag: getReportTag(workingDirectory),
+            tag: getReportTag(options),
             title: insertArgs(customTitle || i18n('summaryTitle'), {
                 dir: workingDirectory ? `for \`${workingDirectory}\`` : '',
             }),
