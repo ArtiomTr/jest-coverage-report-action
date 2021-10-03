@@ -2,6 +2,16 @@ import type { getOctokit } from '@actions/github';
 
 import { getReportTag } from '../../src/constants/getReportTag';
 import { generatePRReport } from '../../src/report/generatePRReport';
+import { Options } from '../../src/typings/Options';
+
+const DEFAULT_OPTIONS: Options = {
+    token: '',
+    testScript: '',
+    iconType: 'emoji',
+    annotations: 'all',
+    packageManager: 'npm',
+    skipStep: 'all',
+};
 
 describe('generatePRReport', () => {
     it('should generate new PR report', async () => {
@@ -11,7 +21,7 @@ describe('generatePRReport', () => {
 
         await generatePRReport(
             'Report body',
-            undefined,
+            DEFAULT_OPTIONS,
             {
                 owner: 'bot',
                 repo: 'test-repository',
@@ -41,7 +51,7 @@ describe('generatePRReport', () => {
     it('should update old report', async () => {
         const paginate = jest.fn(() => [
             {
-                body: `${getReportTag()}`,
+                body: `${getReportTag(DEFAULT_OPTIONS)}`,
                 id: 15,
             },
         ]);
@@ -50,7 +60,7 @@ describe('generatePRReport', () => {
 
         await generatePRReport(
             'Report body',
-            undefined,
+            DEFAULT_OPTIONS,
             {
                 owner: 'bot',
                 repo: 'test-repository',

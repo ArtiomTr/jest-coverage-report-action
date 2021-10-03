@@ -103,7 +103,7 @@ export const run = async (
         if (isInPR) {
             await generatePRReport(
                 summaryReport!.text,
-                options.workingDirectory,
+                options,
                 context.repo,
                 context.payload.pull_request!,
                 octokit

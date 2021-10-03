@@ -2,6 +2,16 @@ import type { getOctokit } from '@actions/github';
 
 import { getReportTag } from '../../src/constants/getReportTag';
 import { fetchPreviousReport } from '../../src/report/fetchPreviousReport';
+import { Options } from '../../src/typings/Options';
+
+const DEFAULT_OPTIONS: Options = {
+    token: '',
+    testScript: '',
+    iconType: 'emoji',
+    annotations: 'all',
+    packageManager: 'npm',
+    skipStep: 'all',
+};
 
 describe('fetchPreviousReport', () => {
     it('should find previous report', async () => {
@@ -15,7 +25,9 @@ describe('fetchPreviousReport', () => {
                 body: 'Another comment',
             },
             {
-                body: `${getReportTag()}\n This is jest-coverage-report-action report`,
+                body: `${getReportTag(
+                    DEFAULT_OPTIONS
+                )}\n This is jest-coverage-report-action report`,
             },
             {
                 body: 'One more comment',
@@ -33,10 +45,13 @@ describe('fetchPreviousReport', () => {
                 },
                 {
                     number: 5,
-                }
+                },
+                DEFAULT_OPTIONS
             )
         ).resolves.toStrictEqual({
-            body: `${getReportTag()}\n This is jest-coverage-report-action report`,
+            body: `${getReportTag(
+                DEFAULT_OPTIONS
+            )}\n This is jest-coverage-report-action report`,
         });
 
         expect(paginate).toBeCalledWith(
@@ -58,7 +73,7 @@ describe('fetchPreviousReport', () => {
             },
             {
                 body: `${getReportTag(
-                    'folder1'
+                    DEFAULT_OPTIONS
                 )}\n This is jest-coverage-report-action report`,
             },
             {
@@ -66,7 +81,7 @@ describe('fetchPreviousReport', () => {
             },
             {
                 body: `${getReportTag(
-                    'folder2'
+                    DEFAULT_OPTIONS
                 )}\n This is jest-coverage-report-action report`,
             },
             {
@@ -86,11 +101,11 @@ describe('fetchPreviousReport', () => {
                 {
                     number: 5,
                 },
-                'folder2'
+                DEFAULT_OPTIONS
             )
         ).resolves.toStrictEqual({
             body: `${getReportTag(
-                'folder2'
+                DEFAULT_OPTIONS
             )}\n This is jest-coverage-report-action report`,
         });
     });
@@ -122,7 +137,7 @@ describe('fetchPreviousReport', () => {
                 {
                     number: 5,
                 },
-                'folder2'
+                DEFAULT_OPTIONS
             )
         ).resolves.toStrictEqual(null);
     });
