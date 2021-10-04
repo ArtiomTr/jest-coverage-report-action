@@ -10,9 +10,7 @@ export const getTestCommand = async (
         return command;
     }
 
-    const isNpmStyle =
-        command.startsWith('npm') ||
-        command.startsWith('pnpm');
+    const isNpmStyle = command.startsWith('npm') || command.startsWith('pnpm');
 
     // building new command
     const newCommandBuilder: (string | boolean)[] = [
