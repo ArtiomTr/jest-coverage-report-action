@@ -9,13 +9,13 @@ describe('getTestCommand', () => {
         );
 
         expect(await getTestCommand('npx jest', 'report.json', undefined)).toBe(
-            'npx jest -- --ci --json --coverage --testLocationInResults --outputFile="report.json"'
+            'npx jest --ci --json --coverage --testLocationInResults --outputFile="report.json"'
         );
 
         expect(
             await getTestCommand('pnpx jest', 'report.json', undefined)
         ).toBe(
-            'pnpx jest -- --ci --json --coverage --testLocationInResults --outputFile="report.json"'
+            'pnpx jest --ci --json --coverage --testLocationInResults --outputFile="report.json"'
         );
     });
 
