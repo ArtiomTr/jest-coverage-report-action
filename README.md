@@ -45,7 +45,7 @@ jobs:
         if: "!contains(github.event.head_commit.message, '[skip ci]')"
         steps:
             - uses: actions/checkout@v1
-            - uses: artiomtr/jest-coverage-report-action@v2.0-rc.1
+            - uses: artiomtr/jest-coverage-report-action@v2.0-rc.5
               with:
                   github-token: ${{ secrets.GITHUB_TOKEN }}
                   #   threshold: 80 # optional parameter
