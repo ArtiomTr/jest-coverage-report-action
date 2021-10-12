@@ -1,14 +1,24 @@
+import * as core from '@actions/core';
+
 import { ActionError } from '../../src/typings/ActionError';
 import { FailReason } from '../../src/typings/Report';
 import { createDataCollector } from '../../src/utils/DataCollector';
 
 describe('DataCollector', () => {
+    beforeEach(() => {
+        (core.error as jest.Mock).mockClear();
+        (core.info as jest.Mock).mockClear();
+    });
+
     it('should collect data', () => {
         const dataCollector = createDataCollector();
 
         dataCollector.add('hello');
         dataCollector.add('world');
         dataCollector.add('this');
+
+        expect(core.error).not.toHaveBeenCalled();
+        expect(core.info).not.toHaveBeenCalled();
 
         expect(dataCollector.get().data).toStrictEqual([
             'hello',
@@ -28,6 +38,9 @@ describe('DataCollector', () => {
             })
         );
 
+        expect(core.error).toHaveBeenCalledTimes(3);
+        expect(core.info).not.toHaveBeenCalled();
+
         expect(dataCollector.get().errors).toStrictEqual([
             new ActionError(FailReason.TESTS_FAILED),
             new Error('world'),
@@ -43,6 +56,9 @@ describe('DataCollector', () => {
         dataCollector.info('hello');
         dataCollector.info('world');
         dataCollector.info('this');
+
+        expect(core.error).not.toHaveBeenCalled();
+        expect(core.info).toHaveBeenCalledTimes(3);
 
         expect(dataCollector.get().messages).toStrictEqual([
             'hello',
