@@ -1,3 +1,5 @@
+import * as core from '@actions/core';
+
 export const createDataCollector = <T>(): DataCollector<T> => {
     const errors: Array<Error> = [];
     const collectedData: Array<T> = [];
@@ -5,6 +7,7 @@ export const createDataCollector = <T>(): DataCollector<T> => {
 
     const error = (error: Error) => {
         errors.push(error);
+        core.error(error);
     };
 
     const add = (data: T) => {
@@ -13,6 +16,7 @@ export const createDataCollector = <T>(): DataCollector<T> => {
 
     const info = (message: string) => {
         messages.push(message);
+        core.info(message);
     };
 
     const get = () => ({
