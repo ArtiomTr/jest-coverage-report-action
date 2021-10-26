@@ -11,7 +11,7 @@ jobs:
         strategy:
             matrix:
                 node: ['10.x', '14.x', '17.x']
-                os: [ubuntu-latest, windows-latest, macos-latest]
+                os: [ubuntu-latest, macos-latest]
         steps:
             - name: Checkout repo
               uses: actions/checkout@v2
