@@ -12,11 +12,13 @@ export const getTestCommand = async (
 
     const isNpmStyle = command.startsWith('npm') || command.startsWith('pnpm');
 
+    const hasDoubleHyhen = command.includes( ' -- ' );
+
     // building new command
     const newCommandBuilder: (string | boolean)[] = [
         command,
-        // add two hypens if it is npm or pnpm package managers
-        isNpmStyle && '--',
+        // add two hypens if it is npm or pnpm package managers and two hyphens don't already exist
+        isNpmStyle && ! hasDoubleHyhen && '--',
         // argument which indicates that jest runs in CI environment
         '--ci',
         // telling jest that output should be in json format
