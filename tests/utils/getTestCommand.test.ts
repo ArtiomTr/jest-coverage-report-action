@@ -21,32 +21,47 @@ describe('getTestCommand', () => {
 
     it('should add double hyphens for npm and pnpm', async () => {
         expect(
-            await getTestCommand('npm run test:coverage', 'report.json', undefined)
+            await getTestCommand(
+                'npm run test:coverage',
+                'report.json',
+                undefined
+            )
         ).toBe(
             'npm run test:coverage -- --ci --json --coverage --testLocationInResults --outputFile="report.json"'
         );
 
         expect(
-            await getTestCommand('pnpm run test:coverage', 'report.json', undefined)
+            await getTestCommand(
+                'pnpm run test:coverage',
+                'report.json',
+                undefined
+            )
         ).toBe(
             'pnpm run test:coverage -- --ci --json --coverage --testLocationInResults --outputFile="report.json"'
         );
-    } );
+    });
 
     it('should not add two sets of double hyphens for npm and pnpm', async () => {
         expect(
-            await getTestCommand('npm run test:coverage -- --coverageReporters="text" --coverageReporters="text-summary"', 'report.json', undefined)
+            await getTestCommand(
+                'npm run test:coverage -- --coverageReporters="text" --coverageReporters="text-summary"',
+                'report.json',
+                undefined
+            )
         ).toBe(
             'npm run test:coverage -- --coverageReporters="text" --coverageReporters="text-summary" --ci --json --coverage --testLocationInResults --outputFile="report.json"'
         );
 
         expect(
-            await getTestCommand('pnpm run test:coverage -- --coverageReporters="text" --coverageReporters="text-summary"', 'report.json', undefined)
+            await getTestCommand(
+                'pnpm run test:coverage -- --coverageReporters="text" --coverageReporters="text-summary"',
+                'report.json',
+                undefined
+            )
         ).toBe(
             'pnpm run test:coverage -- --coverageReporters="text" --coverageReporters="text-summary" --ci --json --coverage --testLocationInResults --outputFile="report.json"'
         );
-    } );
-
+    });
 
     it('should keep command', async () => {
         expect(
