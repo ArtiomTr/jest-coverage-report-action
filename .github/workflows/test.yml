@@ -1,20 +1,20 @@
 name: Coverage
 
 on:
-  pull_request:
-    paths-ignore:
-      - 'docs/**'
-  workflow_dispatch:
+    pull_request:
+        paths-ignore:
+            - 'docs/**'
+    workflow_dispatch:
 
 jobs:
-  coverage:
-    runs-on: ubuntu-latest
-    name: Coverage report
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v2
-      - name: Test coverage
-        uses: ./ # Uses an action in the root directory
-        with:
-          github-token: ${{ secrets.BOT_TOKEN }}
-          annotations: failed-tests
+    coverage:
+        runs-on: ubuntu-latest
+        name: Coverage report
+        steps:
+            - name: Checkout
+              uses: actions/checkout@v2
+            - name: Test coverage
+              uses: ./ # Uses an action in the root directory
+              with:
+                  github-token: ${{ secrets.BOT_TOKEN }}
+                  annotations: failed-tests

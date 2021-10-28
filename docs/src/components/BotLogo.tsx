@@ -1,13 +1,17 @@
-import CircleBadge from "@primer/components/lib/CircleBadge";
-import { MarkGithubIcon } from "@primer/octicons-react";
-import React from "react";
+import CircleBadge from '@primer/components/lib/CircleBadge';
+import { MarkGithubIcon } from '@primer/octicons-react';
+import React from 'react';
 
 export type BotLogoProps = {
-  size?: number;
+    size?: number;
 };
 
 export const BotLogo = ({ size = 32 }: BotLogoProps) => (
-  <CircleBadge size={size} backgroundColor="auto.black">
-    <CircleBadge.Icon color="auto.white" size={size} icon={MarkGithubIcon} />
-  </CircleBadge>
+    <CircleBadge size={size} backgroundColor="auto.black">
+        <CircleBadge.Icon
+            color="auto.white"
+            size={size}
+            icon={MarkGithubIcon}
+        />
+    </CircleBadge>
 );
