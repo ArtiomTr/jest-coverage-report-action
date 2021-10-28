@@ -181,6 +181,7 @@ const standardReport = {
 
 const defaultOptions: Options = {
     token: '',
+    preTestScript: '',
     testScript: '',
     iconType: 'emoji',
     annotations: 'all',

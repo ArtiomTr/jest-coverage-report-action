@@ -11,7 +11,7 @@ const { mockInput, clearInputMock } = all as any;
 
 const options = {
     ['github-token']: 'TOKEN',
-    ['pre-test-scrip']: 'npm run codegen',
+    ['pre-test-script']: 'npm run codegen',
     ['test-script']: 'npm run test:coverage',
     threshold: '80',
     ['working-directory']: 'dir',
@@ -51,7 +51,7 @@ describe('getOptions', () => {
         await expect(getOptions()).rejects.toBeDefined();
         clearInputMock();
 
-        mockInput({ ...options, ['pre-test-script']: undefined });
+        mockInput({ ...options, ['pre-test-script']: null });
         await expect(getOptions()).rejects.toBeDefined();
         clearInputMock();
 

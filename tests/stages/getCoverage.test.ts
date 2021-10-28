@@ -10,6 +10,7 @@ import { createDataCollector } from '../../src/utils/DataCollector';
 
 const defaultOptions: Options = {
     token: '',
+    preTestScript: '',
     testScript: 'default script',
     iconType: 'emoji',
     annotations: 'all',

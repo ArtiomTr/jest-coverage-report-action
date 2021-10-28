@@ -10,6 +10,7 @@ const { mockContext, clearContextMock } = all as any;
 
 const DEFAULT_OPTIONS: Options = {
     token: '',
+    preTestScript: '',
     testScript: '',
     iconType: 'emoji',
     annotations: 'all',

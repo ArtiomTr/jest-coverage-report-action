@@ -6,6 +6,7 @@ import { Options } from '../../src/typings/Options';
 
 const DEFAULT_OPTIONS: Options = {
     token: '',
+    preTestScript: '',
     testScript: '',
     iconType: 'emoji',
     annotations: 'all',
