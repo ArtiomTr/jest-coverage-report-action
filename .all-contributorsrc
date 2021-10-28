@@ -146,6 +146,15 @@
       "contributions": [
         "code"
       ]
+    },
+    {
+      "login": "thomasplevy",
+      "name": "Thomas Patrick Levy",
+      "avatar_url": "https://avatars.githubusercontent.com/u/1290739?v=4",
+      "profile": "https://lifterlms.com",
+      "contributions": [
+        "code"
+      ]
     }
   ],
   "projectName": "jest-coverage-report-action",
