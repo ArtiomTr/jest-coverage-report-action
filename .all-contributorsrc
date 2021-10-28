@@ -109,6 +109,43 @@
       "contributions": [
         "doc"
       ]
+    },
+    {
+      "login": "princeIta",
+      "name": "princeIta",
+      "avatar_url": "https://avatars.githubusercontent.com/u/39308646?v=4",
+      "profile": "https://github.com/princeIta",
+      "contributions": [
+        "doc"
+      ]
+    },
+    {
+      "login": "noslouch",
+      "name": "Brian Whitton",
+      "avatar_url": "https://avatars.githubusercontent.com/u/2090382?v=4",
+      "profile": "https://brianwhitton.com",
+      "contributions": [
+        "code",
+        "bug"
+      ]
+    },
+    {
+      "login": "BohdanPetryshyn",
+      "name": "Bohdan Petryshyn",
+      "avatar_url": "https://avatars.githubusercontent.com/u/45905756?v=4",
+      "profile": "https://github.com/BohdanPetryshyn",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "herberttn",
+      "name": "Herbert Treis Neto",
+      "avatar_url": "https://avatars.githubusercontent.com/u/5903869?v=4",
+      "profile": "https://github.com/herberttn",
+      "contributions": [
+        "code"
+      ]
     }
   ],
   "projectName": "jest-coverage-report-action",

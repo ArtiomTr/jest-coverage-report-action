@@ -56,6 +56,12 @@ const optionSchema = yup.object().shape({
     baseCoverageFile: yup.string(),
 });
 
+export const shouldInstallDeps = (skipStep: SkipStepType): Boolean =>
+    !['all', 'install'].includes(skipStep);
+
+export const shouldRunTestScript = (skipStep: SkipStepType): Boolean =>
+    !['all'].includes(skipStep);
+
 export const getOptions = async (): Promise<Options> => {
     const token = getInput('github-token', {
         required: true,

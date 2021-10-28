@@ -15,7 +15,7 @@ inputs:
     test-script:
         required: false
         description: 'A custom npm script to get coverage'
-        default: npx jest --silent --ci --coverage --testLocationInResults --json --outputFile="report.json"
+        default: npx jest
     threshold:
         required: false
         description: 'Coverage threshold. If total coverage is less than threshold, PR will be rejected'

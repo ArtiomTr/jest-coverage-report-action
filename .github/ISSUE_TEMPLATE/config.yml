@@ -1,0 +1,4 @@
+contact_links:
+    - name: Question
+      url: https://github.com/ArtiomTr/jest-coverage-report-action/discussions/new?category=q-a
+      about: Please ask and answer questions here.
