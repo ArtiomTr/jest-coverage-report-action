@@ -1,41 +1,33 @@
-import table from "markdown-table";
+import table from 'markdown-table';
 
-import { CoverageSummary } from "../../typings/Coverage";
-import { Icons } from "../Icons";
-import { insertArgs } from "../insertArgs";
-import { hint } from "../strings.json";
-import { summary } from "../strings.json";
-import { formatPercentage } from "../utils/formatPercentage";
-import { formatTable } from "../utils/formatTable";
-import { getStatusOfPercents } from "../utils/getStatusOfPercents";
+import { CoverageSummary } from '../../typings/Coverage';
+import { formatPercentage } from '../../utils/formatPercentage';
+import { getStatusOfPercents } from '../../utils/getStatusOfPercents';
+import { i18n } from '../../utils/i18n';
+import { withExplanation } from '../../utils/withExplanation';
 
 export const formatCoverageSummary = (
-  icons: Icons,
-  headSummary: Array<CoverageSummary>,
-  baseSummary: Array<CoverageSummary>,
-  threshold: number | undefined
+    headSummary: Array<CoverageSummary>,
+    baseSummary: Array<CoverageSummary> | undefined,
+    threshold: number | undefined
 ): string =>
-  formatTable(
-    summary.heading,
     table(
-      [
-        summary.columnHeaders,
-        ...headSummary.map((currSummary, index) => [
-          getStatusOfPercents(icons, currSummary.percentage, threshold),
-          currSummary.title,
-          formatPercentage(
-            currSummary.percentage,
-            baseSummary[index].percentage,
-            icons
-          ),
-          `${currSummary.covered}/${currSummary.total}`,
-        ]),
-      ],
-      { align: summary.columnAlignment }
-    ),
-    insertArgs(hint, {
-      coverageGood: icons.coverageGood,
-      coverageNormal: icons.coverageNormal,
-      coverageBad: icons.coverageBad,
-    })
-  );
+        [
+            [
+                withExplanation(i18n('status'), i18n('statusExplanation')),
+                i18n('category'),
+                i18n('percentage'),
+                i18n('ratio'),
+            ],
+            ...headSummary.map((currSummary, index) => [
+                getStatusOfPercents(currSummary.percentage, threshold),
+                currSummary.title,
+                formatPercentage(
+                    currSummary.percentage,
+                    baseSummary?.[index].percentage
+                ),
+                `${currSummary.covered}/${currSummary.total}`,
+            ]),
+        ],
+        { align: ['c', 'l', 'l', 'c'] }
+    );

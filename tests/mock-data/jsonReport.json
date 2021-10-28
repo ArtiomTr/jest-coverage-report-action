@@ -1,0 +1,1064 @@
+{
+    "numFailedTestSuites": 0,
+    "numFailedTests": 0,
+    "numPassedTestSuites": 5,
+    "numPassedTests": 12,
+    "numPendingTestSuites": 0,
+    "numPendingTests": 0,
+    "numRuntimeErrorTestSuites": 0,
+    "numTodoTests": 0,
+    "numTotalTestSuites": 5,
+    "numTotalTests": 12,
+    "openHandles": [],
+    "snapshot": {
+        "added": 0,
+        "didUpdate": false,
+        "failure": false,
+        "filesAdded": 0,
+        "filesRemoved": 0,
+        "filesRemovedList": [],
+        "filesUnmatched": 0,
+        "filesUpdated": 0,
+        "matched": 0,
+        "total": 0,
+        "unchecked": 0,
+        "uncheckedKeysByFile": [],
+        "unmatched": 0,
+        "updated": 0
+    },
+    "startTime": 1627105768580,
+    "success": true,
+    "testResults": [
+        {
+            "assertionResults": [
+                {
+                    "ancestorTitles": [],
+                    "failureMessages": [],
+                    "fullName": "CheckboxWithLabel changes the text after click",
+                    "location": {
+                        "column": 1,
+                        "line": 8
+                    },
+                    "status": "passed",
+                    "title": "CheckboxWithLabel changes the text after click"
+                }
+            ],
+            "endTime": 1627105769947,
+            "message": "",
+            "name": "/jest/examples/typescript/__tests__/CheckboxWithLabel-test.tsx",
+            "startTime": 1627105769318,
+            "status": "passed",
+            "summary": ""
+        },
+        {
+            "assertionResults": [
+                {
+                    "ancestorTitles": ["calc - mocks"],
+                    "failureMessages": [],
+                    "fullName": "calc - mocks returns result from subtract",
+                    "location": {
+                        "column": 3,
+                        "line": 17
+                    },
+                    "status": "passed",
+                    "title": "returns result from subtract"
+                },
+                {
+                    "ancestorTitles": ["calc - mocks"],
+                    "failureMessages": [],
+                    "fullName": "calc - mocks returns result from sum",
+                    "location": {
+                        "column": 3,
+                        "line": 27
+                    },
+                    "status": "passed",
+                    "title": "returns result from sum"
+                },
+                {
+                    "ancestorTitles": ["calc - mocks"],
+                    "failureMessages": [],
+                    "fullName": "calc - mocks adds last result to memory",
+                    "location": {
+                        "column": 3,
+                        "line": 37
+                    },
+                    "status": "passed",
+                    "title": "adds last result to memory"
+                },
+                {
+                    "ancestorTitles": ["calc - mocks"],
+                    "failureMessages": [],
+                    "fullName": "calc - mocks subtracts last result to memory",
+                    "location": {
+                        "column": 3,
+                        "line": 50
+                    },
+                    "status": "passed",
+                    "title": "subtracts last result to memory"
+                },
+                {
+                    "ancestorTitles": ["calc - mocks"],
+                    "failureMessages": [],
+                    "fullName": "calc - mocks clears the memory",
+                    "location": {
+                        "column": 3,
+                        "line": 63
+                    },
+                    "status": "passed",
+                    "title": "clears the memory"
+                },
+                {
+                    "ancestorTitles": ["calc - mocks"],
+                    "failureMessages": [],
+                    "fullName": "calc - mocks throws an error when invalid Op is passed",
+                    "location": {
+                        "column": 3,
+                        "line": 80
+                    },
+                    "status": "passed",
+                    "title": "throws an error when invalid Op is passed"
+                }
+            ],
+            "endTime": 1627105770075,
+            "message": "",
+            "name": "/jest/examples/typescript/__tests__/calc.test.ts",
+            "startTime": 1627105769966,
+            "status": "passed",
+            "summary": ""
+        },
+        {
+            "assertionResults": [
+                {
+                    "ancestorTitles": [],
+                    "failureMessages": [],
+                    "fullName": "adds 1 + 2 to equal 3 in TScript",
+                    "location": {
+                        "column": 1,
+                        "line": 3
+                    },
+                    "status": "passed",
+                    "title": "adds 1 + 2 to equal 3 in TScript"
+                },
+                {
+                    "ancestorTitles": [],
+                    "failureMessages": [],
+                    "fullName": "adds 1 + 2 to equal 3 in JavaScript",
+                    "location": {
+                        "column": 1,
+                        "line": 10
+                    },
+                    "status": "passed",
+                    "title": "adds 1 + 2 to equal 3 in JavaScript"
+                }
+            ],
+            "endTime": 1627105770162,
+            "message": "",
+            "name": "/jest/examples/typescript/__tests__/sum-test.ts",
+            "startTime": 1627105770093,
+            "status": "passed",
+            "summary": ""
+        },
+        {
+            "assertionResults": [
+                {
+                    "ancestorTitles": [],
+                    "failureMessages": [],
+                    "fullName": "adds 1 + 2 to equal 3 in Typescript",
+                    "location": {
+                        "column": 1,
+                        "line": 3
+                    },
+                    "status": "passed",
+                    "title": "adds 1 + 2 to equal 3 in Typescript"
+                },
+                {
+                    "ancestorTitles": [],
+                    "failureMessages": [],
+                    "fullName": "adds 1 + 2 to equal 3 in JavaScript",
+                    "location": {
+                        "column": 1,
+                        "line": 8
+                    },
+                    "status": "passed",
+                    "title": "adds 1 + 2 to equal 3 in JavaScript"
+                }
+            ],
+            "endTime": 1627105770238,
+            "message": "",
+            "name": "/jest/examples/typescript/__tests__/sum.test.js",
+            "startTime": 1627105770172,
+            "status": "passed",
+            "summary": ""
+        },
+        {
+            "assertionResults": [
+                {
+                    "ancestorTitles": [],
+                    "failureMessages": [],
+                    "fullName": "subtracts 5 - 1 to equal 4 in TypeScript",
+                    "location": {
+                        "column": 1,
+                        "line": 5
+                    },
+                    "status": "passed",
+                    "title": "subtracts 5 - 1 to equal 4 in TypeScript"
+                }
+            ],
+            "endTime": 1627105770315,
+            "message": "",
+            "name": "/jest/examples/typescript/__tests__/sub-test.ts",
+            "startTime": 1627105770247,
+            "status": "passed",
+            "summary": ""
+        }
+    ],
+    "wasInterrupted": false,
+    "coverageMap": {
+        "/jest/examples/typescript/CheckboxWithLabel.tsx": {
+            "path": "/jest/examples/typescript/CheckboxWithLabel.tsx",
+            "statementMap": {
+                "0": {
+                    "start": {
+                        "line": 12,
+                        "column": 26
+                    },
+                    "end": {
+                        "line": 35,
+                        "column": 1
+                    }
+                },
+                "1": {
+                    "start": {
+                        "line": 18,
+                        "column": 36
+                    },
+                    "end": {
+                        "line": 18,
+                        "column": 57
+                    }
+                },
+                "2": {
+                    "start": {
+                        "line": 20,
+                        "column": 19
+                    },
+                    "end": {
+                        "line": 22,
+                        "column": 3
+                    }
+                },
+                "3": {
+                    "start": {
+                        "line": 21,
+                        "column": 4
+                    },
+                    "end": {
+                        "line": 21,
+                        "column": 29
+                    }
+                },
+                "4": {
+                    "start": {
+                        "line": 24,
+                        "column": 2
+                    },
+                    "end": {
+                        "line": 34,
+                        "column": 4
+                    }
+                }
+            },
+            "fnMap": {
+                "0": {
+                    "name": "(anonymous_0)",
+                    "decl": {
+                        "start": {
+                            "line": 12,
+                            "column": 26
+                        },
+                        "end": {
+                            "line": 12,
+                            "column": 27
+                        }
+                    },
+                    "loc": {
+                        "start": {
+                            "line": 17,
+                            "column": 30
+                        },
+                        "end": {
+                            "line": 35,
+                            "column": 1
+                        }
+                    },
+                    "line": 17
+                },
+                "1": {
+                    "name": "(anonymous_1)",
+                    "decl": {
+                        "start": {
+                            "line": 20,
+                            "column": 19
+                        },
+                        "end": {
+                            "line": 20,
+                            "column": 20
+                        }
+                    },
+                    "loc": {
+                        "start": {
+                            "line": 20,
+                            "column": 25
+                        },
+                        "end": {
+                            "line": 22,
+                            "column": 3
+                        }
+                    },
+                    "line": 20
+                }
+            },
+            "branchMap": {
+                "0": {
+                    "loc": {
+                        "start": {
+                            "line": 32,
+                            "column": 7
+                        },
+                        "end": {
+                            "line": 32,
+                            "column": 37
+                        }
+                    },
+                    "type": "cond-expr",
+                    "locations": [
+                        {
+                            "start": {
+                                "line": 32,
+                                "column": 19
+                            },
+                            "end": {
+                                "line": 32,
+                                "column": 26
+                            }
+                        },
+                        {
+                            "start": {
+                                "line": 32,
+                                "column": 29
+                            },
+                            "end": {
+                                "line": 32,
+                                "column": 37
+                            }
+                        }
+                    ],
+                    "line": 32
+                }
+            },
+            "s": {
+                "0": 1,
+                "1": 2,
+                "2": 2,
+                "3": 1,
+                "4": 2
+            },
+            "f": {
+                "0": 2,
+                "1": 1
+            },
+            "b": {
+                "0": [1, 1]
+            },
+            "_coverageSchema": "1a1c01bbd47fc00a2c39e90264f33305004495a9",
+            "hash": "11a3f9ce2a01eb444f023b8a63926f73f3dc5300"
+        },
+        "/jest/examples/typescript/memory.ts": {
+            "path": "/jest/examples/typescript/memory.ts",
+            "statementMap": {
+                "0": {
+                    "start": {
+                        "line": 5,
+                        "column": 4
+                    },
+                    "end": {
+                        "line": 5,
+                        "column": 21
+                    }
+                },
+                "1": {
+                    "start": {
+                        "line": 9,
+                        "column": 4
+                    },
+                    "end": {
+                        "line": 9,
+                        "column": 26
+                    }
+                },
+                "2": {
+                    "start": {
+                        "line": 11,
+                        "column": 4
+                    },
+                    "end": {
+                        "line": 11,
+                        "column": 24
+                    }
+                },
+                "3": {
+                    "start": {
+                        "line": 15,
+                        "column": 4
+                    },
+                    "end": {
+                        "line": 15,
+                        "column": 26
+                    }
+                },
+                "4": {
+                    "start": {
+                        "line": 17,
+                        "column": 4
+                    },
+                    "end": {
+                        "line": 17,
+                        "column": 24
+                    }
+                },
+                "5": {
+                    "start": {
+                        "line": 21,
+                        "column": 4
+                    },
+                    "end": {
+                        "line": 21,
+                        "column": 21
+                    }
+                }
+            },
+            "fnMap": {
+                "0": {
+                    "name": "(anonymous_0)",
+                    "decl": {
+                        "start": {
+                            "line": 4,
+                            "column": 2
+                        },
+                        "end": {
+                            "line": 4,
+                            "column": 3
+                        }
+                    },
+                    "loc": {
+                        "start": {
+                            "line": 4,
+                            "column": 16
+                        },
+                        "end": {
+                            "line": 6,
+                            "column": 3
+                        }
+                    },
+                    "line": 4
+                },
+                "1": {
+                    "name": "(anonymous_1)",
+                    "decl": {
+                        "start": {
+                            "line": 8,
+                            "column": 2
+                        },
+                        "end": {
+                            "line": 8,
+                            "column": 3
+                        }
+                    },
+                    "loc": {
+                        "start": {
+                            "line": 8,
+                            "column": 21
+                        },
+                        "end": {
+                            "line": 12,
+                            "column": 3
+                        }
+                    },
+                    "line": 8
+                },
+                "2": {
+                    "name": "(anonymous_2)",
+                    "decl": {
+                        "start": {
+                            "line": 14,
+                            "column": 2
+                        },
+                        "end": {
+                            "line": 14,
+                            "column": 3
+                        }
+                    },
+                    "loc": {
+                        "start": {
+                            "line": 14,
+                            "column": 26
+                        },
+                        "end": {
+                            "line": 18,
+                            "column": 3
+                        }
+                    },
+                    "line": 14
+                },
+                "3": {
+                    "name": "(anonymous_3)",
+                    "decl": {
+                        "start": {
+                            "line": 20,
+                            "column": 2
+                        },
+                        "end": {
+                            "line": 20,
+                            "column": 3
+                        }
+                    },
+                    "loc": {
+                        "start": {
+                            "line": 20,
+                            "column": 10
+                        },
+                        "end": {
+                            "line": 22,
+                            "column": 3
+                        }
+                    },
+                    "line": 20
+                }
+            },
+            "branchMap": {},
+            "s": {
+                "0": 0,
+                "1": 0,
+                "2": 0,
+                "3": 0,
+                "4": 0,
+                "5": 0
+            },
+            "f": {
+                "0": 0,
+                "1": 0,
+                "2": 0,
+                "3": 0
+            },
+            "b": {},
+            "_coverageSchema": "1a1c01bbd47fc00a2c39e90264f33305004495a9",
+            "hash": "4bd783b9636c520a4e848fe51207ff16c56c380a"
+        },
+        "/jest/examples/typescript/sum.js": {
+            "path": "/jest/examples/typescript/sum.js",
+            "statementMap": {
+                "0": {
+                    "start": {
+                        "line": 4,
+                        "column": 2
+                    },
+                    "end": {
+                        "line": 4,
+                        "column": 15
+                    }
+                },
+                "1": {
+                    "start": {
+                        "line": 7,
+                        "column": 0
+                    },
+                    "end": {
+                        "line": 7,
+                        "column": 21
+                    }
+                }
+            },
+            "fnMap": {
+                "0": {
+                    "name": "sum",
+                    "decl": {
+                        "start": {
+                            "line": 3,
+                            "column": 9
+                        },
+                        "end": {
+                            "line": 3,
+                            "column": 12
+                        }
+                    },
+                    "loc": {
+                        "start": {
+                            "line": 3,
+                            "column": 19
+                        },
+                        "end": {
+                            "line": 5,
+                            "column": 1
+                        }
+                    },
+                    "line": 3
+                }
+            },
+            "branchMap": {},
+            "s": {
+                "0": 3,
+                "1": 4
+            },
+            "f": {
+                "0": 3
+            },
+            "b": {},
+            "_coverageSchema": "1a1c01bbd47fc00a2c39e90264f33305004495a9",
+            "hash": "569e723ded1f4928a3cdb3aa16370cafac8377c8"
+        },
+        "/jest/examples/typescript/sub.ts": {
+            "path": "/jest/examples/typescript/sub.ts",
+            "statementMap": {
+                "0": {
+                    "start": {
+                        "line": 5,
+                        "column": 12
+                    },
+                    "end": {
+                        "line": 5,
+                        "column": 56
+                    }
+                },
+                "1": {
+                    "start": {
+                        "line": 5,
+                        "column": 46
+                    },
+                    "end": {
+                        "line": 5,
+                        "column": 56
+                    }
+                }
+            },
+            "fnMap": {
+                "0": {
+                    "name": "(anonymous_0)",
+                    "decl": {
+                        "start": {
+                            "line": 5,
+                            "column": 12
+                        },
+                        "end": {
+                            "line": 5,
+                            "column": 13
+                        }
+                    },
+                    "loc": {
+                        "start": {
+                            "line": 5,
+                            "column": 46
+                        },
+                        "end": {
+                            "line": 5,
+                            "column": 56
+                        }
+                    },
+                    "line": 5
+                }
+            },
+            "branchMap": {},
+            "s": {
+                "0": 2,
+                "1": 1
+            },
+            "f": {
+                "0": 1
+            },
+            "b": {},
+            "_coverageSchema": "1a1c01bbd47fc00a2c39e90264f33305004495a9",
+            "hash": "39f8e343b4c65d9df21a2c969bdeed0e1c21b45b"
+        },
+        "/jest/examples/typescript/calc.ts": {
+            "path": "/jest/examples/typescript/calc.ts",
+            "statementMap": {
+                "0": {
+                    "start": {
+                        "line": 8,
+                        "column": 13
+                    },
+                    "end": {
+                        "line": 8,
+                        "column": 14
+                    }
+                },
+                "1": {
+                    "start": {
+                        "line": 10,
+                        "column": 2
+                    },
+                    "end": {
+                        "line": 38,
+                        "column": 4
+                    }
+                },
+                "2": {
+                    "start": {
+                        "line": 11,
+                        "column": 4
+                    },
+                    "end": {
+                        "line": 37,
+                        "column": 5
+                    }
+                },
+                "3": {
+                    "start": {
+                        "line": 13,
+                        "column": 8
+                    },
+                    "end": {
+                        "line": 13,
+                        "column": 32
+                    }
+                },
+                "4": {
+                    "start": {
+                        "line": 16,
+                        "column": 8
+                    },
+                    "end": {
+                        "line": 16,
+                        "column": 23
+                    }
+                },
+                "5": {
+                    "start": {
+                        "line": 17,
+                        "column": 8
+                    },
+                    "end": {
+                        "line": 17,
+                        "column": 20
+                    }
+                },
+                "6": {
+                    "start": {
+                        "line": 20,
+                        "column": 8
+                    },
+                    "end": {
+                        "line": 20,
+                        "column": 37
+                    }
+                },
+                "7": {
+                    "start": {
+                        "line": 23,
+                        "column": 23
+                    },
+                    "end": {
+                        "line": 23,
+                        "column": 28
+                    }
+                },
+                "8": {
+                    "start": {
+                        "line": 24,
+                        "column": 23
+                    },
+                    "end": {
+                        "line": 24,
+                        "column": 32
+                    }
+                },
+                "9": {
+                    "start": {
+                        "line": 25,
+                        "column": 8
+                    },
+                    "end": {
+                        "line": 25,
+                        "column": 22
+                    }
+                },
+                "10": {
+                    "start": {
+                        "line": 26,
+                        "column": 8
+                    },
+                    "end": {
+                        "line": 26,
+                        "column": 22
+                    }
+                },
+                "11": {
+                    "start": {
+                        "line": 29,
+                        "column": 23
+                    },
+                    "end": {
+                        "line": 29,
+                        "column": 28
+                    }
+                },
+                "12": {
+                    "start": {
+                        "line": 30,
+                        "column": 23
+                    },
+                    "end": {
+                        "line": 30,
+                        "column": 32
+                    }
+                },
+                "13": {
+                    "start": {
+                        "line": 31,
+                        "column": 8
+                    },
+                    "end": {
+                        "line": 31,
+                        "column": 22
+                    }
+                },
+                "14": {
+                    "start": {
+                        "line": 32,
+                        "column": 8
+                    },
+                    "end": {
+                        "line": 32,
+                        "column": 22
+                    }
+                },
+                "15": {
+                    "start": {
+                        "line": 35,
+                        "column": 8
+                    },
+                    "end": {
+                        "line": 35,
+                        "column": 38
+                    }
+                }
+            },
+            "fnMap": {
+                "0": {
+                    "name": "(anonymous_0)",
+                    "decl": {
+                        "start": {
+                            "line": 7,
+                            "column": 15
+                        },
+                        "end": {
+                            "line": 7,
+                            "column": 16
+                        }
+                    },
+                    "loc": {
+                        "start": {
+                            "line": 7,
+                            "column": 35
+                        },
+                        "end": {
+                            "line": 39,
+                            "column": 1
+                        }
+                    },
+                    "line": 7
+                },
+                "1": {
+                    "name": "(anonymous_1)",
+                    "decl": {
+                        "start": {
+                            "line": 10,
+                            "column": 9
+                        },
+                        "end": {
+                            "line": 10,
+                            "column": 10
+                        }
+                    },
+                    "loc": {
+                        "start": {
+                            "line": 10,
+                            "column": 51
+                        },
+                        "end": {
+                            "line": 38,
+                            "column": 3
+                        }
+                    },
+                    "line": 10
+                }
+            },
+            "branchMap": {
+                "0": {
+                    "loc": {
+                        "start": {
+                            "line": 11,
+                            "column": 4
+                        },
+                        "end": {
+                            "line": 37,
+                            "column": 5
+                        }
+                    },
+                    "type": "switch",
+                    "locations": [
+                        {
+                            "start": {
+                                "line": 12,
+                                "column": 6
+                            },
+                            "end": {
+                                "line": 14,
+                                "column": 7
+                            }
+                        },
+                        {
+                            "start": {
+                                "line": 15,
+                                "column": 6
+                            },
+                            "end": {
+                                "line": 18,
+                                "column": 7
+                            }
+                        },
+                        {
+                            "start": {
+                                "line": 19,
+                                "column": 6
+                            },
+                            "end": {
+                                "line": 21,
+                                "column": 7
+                            }
+                        },
+                        {
+                            "start": {
+                                "line": 22,
+                                "column": 6
+                            },
+                            "end": {
+                                "line": 27,
+                                "column": 7
+                            }
+                        },
+                        {
+                            "start": {
+                                "line": 28,
+                                "column": 6
+                            },
+                            "end": {
+                                "line": 33,
+                                "column": 7
+                            }
+                        },
+                        {
+                            "start": {
+                                "line": 34,
+                                "column": 6
+                            },
+                            "end": {
+                                "line": 36,
+                                "column": 7
+                            }
+                        }
+                    ],
+                    "line": 11
+                }
+            },
+            "s": {
+                "0": 6,
+                "1": 6,
+                "2": 11,
+                "3": 2,
+                "4": 1,
+                "5": 1,
+                "6": 1,
+                "7": 1,
+                "8": 1,
+                "9": 1,
+                "10": 1,
+                "11": 5,
+                "12": 5,
+                "13": 5,
+                "14": 5,
+                "15": 1
+            },
+            "f": {
+                "0": 6,
+                "1": 11
+            },
+            "b": {
+                "0": [2, 1, 1, 1, 5, 1]
+            },
+            "_coverageSchema": "1a1c01bbd47fc00a2c39e90264f33305004495a9",
+            "hash": "4024ade0fc7ad3b8ee4d284ee8cbd12b61be07d0"
+        },
+        "/jest/examples/typescript/sum.ts": {
+            "path": "/jest/examples/typescript/sum.ts",
+            "statementMap": {
+                "0": {
+                    "start": {
+                        "line": 3,
+                        "column": 12
+                    },
+                    "end": {
+                        "line": 3,
+                        "column": 51
+                    }
+                },
+                "1": {
+                    "start": {
+                        "line": 3,
+                        "column": 46
+                    },
+                    "end": {
+                        "line": 3,
+                        "column": 51
+                    }
+                }
+            },
+            "fnMap": {
+                "0": {
+                    "name": "(anonymous_0)",
+                    "decl": {
+                        "start": {
+                            "line": 3,
+                            "column": 12
+                        },
+                        "end": {
+                            "line": 3,
+                            "column": 13
+                        }
+                    },
+                    "loc": {
+                        "start": {
+                            "line": 3,
+                            "column": 46
+                        },
+                        "end": {
+                            "line": 3,
+                            "column": 51
+                        }
+                    },
+                    "line": 3
+                }
+            },
+            "branchMap": {},
+            "s": {
+                "0": 2,
+                "1": 2
+            },
+            "f": {
+                "0": 2
+            },
+            "b": {},
+            "_coverageSchema": "1a1c01bbd47fc00a2c39e90264f33305004495a9",
+            "hash": "66cfdbf6aca24b9d5f8290513b01a2a03eeba6d0"
+        }
+    }
+}

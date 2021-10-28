@@ -1,0 +1,30 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`parseSummary should parse summary from mock data 1`] = `
+Array [
+  Object {
+    "covered": 27,
+    "percentage": 81.81818181818183,
+    "title": "Statements",
+    "total": 33,
+  },
+  Object {
+    "covered": 8,
+    "percentage": 100,
+    "title": "Branches",
+    "total": 8,
+  },
+  Object {
+    "covered": 7,
+    "percentage": 63.63636363636363,
+    "title": "Functions",
+    "total": 11,
+  },
+  Object {
+    "covered": 25,
+    "percentage": 80.64516129032258,
+    "title": "Lines",
+    "total": 31,
+  },
+]
+`;

@@ -2,66 +2,66 @@ name: 'Jest coverage report'
 description: 'Track your code coverage in each pull request.'
 author: 'Artiom Tretjakovas <artiom.tretjakovas2@gmail.com>'
 branding:
-  icon: 'activity'
-  color: 'gray-dark'
+    icon: 'activity'
+    color: 'gray-dark'
 inputs:
-  github-token:
-    required: true
-    description: 'A github access token'
-    default: ${{ github.token }}
-  pre-test-script:
-    required: false
-    description: 'A custom npm script to run before the test-script'
-  test-script:
-    required: false
-    description: 'A custom npm script to get coverage'
-    default: npx jest --silent --ci --coverage --testLocationInResults --json --outputFile="report.json"
-  threshold:
-    required: false
-    description: 'Coverage threshold. If total coverage is less than threshold, PR will be rejected'
-  working-directory:
-    required: false
-    description: 'Custom working directory'
-  icons:
-    required: false
-    description: 'Which icons to use. Available choices: emoji, ascii'
-    default: emoji
-  annotations:
-    required: false
-    description: 'What type of annotations show. Options: none, coverage, failed-tests, all'
-    default: all
-  package-manager:
-    required: false
-    description: 'Which package manager to use; can be either `npm` or `yarn`'
-    default: 'npm'
-  skip-step:
-    required: false
-    description: '`none` for running all steps, `install` to skip installing dependencies or `all` to skip installing dependencies and running the test script'
-    default: 'none'
-  custom-title:
-    required: false
-    description: 'Sets the title of the coverage report comment in Github.'
-  coverage-file:
-    required: false
-    description: Path to file the a previously generated report.json file. (bypasses running the test again)
-  base-coverage-file:
-    required: false
-    description: Path to the report.json file to compare against. This should be from the branch the PR is merging into.
+    github-token:
+        required: true
+        description: 'A github access token'
+        default: ${{ github.token }}
+    pre-test-script:
+        required: false
+        description: 'A custom npm script to run before the test-script'
+    test-script:
+        required: false
+        description: 'A custom npm script to get coverage'
+        default: npx jest
+    threshold:
+        required: false
+        description: 'Coverage threshold. If total coverage is less than threshold, PR will be rejected'
+    working-directory:
+        required: false
+        description: 'Custom working directory'
+    icons:
+        required: false
+        description: 'Which icons to use. Available choices: emoji, ascii'
+        default: emoji
+    annotations:
+        required: false
+        description: 'What type of annotations show. Options: none, coverage, failed-tests, all'
+        default: all
+    package-manager:
+        required: false
+        description: 'Which package manager to use; can be either `npm` or `yarn`'
+        default: 'npm'
+    skip-step:
+        required: false
+        description: '`none` for running all steps, `install` to skip installing dependencies or `all` to skip installing dependencies and running the test script'
+        default: 'none'
+    custom-title:
+        required: false
+        description: 'Sets the title of the coverage report comment in Github.'
+    coverage-file:
+        required: false
+        description: Path to file the a previously generated report.json file. (bypasses running the test again)
+    base-coverage-file:
+        required: false
+        description: Path to the report.json file to compare against. This should be from the branch the PR is merging into.
 runs:
-  using: composite
-  steps:
-    - run: $GITHUB_ACTION_PATH/run.sh
-      shell: bash
-      env:
-        INPUT_GITHUB-TOKEN: ${{ inputs.github-token }}
-        INPUT_PRE-TEST-SCRIPT: ${{ inputs.pre-test-script }}
-        INPUT_TEST-SCRIPT: ${{ inputs.test-script }}
-        INPUT_THRESHOLD: ${{ inputs.threshold }}
-        INPUT_WORKING-DIRECTORY: ${{ inputs.working-directory }}
-        INPUT_ICONS: ${{ inputs.icons }}
-        INPUT_ANNOTATIONS: ${{ inputs.annotations }}
-        INPUT_PACKAGE-MANAGER: ${{ inputs.package-manager }}
-        INPUT_SKIP-STEP: ${{ inputs.skip-step }}
-        INPUT_CUSTOM-TITLE: ${{ inputs.custom-title }}
-        INPUT_COVERAGE-FILE: ${{ inputs.coverage-file }}
-        INPUT_BASE-COVERAGE-FILE: ${{ inputs.base-coverage-file }}
+    using: composite
+    steps:
+        - run: $GITHUB_ACTION_PATH/run.sh
+          shell: bash
+          env:
+              INPUT_GITHUB-TOKEN: ${{ inputs.github-token }}
+              INPUT_PRE-TEST-SCRIPT: ${{ inputs.pre-test-script }}
+              INPUT_TEST-SCRIPT: ${{ inputs.test-script }}
+              INPUT_THRESHOLD: ${{ inputs.threshold }}
+              INPUT_WORKING-DIRECTORY: ${{ inputs.working-directory }}
+              INPUT_ICONS: ${{ inputs.icons }}
+              INPUT_ANNOTATIONS: ${{ inputs.annotations }}
+              INPUT_PACKAGE-MANAGER: ${{ inputs.package-manager }}
+              INPUT_SKIP-STEP: ${{ inputs.skip-step }}
+              INPUT_CUSTOM-TITLE: ${{ inputs.custom-title }}
+              INPUT_COVERAGE-FILE: ${{ inputs.coverage-file }}
+              INPUT_BASE-COVERAGE-FILE: ${{ inputs.base-coverage-file }}

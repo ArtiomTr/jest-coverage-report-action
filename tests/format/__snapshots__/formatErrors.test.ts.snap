@@ -1,0 +1,166 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`formatErrors should format multiple errors 1`] = `
+"Multiple errors occurred
+\`\`\`
+ 1 | The test suite failed. Please, check the console output for more details.
+ 2 | Error: hello
+ 3 | The test suite failed. Please, check the console output for more details.
+ 4 | EvalError: aaa
+\`\`\`
+"
+`;
+
+exports[`formatErrors should format multiple errors 2`] = `
+"Multiple errors occurred
+\`\`\`
+ 1  | Error: error
+ 2  | Error: error
+ 3  | Error: error
+ 4  | Error: error
+ 5  | Error: error
+ 6  | Error: error
+ 7  | Error: error
+ 8  | Error: error
+ 9  | Error: error
+ 10 | Error: error
+ 11 | Error: error
+ 12 | Error: error
+ 13 | Error: error
+ 14 | Error: error
+ 15 | Error: error
+ 16 | Error: error
+ 17 | Error: error
+ 18 | Error: error
+ 19 | Error: error
+ 20 | Error: error
+ 21 | Error: error
+ 22 | Error: error
+ 23 | Error: error
+ 24 | Error: error
+ 25 | Error: error
+ 26 | Error: error
+ 27 | Error: error
+ 28 | Error: error
+ 29 | Error: error
+ 30 | Error: error
+ 31 | Error: error
+ 32 | Error: error
+ 33 | Error: error
+ 34 | Error: error
+ 35 | Error: error
+ 36 | Error: error
+ 37 | Error: error
+ 38 | Error: error
+ 39 | Error: error
+ 40 | Error: error
+\`\`\`
+"
+`;
+
+exports[`formatErrors should format multiple errors 3`] = `
+"Multiple errors occurred
+\`\`\`
+ 1   | Error: error
+ 2   | Error: error
+ 3   | Error: error
+ 4   | Error: error
+ 5   | Error: error
+ 6   | Error: error
+ 7   | Error: error
+ 8   | Error: error
+ 9   | Error: error
+ 10  | Error: error
+ 11  | Error: error
+ 12  | Error: error
+ 13  | Error: error
+ 14  | Error: error
+ 15  | Error: error
+ 16  | Error: error
+ 17  | Error: error
+ 18  | Error: error
+ 19  | Error: error
+ 20  | Error: error
+ 21  | Error: error
+ 22  | Error: error
+ 23  | Error: error
+ 24  | Error: error
+ 25  | Error: error
+ 26  | Error: error
+ 27  | Error: error
+ 28  | Error: error
+ 29  | Error: error
+ 30  | Error: error
+ 31  | Error: error
+ 32  | Error: error
+ 33  | Error: error
+ 34  | Error: error
+ 35  | Error: error
+ 36  | Error: error
+ 37  | Error: error
+ 38  | Error: error
+ 39  | Error: error
+ 40  | Error: error
+ 41  | Error: error
+ 42  | Error: error
+ 43  | Error: error
+ 44  | Error: error
+ 45  | Error: error
+ 46  | Error: error
+ 47  | Error: error
+ 48  | Error: error
+ 49  | Error: error
+ 50  | Error: error
+ 51  | Error: error
+ 52  | Error: error
+ 53  | Error: error
+ 54  | Error: error
+ 55  | Error: error
+ 56  | Error: error
+ 57  | Error: error
+ 58  | Error: error
+ 59  | Error: error
+ 60  | Error: error
+ 61  | Error: error
+ 62  | Error: error
+ 63  | Error: error
+ 64  | Error: error
+ 65  | Error: error
+ 66  | Error: error
+ 67  | Error: error
+ 68  | Error: error
+ 69  | Error: error
+ 70  | Error: error
+ 71  | Error: error
+ 72  | Error: error
+ 73  | Error: error
+ 74  | Error: error
+ 75  | Error: error
+ 76  | Error: error
+ 77  | Error: error
+ 78  | Error: error
+ 79  | Error: error
+ 80  | Error: error
+ 81  | Error: error
+ 82  | Error: error
+ 83  | Error: error
+ 84  | Error: error
+ 85  | Error: error
+ 86  | Error: error
+ 87  | Error: error
+ 88  | Error: error
+ 89  | Error: error
+ 90  | Error: error
+ 91  | Error: error
+ 92  | Error: error
+ 93  | Error: error
+ 94  | Error: error
+ 95  | Error: error
+ 96  | Error: error
+ 97  | Error: error
+ 98  | Error: error
+ 99  | Error: error
+ 100 | Error: error
+\`\`\`
+"
+`;
