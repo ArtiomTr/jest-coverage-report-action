@@ -1,5 +1,6 @@
 export const getOptions = jest.fn(() => ({
     token: 'TOKEN',
+    preTestScript: 'pre test script',
     testScript: 'test script',
     iconType: 'emoji',
     annotations: 'all',

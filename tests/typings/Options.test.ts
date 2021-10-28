@@ -11,6 +11,7 @@ const { mockInput, clearInputMock } = all as any;
 
 const options = {
     ['github-token']: 'TOKEN',
+    ['pre-test-scrip']: 'npm run codegen',
     ['test-script']: 'npm run test:coverage',
     threshold: '80',
     ['working-directory']: 'dir',
@@ -29,6 +30,7 @@ describe('getOptions', () => {
 
         expect(await getOptions()).toStrictEqual({
             token: 'TOKEN',
+            preTestScript: 'npm run codegen',
             testScript: 'npm run test:coverage',
             threshold: 80,
             workingDirectory: 'dir',
@@ -46,6 +48,10 @@ describe('getOptions', () => {
 
     it('should validate input', async () => {
         mockInput({ ...options, ['github-token']: undefined });
+        await expect(getOptions()).rejects.toBeDefined();
+        clearInputMock();
+
+        mockInput({ ...options, ['pre-test-script']: undefined });
         await expect(getOptions()).rejects.toBeDefined();
         clearInputMock();
 

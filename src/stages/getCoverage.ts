@@ -1,6 +1,7 @@
 import { collectCoverage } from './collectCoverage';
 import { installDependencies } from './installDependencies';
 import { parseCoverage } from './parseCoverage';
+import { runPreTest } from './runPreTest';
 import { runTest } from './runTest';
 import { ActionError } from '../typings/ActionError';
 import { JsonReport } from '../typings/JsonReport';
@@ -31,6 +32,15 @@ export const getCoverage = async (
             options.packageManager,
             options.workingDirectory
         );
+    });
+
+    await runStage('runPreTest', dataCollector, async (skip) => {
+        const preTestScript = options.preTestScript ?? '';
+        if (!preTestScript) {
+            skip();
+        }
+
+        await runPreTest(preTestScript, options.workingDirectory);
     });
 
     await runStage('runTest', dataCollector, async (skip) => {
