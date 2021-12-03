@@ -1,5 +1,5 @@
 import { exec } from '@actions/exec';
-import { rmdir } from 'fs-extra';
+import { rm } from 'fs-extra';
 
 import { PackageManagerType } from '../typings/Options';
 import { joinPaths } from '../utils/joinPaths';
@@ -9,7 +9,7 @@ export const installDependencies = async (
     workingDirectory?: string
 ) => {
     // NOTE: The `npm ci` command is not used. Because if your version of npm is old, the generated `package-lock.json` will also be old, and the latest version of `npm ci` will fail.
-    await rmdir(joinPaths(workingDirectory, 'node_modules'), {
+    await rm(joinPaths(workingDirectory, 'node_modules'), {
         recursive: true,
     });
 
