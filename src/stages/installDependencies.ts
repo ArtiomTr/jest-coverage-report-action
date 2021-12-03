@@ -11,6 +11,7 @@ export const installDependencies = async (
     // NOTE: The `npm ci` command is not used. Because if your version of npm is old, the generated `package-lock.json` will also be old, and the latest version of `npm ci` will fail.
     await rm(joinPaths(workingDirectory, 'node_modules'), {
         recursive: true,
+        force: true,
     });
 
     await exec(`${packageManager} install`, undefined, {
