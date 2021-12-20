@@ -188,6 +188,7 @@ Jest Coverage Report action is made with <3 thanks to these wonderful people
     <td align="center"><a href="https://github.com/herberttn"><img src="https://avatars.githubusercontent.com/u/5903869?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Herbert Treis Neto</b></sub></a><br /><a href="https://github.com/ArtiomTr/jest-coverage-report-action/commits?author=herberttn" title="Code">💻</a></td>
     <td align="center"><a href="https://lifterlms.com"><img src="https://avatars.githubusercontent.com/u/1290739?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Thomas Patrick Levy</b></sub></a><br /><a href="https://github.com/ArtiomTr/jest-coverage-report-action/commits?author=thomasplevy" title="Code">💻</a></td>
     <td align="center"><a href="https://github.com/laurislokalise"><img src="https://avatars.githubusercontent.com/u/74536758?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Lauris Mikāls</b></sub></a><br /><a href="https://github.com/ArtiomTr/jest-coverage-report-action/commits?author=laurislokalise" title="Code">💻</a></td>
+    <td align="center"><a href="https://github.com/rena-h"><img src="https://avatars.githubusercontent.com/u/20507786?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Rena Hamada</b></sub></a><br /><a href="https://github.com/ArtiomTr/jest-coverage-report-action/commits?author=rena-h" title="Documentation">📖</a></td>
   </tr>
 </table>
 
