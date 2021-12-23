@@ -62,7 +62,7 @@ const checkSingleStat = (
     if (threshold >= 0) {
         const percents = getPercents(covered, total);
 
-        return threshold >= percents
+        return percents >= threshold
             ? undefined
             : {
                   expected: threshold,
@@ -72,7 +72,7 @@ const checkSingleStat = (
               };
     }
 
-    return -threshold >= covered
+    return covered >= -threshold
         ? undefined
         : {
               expected: threshold,
