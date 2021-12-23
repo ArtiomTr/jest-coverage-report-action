@@ -10,10 +10,12 @@ import { joinPaths } from '../utils/joinPaths';
 export const collectCoverage = async (
     dataCollector: DataCollector<unknown>,
     workingDirectory?: string,
-    coverageFile: string = REPORT_PATH
+    coverageFile?: string
 ) => {
-    console.log('Paths: ', workingDirectory, coverageFile);
-    const pathToCoverageFile = joinPaths(workingDirectory, coverageFile);
+    const pathToCoverageFile = joinPaths(
+        workingDirectory,
+        coverageFile || REPORT_PATH
+    );
 
     try {
         // Originally made by Jeremy Gillick (https://github.com/jgillick)
