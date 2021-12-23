@@ -1,3 +1,5 @@
+import { sep } from 'path';
+
 import { exec } from '@actions/exec';
 import { readFile, rmdir } from 'fs-extra';
 
@@ -66,7 +68,7 @@ describe('getCoverage', () => {
             undefined
         );
 
-        expect(rmdir).toBeCalledWith('testDir/node_modules', {
+        expect(rmdir).toBeCalledWith(`testDir${sep}node_modules`, {
             recursive: true,
         });
         expect(exec).toBeCalledWith('npm install', undefined, {
@@ -79,7 +81,7 @@ describe('getCoverage', () => {
             [],
             { cwd: 'testDir' }
         );
-        expect(readFile).toHaveBeenCalledWith('testDir/report.json');
+        expect(readFile).toHaveBeenCalledWith(`testDir${sep}report.json`);
 
         expect(jsonReport).toStrictEqual({});
     });

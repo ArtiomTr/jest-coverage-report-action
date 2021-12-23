@@ -10,14 +10,6 @@ export enum FailReason {
     FAILED_GETTING_COVERAGE = 'failedGettingCoverage',
 }
 
-export type Report = {
-    success: boolean;
-    summary?: Array<CoverageSummary>;
-    details?: CoverageDetailsMap;
-    failReason?: FailReason;
-    error?: Error;
-};
-
 export type TestRunReport = {
     title: string;
     summary: string;

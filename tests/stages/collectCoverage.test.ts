@@ -1,3 +1,5 @@
+import { sep } from 'path';
+
 import { readFile } from 'fs-extra';
 
 import { collectCoverage } from '../../src/stages/collectCoverage';
@@ -31,7 +33,7 @@ describe('collectCoverage', () => {
         await expect(
             collectCoverage(dataCollector, 'customFolder')
         ).resolves.toBe('New value');
-        expect(readFile).toBeCalledWith('customFolder/report.json');
+        expect(readFile).toBeCalledWith(`customFolder${sep}report.json`);
     });
 
     it('should read report from correct path when working directory and custom report path is provided', async () => {
@@ -48,7 +50,7 @@ describe('collectCoverage', () => {
                 './customReport.json'
             )
         ).resolves.toBe('New value');
-        expect(readFile).toBeCalledWith('customFolder/customReport.json');
+        expect(readFile).toBeCalledWith(`customFolder${sep}customReport.json`);
     });
 
     it('should throw error if report not found', async () => {

@@ -60,6 +60,10 @@
         "collectCoverage": "Collecting coverage",
         "parseCoverage": "Parsing coverage"
     },
+    "thresholdFailures": {
+        "percents": "{{ type }} coverage not met for {{ path }}: expected >={{ expected }}%, but got {{ coverage }}%",
+        "ones": "{{ type }} coverage not met for {{ path }}: expected <={{ expected }} not covered {{ ltype }}, but got {{ coverage }}"
+    },
     "failed": "Jest coverage report action failed",
     "status": "St.",
     "statusExplanation": "Status of coverage: :green_circle: - ok, :yellow_circle: - slightly more than threshold, :red_circle: - under the threshold",

@@ -7,12 +7,14 @@ import { formatCoverageAnnotations } from './format/annotations/formatCoverageAn
 import { formatFailedTestsAnnotations } from './format/annotations/formatFailedTestsAnnotations';
 import { generateCommitReport } from './report/generateCommitReport';
 import { generatePRReport } from './report/generatePRReport';
+import { checkThreshold } from './stages/checkThreshold';
 import { createReport } from './stages/createReport';
 import { getCoverage } from './stages/getCoverage';
 import { switchBranch } from './stages/switchBranch';
 import { JsonReport } from './typings/JsonReport';
 import { getOptions } from './typings/Options';
-import { createDataCollector } from './utils/DataCollector';
+import { createDataCollector, DataCollector } from './utils/DataCollector';
+import { getNormalThreshold } from './utils/getNormalThreshold';
 import { i18n } from './utils/i18n';
 import { runStage } from './utils/runStage';
 
@@ -30,6 +32,17 @@ export const run = async (
     if (!isInitialized || !options) {
         throw Error('Initialization failed.');
     }
+
+    const [isThresholdParsed, threshold] = await runStage(
+        'parseThreshold',
+        dataCollector,
+        () => {
+            return getNormalThreshold(
+                options.workingDirectory ?? process.cwd(),
+                options.threshold
+            );
+        }
+    );
 
     const [isHeadCoverageGenerated, headCoverage] = await runStage(
         'headCoverage',
@@ -85,11 +98,27 @@ export const run = async (
         dataCollector.add(baseCoverage);
     }
 
+    const [, thresholdResults] = await runStage(
+        'checkThreshold',
+        dataCollector,
+        async (skip) => {
+            if (!isHeadCoverageGenerated || !isThresholdParsed) {
+                skip();
+            }
+
+            return checkThreshold(
+                headCoverage!,
+                threshold!,
+                dataCollector as DataCollector<unknown>
+            );
+        }
+    );
+
     const [isReportContentGenerated, summaryReport] = await runStage(
         'generateReportContent',
         dataCollector,
         async () => {
-            return createReport(dataCollector, options);
+            return createReport(dataCollector, options, thresholdResults ?? []);
         }
     );
 
