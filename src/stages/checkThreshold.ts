@@ -12,14 +12,22 @@ import { checkSingleThreshold } from '../utils/checkSingleThreshold';
 import { DataCollector } from '../utils/DataCollector';
 import { getCoverageForDirectory } from '../utils/getCoverageForDirectory';
 import { getFileCoverageMap } from '../utils/getFileCoverageMap';
+import { joinPaths } from '../utils/joinPaths';
 
 export const checkThreshold = (
     report: JsonReport,
     threshold: JestThreshold,
+    workingDirectory: string | undefined,
     dataCollector: DataCollector<unknown>
 ) => {
+    const cwd = joinPaths(process.cwd(), workingDirectory);
     // Maybe somehow take this from "format" stage?
-    const coverageDetailMap = getFileCoverageMap(report);
+    const coverageDetailMap = Object.fromEntries(
+        Object.entries(getFileCoverageMap(report)).map(([key, value]) => [
+            key.substring(cwd.length),
+            value,
+        ])
+    );
 
     const dirSet = new Set<string>();
 

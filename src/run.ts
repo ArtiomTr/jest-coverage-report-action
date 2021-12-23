@@ -109,6 +109,7 @@ export const run = async (
             return checkThreshold(
                 headCoverage!,
                 threshold!,
+                options.workingDirectory,
                 dataCollector as DataCollector<unknown>
             );
         }
