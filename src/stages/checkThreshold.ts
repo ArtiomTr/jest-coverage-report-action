@@ -104,6 +104,8 @@ export const checkThreshold = (
         }
     }
 
+    console.log('Threshold: ', threshold, totalResults);
+
     if (totalResults.length > 0) {
         dataCollector.add(FailReason.UNDER_THRESHOLD);
     }
