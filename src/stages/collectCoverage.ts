@@ -12,6 +12,7 @@ export const collectCoverage = async (
     workingDirectory?: string,
     coverageFile: string = REPORT_PATH
 ) => {
+    console.log('Paths: ', workingDirectory, coverageFile);
     const pathToCoverageFile = joinPaths(workingDirectory, coverageFile);
 
     try {
