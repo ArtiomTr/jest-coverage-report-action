@@ -9,7 +9,7 @@ export const formatThresholdResults = (results: ThresholdResult[]): string => {
                 type: i18n(type),
                 ltype: i18n(type).toLowerCase(),
                 expected: Math.abs(expected),
-                covered: received,
+                coverage: received,
             })
         )
         .join('\n');
