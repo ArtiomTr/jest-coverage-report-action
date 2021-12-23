@@ -24,7 +24,7 @@ export const checkThreshold = (
     // Maybe somehow take this from "format" stage?
     const coverageDetailMap = Object.fromEntries(
         Object.entries(getFileCoverageMap(report)).map(([key, value]) => [
-            key.substring(cwd.length),
+            key.substring(cwd.length + 1),
             value,
         ])
     );
