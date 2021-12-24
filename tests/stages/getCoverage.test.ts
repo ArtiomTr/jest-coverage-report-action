@@ -1,7 +1,8 @@
 import { sep } from 'path';
 
 import { exec } from '@actions/exec';
-import { readFile, rmdir } from 'fs-extra';
+import { readFile } from 'fs-extra';
+import { mocked } from 'ts-jest/utils';
 
 import { getCoverage } from '../../src/stages/getCoverage';
 import { ActionError } from '../../src/typings/ActionError';
@@ -9,6 +10,9 @@ import { JsonReport } from '../../src/typings/JsonReport';
 import { Options } from '../../src/typings/Options';
 import { FailReason } from '../../src/typings/Report';
 import { createDataCollector } from '../../src/utils/DataCollector';
+import { removeDirectory } from '../../src/utils/removeDirectory';
+
+jest.mock('../../src/utils/removeDirectory');
 
 const defaultOptions: Options = {
     token: '',
@@ -20,9 +24,9 @@ const defaultOptions: Options = {
 };
 
 const clearMocks = () => {
-    (exec as jest.Mock<any, any>).mockClear();
-    (rmdir as jest.Mock<any, any>).mockClear();
-    (readFile as jest.Mock<any, any>).mockClear();
+    mocked(exec).mockClear();
+    mocked(readFile).mockClear();
+    mocked(removeDirectory).mockClear();
 };
 
 beforeEach(clearMocks);
@@ -40,7 +44,7 @@ describe('getCoverage', () => {
             undefined
         );
 
-        expect(rmdir).toBeCalledWith('node_modules', { recursive: true });
+        expect(removeDirectory).toBeCalledWith('node_modules');
         expect(exec).toBeCalledWith('npm install', undefined, {
             cwd: undefined,
         });
@@ -68,9 +72,7 @@ describe('getCoverage', () => {
             undefined
         );
 
-        expect(rmdir).toBeCalledWith(`testDir${sep}node_modules`, {
-            recursive: true,
-        });
+        expect(removeDirectory).toBeCalledWith(`testDir${sep}node_modules`);
         expect(exec).toBeCalledWith('npm install', undefined, {
             cwd: 'testDir',
         });
@@ -117,7 +119,7 @@ describe('getCoverage', () => {
             undefined
         );
 
-        expect(rmdir).not.toBeCalledWith('node_modules', { recursive: true });
+        expect(removeDirectory).not.toBeCalledWith('node_modules');
         expect(exec).not.toBeCalledWith('npm install', undefined, {
             cwd: undefined,
         });
@@ -145,7 +147,7 @@ describe('getCoverage', () => {
             undefined
         );
 
-        expect(rmdir).not.toBeCalledWith('node_modules', { recursive: true });
+        expect(removeDirectory).not.toBeCalledWith('node_modules');
         expect(exec).not.toBeCalledWith('npm install', undefined, {
             cwd: undefined,
         });
@@ -173,7 +175,7 @@ describe('getCoverage', () => {
             undefined
         );
 
-        expect(rmdir).toBeCalledWith('node_modules', { recursive: true });
+        expect(removeDirectory).toBeCalledWith('node_modules');
         expect(exec).toBeCalledWith('npm install', undefined, {
             cwd: undefined,
         });
@@ -201,7 +203,7 @@ describe('getCoverage', () => {
             undefined
         );
 
-        expect(rmdir).toBeCalledWith('node_modules', { recursive: true });
+        expect(removeDirectory).toBeCalledWith('node_modules');
         expect(exec).toBeCalledWith('npm install', undefined, {
             cwd: undefined,
         });
@@ -232,7 +234,7 @@ describe('getCoverage', () => {
             undefined
         );
 
-        expect(rmdir).toBeCalledWith('node_modules', { recursive: true });
+        expect(removeDirectory).toBeCalledWith('node_modules');
         expect(exec).toBeCalledWith('npm install', undefined, {
             cwd: undefined,
         });
@@ -265,7 +267,7 @@ describe('getCoverage', () => {
             undefined
         );
 
-        expect(rmdir).toBeCalledWith('node_modules', { recursive: true });
+        expect(removeDirectory).toBeCalledWith('node_modules');
         expect(exec).toBeCalledWith('npm install', undefined, {
             cwd: undefined,
         });
@@ -310,7 +312,7 @@ describe('getCoverage', () => {
             'custom filepath'
         );
 
-        expect(rmdir).not.toBeCalled();
+        expect(removeDirectory).not.toBeCalled();
         expect(exec).not.toBeCalled();
         expect(readFile).toBeCalledWith('custom filepath');
         expect(readFile).toBeCalledTimes(1);
@@ -331,7 +333,7 @@ describe('getCoverage', () => {
             new ActionError(FailReason.FAILED_GETTING_COVERAGE)
         );
 
-        expect(rmdir).not.toBeCalled();
+        expect(removeDirectory).not.toBeCalled();
         expect(exec).not.toBeCalled();
         expect(readFile).toBeCalledWith('custom filepath');
         expect(readFile).toBeCalledTimes(1);

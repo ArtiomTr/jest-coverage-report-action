@@ -1,3 +1,5 @@
+import { sep } from 'path';
+
 import { readFile } from 'fs-extra';
 
 import { isOldScript } from '../../src/utils/isOldScript';
@@ -89,6 +91,6 @@ describe('isOldScript', () => {
 
         expect(await isOldScript('npm test', 'hello')).toBe(true);
 
-        expect(readFile).toBeCalledWith('hello/package.json');
+        expect(readFile).toBeCalledWith(`hello${sep}package.json`);
     });
 });
