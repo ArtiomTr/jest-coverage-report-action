@@ -66,3 +66,4 @@ runs:
               INPUT_COVERAGE-FILE: ${{ inputs.coverage-file }}
               INPUT_BASE-COVERAGE-FILE: ${{ inputs.base-coverage-file }}
               INPUT_CACHE: ${{ inputs.cache }}
+              ACTIONS_CACHE_URL: ${{ env.ACTIONS_RUNTIME_URL }}
