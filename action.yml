@@ -48,8 +48,6 @@ inputs:
         required: false
         default: true
         description: Should action cache base branch reports when possible? Enabled by default.
-    cache-url:
-        required: true
 runs:
     using: composite
     steps:
@@ -68,4 +66,3 @@ runs:
               INPUT_COVERAGE-FILE: ${{ inputs.coverage-file }}
               INPUT_BASE-COVERAGE-FILE: ${{ inputs.base-coverage-file }}
               INPUT_CACHE: ${{ inputs.cache }}
-              ACTIONS_CACHE_URL: ${{ env.ACTIONS_CACHE_URL }}

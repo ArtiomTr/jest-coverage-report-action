@@ -1,6 +1,5 @@
-import { restoreCache, saveCache } from '@actions/cache';
+import artifact from '@actions/artifact';
 import { context } from '@actions/github';
-import isNil from 'lodash/isNil';
 
 import { collectCoverage } from './collectCoverage';
 import { installDependencies } from './installDependencies';
@@ -46,7 +45,7 @@ export const getCoverage = async (
     coverageFilePath: string | undefined,
     useCache: boolean
 ): Promise<JsonReport> => {
-    const [cacheLoaded] = await runStage(
+    const [, cacheLoaded] = await runStage(
         'loadCache',
         dataCollector,
         async (skip) => {
@@ -54,16 +53,16 @@ export const getCoverage = async (
                 skip();
             }
 
-            const { paths: cachedPaths, key: cacheKey } = getCacheConfig(
-                options
+            const { key: cacheKey } = getCacheConfig(options);
+
+            const client = artifact.create();
+
+            const response = await client.downloadArtifact(
+                cacheKey,
+                options.workingDirectory ?? process.cwd()
             );
 
-            const cacheId = await restoreCache(cachedPaths, cacheKey);
-
-            if (isNil(cacheId)) {
-                // Cache miss, TODO: add more detailed message here.
-                skip();
-            }
+            return response.downloadPath;
         }
     );
 
@@ -129,7 +128,13 @@ export const getCoverage = async (
                 options
             );
 
-            await saveCache(cachedPaths, cacheKey);
+            const client = await artifact.create();
+
+            await client.uploadArtifact(
+                cacheKey,
+                cachedPaths,
+                options.workingDirectory ?? '.'
+            );
         } catch (error) {
             console.warn(`Caching failed:`, error);
 
