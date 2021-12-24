@@ -112,8 +112,6 @@ export const checkThreshold = (
         }
     }
 
-    console.log('Threshold: ', threshold, totalResults, coverageDetailMap);
-
     if (totalResults.length > 0) {
         dataCollector.add(FailReason.UNDER_THRESHOLD);
     }
