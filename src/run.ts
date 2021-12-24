@@ -52,7 +52,8 @@ export const run = async (
                 dataCollector,
                 options,
                 false,
-                options.coverageFile
+                options.coverageFile,
+                false
             );
         }
     );
@@ -89,7 +90,8 @@ export const run = async (
                 ignoreCollector,
                 options,
                 true,
-                options.baseCoverageFile
+                options.baseCoverageFile,
+                options.cache
             );
         }
     );

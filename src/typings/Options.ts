@@ -21,6 +21,7 @@ export type Options = {
     customTitle?: string;
     coverageFile?: string;
     baseCoverageFile?: string;
+    cache: boolean;
 };
 
 const validAnnotationOptions: Array<AnnotationType> = [
@@ -52,6 +53,7 @@ const optionSchema = yup.object().shape({
     customTitle: yup.string(),
     coverageFile: yup.string(),
     baseCoverageFile: yup.string(),
+    cache: yup.boolean(),
 });
 
 export const shouldInstallDeps = (skipStep: SkipStepType): Boolean =>
@@ -75,6 +77,7 @@ export const getOptions = async (): Promise<Options> => {
     const customTitle = getInput('custom-title');
     const coverageFile = getInput('coverage-file');
     const baseCoverageFile = getInput('base-coverage-file');
+    const cache = getInput('cache');
 
     try {
         const options: Options = (await optionSchema.validate({
@@ -89,6 +92,7 @@ export const getOptions = async (): Promise<Options> => {
             customTitle,
             coverageFile,
             baseCoverageFile,
+            cache,
         })) as Options;
 
         return options;

@@ -44,6 +44,10 @@ inputs:
     base-coverage-file:
         required: false
         description: Path to the report.json file to compare against. This should be from the branch the PR is merging into.
+    cache:
+        required: false
+        default: true
+        description: Should action cache base branch reports when possible? Enabled by default.
 runs:
     using: composite
     steps:
@@ -61,3 +65,4 @@ runs:
               INPUT_CUSTOM-TITLE: ${{ inputs.custom-title }}
               INPUT_COVERAGE-FILE: ${{ inputs.coverage-file }}
               INPUT_BASE-COVERAGE-FILE: ${{ inputs.base-coverage-file }}
+              INPUT_CACHE: ${{ inputs.cache }}
