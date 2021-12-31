@@ -136,9 +136,9 @@ Accepted values are:
 -   `install` - skip installing dependencies
 -   `all` - skip installing dependencies _and_ running the test script
 
-## Change annotaions
+## Change annotations
 
-To change annotaions, you have to set the annotaions option as shown below:
+To change annotations, you have to set the annotations option as shown below:
 
 ```yml
 with:
@@ -149,7 +149,7 @@ with:
 Accepted values are:
 
 - `all` (default) - Will annotate sections of your code that failed tests or test did not cover
-- `none` - Turns off annotaions
+- `none` - Turns off annotations
 - `coverage` - Will annotate those sections of your code that test did not cover
 - `failed-tests` - Will annotate those sections of your code that failed test
 
