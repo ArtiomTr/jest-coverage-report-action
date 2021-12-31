@@ -81,7 +81,7 @@ export const run = async (
         'baseCoverage',
         dataCollector,
         async (skip) => {
-            if (!isSwitched) {
+            if (!isSwitched && options.coverageFile === options.baseCoverageFile) {
                 skip();
             }
 
