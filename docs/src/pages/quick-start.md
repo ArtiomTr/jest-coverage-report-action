@@ -27,6 +27,13 @@ Or via yarn:
 yarn jest
 ```
 
+Or via pnpm (pnpx):
+
+```bash
+
+pnpx jest
+```
+
 <!-- TODO: replace link -->
 
 If this command is not working for you, see [how to setup custom testing script](https://github.com/ArtiomTr/jest-coverage-report-action#customizing-test-script).
