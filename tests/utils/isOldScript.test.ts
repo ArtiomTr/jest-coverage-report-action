@@ -61,6 +61,7 @@ describe('isOldScript', () => {
         );
 
         expect(await isOldScript('npm test', undefined)).toBe(true);
+        expect(await isOldScript('pnpm test', undefined)).toBe(true);
         expect(await isOldScript('yarn test', undefined)).toBe(true);
         expect(await isOldScript('yarn run test', undefined)).toBe(true);
         expect(await isOldScript('yarn run test:coverage', undefined)).toBe(
@@ -73,6 +74,13 @@ describe('isOldScript', () => {
         expect(await isOldScript('npm run test -- --coverage', undefined)).toBe(
             true
         );
+        expect(await isOldScript('pnpm run test', undefined)).toBe(true);
+        expect(await isOldScript('pnpm run test:coverage', undefined)).toBe(
+            false
+        );
+        expect(
+            await isOldScript('pnpm run test -- --coverage', undefined)
+        ).toBe(true);
 
         (readFile as jest.Mock<any, any>).mockClear();
 

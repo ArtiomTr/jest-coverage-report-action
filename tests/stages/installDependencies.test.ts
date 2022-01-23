@@ -52,6 +52,14 @@ describe('installDependencies', () => {
         });
     });
 
+    it('should install dependencies using pnpm', async () => {
+        await installDependencies('pnpm');
+
+        expect(exec).toBeCalledWith('pnpm install', undefined, {
+            cwd: undefined,
+        });
+    });
+
     it('should install dependencies under specified working directory', async () => {
         await installDependencies(undefined, 'workingDir');
 
