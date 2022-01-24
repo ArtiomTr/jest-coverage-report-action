@@ -99,7 +99,7 @@ export const run = async (
             skip();
         }
 
-        await switchBranch(context.ref);
+        await switchBranch(context.payload.pull_request!.head.ref);
     });
 
     if (baseCoverage) {
