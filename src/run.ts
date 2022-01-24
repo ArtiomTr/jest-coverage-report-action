@@ -94,6 +94,14 @@ export const run = async (
         }
     );
 
+    await runStage('switchBack', dataCollector, async (skip) => {
+        if (!isSwitched) {
+            skip();
+        }
+
+        await switchBranch(context.ref);
+    });
+
     if (baseCoverage) {
         dataCollector.add(baseCoverage);
     }

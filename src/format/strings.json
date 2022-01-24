@@ -58,7 +58,8 @@
         "install": "Installing dependencies",
         "runTest": "Running tests",
         "collectCoverage": "Collecting coverage",
-        "parseCoverage": "Parsing coverage"
+        "parseCoverage": "Parsing coverage",
+        "switchBack": "Switching back to original branch"
     },
     "thresholdFailures": {
         "percents": "{{ type }} coverage not met for {{ path }}: expected >={{ expected }}%, but got {{ coverage }}%",
