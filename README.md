@@ -81,7 +81,6 @@ If you want to run this action in custom directory, specify `working-directory`:
 
 ```yml
 with:
-    github-token: ${{ secrets.GITHUB_TOKEN }}
     working-directory: <dir>
 ```
 
@@ -120,7 +119,6 @@ By default, this action will install your dependencies using `npm`. If you are u
 
 ```yml
 with:
-    github-token: ${{ secrets.GITHUB_TOKEN }}
     package-manager: yarn
 ```
 
@@ -128,7 +126,6 @@ or
 
 ```yml
 with:
-    github-token: ${{ secrets.GITHUB_TOKEN }}
     package-manager: pnpm
 ```
 
@@ -153,7 +150,6 @@ By default, this action will install dependencies and run the tests for you, gen
 
 ```yml
 with:
-    github-token: ${{ secrets.GITHUB_TOKEN }}
     skip-step: all
 ```
 
@@ -169,7 +165,6 @@ To change annotations, you have to set the annotations option as shown below:
 
 ```yml
 with:
-    github-token: ${{ secrets.GITHUB_TOKEN }}
     annotations: none
 ```
 
