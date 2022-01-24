@@ -93,7 +93,7 @@ describe('getCoverage', () => {
 
         (readFile as jest.Mock<any, any>).mockImplementationOnce(() => '{}');
 
-        const jsonReport = await getCoverage(
+        const jsonReportYarn = await getCoverage(
             dataCollector,
             { ...defaultOptions, packageManager: 'yarn' },
             false,
@@ -104,7 +104,22 @@ describe('getCoverage', () => {
             cwd: undefined,
         });
 
-        expect(jsonReport).toStrictEqual({});
+        expect(jsonReportYarn).toStrictEqual({});
+
+        (readFile as jest.Mock<any, any>).mockImplementationOnce(() => '{}');
+
+        const jsonReportPnpm = await getCoverage(
+            dataCollector,
+            { ...defaultOptions, packageManager: 'pnpm' },
+            false,
+            undefined
+        );
+
+        expect(exec).toBeCalledWith('pnpm install', undefined, {
+            cwd: undefined,
+        });
+
+        expect(jsonReportPnpm).toStrictEqual({});
     });
 
     it('should skip installation step', async () => {

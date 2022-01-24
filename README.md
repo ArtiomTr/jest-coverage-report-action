@@ -95,14 +95,22 @@ with:
     test-script: npm run test:coverage
 ```
 
-## Usage with `yarn`
+## Usage with `yarn` or `pnpm`
 
-By default, this action will install your dependencies using `npm`. If you are using `yarn`, you can specify it in the `package-manager` option:
+By default, this action will install your dependencies using `npm`. If you are using `yarn` or `pnpm`, you can specify it in the `package-manager` option:
 
 ```yml
 with:
     github-token: ${{ secrets.GITHUB_TOKEN }}
     package-manager: yarn
+```
+
+or
+
+```yml
+with:
+    github-token: ${{ secrets.GITHUB_TOKEN }}
+    package-manager: pnpm
 ```
 
 ## Use existing test report(s)
