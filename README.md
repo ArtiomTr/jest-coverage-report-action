@@ -1,7 +1,7 @@
 # jest coverage report 🧪
 
 <p align="center">
-  <img alt="PR Comment example" width="540" src="./img/Github-comment-screenshot.png">
+  <img alt="PR Comment example" width="540" src="./img/Github-comment-screenshot.jpg">
 </p>
 
 <p align="center">
@@ -20,9 +20,10 @@ This action uses [Jest](https://github.com/facebook/jest) to extract code covera
 -   **Comparing** coverage with base branch. 🔍
 -   Showing spoiler in the comment for all **new covered files**. 🆕
 -   Showing spoiler in the comment for all files, in which **coverage was reduced**. 🔻
+-   Failed tests & uncovered line **annotations** 📢
 
 <p align="center">
-  <img alt="PR Comment example" width="540" src="./img/Rejected-PR-screenshot.png">
+  <img alt="PR Comment example" width="540" src="./img/Rejected-PR-screenshot.jpg">
 </p>
 
 ## Usage
@@ -44,25 +45,34 @@ jobs:
         runs-on: ubuntu-latest
         steps:
             - uses: actions/checkout@v1
-            - uses: ArtiomTr/jest-coverage-report-action@v2.0-rc.6
-              with:
-                  github-token: ${{ secrets.GITHUB_TOKEN }}
-                  #   threshold: 80 # optional parameter
+            - uses: ArtiomTr/jest-coverage-report-action@v2
 ```
 
 3. Pay attention to the action parameters. You can specify custom [threshold](#specify-threshold) or [test script](#customizing-test-script)
 4. That's it!
 
-## Specify threshold
+## Custom token
 
-If you want to set minimal accepted coverage for the PR, you can pass and optional parameter threshold.
-
-For example, if you want to reject every pull request, with total line coverage less than 80%:
+By default, this action takes `github.token` variable to publish reports on your PR. You can overwrite this property by specifying:
 
 ```yml
 with:
-    github-token: ${{ secrets.GITHUB_TOKEN }}
-    threshold: 80 # value in percents
+    github-token: ${{ secrets.SECRET_TOKEN }}
+```
+
+## Specify threshold
+
+This action automatically suports jest's [`coverageThreshold`](https://jestjs.io/docs/configuration#coveragethreshold-object) property.
+Just add into your `jest.config.js` file:
+
+```js
+module.exports = {
+    coverageThreshold: {
+        global: {
+            lines: 80,
+        },
+    },
+};
 ```
 
 ## Custom working directory
@@ -77,22 +87,31 @@ with:
 
 ## Customizing test script
 
-By default, this action will run this command, to extract coverage:
+This action automatically adds necessary flags to your test script. The default script is:
 
-```bash
-npx jest --silent --ci --coverage --coverageReporters="text" --coverageReporters="text-summary"
+```
+npx jest
 ```
 
-If you're not satisfied with default behaviour, you can specify your own command, by passing custom option `test-script`.
+So you don't need to specify additional flags - action will handle them
+automatically. So, after adding necessary flags, action will run this command:
 
-> **⚠ IMPORTANT ⚠:** Please, note that this is not simple `npx jest --coverage` script call. If you're specify your custom script, **YOU SHOULD PASS SAME COVERAGE REPORTERS** as it does default script (`text` and `text-summary` reporters). Without those options, your action will not work.
+```
+npx jest --ci --json --coverage --testLocationInResults --outputFile=report.json
+```
 
-For instance, if you want to run `test:coverage` npm script:
+But you do not need to specify these flags manually. Also, you can use different package manager, `yarn` for example:
 
 ```yml
 with:
-    github-token: ${{ secrets.GITHUB_TOKEN }}
-    test-script: npm run test:coverage
+    test-script: yarn jest
+```
+
+Or, if you would like to run a script from your `package.json`:
+
+```yml
+with:
+    test-script: npm test
 ```
 
 ## Usage with `yarn` or `pnpm`
@@ -156,10 +175,10 @@ with:
 
 Accepted values are:
 
-- `all` (default) - Will annotate sections of your code that failed tests or test did not cover
-- `none` - Turns off annotations
-- `coverage` - Will annotate those sections of your code that test did not cover
-- `failed-tests` - Will annotate those sections of your code that failed test
+-   `all` (default) - Will annotate sections of your code that failed tests or test did not cover
+-   `none` - Turns off annotations
+-   `coverage` - Will annotate those sections of your code that test did not cover
+-   `failed-tests` - Will annotate those sections of your code that failed test
 
 ## Contributing
 
