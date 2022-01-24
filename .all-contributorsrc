@@ -173,6 +173,16 @@
       "contributions": [
         "doc"
       ]
+    },
+    {
+      "login": "JacobLinCool",
+      "name": "JacobLinCool",
+      "avatar_url": "https://avatars.githubusercontent.com/u/28478594?v=4",
+      "profile": "https://jacob.cs.ie　　　　　　　　　　　　　　　　@jacob.pages.dev/",
+      "contributions": [
+        "code",
+        "doc"
+      ]
     }
   ],
   "projectName": "jest-coverage-report-action",
