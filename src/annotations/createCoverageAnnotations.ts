@@ -3,13 +3,14 @@ import { relative } from 'path';
 import { Annotation } from './Annotation';
 import { JsonReport, Location } from '../typings/JsonReport';
 import { i18n } from '../utils/i18n';
+import { isValidNumber } from '../utils/isValidNumber';
 
 const getLocation = (
     start: Location = { line: 0 },
     end: Location = { line: 0 }
 ): {
-    start_line: number;
-    end_line: number;
+    start_line?: number;
+    end_line?: number;
     start_column?: number;
     end_column?: number;
 } => ({
@@ -28,7 +29,7 @@ const getLocation = (
 export const createCoverageAnnotations = (
     jsonReport: JsonReport
 ): Array<Annotation> => {
-    const annotations: Annotation[] = [];
+    const annotations: Partial<Annotation>[] = [];
 
     Object.entries(jsonReport.coverageMap).forEach(
         ([fileName, fileCoverage]) => {
@@ -98,5 +99,9 @@ export const createCoverageAnnotations = (
         }
     );
 
-    return annotations;
+    return annotations.filter(
+        (annotation): annotation is Annotation =>
+            isValidNumber(annotation.start_line) &&
+            isValidNumber(annotation.end_line)
+    );
 };
