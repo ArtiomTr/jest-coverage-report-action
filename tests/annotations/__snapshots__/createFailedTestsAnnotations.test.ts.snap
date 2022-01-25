@@ -20,14 +20,6 @@ Array [
   },
   Object {
     "annotation_level": "failure",
-    "end_line": 0,
-    "message": "",
-    "path": "tests/format/summary/getTestRunSummary.test.ts",
-    "start_line": 0,
-    "title": undefined,
-  },
-  Object {
-    "annotation_level": "failure",
     "end_line": 23,
     "message": "",
     "path": "tests/format/summary/getTestRunSummary.test.ts",
