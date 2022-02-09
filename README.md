@@ -144,7 +144,19 @@ with:
 
 For example, you can save every test run to an artifact and then download and reference them here.
 
+## Opt-out coverage comparison features
+
+You can opt-out coverage comparison features to speed-up action. To achieve this, firstly, manually collect coverage to `report.json` file. Then, specify these options for the action:
+
+```yml
+with:
+    coverage-file: report.json
+    base-coverage-file: report.json
+```
+
 ## Skipping steps
+
+> Note: this option affects only coverage for the "head" branch. For skipping steps of "base" branch, see [`base-coverage-file`](#use-existing-test-reports) option.
 
 By default, this action will install dependencies and run the tests for you, generating the coverage report. Alternatively, you can skip these steps using the `skip-step` option.
 
