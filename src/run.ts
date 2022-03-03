@@ -67,7 +67,11 @@ export const run = async (
         async (skip) => {
             const baseBranch = context.payload.pull_request?.base.ref;
 
-            if (!isInPR || !baseBranch) {
+            // no need to switch branch when:
+            // - this is not a PR
+            // - this is the PR base branch
+            // - a baseCoverageFile is provided
+            if (!isInPR || !baseBranch || !!options.baseCoverageFile) {
                 skip();
             }
 
@@ -81,7 +85,7 @@ export const run = async (
         'baseCoverage',
         dataCollector,
         async (skip) => {
-            if (!isSwitched && options.baseCoverageFile === undefined) {
+            if (!isSwitched) {
                 skip();
             }
 
