@@ -1,7 +1,6 @@
 {
   "files": [
-    "README.md",
-    ".github/release-drafter.yml"
+    "README.md"
   ],
   "contributors": [
     {
