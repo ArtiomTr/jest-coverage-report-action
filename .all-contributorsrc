@@ -192,6 +192,15 @@
       "contributions": [
         "code"
       ]
+    },
+    {
+      "login": "Raigen",
+      "name": "Florian",
+      "avatar_url": "https://avatars.githubusercontent.com/u/894799?v=4",
+      "profile": "https://github.com/Raigen",
+      "contributions": [
+        "code"
+      ]
     }
   ],
   "projectName": "jest-coverage-report-action",
