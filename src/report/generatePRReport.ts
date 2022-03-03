@@ -10,6 +10,8 @@ export const generatePRReport = async (
     pr: { number: number },
     octokit: ReturnType<typeof getOctokit>
 ) => {
+    console.log('generating PR report');
+
     const previousReport = await fetchPreviousReport(
         octokit,
         repo,
@@ -18,6 +20,7 @@ export const generatePRReport = async (
     );
 
     if (previousReport) {
+        console.log('Previous report fetched');
         await octokit.issues.updateComment({
             ...repo,
             body: report,

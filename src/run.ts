@@ -23,6 +23,8 @@ export const run = async (
 ) => {
     const isInPR = context.eventName === 'pull_request';
 
+    console.log('Is in PR?', isInPR, 'context.eventName', context.eventName);
+
     const [isInitialized, options] = await runStage(
         'initialize',
         dataCollector,
