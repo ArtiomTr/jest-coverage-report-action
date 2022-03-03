@@ -183,6 +183,15 @@
         "code",
         "doc"
       ]
+    },
+    {
+      "login": "raspo",
+      "name": "Tommaso Ferrari",
+      "avatar_url": "https://avatars.githubusercontent.com/u/927264?v=4",
+      "profile": "http://tommasoferrari.com",
+      "contributions": [
+        "code"
+      ]
     }
   ],
   "projectName": "jest-coverage-report-action",
