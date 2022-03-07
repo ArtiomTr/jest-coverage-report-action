@@ -9,6 +9,7 @@ describe('createMarkdownSpoiler', () => {
             })
         ).toBe(`
 <details><summary>This is summary</summary>
+<br/>
 
 This is body
 

@@ -67,7 +67,7 @@
     },
     "failed": "Jest coverage report action failed",
     "status": "St.",
-    "statusExplanation": "Status of coverage: :green_circle: - ok, :yellow_circle: - slightly more than threshold, :red_circle: - under the threshold",
+    "statusExplanation": "Status of coverage:&#10; :green_circle: - ok&#10; :yellow_circle: - slightly more than threshold&#10; :red_circle: - under the threshold",
     "category": "Category",
     "percentage": "Percentage",
     "ratio": "Covered / Total",
