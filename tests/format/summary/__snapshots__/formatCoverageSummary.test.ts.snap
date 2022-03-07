@@ -1,37 +1,37 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`formatCoverageSummary should format summary when head and base coverage specified (with threshold) 1`] = `
-"| <div title=\\"Status of coverage: 🟢 - ok, 🟡 - slightly more than threshold, 🔴 - under the threshold\\">St.<sup>:grey_question:</sup></div> | Category   | Percentage                                                   | Covered / Total |
-| :---------------------------------------------------------------------------------------------------------------------------------------: | :--------- | :----------------------------------------------------------- | :-------------: |
-|                                                                     🟡                                                                    | Statements | <div title=\\"Base coverage is: 50%\\">76.67% (+26.67% 🔼)</div> |      23/30      |"
+"| <div title=\\"Status of coverage:&#10; 🟢 - ok&#10; 🟡 - slightly more than threshold&#10; 🔴 - under the threshold\\">St.<sup>:grey_question:</sup></div> | Category   | Percentage                                                   | Covered / Total |
+| :----------------------------------------------------------------------------------------------------------------------------------------------------: | :--------- | :----------------------------------------------------------- | :-------------: |
+|                                                                           🟡                                                                           | Statements | <div title=\\"Base coverage is: 50%\\">76.67% (+26.67% 🔼)</div> |      23/30      |"
 `;
 
 exports[`formatCoverageSummary should format summary when head and base coverage specified (with threshold) 2`] = `
-"| <div title=\\"Status of coverage: 🟢 - ok, 🟡 - slightly more than threshold, 🔴 - under the threshold\\">St.<sup>:grey_question:</sup></div> | Category   | Percentage                                                   | Covered / Total |
-| :---------------------------------------------------------------------------------------------------------------------------------------: | :--------- | :----------------------------------------------------------- | :-------------: |
-|                                                                     🔴                                                                    | Statements | <div title=\\"Base coverage is: 96.67%\\">76.67% (-20% 🔻)</div> |      23/30      |"
+"| <div title=\\"Status of coverage:&#10; 🟢 - ok&#10; 🟡 - slightly more than threshold&#10; 🔴 - under the threshold\\">St.<sup>:grey_question:</sup></div> | Category   | Percentage                                                   | Covered / Total |
+| :----------------------------------------------------------------------------------------------------------------------------------------------------: | :--------- | :----------------------------------------------------------- | :-------------: |
+|                                                                           🔴                                                                           | Statements | <div title=\\"Base coverage is: 96.67%\\">76.67% (-20% 🔻)</div> |      23/30      |"
 `;
 
 exports[`formatCoverageSummary should format summary when head and base coverage specified (with threshold) 3`] = `
-"| <div title=\\"Status of coverage: 🟢 - ok, 🟡 - slightly more than threshold, 🔴 - under the threshold\\">St.<sup>:grey_question:</sup></div> | Category   | Percentage | Covered / Total |
-| :---------------------------------------------------------------------------------------------------------------------------------------: | :--------- | :--------- | :-------------: |
-|                                                                     🔴                                                                    | Statements | 76.67%     |      23/30      |"
+"| <div title=\\"Status of coverage:&#10; 🟢 - ok&#10; 🟡 - slightly more than threshold&#10; 🔴 - under the threshold\\">St.<sup>:grey_question:</sup></div> | Category   | Percentage | Covered / Total |
+| :----------------------------------------------------------------------------------------------------------------------------------------------------: | :--------- | :--------- | :-------------: |
+|                                                                           🔴                                                                           | Statements | 76.67%     |      23/30      |"
 `;
 
 exports[`formatCoverageSummary should format summary when head and base coverage specified (with threshold) 4`] = `
-"| <div title=\\"Status of coverage: 🟢 - ok, 🟡 - slightly more than threshold, 🔴 - under the threshold\\">St.<sup>:grey_question:</sup></div> | Category   | Percentage | Covered / Total |
-| :---------------------------------------------------------------------------------------------------------------------------------------: | :--------- | :--------- | :-------------: |
-|                                                                     🟢                                                                    | Statements | 96.67%     |      29/30      |"
+"| <div title=\\"Status of coverage:&#10; 🟢 - ok&#10; 🟡 - slightly more than threshold&#10; 🔴 - under the threshold\\">St.<sup>:grey_question:</sup></div> | Category   | Percentage | Covered / Total |
+| :----------------------------------------------------------------------------------------------------------------------------------------------------: | :--------- | :--------- | :-------------: |
+|                                                                           🟢                                                                           | Statements | 96.67%     |      29/30      |"
 `;
 
 exports[`formatCoverageSummary should format summary when head and base coverage specified 1`] = `
-"| <div title=\\"Status of coverage: 🟢 - ok, 🟡 - slightly more than threshold, 🔴 - under the threshold\\">St.<sup>:grey_question:</sup></div> | Category   | Percentage                                                   | Covered / Total |
-| :---------------------------------------------------------------------------------------------------------------------------------------: | :--------- | :----------------------------------------------------------- | :-------------: |
-|                                                                     🟡                                                                    | Statements | <div title=\\"Base coverage is: 50%\\">76.67% (+26.67% 🔼)</div> |      23/30      |"
+"| <div title=\\"Status of coverage:&#10; 🟢 - ok&#10; 🟡 - slightly more than threshold&#10; 🔴 - under the threshold\\">St.<sup>:grey_question:</sup></div> | Category   | Percentage                                                   | Covered / Total |
+| :----------------------------------------------------------------------------------------------------------------------------------------------------: | :--------- | :----------------------------------------------------------- | :-------------: |
+|                                                                           🟡                                                                           | Statements | <div title=\\"Base coverage is: 50%\\">76.67% (+26.67% 🔼)</div> |      23/30      |"
 `;
 
 exports[`formatCoverageSummary should format summary when head and base coverage specified 2`] = `
-"| <div title=\\"Status of coverage: 🟢 - ok, 🟡 - slightly more than threshold, 🔴 - under the threshold\\">St.<sup>:grey_question:</sup></div> | Category   | Percentage                                                   | Covered / Total |
-| :---------------------------------------------------------------------------------------------------------------------------------------: | :--------- | :----------------------------------------------------------- | :-------------: |
-|                                                                     🟡                                                                    | Statements | <div title=\\"Base coverage is: 96.67%\\">76.67% (-20% 🔻)</div> |      23/30      |"
+"| <div title=\\"Status of coverage:&#10; 🟢 - ok&#10; 🟡 - slightly more than threshold&#10; 🔴 - under the threshold\\">St.<sup>:grey_question:</sup></div> | Category   | Percentage                                                   | Covered / Total |
+| :----------------------------------------------------------------------------------------------------------------------------------------------------: | :--------- | :----------------------------------------------------------- | :-------------: |
+|                                                                           🟡                                                                           | Statements | <div title=\\"Base coverage is: 96.67%\\">76.67% (-20% 🔻)</div> |      23/30      |"
 `;
