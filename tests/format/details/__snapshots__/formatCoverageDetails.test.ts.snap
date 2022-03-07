@@ -3,6 +3,7 @@
 exports[`formatCoverageDetails should match snapshots 1`] = `
 "
 <details><summary>Show new covered files 🐣</summary>
+<br/>
 
 | <div title=\\"Status of coverage: 🟢 - ok, 🟡 - slightly more than threshold, 🔴 - under the threshold\\">St.<sup>:grey_question:</sup></div> | File       | Statements | Branches | Functions | Lines |
 | :---------------------------------------------------------------------------------------------------------------------------------------: | :--------- | :--------- | :------- | :-------- | :---- |
@@ -12,6 +13,7 @@ exports[`formatCoverageDetails should match snapshots 1`] = `
 
 
 <details><summary>Show files with reduced coverage 🔻</summary>
+<br/>
 
 | <div title=\\"Status of coverage: 🟢 - ok, 🟡 - slightly more than threshold, 🔴 - under the threshold\\">St.<sup>:grey_question:</sup></div> | File         | Statements                                             | Branches                                               | Functions                                              | Lines                                                  |
 | :---------------------------------------------------------------------------------------------------------------------------------------: | :----------- | :----------------------------------------------------- | :----------------------------------------------------- | :----------------------------------------------------- | :----------------------------------------------------- |

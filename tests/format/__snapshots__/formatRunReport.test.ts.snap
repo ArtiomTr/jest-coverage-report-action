@@ -1,9 +1,10 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`formatRunReport should generate summary as markdown (failure tests) 1`] = `
-"# Tests Failed
+"## Tests Failed
 
 <details><summary>2 Tests Passed, 1 Test Failed</summary>
+<br/>
 
 \`\`\`
 fail 1
@@ -18,6 +19,6 @@ fail 2
 `;
 
 exports[`formatRunReport should generate summary as markdown (successful tests) 1`] = `
-"# Tests Passed
-## 2 Tests Passed"
+"## Tests Passed
+2 Tests Passed"
 `;
