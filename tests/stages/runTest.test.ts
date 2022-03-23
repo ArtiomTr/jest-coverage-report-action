@@ -28,4 +28,8 @@ describe('runTest', () => {
             cwd: 'custom cwd',
         });
     });
+
+    it.todo(
+        'should run test script and return threshold errors if there are any'
+    );
 });
