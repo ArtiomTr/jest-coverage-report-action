@@ -3,8 +3,7 @@ import { exec } from '@actions/exec';
 import { getErrorMessage, toErrorWithMessage } from '../utils/getErrorMessage';
 import { getTestCommand } from '../utils/getTestCommand';
 
-const THRESHOLD_NOT_MET_REGEX =
-    /Jest:.*coverage threshold for.*not met:.*%\S/gm;
+const THRESHOLD_NOT_MET_REGEX = /Jest:.*coverage threshold for.*not met:.*%\S/gm;
 
 export const runTest = async (
     testCommand: string,
@@ -19,6 +18,7 @@ export const runTest = async (
             }
         );
     } catch (error) {
+        console.log('GOT RUN ERROR: ', error);
         const errMessage = getErrorMessage(error) ?? '';
 
         if (THRESHOLD_NOT_MET_REGEX.test(errMessage)) {
