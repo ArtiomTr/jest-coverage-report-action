@@ -17,7 +17,7 @@ GitHub token. Required parameter. By default, you can use standard GitHub-provid
 ```yaml
 - uses: artiomtr/jest-coverage-report-action@v2
     with:
-        github-token: \${{ secrets.GITHUB_TOKEN }}
+        github-token: ${{ secrets.GITHUB_TOKEN }}
 ```
 
 ## threshold
