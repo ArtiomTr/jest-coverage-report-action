@@ -42,6 +42,9 @@ on:
             - main
 jobs:
     coverage:
+        permissions:
+          checks: write
+          pull-requests: write
         runs-on: ubuntu-latest
         steps:
             - uses: actions/checkout@v1
