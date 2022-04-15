@@ -4,15 +4,19 @@ describe('getTestCommand', () => {
     it('should modify command', async () => {
         expect(
             await getTestCommand('yarn jest', 'report.json', undefined)
-        ).toBe('yarn jest');
+        ).toBe(
+            'yarn jest --ci --json --coverage --testLocationInResults --outputFile="report.json"'
+        );
 
         expect(await getTestCommand('npx jest', 'report.json', undefined)).toBe(
-            'npx jest'
+            'npx jest --ci --json --coverage --testLocationInResults --outputFile="report.json"'
         );
 
         expect(
             await getTestCommand('pnpx jest', 'report.json', undefined)
-        ).toBe('pnpx jest');
+        ).toBe(
+            'pnpx jest --ci --json --coverage --testLocationInResults --outputFile="report.json"'
+        );
     });
 
     it('should add double hyphens for npm and pnpm', async () => {
