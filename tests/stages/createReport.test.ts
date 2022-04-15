@@ -25,21 +25,29 @@ describe('createReport', () => {
 
         mockContext({ payload: { after: '123456' } });
         expect(
-            await createReport(dataCollector, {
-                ...DEFAULT_OPTIONS,
-                workingDirectory: 'custom directory',
-            })
+            await createReport(
+                dataCollector,
+                {
+                    ...DEFAULT_OPTIONS,
+                    workingDirectory: 'custom directory',
+                },
+                []
+            )
         ).toMatchSnapshot();
         expect(
-            await createReport(dataCollector, DEFAULT_OPTIONS)
+            await createReport(dataCollector, DEFAULT_OPTIONS, [])
         ).toMatchSnapshot();
 
         expect(
-            await createReport(dataCollector, {
-                ...DEFAULT_OPTIONS,
-                workingDirectory: 'directory',
-                customTitle: 'Custom title with directory - {{ dir }}',
-            })
+            await createReport(
+                dataCollector,
+                {
+                    ...DEFAULT_OPTIONS,
+                    workingDirectory: 'directory',
+                    customTitle: 'Custom title with directory - {{ dir }}',
+                },
+                []
+            )
         ).toMatchSnapshot();
 
         clearContextMock();
@@ -52,7 +60,7 @@ describe('createReport', () => {
         mockContext({ payload: { after: '123456' } });
 
         expect(
-            await createReport(dataCollector, DEFAULT_OPTIONS)
+            await createReport(dataCollector, DEFAULT_OPTIONS, [])
         ).toMatchSnapshot();
 
         clearContextMock();

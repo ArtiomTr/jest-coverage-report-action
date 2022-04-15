@@ -58,11 +58,16 @@
         "install": "Installing dependencies",
         "runTest": "Running tests",
         "collectCoverage": "Collecting coverage",
-        "parseCoverage": "Parsing coverage"
+        "parseCoverage": "Parsing coverage",
+        "switchBack": "Switching back to original branch"
+    },
+    "thresholdFailures": {
+        "percents": "{{ type }} coverage not met for {{ path }}: expected >={{ expected }}%, but got {{ coverage }}%",
+        "ones": "{{ type }} coverage not met for {{ path }}: expected <={{ expected }} not covered {{ ltype }}, but got {{ coverage }}"
     },
     "failed": "Jest coverage report action failed",
     "status": "St.",
-    "statusExplanation": "Status of coverage: :green_circle: - ok, :yellow_circle: - slightly more than threshold, :red_circle: - under the threshold",
+    "statusExplanation": "Status of coverage:&#10; :green_circle: - ok&#10; :yellow_circle: - slightly more than threshold&#10; :red_circle: - under the threshold",
     "category": "Category",
     "percentage": "Percentage",
     "ratio": "Covered / Total",
@@ -103,5 +108,5 @@
     "newFilesCoverage": "Show new covered files :hatching_chick:",
     "decreasedCoverageFiles": "Show files with reduced coverage :small_red_triangle_down:",
     "baseCoverage": "Base coverage is: ",
-    "loadingCoverageFromFile": "Loading code coverage from file: {{ coverageFile }}"
+    "loadingCoverageFromFile": "Loading code coverage from file: {{ pathToCoverageFile }}"
 }

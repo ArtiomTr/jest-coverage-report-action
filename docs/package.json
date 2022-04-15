@@ -21,7 +21,7 @@
         "@primer/octicons-react": "^14.2.2",
         "framer-motion": "^4.1.17",
         "gray-matter": "^4.0.3",
-        "next": "^11.1.0",
+        "next": "^12.1.0",
         "react": "^17.0.2",
         "react-dom": "^17.0.2",
         "sass": "^1.34.1",

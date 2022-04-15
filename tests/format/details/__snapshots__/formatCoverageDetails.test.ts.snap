@@ -3,19 +3,21 @@
 exports[`formatCoverageDetails should match snapshots 1`] = `
 "
 <details><summary>Show new covered files 🐣</summary>
+<br/>
 
-| <div title=\\"Status of coverage: 🟢 - ok, 🟡 - slightly more than threshold, 🔴 - under the threshold\\">St.<sup>:grey_question:</sup></div> | File       | Statements | Branches | Functions | Lines |
-| :---------------------------------------------------------------------------------------------------------------------------------------: | :--------- | :--------- | :------- | :-------- | :---- |
-|                                                                     🔴                                                                    | newFile.ts | 50%        | 50%      | 50%       | 50%   |
+| <div title=\\"Status of coverage:&#10; 🟢 - ok&#10; 🟡 - slightly more than threshold&#10; 🔴 - under the threshold\\">St.<sup>:grey_question:</sup></div> | File       | Statements | Branches | Functions | Lines |
+| :----------------------------------------------------------------------------------------------------------------------------------------------------: | :--------- | :--------- | :------- | :-------- | :---- |
+|                                                                           🔴                                                                           | newFile.ts | 50%        | 50%      | 50%       | 50%   |
 
 </details>
 
 
 <details><summary>Show files with reduced coverage 🔻</summary>
+<br/>
 
-| <div title=\\"Status of coverage: 🟢 - ok, 🟡 - slightly more than threshold, 🔴 - under the threshold\\">St.<sup>:grey_question:</sup></div> | File         | Statements                                             | Branches                                               | Functions                                              | Lines                                                  |
-| :---------------------------------------------------------------------------------------------------------------------------------------: | :----------- | :----------------------------------------------------- | :----------------------------------------------------- | :----------------------------------------------------- | :----------------------------------------------------- |
-|                                                                     🟡                                                                    | decreased.ts | <div title=\\"Base coverage is: 80%\\">70% (-10% 🔻)</div> | <div title=\\"Base coverage is: 60%\\">50% (-10% 🔻)</div> | <div title=\\"Base coverage is: 60%\\">50% (-10% 🔻)</div> | <div title=\\"Base coverage is: 90%\\">80% (-10% 🔻)</div> |
+| <div title=\\"Status of coverage:&#10; 🟢 - ok&#10; 🟡 - slightly more than threshold&#10; 🔴 - under the threshold\\">St.<sup>:grey_question:</sup></div> | File         | Statements                                             | Branches                                               | Functions                                              | Lines                                                  |
+| :----------------------------------------------------------------------------------------------------------------------------------------------------: | :----------- | :----------------------------------------------------- | :----------------------------------------------------- | :----------------------------------------------------- | :----------------------------------------------------- |
+|                                                                           🟡                                                                           | decreased.ts | <div title=\\"Base coverage is: 80%\\">70% (-10% 🔻)</div> | <div title=\\"Base coverage is: 60%\\">50% (-10% 🔻)</div> | <div title=\\"Base coverage is: 60%\\">50% (-10% 🔻)</div> | <div title=\\"Base coverage is: 90%\\">80% (-10% 🔻)</div> |
 
 </details>
 "

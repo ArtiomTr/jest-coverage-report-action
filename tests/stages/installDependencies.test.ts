@@ -1,11 +1,16 @@
+import { sep } from 'path';
+
 import { exec } from '@actions/exec';
-import { rmdir } from 'fs-extra';
+import { mocked } from 'ts-jest/utils';
 
 import { installDependencies } from '../../src/stages/installDependencies';
+import { removeDirectory } from '../../src/utils/removeDirectory';
+
+jest.mock('../../src/utils/removeDirectory');
 
 const clearMocks = () => {
-    (exec as jest.Mock<any, any>).mockClear();
-    (rmdir as jest.Mock<any, any>).mockClear();
+    mocked(exec).mockClear();
+    mocked(removeDirectory).mockClear();
 };
 
 beforeEach(clearMocks);
@@ -14,17 +19,13 @@ describe('installDependencies', () => {
     it('should remove "node_modules" directory', async () => {
         await installDependencies();
 
-        expect(rmdir).toBeCalledWith('node_modules', {
-            recursive: true,
-        });
+        expect(removeDirectory).toBeCalledWith('node_modules');
     });
 
     it('should remove "node_modules" directory, which is under specified working directory', async () => {
         await installDependencies(undefined, 'workingDir');
 
-        expect(rmdir).toBeCalledWith('workingDir/node_modules', {
-            recursive: true,
-        });
+        expect(removeDirectory).toBeCalledWith(`workingDir${sep}node_modules`);
     });
 
     it('should install dependencies', async () => {
@@ -51,6 +52,14 @@ describe('installDependencies', () => {
         });
     });
 
+    it('should install dependencies using pnpm', async () => {
+        await installDependencies('pnpm');
+
+        expect(exec).toBeCalledWith('pnpm install', undefined, {
+            cwd: undefined,
+        });
+    });
+
     it('should install dependencies under specified working directory', async () => {
         await installDependencies(undefined, 'workingDir');
 
@@ -61,7 +70,7 @@ describe('installDependencies', () => {
 
     it("shouldn't install dependencies, if node_modules directory deletion failed", async () => {
         try {
-            (rmdir as jest.Mock<any, any>).mockImplementationOnce(() => {
+            mocked(removeDirectory).mockImplementationOnce(() => {
                 throw 0;
             });
             await installDependencies();

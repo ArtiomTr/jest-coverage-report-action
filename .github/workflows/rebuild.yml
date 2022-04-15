@@ -4,7 +4,7 @@ on:
     push:
         paths:
             - 'src/**'
-        branches: [master]
+        branches: [main]
     workflow_dispatch:
 
 jobs:
@@ -31,4 +31,4 @@ jobs:
                   git config --global user.name 'Jest Coverage Report bot'
                   git config --global user.email 'covbot@users.noreply.github.com'
                   git commit -am "Build $(date +'%F %T')"
-                  git push origin master
+                  git push origin main

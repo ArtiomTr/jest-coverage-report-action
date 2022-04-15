@@ -16,6 +16,5 @@ jobs:
             - name: Test coverage
               uses: ./ # Uses an action in the root directory
               with:
-                  github-token: ${{ secrets.BOT_TOKEN }}
                   annotations: failed-tests
                   test-script: npm run test:coverage

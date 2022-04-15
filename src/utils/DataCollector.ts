@@ -7,7 +7,9 @@ export const createDataCollector = <T>(): DataCollector<T> => {
 
     const error = (error: Error) => {
         errors.push(error);
-        core.error(error);
+        core.error(
+            error.toString().concat(error.stack ? `\n${error.stack}` : '')
+        );
     };
 
     const add = (data: T) => {

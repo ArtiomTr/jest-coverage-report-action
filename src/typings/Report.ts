@@ -1,5 +1,3 @@
-import { CoverageDetailsMap, CoverageSummary } from './Coverage';
-
 export enum FailReason {
     TESTS_FAILED = 'testsFailed',
     INVALID_COVERAGE_FORMAT = 'invalidFormat',
@@ -9,14 +7,6 @@ export enum FailReason {
     READING_COVERAGE_FILE_FAILED = 'readingCoverageFileFailed',
     FAILED_GETTING_COVERAGE = 'failedGettingCoverage',
 }
-
-export type Report = {
-    success: boolean;
-    summary?: Array<CoverageSummary>;
-    details?: CoverageDetailsMap;
-    failReason?: FailReason;
-    error?: Error;
-};
 
 export type TestRunReport = {
     title: string;

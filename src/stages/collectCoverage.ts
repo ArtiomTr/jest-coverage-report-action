@@ -12,36 +12,34 @@ export const collectCoverage = async (
     workingDirectory?: string,
     coverageFile?: string
 ) => {
-    const pathToCoverageFile = joinPaths(workingDirectory, REPORT_PATH);
+    const pathToCoverageFile = joinPaths(
+        workingDirectory,
+        coverageFile || REPORT_PATH
+    );
 
     try {
         // Originally made by Jeremy Gillick (https://github.com/jgillick)
         // Modified after big refactor by Artiom Tretjakovas (https://github.com/ArtiomTr)
         // Load coverage from file
-        if (coverageFile) {
-            try {
-                dataCollector.info(
-                    i18n('loadingCoverageFromFile', { coverageFile })
-                );
-                const contents = await readFile(coverageFile);
-                return contents.toString();
-            } catch (error) {
-                throw new ActionError(FailReason.READING_COVERAGE_FILE_FAILED, {
-                    error: (error as Error).toString(),
-                });
-            }
-        }
 
-        const outBuff = await readFile(pathToCoverageFile);
+        dataCollector.info(
+            i18n('loadingCoverageFromFile', {
+                pathToCoverageFile,
+            })
+        );
 
-        return outBuff.toString();
-    } catch (err) {
-        if ((err as NodeJS.ErrnoException).code === 'ENOENT') {
+        const outputBuffer = await readFile(pathToCoverageFile);
+
+        return outputBuffer.toString();
+    } catch (error) {
+        if ((error as NodeJS.ErrnoException).code === 'ENOENT') {
             throw new ActionError(FailReason.REPORT_NOT_FOUND, {
                 coveragePath: pathToCoverageFile,
             });
         }
 
-        throw err;
+        throw new ActionError(FailReason.READING_COVERAGE_FILE_FAILED, {
+            error: (error as Error).toString(),
+        });
     }
 };

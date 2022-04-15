@@ -1,7 +1,7 @@
 # jest coverage report 🧪
 
 <p align="center">
-  <img alt="PR Comment example" width="540" src="./img/Github-comment-screenshot.png">
+  <img alt="PR Comment example" width="540" src="./img/Github-comment-screenshot.jpg">
 </p>
 
 <p align="center">
@@ -20,9 +20,10 @@ This action uses [Jest](https://github.com/facebook/jest) to extract code covera
 -   **Comparing** coverage with base branch. 🔍
 -   Showing spoiler in the comment for all **new covered files**. 🆕
 -   Showing spoiler in the comment for all files, in which **coverage was reduced**. 🔻
+-   Failed tests & uncovered line **annotations** 📢
 
 <p align="center">
-  <img alt="PR Comment example" width="540" src="./img/Rejected-PR-screenshot.png">
+  <img alt="PR Comment example" width="540" src="./img/Rejected-PR-screenshot.jpg">
 </p>
 
 ## Usage
@@ -41,29 +42,40 @@ on:
             - main
 jobs:
     coverage:
+        permissions:
+            checks: write
+            pull-requests: write
         runs-on: ubuntu-latest
-        if: "!contains(github.event.head_commit.message, '[skip ci]')"
         steps:
             - uses: actions/checkout@v1
-            - uses: artiomtr/jest-coverage-report-action@v2.0-rc.5
-              with:
-                  github-token: ${{ secrets.GITHUB_TOKEN }}
-                  #   threshold: 80 # optional parameter
+            - uses: ArtiomTr/jest-coverage-report-action@v2
 ```
 
 3. Pay attention to the action parameters. You can specify custom [threshold](#specify-threshold), [pre-test-script](#specify-pre-test-script) or [test script](#customizing-test-script)
 4. That's it!
 
-## Specify threshold
+## Custom token
 
-If you want to set minimal accepted coverage for the PR, you can pass and optional parameter threshold.
-
-For example, if you want to reject every pull request, with total line coverage less than 80%:
+By default, this action takes `github.token` variable to publish reports on your PR. You can overwrite this property by specifying:
 
 ```yml
 with:
-    github-token: ${{ secrets.GITHUB_TOKEN }}
-    threshold: 80 # value in percents
+    github-token: ${{ secrets.SECRET_TOKEN }}
+```
+
+## Specify threshold
+
+This action automatically suports jest's [`coverageThreshold`](https://jestjs.io/docs/configuration#coveragethreshold-object) property.
+Just add into your `jest.config.js` file:
+
+```js
+module.exports = {
+    coverageThreshold: {
+        global: {
+            lines: 80,
+        },
+    },
+};
 ```
 
 ## Custom working directory
@@ -72,7 +84,6 @@ If you want to run this action in custom directory, specify `working-directory`:
 
 ```yml
 with:
-    github-token: ${{ secrets.GITHUB_TOKEN }}
     working-directory: <dir>
 ```
 
@@ -91,32 +102,47 @@ with:
 
 ## Customizing test script
 
-By default, this action will run this command, to extract coverage:
+This action automatically adds necessary flags to your test script. The default script is:
 
-```bash
-npx jest --silent --ci --coverage --coverageReporters="text" --coverageReporters="text-summary"
+```
+npx jest
 ```
 
-If you're not satisfied with default behaviour, you can specify your own command, by passing custom option `test-script`.
+So you don't need to specify additional flags - action will handle them
+automatically. So, after adding necessary flags, action will run this command:
 
-> **⚠ IMPORTANT ⚠:** Please, note that this is not simple `npx jest --coverage` script call. If you're specify your custom script, **YOU SHOULD PASS SAME COVERAGE REPORTERS** as it does default script (`text` and `text-summary` reporters). Without those options, your action will not work.
+```
+npx jest --ci --json --coverage --testLocationInResults --outputFile=report.json
+```
 
-For instance, if you want to run `test:coverage` npm script:
+But you do not need to specify these flags manually. Also, you can use different package manager, `yarn` for example:
 
 ```yml
 with:
-    github-token: ${{ secrets.GITHUB_TOKEN }}
-    test-script: npm run test:coverage
+    test-script: yarn jest
 ```
 
-## Usage with `yarn`
-
-By default, this action will install your dependencies using `npm`. If you are using `yarn`, you can specify it in the `package-manager` option:
+Or, if you would like to run a script from your `package.json`:
 
 ```yml
 with:
-    github-token: ${{ secrets.GITHUB_TOKEN }}
+    test-script: npm test
+```
+
+## Usage with `yarn` or `pnpm`
+
+By default, this action will install your dependencies using `npm`. If you are using `yarn` or `pnpm`, you can specify it in the `package-manager` option:
+
+```yml
+with:
     package-manager: yarn
+```
+
+or
+
+```yml
+with:
+    package-manager: pnpm
 ```
 
 ## Use existing test report(s)
@@ -134,13 +160,24 @@ with:
 
 For example, you can save every test run to an artifact and then download and reference them here.
 
+## Opt-out coverage comparison features
+
+You can opt-out coverage comparison features to speed-up action. To achieve this, firstly, manually collect coverage to `report.json` file. Then, specify these options for the action:
+
+```yml
+with:
+    coverage-file: report.json
+    base-coverage-file: report.json
+```
+
 ## Skipping steps
+
+> Note: this option affects only coverage for the "head" branch. For skipping steps of "base" branch, see [`base-coverage-file`](#use-existing-test-reports) option.
 
 By default, this action will install dependencies and run the tests for you, generating the coverage report. Alternatively, you can skip these steps using the `skip-step` option.
 
 ```yml
 with:
-    github-token: ${{ secrets.GITHUB_TOKEN }}
     skip-step: all
 ```
 
@@ -150,20 +187,19 @@ Accepted values are:
 -   `install` - skip installing dependencies
 -   `all` - skip installing dependencies _and_ running the test script
 
-## Change annotaions
+## Change annotations
 
-To change annotaions, you have to set the annotaions option as shown below:
+To change annotations, you have to set the annotations option as shown below:
 
 ```yml
 with:
-    github-token: ${{ secrets.GITHUB_TOKEN }}
     annotations: none
 ```
 
 Accepted values are:
 
 -   `all` (default) - Will annotate sections of your code that failed tests or test did not cover
--   `none` - Turns off annotaions
+-   `none` - Turns off annotations
 -   `coverage` - Will annotate those sections of your code that test did not cover
 -   `failed-tests` - Will annotate those sections of your code that failed test
 
@@ -200,6 +236,12 @@ Jest Coverage Report action is made with <3 thanks to these wonderful people
   </tr>
   <tr>
     <td align="center"><a href="https://github.com/herberttn"><img src="https://avatars.githubusercontent.com/u/5903869?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Herbert Treis Neto</b></sub></a><br /><a href="https://github.com/ArtiomTr/jest-coverage-report-action/commits?author=herberttn" title="Code">💻</a></td>
+    <td align="center"><a href="https://lifterlms.com"><img src="https://avatars.githubusercontent.com/u/1290739?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Thomas Patrick Levy</b></sub></a><br /><a href="https://github.com/ArtiomTr/jest-coverage-report-action/commits?author=thomasplevy" title="Code">💻</a></td>
+    <td align="center"><a href="https://github.com/laurislokalise"><img src="https://avatars.githubusercontent.com/u/74536758?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Lauris Mikāls</b></sub></a><br /><a href="https://github.com/ArtiomTr/jest-coverage-report-action/commits?author=laurislokalise" title="Code">💻</a></td>
+    <td align="center"><a href="https://github.com/rena-h"><img src="https://avatars.githubusercontent.com/u/20507786?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Rena Hamada</b></sub></a><br /><a href="https://github.com/ArtiomTr/jest-coverage-report-action/commits?author=rena-h" title="Documentation">📖</a></td>
+    <td align="center"><a href="https://jacob.cs.ie　　　　　　　　　　　　　　　　@jacob.pages.dev/"><img src="https://avatars.githubusercontent.com/u/28478594?v=4?s=100" width="100px;" alt=""/><br /><sub><b>JacobLinCool</b></sub></a><br /><a href="https://github.com/ArtiomTr/jest-coverage-report-action/commits?author=JacobLinCool" title="Code">💻</a> <a href="https://github.com/ArtiomTr/jest-coverage-report-action/commits?author=JacobLinCool" title="Documentation">📖</a></td>
+    <td align="center"><a href="http://tommasoferrari.com"><img src="https://avatars.githubusercontent.com/u/927264?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Tommaso Ferrari</b></sub></a><br /><a href="https://github.com/ArtiomTr/jest-coverage-report-action/commits?author=raspo" title="Code">💻</a></td>
+    <td align="center"><a href="https://github.com/Raigen"><img src="https://avatars.githubusercontent.com/u/894799?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Florian</b></sub></a><br /><a href="https://github.com/ArtiomTr/jest-coverage-report-action/commits?author=Raigen" title="Code">💻</a></td>
   </tr>
 </table>
 

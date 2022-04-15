@@ -1,3 +1,5 @@
+import { sep } from 'path';
+
 import { readFile } from 'fs-extra';
 
 import { collectCoverage } from '../../src/stages/collectCoverage';
@@ -12,13 +14,17 @@ const clearMocks = () => {
 beforeEach(clearMocks);
 
 describe('collectCoverage', () => {
-    it('should read report file by default', async () => {
+    it('should read report.json by default', async () => {
         const dataCollector = createDataCollector();
 
         (readFile as jest.Mock<any, any>).mockImplementationOnce(() => 'Value');
 
         await expect(collectCoverage(dataCollector)).resolves.toBe('Value');
         expect(readFile).toBeCalledWith('report.json');
+    });
+
+    it('should read report.json from correct path when working directory is provided', async () => {
+        const dataCollector = createDataCollector();
 
         (readFile as jest.Mock<any, any>).mockImplementationOnce(
             () => 'New value'
@@ -27,15 +33,24 @@ describe('collectCoverage', () => {
         await expect(
             collectCoverage(dataCollector, 'customFolder')
         ).resolves.toBe('New value');
-        expect(readFile).toBeCalledWith('customFolder/report.json');
+        expect(readFile).toBeCalledWith(`customFolder${sep}report.json`);
+    });
+
+    it('should read report from correct path when working directory and custom report path is provided', async () => {
+        const dataCollector = createDataCollector();
 
         (readFile as jest.Mock<any, any>).mockImplementationOnce(
-            () => 'Value 3'
+            () => 'New value'
         );
+
         await expect(
-            collectCoverage(dataCollector, 'asdf', 'path')
-        ).resolves.toBe('Value 3');
-        expect(readFile).toBeCalledWith('path');
+            collectCoverage(
+                dataCollector,
+                'customFolder',
+                './customReport.json'
+            )
+        ).resolves.toBe('New value');
+        expect(readFile).toBeCalledWith(`customFolder${sep}customReport.json`);
     });
 
     it('should throw error if report not found', async () => {

@@ -22,3 +22,6 @@ coverage
 
 # TypeScript cache
 *.tsbuildinfo
+
+# Intellij IDE automatically generated folder
+.idea

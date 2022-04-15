@@ -32,7 +32,7 @@ inputs:
         default: all
     package-manager:
         required: false
-        description: 'Which package manager to use; can be either `npm` or `yarn`'
+        description: 'Which package manager to use; can be `npm`, `yarn`, or `pnpm`'
         default: 'npm'
     skip-step:
         required: false

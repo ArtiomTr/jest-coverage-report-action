@@ -1,7 +1,6 @@
 {
   "files": [
-    "README.md",
-    ".github/release-drafter.yml"
+    "README.md"
   ],
   "contributors": [
     {
@@ -143,6 +142,61 @@
       "name": "Herbert Treis Neto",
       "avatar_url": "https://avatars.githubusercontent.com/u/5903869?v=4",
       "profile": "https://github.com/herberttn",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "thomasplevy",
+      "name": "Thomas Patrick Levy",
+      "avatar_url": "https://avatars.githubusercontent.com/u/1290739?v=4",
+      "profile": "https://lifterlms.com",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "laurislokalise",
+      "name": "Lauris Mikāls",
+      "avatar_url": "https://avatars.githubusercontent.com/u/74536758?v=4",
+      "profile": "https://github.com/laurislokalise",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "rena-h",
+      "name": "Rena Hamada",
+      "avatar_url": "https://avatars.githubusercontent.com/u/20507786?v=4",
+      "profile": "https://github.com/rena-h",
+      "contributions": [
+        "doc"
+      ]
+    },
+    {
+      "login": "JacobLinCool",
+      "name": "JacobLinCool",
+      "avatar_url": "https://avatars.githubusercontent.com/u/28478594?v=4",
+      "profile": "https://jacob.cs.ie　　　　　　　　　　　　　　　　@jacob.pages.dev/",
+      "contributions": [
+        "code",
+        "doc"
+      ]
+    },
+    {
+      "login": "raspo",
+      "name": "Tommaso Ferrari",
+      "avatar_url": "https://avatars.githubusercontent.com/u/927264?v=4",
+      "profile": "http://tommasoferrari.com",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "Raigen",
+      "name": "Florian",
+      "avatar_url": "https://avatars.githubusercontent.com/u/894799?v=4",
+      "profile": "https://github.com/Raigen",
       "contributions": [
         "code"
       ]
