@@ -49,13 +49,7 @@ describe('getCoverage', () => {
         expect(exec).toBeCalledWith('npm install', undefined, {
             cwd: undefined,
         });
-        expect(
-            exec
-        ).toBeCalledWith(
-            'default script --ci --json --coverage --testLocationInResults --outputFile="report.json"',
-            [],
-            { cwd: undefined }
-        );
+        expect(exec).toBeCalledWith('default script', [], { cwd: undefined });
         expect(readFile).toHaveBeenCalledWith('report.json');
 
         expect(jsonReport).toStrictEqual({});
@@ -77,13 +71,7 @@ describe('getCoverage', () => {
         expect(exec).toBeCalledWith('npm install', undefined, {
             cwd: 'testDir',
         });
-        expect(
-            exec
-        ).toBeCalledWith(
-            'default script --ci --json --coverage --testLocationInResults --outputFile="report.json"',
-            [],
-            { cwd: 'testDir' }
-        );
+        expect(exec).toBeCalledWith('default script', [], { cwd: 'testDir' });
         expect(readFile).toHaveBeenCalledWith(`testDir${sep}report.json`);
 
         expect(jsonReport).toStrictEqual({});
@@ -139,13 +127,7 @@ describe('getCoverage', () => {
         expect(exec).not.toBeCalledWith('npm install', undefined, {
             cwd: undefined,
         });
-        expect(
-            exec
-        ).toBeCalledWith(
-            'default script --ci --json --coverage --testLocationInResults --outputFile="report.json"',
-            [],
-            { cwd: undefined }
-        );
+        expect(exec).toBeCalledWith('default script', [], { cwd: undefined });
         expect(readFile).toHaveBeenCalledWith('report.json');
 
         expect(jsonReport).toStrictEqual({});
@@ -167,13 +149,9 @@ describe('getCoverage', () => {
         expect(exec).not.toBeCalledWith('npm install', undefined, {
             cwd: undefined,
         });
-        expect(exec).not.toBeCalledWith(
-            'default script --ci --json --coverage --testLocationInResults --outputFile="report.json"',
-            [],
-            {
-                cwd: undefined,
-            }
-        );
+        expect(exec).not.toBeCalledWith('default script', [], {
+            cwd: undefined,
+        });
         expect(readFile).toHaveBeenCalledWith('report.json');
 
         expect(jsonReport).toStrictEqual({});
@@ -195,13 +173,9 @@ describe('getCoverage', () => {
         expect(exec).toBeCalledWith('npm install', undefined, {
             cwd: undefined,
         });
-        expect(exec).toBeCalledWith(
-            'default script --ci --json --coverage --testLocationInResults --outputFile="report.json"',
-            [],
-            {
-                cwd: undefined,
-            }
-        );
+        expect(exec).toBeCalledWith('default script', [], {
+            cwd: undefined,
+        });
         expect(readFile).toHaveBeenCalledWith('report.json');
 
         expect(jsonReport).toStrictEqual({});
@@ -223,13 +197,9 @@ describe('getCoverage', () => {
         expect(exec).toBeCalledWith('npm install', undefined, {
             cwd: undefined,
         });
-        expect(exec).toBeCalledWith(
-            'default script --ci --json --coverage --testLocationInResults --outputFile="report.json"',
-            [],
-            {
-                cwd: undefined,
-            }
-        );
+        expect(exec).toBeCalledWith('default script', [], {
+            cwd: undefined,
+        });
         expect(readFile).toHaveBeenCalledWith('report.json');
 
         expect(jsonReport).toStrictEqual({});
@@ -254,13 +224,9 @@ describe('getCoverage', () => {
         expect(exec).toBeCalledWith('npm install', undefined, {
             cwd: undefined,
         });
-        expect(exec).toBeCalledWith(
-            'default script --ci --json --coverage --testLocationInResults --outputFile="report.json"',
-            [],
-            {
-                cwd: undefined,
-            }
-        );
+        expect(exec).toBeCalledWith('default script', [], {
+            cwd: undefined,
+        });
         expect(readFile).toHaveBeenCalledWith('report.json');
 
         expect(jsonReport).toStrictEqual({});
@@ -287,13 +253,9 @@ describe('getCoverage', () => {
         expect(exec).toBeCalledWith('npm install', undefined, {
             cwd: undefined,
         });
-        expect(exec).toBeCalledWith(
-            'default script --ci --json --coverage --testLocationInResults --outputFile="report.json"',
-            [],
-            {
-                cwd: undefined,
-            }
-        );
+        expect(exec).toBeCalledWith('default script', [], {
+            cwd: undefined,
+        });
         expect(readFile).toHaveBeenCalledWith('report.json');
 
         expect(jsonReport).toStrictEqual({});

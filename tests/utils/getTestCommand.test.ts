@@ -4,19 +4,15 @@ describe('getTestCommand', () => {
     it('should modify command', async () => {
         expect(
             await getTestCommand('yarn jest', 'report.json', undefined)
-        ).toBe(
-            'yarn jest --ci --json --coverage --testLocationInResults --outputFile="report.json"'
-        );
+        ).toBe('yarn jest');
 
         expect(await getTestCommand('npx jest', 'report.json', undefined)).toBe(
-            'npx jest --ci --json --coverage --testLocationInResults --outputFile="report.json"'
+            'npx jest'
         );
 
         expect(
             await getTestCommand('pnpx jest', 'report.json', undefined)
-        ).toBe(
-            'pnpx jest --ci --json --coverage --testLocationInResults --outputFile="report.json"'
-        );
+        ).toBe('pnpx jest');
     });
 
     it('should add double hyphens for npm and pnpm', async () => {
@@ -26,9 +22,7 @@ describe('getTestCommand', () => {
                 'report.json',
                 undefined
             )
-        ).toBe(
-            'npm run test:coverage -- --ci --json --coverage --testLocationInResults --outputFile="report.json"'
-        );
+        ).toBe('npm run test:coverage');
 
         expect(
             await getTestCommand(
@@ -36,9 +30,7 @@ describe('getTestCommand', () => {
                 'report.json',
                 undefined
             )
-        ).toBe(
-            'pnpm run test:coverage -- --ci --json --coverage --testLocationInResults --outputFile="report.json"'
-        );
+        ).toBe('pnpm run test:coverage');
     });
 
     it('should not add two sets of double hyphens for npm and pnpm', async () => {
@@ -49,7 +41,7 @@ describe('getTestCommand', () => {
                 undefined
             )
         ).toBe(
-            'npm run test:coverage -- --coverageReporters="text" --coverageReporters="text-summary" --ci --json --coverage --testLocationInResults --outputFile="report.json"'
+            'npm run test:coverage -- --coverageReporters="text" --coverageReporters="text-summary"'
         );
 
         expect(
@@ -59,7 +51,7 @@ describe('getTestCommand', () => {
                 undefined
             )
         ).toBe(
-            'pnpm run test:coverage -- --coverageReporters="text" --coverageReporters="text-summary" --ci --json --coverage --testLocationInResults --outputFile="report.json"'
+            'pnpm run test:coverage -- --coverageReporters="text" --coverageReporters="text-summary"'
         );
     });
 
