@@ -34,13 +34,7 @@ export const createReport = (
 
     const formattedThresholdResults = formatThresholdResults(thresholdResults);
 
-    console.log('createReport formatCoverage');
-    console.log('headReport', headReport);
-    console.log('baseReport', baseReport);
-
     const coverage = formatCoverage(headReport, baseReport, undefined);
-
-    console.log('createReport coverage', coverage);
 
     const runReport: TestRunReport = {
         title: i18n(headReport.success ? 'testsSuccess' : 'testsFail'),

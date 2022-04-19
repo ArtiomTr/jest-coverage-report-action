@@ -9,7 +9,6 @@ export const formatCoverage = (
     threshold: number | undefined
 ): string => {
     if (headReport) {
-        console.log('formatCoverage');
         return getFormattedCoverage(
             parseSummary(headReport),
             baseReport ? parseSummary(baseReport) : undefined,
