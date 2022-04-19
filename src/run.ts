@@ -13,6 +13,7 @@ import { getCoverage } from './stages/getCoverage';
 import { switchBranch } from './stages/switchBranch';
 import { JsonReport } from './typings/JsonReport';
 import { getOptions } from './typings/Options';
+import { ThresholdResult } from './typings/ThresholdResult';
 import { createDataCollector, DataCollector } from './utils/DataCollector';
 import { getNormalThreshold } from './utils/getNormalThreshold';
 import { i18n } from './utils/i18n';
@@ -118,12 +119,16 @@ export const run = async (
                 skip();
             }
 
-            return checkThreshold(
-                headCoverage!,
-                threshold!,
-                options.workingDirectory,
-                dataCollector as DataCollector<unknown>
-            );
+            try {
+                return checkThreshold(
+                    headCoverage!,
+                    threshold!,
+                    options.workingDirectory,
+                    dataCollector as DataCollector<unknown>
+                );
+            } catch {
+                return [] as ThresholdResult[];
+            }
         }
     );
 
