@@ -126,7 +126,8 @@ export const run = async (
                     options.workingDirectory,
                     dataCollector as DataCollector<unknown>
                 );
-            } catch {
+            } catch (error) {
+                console.error('checkThreshold error', error);
                 return [] as ThresholdResult[];
             }
         }
