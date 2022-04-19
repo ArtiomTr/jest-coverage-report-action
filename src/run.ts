@@ -133,6 +133,8 @@ export const run = async (
         }
     );
 
+    console.log('thresholdResults', thresholdResults);
+
     const [isReportContentGenerated, summaryReport] = await runStage(
         'generateReportContent',
         dataCollector,

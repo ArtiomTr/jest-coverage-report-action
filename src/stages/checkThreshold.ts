@@ -22,7 +22,7 @@ export const checkThreshold = (
 ) => {
     const cwd = joinPaths(process.cwd(), workingDirectory);
     // Maybe somehow take this from "format" stage?
-    console.log('getFileCoverageMap', getFileCoverageMap(report));
+    console.log('report', report);
     const coverageDetailMap = Object.fromEntries(
         Object.entries(getFileCoverageMap(report)).map(([key, value]) => [
             key.substring(cwd.length + 1),
