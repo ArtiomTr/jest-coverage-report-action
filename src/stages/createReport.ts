@@ -33,7 +33,7 @@ export const createReport = (
     const formattedErrors = formatErrors(errors);
 
     const formattedThresholdResults = formatThresholdResults(thresholdResults);
-    const coverage = formatCoverage(headReport, baseReport, undefined);
+    const coverage = formatCoverage(headReport, baseReport, options.threshold);
     const runReport: TestRunReport = {
         title: i18n(headReport.success ? 'testsSuccess' : 'testsFail'),
         summary: getTestRunSummary(headReport),
