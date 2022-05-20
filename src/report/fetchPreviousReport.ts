@@ -10,7 +10,7 @@ export async function fetchPreviousReport(
     options: Options
 ) {
     const commentList = await octokit.paginate(
-        'GET /repos/:owner/:repo/issues/:issue_number/comments',
+        'GET /repos/{owner}/{repo}/issues/{issue_number}/comments',
         {
             ...repo,
             issue_number: pr.number,
@@ -18,7 +18,7 @@ export async function fetchPreviousReport(
     );
 
     const previousReport = commentList.find((comment) =>
-        (comment as { body: string }).body.startsWith(getReportTag(options))
+        comment.body?.startsWith(getReportTag(options))
     );
 
     return !previousReport ? null : previousReport;

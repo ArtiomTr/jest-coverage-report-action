@@ -21,7 +21,7 @@ export const generatePRReport = async (
         await octokit.issues.updateComment({
             ...repo,
             body: report,
-            comment_id: (previousReport as { id: number }).id,
+            comment_id: previousReport.id,
         });
     } else {
         await octokit.issues.createComment({

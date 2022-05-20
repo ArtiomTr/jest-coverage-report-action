@@ -55,7 +55,7 @@ describe('fetchPreviousReport', () => {
         });
 
         expect(paginate).toBeCalledWith(
-            'GET /repos/:owner/:repo/issues/:issue_number/comments',
+            'GET /repos/{owner}/{repo}/issues/{issue_number}/comments',
             {
                 owner: 'bot',
                 repo: 'test-repo',
