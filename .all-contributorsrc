@@ -200,6 +200,15 @@
       "contributions": [
         "code"
       ]
+    },
+    {
+      "login": "MH4GF",
+      "name": "Hirotaka Miyagi",
+      "avatar_url": "https://avatars.githubusercontent.com/u/31152321?v=4",
+      "profile": "https://mh4gf.dev",
+      "contributions": [
+        "code"
+      ]
     }
   ],
   "projectName": "jest-coverage-report-action",
