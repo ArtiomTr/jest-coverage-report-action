@@ -230,6 +230,9 @@ Jest Coverage Report action is made with <3 thanks to these wonderful people
     <td align="center"><a href="http://tommasoferrari.com"><img src="https://avatars.githubusercontent.com/u/927264?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Tommaso Ferrari</b></sub></a><br /><a href="https://github.com/ArtiomTr/jest-coverage-report-action/commits?author=raspo" title="Code">💻</a></td>
     <td align="center"><a href="https://github.com/Raigen"><img src="https://avatars.githubusercontent.com/u/894799?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Florian</b></sub></a><br /><a href="https://github.com/ArtiomTr/jest-coverage-report-action/commits?author=Raigen" title="Code">💻</a></td>
   </tr>
+  <tr>
+    <td align="center"><a href="https://mh4gf.dev"><img src="https://avatars.githubusercontent.com/u/31152321?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Hirotaka Miyagi</b></sub></a><br /><a href="https://github.com/ArtiomTr/jest-coverage-report-action/commits?author=MH4GF" title="Code">💻</a></td>
+  </tr>
 </table>
 
 <!-- markdownlint-restore -->
