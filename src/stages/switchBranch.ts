@@ -9,3 +9,11 @@ export const switchBranch = async (branch: string) => {
 
     await exec(`git checkout -f ${branch}`);
 };
+
+export const switchBack = async () => {
+    try {
+        await exec(`git checkout -`);
+    } catch (err) {
+        console.warn('Error checking to branches', err);
+    }
+};

@@ -10,7 +10,7 @@ import { generatePRReport } from './report/generatePRReport';
 import { checkThreshold } from './stages/checkThreshold';
 import { createReport } from './stages/createReport';
 import { getCoverage } from './stages/getCoverage';
-import { switchBranch } from './stages/switchBranch';
+import { switchBack, switchBranch } from './stages/switchBranch';
 import { JsonReport } from './typings/JsonReport';
 import { getOptions } from './typings/Options';
 import { createDataCollector, DataCollector } from './utils/DataCollector';
@@ -103,7 +103,7 @@ export const run = async (
             skip();
         }
 
-        await switchBranch(context.payload.pull_request!.head.ref);
+        await switchBack();
     });
 
     if (baseCoverage) {
