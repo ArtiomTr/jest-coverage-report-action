@@ -1,6 +1,6 @@
 import { exec } from '@actions/exec';
 
-import { switchBranch } from '../../src/stages/switchBranch';
+import { switchBack, switchBranch } from '../../src/stages/switchBranch';
 
 const clearMocks = () => {
     (exec as jest.Mock<any, any>).mockClear();
@@ -24,5 +24,13 @@ describe('switchBranch', () => {
         await switchBranch('Test-branch');
 
         expect(exec).toBeCalledWith('git checkout -f Test-branch');
+    });
+});
+
+describe('switchBack', () => {
+    it('should switch to previous branch', async () => {
+        await switchBack();
+
+        expect(exec).toBeCalledWith('git checkout -');
     });
 });
