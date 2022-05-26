@@ -209,6 +209,15 @@
       "contributions": [
         "code"
       ]
+    },
+    {
+      "login": "armfazh",
+      "name": "Armando Faz",
+      "avatar_url": "https://avatars.githubusercontent.com/u/10335519?v=4",
+      "profile": "http://armfazh.github.io",
+      "contributions": [
+        "code"
+      ]
     }
   ],
   "projectName": "jest-coverage-report-action",

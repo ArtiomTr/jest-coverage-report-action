@@ -232,6 +232,7 @@ Jest Coverage Report action is made with <3 thanks to these wonderful people
   </tr>
   <tr>
     <td align="center"><a href="https://mh4gf.dev"><img src="https://avatars.githubusercontent.com/u/31152321?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Hirotaka Miyagi</b></sub></a><br /><a href="https://github.com/ArtiomTr/jest-coverage-report-action/commits?author=MH4GF" title="Code">💻</a></td>
+    <td align="center"><a href="http://armfazh.github.io"><img src="https://avatars.githubusercontent.com/u/10335519?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Armando Faz</b></sub></a><br /><a href="https://github.com/ArtiomTr/jest-coverage-report-action/commits?author=armfazh" title="Code">💻</a></td>
   </tr>
 </table>
 
