@@ -35,7 +35,7 @@
         "gh-pages": "^3.2.1",
         "remark-slug": "^6.0.0",
         "responsive-loader": "^2.3.0",
-        "sharp": "^0.28.3",
+        "sharp": "^0.30.5",
         "typescript": "^4.3.2"
     }
 }
