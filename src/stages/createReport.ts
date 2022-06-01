@@ -1,6 +1,7 @@
 import { context } from '@actions/github';
 
 import { getReportTag } from '../constants/getReportTag';
+import { GITHUB_MESSAGE_SIZE_LIMIT } from '../constants/GITHUB_MESSAGE_SIZE_LIMIT';
 import { formatCoverage } from '../format/formatCoverage';
 import { formatErrors } from '../format/formatErrors';
 import { formatRunReport } from '../format/formatRunReport';
@@ -33,19 +34,42 @@ export const createReport = (
     const formattedErrors = formatErrors(errors);
 
     const formattedThresholdResults = formatThresholdResults(thresholdResults);
-    const coverage = formatCoverage(headReport, baseReport, undefined);
+    const coverage = formatCoverage(headReport, baseReport, undefined, false);
     const runReport: TestRunReport = {
         title: i18n(headReport.success ? 'testsSuccess' : 'testsFail'),
         summary: getTestRunSummary(headReport),
         failures: getFailureDetails(headReport),
     };
     const formattedReport = formatRunReport(runReport);
-    return {
-        text: insertArgs(template, {
+
+    let templateText = insertArgs(template, {
+        body: [
+            formattedErrors,
+            formattedThresholdResults,
+            coverage,
+            formattedReport,
+        ].join('\n'),
+        dir: workingDirectory || '',
+        tag: getReportTag(options),
+        title: insertArgs(customTitle || i18n('summaryTitle'), {
+            dir: workingDirectory ? `for \`${workingDirectory}\`` : '',
+        }),
+        sha: getSha(),
+    });
+
+    if (templateText.length > GITHUB_MESSAGE_SIZE_LIMIT) {
+        const reducedCoverage = formatCoverage(
+            headReport,
+            baseReport,
+            undefined,
+            true
+        );
+
+        templateText = insertArgs(template, {
             body: [
                 formattedErrors,
                 formattedThresholdResults,
-                coverage,
+                reducedCoverage,
                 formattedReport,
             ].join('\n'),
             dir: workingDirectory || '',
@@ -54,7 +78,11 @@ export const createReport = (
                 dir: workingDirectory ? `for \`${workingDirectory}\`` : '',
             }),
             sha: getSha(),
-        }),
+        });
+    }
+
+    return {
+        text: templateText,
         runReport,
     };
 };

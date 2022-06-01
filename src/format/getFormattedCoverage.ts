@@ -7,11 +7,17 @@ export const getFormattedCoverage = (
     baseSummary: Array<CoverageSummary> | undefined,
     headDetails: CoverageDetailsMap,
     baseDetails: CoverageDetailsMap | undefined,
-    threshold: number | undefined
+    threshold: number | undefined,
+    truncateDetails: boolean | undefined
 ): string =>
     [
         formatCoverageSummary(headSummary, baseSummary, threshold),
-        formatCoverageDetails(headDetails, baseDetails, threshold),
+        formatCoverageDetails(
+            headDetails,
+            baseDetails,
+            threshold,
+            truncateDetails
+        ),
     ]
         .filter(Boolean)
         .join('\n');
