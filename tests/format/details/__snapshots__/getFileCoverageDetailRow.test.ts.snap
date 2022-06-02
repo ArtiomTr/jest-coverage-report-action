@@ -1,0 +1,34 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`getFileCoverageDetailRow should return formatted detail row (decreased coverage) 1`] = `
+Array [
+  "🔴",
+  "hello.ts",
+  "<div title=\\"Base coverage is: 60%\\">50% (-10% 🔻)</div>",
+  "100%",
+  "<div title=\\"Base coverage is: 60%\\">50% (-10% 🔻)</div>",
+  "<div title=\\"Base coverage is: 60%\\">50% (-10% 🔻)</div>",
+]
+`;
+
+exports[`getFileCoverageDetailRow should return formatted detail row (increased coverage) 1`] = `
+Array [
+  "🔴",
+  "hello.ts",
+  "<div title=\\"Base coverage is: 40%\\">50% (+10% 🔼)</div>",
+  "100%",
+  "<div title=\\"Base coverage is: 40%\\">50% (+10% 🔼)</div>",
+  "<div title=\\"Base coverage is: 40%\\">50% (+10% 🔼)</div>",
+]
+`;
+
+exports[`getFileCoverageDetailRow should return formatted detail row (no base details) 1`] = `
+Array [
+  "🔴",
+  "hello.ts",
+  "50%",
+  "100%",
+  "50%",
+  "50%",
+]
+`;
