@@ -218,6 +218,15 @@
       "contributions": [
         "code"
       ]
+    },
+    {
+      "login": "maciejtutak",
+      "name": "Maciej Tutak",
+      "avatar_url": "https://avatars.githubusercontent.com/u/10584953?v=4",
+      "profile": "https://github.com/maciejtutak",
+      "contributions": [
+        "code"
+      ]
     }
   ],
   "projectName": "jest-coverage-report-action",
