@@ -14,6 +14,12 @@ describe('formatCoverage', () => {
         ).toMatchSnapshot();
     });
 
+    it('should display warning if hiding details', () => {
+        expect(
+            formatCoverage(jsonReport, jsonReport, 0.3, true)
+        ).toMatchSnapshot();
+    });
+
     it('should return empty string if no reports specified', () => {
         expect(formatCoverage(undefined, undefined, 0.3, false)).toBe('');
     });

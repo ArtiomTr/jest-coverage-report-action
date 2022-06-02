@@ -1,6 +1,7 @@
 import { formatCoverageDetails } from './details/formatCoverageDetails';
 import { formatCoverageSummary } from './summary/formatCoverageSummary';
 import { CoverageDetailsMap, CoverageSummary } from '../typings/Coverage';
+import { i18n } from '../utils/i18n';
 
 export const getFormattedCoverage = (
     headSummary: Array<CoverageSummary>,
@@ -8,16 +9,13 @@ export const getFormattedCoverage = (
     headDetails: CoverageDetailsMap,
     baseDetails: CoverageDetailsMap | undefined,
     threshold: number | undefined,
-    truncateDetails: boolean | undefined
+    hideDetails: boolean | undefined
 ): string =>
     [
         formatCoverageSummary(headSummary, baseSummary, threshold),
-        formatCoverageDetails(
-            headDetails,
-            baseDetails,
-            threshold,
-            truncateDetails
-        ),
+        !hideDetails
+            ? formatCoverageDetails(headDetails, baseDetails, threshold)
+            : `> ${i18n('detailsHidden')}`,
     ]
         .filter(Boolean)
         .join('\n');
