@@ -11,7 +11,8 @@ describe('getFormattedCoverage', () => {
                 undefined,
                 parseDetails(jsonReport),
                 undefined,
-                undefined
+                undefined,
+                false
             )
         ).toMatchSnapshot();
     });

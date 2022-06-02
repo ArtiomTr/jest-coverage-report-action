@@ -104,6 +104,7 @@
         "readingCoverageFileFailed": "Failed reading coverage file. (Error: {{ error }})",
         "failedGettingCoverage": "Getting code coverage data failed."
     },
+    "detailsHidden": ":warning: Details were not displayed: the report size has exceeded the limit." ,
     "summaryTitle": "Coverage report {{ dir }}",
     "newFilesCoverage": "Show new covered files :hatching_chick:",
     "decreasedCoverageFiles": "Show files with reduced coverage :small_red_triangle_down:",

@@ -6,7 +6,8 @@ import { JsonReport } from '../typings/JsonReport';
 export const formatCoverage = (
     headReport: JsonReport | undefined,
     baseReport: JsonReport | undefined,
-    threshold: number | undefined
+    threshold: number | undefined,
+    hideDetails: boolean | undefined
 ): string => {
     if (headReport) {
         return getFormattedCoverage(
@@ -14,7 +15,8 @@ export const formatCoverage = (
             baseReport ? parseSummary(baseReport) : undefined,
             parseDetails(headReport),
             baseReport ? parseDetails(baseReport) : undefined,
-            threshold
+            threshold,
+            hideDetails
         );
     }
 
