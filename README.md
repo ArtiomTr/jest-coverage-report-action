@@ -45,6 +45,7 @@ jobs:
         permissions:
           checks: write
           pull-requests: write
+          contents: read
         runs-on: ubuntu-latest
         steps:
             - uses: actions/checkout@v1
