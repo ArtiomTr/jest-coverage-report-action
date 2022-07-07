@@ -1,4 +1,4 @@
-import { setFailed } from '@actions/core';
+import { info, setFailed } from '@actions/core';
 import { context, getOctokit } from '@actions/github';
 
 import { createCoverageAnnotations } from './annotations/createCoverageAnnotations';
@@ -27,6 +27,7 @@ export const run = async (
         getOptions
     );
     const isInPR = !!options?.pull_request;
+    info(`isInPR: ${isInPR}`);
 
     if (!isInitialized || !options) {
         throw Error('Initialization failed.');
@@ -142,6 +143,7 @@ export const run = async (
         const octokit = getOctokit(options.token);
 
         if (isInPR) {
+            info('building pr report');
             await generatePRReport(
                 summaryReport!.text,
                 options,
@@ -150,6 +152,7 @@ export const run = async (
                 octokit
             );
         } else {
+            info('building commit report');
             await generateCommitReport(
                 summaryReport!.text,
                 context.repo,

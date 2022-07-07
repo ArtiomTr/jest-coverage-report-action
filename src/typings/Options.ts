@@ -1,4 +1,4 @@
-import { getInput } from '@actions/core';
+import { getInput, info } from '@actions/core';
 import { context, getOctokit } from '@actions/github';
 import * as yup from 'yup';
 
@@ -92,6 +92,26 @@ export const getOptions = async (): Promise<Options> => {
         getInput('pr-number') || context?.payload?.pull_request?.number
     );
 
+    info(
+        JSON.stringify(
+            {
+                testScript,
+                threshold,
+                workingDirectory,
+                iconType,
+                annotations,
+                packageManager,
+                skipStep,
+                customTitle,
+                coverageFile,
+                baseCoverageFile,
+                prNumber,
+            },
+            null,
+            2
+        )
+    );
+
     const octokit = getOctokit(token);
 
     let pull_request = null;
@@ -124,6 +144,7 @@ export const getOptions = async (): Promise<Options> => {
             pull_request,
         })) as Options;
 
+        info(JSON.stringify(options, null, 2));
         return options;
     } catch (err) {
         if (err instanceof yup.ValidationError) {
