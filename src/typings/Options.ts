@@ -89,13 +89,13 @@ export const getOptions = async (): Promise<Options> => {
     const coverageFile = getInput('coverage-file');
     const baseCoverageFile = getInput('base-coverage-file');
     let prNumber: number | null = Number(
-        getInput('pr-number') || context?.payload?.pull_request?.number
+        getInput('prnumber') || context?.payload?.pull_request?.number
     );
     info(
         JSON.stringify(
             {
-                rawNumber: getInput('pr-number'),
-                parsedNumber: Number(getInput('pr-number')),
+                rawNumber: getInput('prnumber'),
+                parsedNumber: Number(getInput('prnumber')),
                 testScript,
                 threshold,
                 workingDirectory,
@@ -107,6 +107,7 @@ export const getOptions = async (): Promise<Options> => {
                 coverageFile,
                 baseCoverageFile,
                 prNumber,
+                context,
             },
             null,
             2
