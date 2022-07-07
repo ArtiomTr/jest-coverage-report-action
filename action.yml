@@ -64,4 +64,4 @@ runs:
               INPUT_CUSTOM-TITLE: ${{ inputs.custom-title }}
               INPUT_COVERAGE-FILE: ${{ inputs.coverage-file }}
               INPUT_BASE-COVERAGE-FILE: ${{ inputs.base-coverage-file }}
-              INPUT_COMMENT_KEY: ${{ inputs.comment-key }}
+              INPUT_PR_NUMBER: ${{ inputs.pr-number }}
