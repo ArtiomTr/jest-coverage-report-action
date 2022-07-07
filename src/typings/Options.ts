@@ -91,10 +91,11 @@ export const getOptions = async (): Promise<Options> => {
     let prNumber: number | null = Number(
         getInput('pr-number') || context?.payload?.pull_request?.number
     );
-
     info(
         JSON.stringify(
             {
+                rawNumber: getInput('pr-number'),
+                parsedNumber: Number(getInput('pr-number')),
                 testScript,
                 threshold,
                 workingDirectory,
