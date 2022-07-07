@@ -2,14 +2,16 @@ import { context } from '@actions/github';
 
 import { CreateCheckOptions } from './CreateCheckOptions';
 import { Annotation } from '../../annotations/Annotation';
+import { Options } from '../../typings/Options';
 import { i18n } from '../../utils/i18n';
 
 export const formatCoverageAnnotations = (
-    annotations: Array<Annotation>
+    annotations: Array<Annotation>,
+    options: Options
 ): CreateCheckOptions => ({
     ...context.repo,
     status: 'completed',
-    head_sha: context.payload.pull_request?.head.sha ?? context.sha,
+    head_sha: options?.pull_request?.head?.sha ?? context.sha,
     conclusion: 'success',
     name: i18n('coveredCheckName'),
     output: {

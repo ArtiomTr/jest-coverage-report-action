@@ -22,12 +22,11 @@ export type Options = {
     customTitle?: string;
     coverageFile?: string;
     baseCoverageFile?: string;
-    prNumber?: null | number;
-    pull_request?: null | {
-        [key: string]: any;
-        number?: number;
-        html_url?: string;
-        body?: string;
+    prNumber: null | number;
+    pull_request: null | {
+        base: { ref: string };
+        head: { ref: string; sha: string };
+        number: number;
     };
 };
 

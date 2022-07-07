@@ -2,8 +2,24 @@ import * as all from '@actions/github';
 
 import { Annotation } from '../../../src/annotations/Annotation';
 import { formatFailedTestsAnnotations } from '../../../src/format/annotations/formatFailedTestsAnnotations';
+import { Options } from '../../../src/typings/Options';
 
 const { mockContext, clearContextMock } = all as any;
+
+const DEFAULT_OPTIONS: Options = {
+    token: '',
+    testScript: '',
+    iconType: 'emoji',
+    annotations: 'all',
+    packageManager: 'npm',
+    skipStep: 'all',
+    prNumber: 5,
+    pull_request: {
+        number: 5,
+        head: { sha: '987654', ref: '123' },
+        base: { ref: '456' },
+    },
+};
 
 const annotations: Annotation[] = [
     {
@@ -49,7 +65,8 @@ describe('formatFailedTestsAnnotations', () => {
                     summary: 'Some summary',
                     failures: 'Failures',
                 },
-                annotations
+                annotations,
+                DEFAULT_OPTIONS
             )
         ).toMatchSnapshot();
     });
@@ -71,7 +88,8 @@ describe('formatFailedTestsAnnotations', () => {
                     summary: 'Some summary',
                     failures: 'Failures',
                 },
-                annotations
+                annotations,
+                { ...DEFAULT_OPTIONS, prNumber: null, pull_request: null }
             )
         ).toMatchSnapshot();
     });
@@ -93,7 +111,8 @@ describe('formatFailedTestsAnnotations', () => {
                     summary: 'Some summary',
                     failures: 'Failures',
                 },
-                new Array(53).fill(0).map(() => ({ ...annotations[0] }))
+                new Array(53).fill(0).map(() => ({ ...annotations[0] })),
+                { ...DEFAULT_OPTIONS, prNumber: null, pull_request: null }
             )
         ).toMatchSnapshot();
     });

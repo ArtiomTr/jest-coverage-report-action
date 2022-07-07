@@ -11,6 +11,12 @@ const DEFAULT_OPTIONS: Options = {
     annotations: 'all',
     packageManager: 'npm',
     skipStep: 'all',
+    prNumber: 7,
+    pull_request: {
+        number: 7,
+        head: { sha: '123456', ref: '123' },
+        base: { ref: '456' },
+    },
 };
 
 describe('generatePRReport', () => {

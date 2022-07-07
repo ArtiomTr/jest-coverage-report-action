@@ -74,7 +74,7 @@ export const run = async (
                 skip();
             }
 
-            await switchBranch(baseBranch);
+            await switchBranch(baseBranch as string);
         }
     );
 
@@ -176,7 +176,8 @@ export const run = async (
         await octokit.checks.create(
             formatFailedTestsAnnotations(
                 summaryReport!.runReport,
-                failedAnnotations
+                failedAnnotations,
+                options
             )
         );
     });
@@ -197,7 +198,7 @@ export const run = async (
 
         const octokit = getOctokit(options.token);
         await octokit.checks.create(
-            formatCoverageAnnotations(coverageAnnotations)
+            formatCoverageAnnotations(coverageAnnotations, options)
         );
     });
 

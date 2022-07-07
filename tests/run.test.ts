@@ -192,6 +192,10 @@ const defaultOptions: Options = {
         base: {
             ref: '123',
         },
+        head: {
+            sha: '73342',
+            ref: '456',
+        },
     },
 };
 

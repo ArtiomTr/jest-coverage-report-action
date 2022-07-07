@@ -11,6 +11,12 @@ const DEFAULT_OPTIONS: Options = {
     annotations: 'all',
     packageManager: 'npm',
     skipStep: 'all',
+    prNumber: 5,
+    pull_request: {
+        number: 5,
+        head: { sha: '123', ref: '123' },
+        base: { ref: '456' },
+    },
 };
 
 describe('fetchPreviousReport', () => {
