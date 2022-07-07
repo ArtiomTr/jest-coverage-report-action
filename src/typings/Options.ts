@@ -22,8 +22,8 @@ export type Options = {
     customTitle?: string;
     coverageFile?: string;
     baseCoverageFile?: string;
-    prNumber?: string;
-    pull_request?: {
+    prNumber?: null | number;
+    pull_request?: null | {
         [key: string]: any;
         number?: number;
         html_url?: string;
@@ -64,7 +64,7 @@ const optionSchema = yup.object().shape({
     customTitle: yup.string(),
     coverageFile: yup.string(),
     baseCoverageFile: yup.string(),
-    prNumber: yup.string(),
+    prNumber: yup.number().nullable(),
     pull_request: yup.object().nullable(),
 });
 
@@ -89,7 +89,7 @@ export const getOptions = async (): Promise<Options> => {
     const customTitle = getInput('custom-title');
     const coverageFile = getInput('coverage-file');
     const baseCoverageFile = getInput('base-coverage-file');
-    const prNumber = Number(
+    let prNumber: number | null = Number(
         getInput('pr-number') || context?.payload?.pull_request?.number
     );
 
@@ -104,6 +104,8 @@ export const getOptions = async (): Promise<Options> => {
             pull_number: prNumber,
         });
         pull_request = pr;
+    } else {
+        prNumber = null;
     }
 
     try {

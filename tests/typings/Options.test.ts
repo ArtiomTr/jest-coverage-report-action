@@ -39,6 +39,8 @@ describe('getOptions', () => {
             customTitle: 'title',
             coverageFile: 'file.json',
             baseCoverageFile: 'base.json',
+            prNumber: null,
+            pull_request: null,
         });
 
         clearInputMock();

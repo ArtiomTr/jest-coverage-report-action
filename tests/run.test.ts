@@ -186,6 +186,13 @@ const defaultOptions: Options = {
     annotations: 'all',
     packageManager: 'npm',
     skipStep: 'all',
+    prNumber: 345,
+    pull_request: {
+        number: 345,
+        base: {
+            ref: '123',
+        },
+    },
 };
 
 jest.mock('../src/typings/Options.ts');
@@ -297,7 +304,12 @@ describe('run', () => {
         expect(setFailed).not.toBeCalled();
     });
 
-    it('should run if not in PR', async () => {
+    it('should run if not in PR and no pr-number is supplied', async () => {
+        getOptionsMock.mockResolvedValue({
+            ...defaultOptions,
+            prNumber: null,
+            pull_request: null,
+        });
         mockContext({
             eventName: 'push',
             payload: {},
@@ -305,6 +317,19 @@ describe('run', () => {
         await run();
         expect(getCoverageMock).toBeCalledTimes(1);
         expect(switchBranchMock).not.toBeCalled();
+    });
+
+    it('should run if not in PR and pr-number is supplied', async () => {
+        mockContext({
+            eventName: 'push',
+            payload: {},
+        });
+        const dataCollector = createDataCollector<JsonReport>();
+        const dataCollectorAddSpy = jest.spyOn(dataCollector, 'add');
+        await run(dataCollector);
+        expect(getCoverageMock).toBeCalledTimes(2);
+        expect(switchBranchMock).toBeCalledWith('123');
+        expect(dataCollectorAddSpy).toBeCalledTimes(2);
     });
 
     describe('failedAnnotations', () => {
