@@ -21,13 +21,12 @@ import { runStage } from './utils/runStage';
 export const run = async (
     dataCollector = createDataCollector<JsonReport>()
 ) => {
-    const isInPR = context.eventName === 'pull_request';
-
     const [isInitialized, options] = await runStage(
         'initialize',
         dataCollector,
         getOptions
     );
+    const isInPR = !!options?.pull_request;
 
     if (!isInitialized || !options) {
         throw Error('Initialization failed.');
@@ -65,7 +64,7 @@ export const run = async (
         'switchToBase',
         dataCollector,
         async (skip) => {
-            const baseBranch = context.payload.pull_request?.base.ref;
+            const baseBranch = options?.pull_request?.base?.ref;
 
             // no need to switch branch when:
             // - this is not a PR
@@ -147,7 +146,7 @@ export const run = async (
                 summaryReport!.text,
                 options,
                 context.repo,
-                context.payload.pull_request!,
+                options.pull_request as { number: number },
                 octokit
             );
         } else {

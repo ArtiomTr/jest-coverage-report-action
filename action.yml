@@ -44,6 +44,9 @@ inputs:
     base-coverage-file:
         required: false
         description: Path to the report.json file to compare against. This should be from the branch the PR is merging into.
+    pr-number:
+        required: false
+        description: Pull Request number for this commit. Use if your action is running in a PR, but non on the pull_request event, so that you do not get multiple comments.
 runs:
     using: composite
     steps:
@@ -61,3 +64,4 @@ runs:
               INPUT_CUSTOM-TITLE: ${{ inputs.custom-title }}
               INPUT_COVERAGE-FILE: ${{ inputs.coverage-file }}
               INPUT_BASE-COVERAGE-FILE: ${{ inputs.base-coverage-file }}
+              INPUT_COMMENT_KEY: ${{ inputs.comment-key }}

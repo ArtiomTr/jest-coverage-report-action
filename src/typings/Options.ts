@@ -1,4 +1,5 @@
 import { getInput } from '@actions/core';
+import { context, getOctokit } from '@actions/github';
 import * as yup from 'yup';
 
 import { icons } from '../format/strings.json';
@@ -21,6 +22,13 @@ export type Options = {
     customTitle?: string;
     coverageFile?: string;
     baseCoverageFile?: string;
+    prNumber?: string;
+    pull_request?: {
+        [key: string]: any;
+        number?: number;
+        html_url?: string;
+        body?: string;
+    };
 };
 
 const validAnnotationOptions: Array<AnnotationType> = [
@@ -56,6 +64,8 @@ const optionSchema = yup.object().shape({
     customTitle: yup.string(),
     coverageFile: yup.string(),
     baseCoverageFile: yup.string(),
+    prNumber: yup.string(),
+    pull_request: yup.object().nullable(),
 });
 
 export const shouldInstallDeps = (skipStep: SkipStepType): Boolean =>
@@ -79,6 +89,22 @@ export const getOptions = async (): Promise<Options> => {
     const customTitle = getInput('custom-title');
     const coverageFile = getInput('coverage-file');
     const baseCoverageFile = getInput('base-coverage-file');
+    const prNumber = Number(
+        getInput('pr-number') || context?.payload?.pull_request?.number
+    );
+
+    const octokit = getOctokit(token);
+
+    let pull_request = null;
+
+    if (!Number.isNaN(prNumber)) {
+        const { data: pr } = await octokit.pulls.get({
+            owner: context.repo.owner,
+            repo: context.repo.repo,
+            pull_number: prNumber,
+        });
+        pull_request = pr;
+    }
 
     try {
         const options: Options = (await optionSchema.validate({
@@ -93,6 +119,8 @@ export const getOptions = async (): Promise<Options> => {
             customTitle,
             coverageFile,
             baseCoverageFile,
+            prNumber,
+            pull_request,
         })) as Options;
 
         return options;
