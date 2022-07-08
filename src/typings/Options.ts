@@ -1,4 +1,4 @@
-import { getInput, info } from '@actions/core';
+import { getInput } from '@actions/core';
 import { context, getOctokit } from '@actions/github';
 import * as yup from 'yup';
 
