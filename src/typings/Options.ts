@@ -77,7 +77,7 @@ export const getOptions = async (): Promise<Options> => {
     const token = getInput('github-token', {
         required: true,
     });
-
+    const octokit = getOctokit(token);
     const testScript = getInput('test-script');
     const threshold = getInput('threshold');
     const workingDirectory = getInput('working-directory');
@@ -91,31 +91,6 @@ export const getOptions = async (): Promise<Options> => {
     let prNumber: number | null = Number(
         getInput('prnumber') || context?.payload?.pull_request?.number
     );
-    info(
-        JSON.stringify(
-            {
-                rawNumber: getInput('prnumber'),
-                parsedNumber: Number(getInput('prnumber')),
-                testScript,
-                threshold,
-                workingDirectory,
-                iconType,
-                annotations,
-                packageManager,
-                skipStep,
-                customTitle,
-                coverageFile,
-                baseCoverageFile,
-                prNumber,
-                context,
-            },
-            null,
-            2
-        )
-    );
-
-    const octokit = getOctokit(token);
-
     let pull_request = null;
 
     if (!Number.isNaN(prNumber)) {
@@ -146,7 +121,6 @@ export const getOptions = async (): Promise<Options> => {
             pull_request,
         })) as Options;
 
-        info(JSON.stringify(options, null, 2));
         return options;
     } catch (err) {
         if (err instanceof yup.ValidationError) {
