@@ -43,10 +43,9 @@ on:
 jobs:
     coverage:
         permissions:
-          checks: write
-          pull-requests: write
-          contents: read
-          contents: write
+            checks: write
+            pull-requests: write
+            contents: write
         runs-on: ubuntu-latest
         steps:
             - uses: actions/checkout@v1
