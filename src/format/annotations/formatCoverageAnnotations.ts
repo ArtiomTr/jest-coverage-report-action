@@ -11,7 +11,7 @@ export const formatCoverageAnnotations = (
 ): CreateCheckOptions => ({
     ...context.repo,
     status: 'completed',
-    head_sha: options?.pull_request?.head?.sha ?? context.sha,
+    head_sha: options?.pullRequest?.head?.sha ?? context.sha,
     conclusion: 'success',
     name: i18n('coveredCheckName'),
     output: {

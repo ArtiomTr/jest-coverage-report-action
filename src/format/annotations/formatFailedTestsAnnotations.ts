@@ -14,7 +14,7 @@ export const formatFailedTestsAnnotations = (
 ): CreateCheckOptions => ({
     ...context.repo,
     status: 'completed',
-    head_sha: options?.pull_request?.head?.sha ?? context.sha,
+    head_sha: options?.pullRequest?.head?.sha ?? context.sha,
     conclusion: 'failure',
     name: i18n('failedTestsCheckName'),
     output: {

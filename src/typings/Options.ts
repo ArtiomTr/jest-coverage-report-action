@@ -9,7 +9,11 @@ export type IconType = keyof typeof icons;
 export type AnnotationType = 'all' | 'none' | 'coverage' | 'failed-tests';
 export type PackageManagerType = 'npm' | 'yarn' | 'pnpm';
 export type SkipStepType = 'all' | 'none' | 'install';
-
+export type PullRequest = {
+    base: { ref: string };
+    head: { ref: string; sha: string };
+    number: number;
+};
 export type Options = {
     token: string;
     testScript: string;
@@ -23,11 +27,7 @@ export type Options = {
     coverageFile?: string;
     baseCoverageFile?: string;
     prNumber: null | number;
-    pull_request: null | {
-        base: { ref: string };
-        head: { ref: string; sha: string };
-        number: number;
-    };
+    pullRequest: null | PullRequest;
 };
 
 const validAnnotationOptions: Array<AnnotationType> = [
@@ -64,7 +64,7 @@ const optionSchema = yup.object().shape({
     coverageFile: yup.string(),
     baseCoverageFile: yup.string(),
     prNumber: yup.number().nullable(),
-    pull_request: yup.object().nullable(),
+    pullRequest: yup.object().nullable(),
 });
 
 export const shouldInstallDeps = (skipStep: SkipStepType): Boolean =>
@@ -88,20 +88,18 @@ export const getOptions = async (): Promise<Options> => {
     const customTitle = getInput('custom-title');
     const coverageFile = getInput('coverage-file');
     const baseCoverageFile = getInput('base-coverage-file');
-    let prNumber: number | null = Number(
+    const prNumber: number | null = Number(
         getInput('prnumber') || context?.payload?.pull_request?.number
     );
-    let pull_request = null;
+    let pullRequest = context?.payload?.pull_request || null;
 
-    if (!Number.isNaN(prNumber)) {
+    if (!pullRequest && !Number.isNaN(prNumber)) {
         const { data: pr } = await octokit.pulls.get({
             owner: context.repo.owner,
             repo: context.repo.repo,
             pull_number: prNumber,
         });
-        pull_request = pr;
-    } else {
-        prNumber = null;
+        pullRequest = pr as PullRequest;
     }
 
     try {
@@ -117,8 +115,8 @@ export const getOptions = async (): Promise<Options> => {
             customTitle,
             coverageFile,
             baseCoverageFile,
-            prNumber,
-            pull_request,
+            prNumber: prNumber || null,
+            pullRequest,
         })) as Options;
 
         return options;

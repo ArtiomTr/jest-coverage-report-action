@@ -1,4 +1,5 @@
 import * as all from '@actions/core';
+import * as allGh from '@actions/github';
 import { ObjectSchema } from 'yup';
 
 import {
@@ -8,7 +9,18 @@ import {
 } from '../../src/typings/Options';
 
 const { mockInput, clearInputMock } = all as any;
+const { mockContext, getOctokit } = allGh as any;
 
+const pr = {
+    base: {
+        ref: '123',
+    },
+    head: {
+        ref: '456',
+        sha: '123456789',
+    },
+    number: 1234,
+};
 const options = {
     ['github-token']: 'TOKEN',
     ['test-script']: 'npm run test:coverage',
@@ -22,8 +34,43 @@ const options = {
     ['coverage-file']: 'file.json',
     ['base-coverage-file']: 'base.json',
 };
+const OctokitMock = () => ({
+    pulls: {
+        get: jest.fn(() => ({ data: pr })),
+    },
+});
+const baseContext = {
+    repo: {
+        owner: 'test',
+        repo: 'test-repo',
+    },
+};
+const prContext = {
+    ...baseContext,
+    eventName: 'pull_request',
+    payload: {
+        pull_request: pr,
+    },
+};
+const pushContext = {
+    ...baseContext,
+    eventName: 'push',
+    payload: {},
+};
 
 describe('getOptions', () => {
+    let octokit: ReturnType<typeof OctokitMock>;
+
+    beforeEach(() => {
+        octokit = OctokitMock();
+        getOctokit.mockReturnValueOnce(octokit);
+        mockContext(pushContext);
+    });
+
+    afterEach(() => {
+        clearInputMock();
+    });
+
     it('should return options object', async () => {
         mockInput(options);
 
@@ -40,10 +87,8 @@ describe('getOptions', () => {
             coverageFile: 'file.json',
             baseCoverageFile: 'base.json',
             prNumber: null,
-            pull_request: null,
+            pullRequest: null,
         });
-
-        clearInputMock();
     });
 
     it('should validate input', async () => {
@@ -77,7 +122,6 @@ describe('getOptions', () => {
 
         mockInput({ ...options, ['threshold']: 'asdf' });
         await expect(getOptions()).resolves.toBeDefined();
-        clearInputMock();
     });
 
     it('should throw non-validation error', async () => {
@@ -92,6 +136,90 @@ describe('getOptions', () => {
         );
 
         ObjectSchema.prototype.validate = validate;
+    });
+
+    it('should use pull_request from context if it exists', async () => {
+        mockContext(prContext);
+        mockInput(options);
+
+        expect(await getOptions()).toStrictEqual({
+            token: 'TOKEN',
+            testScript: 'npm run test:coverage',
+            threshold: 80,
+            workingDirectory: 'dir',
+            iconType: 'ascii',
+            annotations: 'all',
+            packageManager: 'npm',
+            skipStep: 'none',
+            customTitle: 'title',
+            coverageFile: 'file.json',
+            baseCoverageFile: 'base.json',
+            prNumber: 1234,
+            pullRequest: pr,
+        });
+    });
+
+    it('should lookup pullRequest from input prnumber if it exists and no pull_request is on context', async () => {
+        mockContext(pushContext);
+        mockInput({ ...options, prnumber: '1234' });
+        expect(await getOptions()).toStrictEqual({
+            token: 'TOKEN',
+            testScript: 'npm run test:coverage',
+            threshold: 80,
+            workingDirectory: 'dir',
+            iconType: 'ascii',
+            annotations: 'all',
+            packageManager: 'npm',
+            skipStep: 'none',
+            customTitle: 'title',
+            coverageFile: 'file.json',
+            baseCoverageFile: 'base.json',
+            prNumber: 1234,
+            pullRequest: pr,
+        });
+        expect(octokit.pulls.get).toBeCalledTimes(1);
+    });
+
+    it('should not lookup pullRequest from prNumber if pull_request does exist on context', async () => {
+        mockContext(prContext);
+        mockInput({ ...options, prnumber: '1234' });
+        expect(await getOptions()).toStrictEqual({
+            token: 'TOKEN',
+            testScript: 'npm run test:coverage',
+            threshold: 80,
+            workingDirectory: 'dir',
+            iconType: 'ascii',
+            annotations: 'all',
+            packageManager: 'npm',
+            skipStep: 'none',
+            customTitle: 'title',
+            coverageFile: 'file.json',
+            baseCoverageFile: 'base.json',
+            prNumber: 1234,
+            pullRequest: pr,
+        });
+        expect(octokit.pulls.get).not.toBeCalled();
+    });
+
+    it('should return null prNumber and pullRequest with no prnumber input on push context', async () => {
+        mockContext(pushContext);
+        mockInput(options);
+        expect(await getOptions()).toStrictEqual({
+            token: 'TOKEN',
+            testScript: 'npm run test:coverage',
+            threshold: 80,
+            workingDirectory: 'dir',
+            iconType: 'ascii',
+            annotations: 'all',
+            packageManager: 'npm',
+            skipStep: 'none',
+            customTitle: 'title',
+            coverageFile: 'file.json',
+            baseCoverageFile: 'base.json',
+            prNumber: null,
+            pullRequest: null,
+        });
+        expect(octokit.pulls.get).not.toBeCalled();
     });
 });
 

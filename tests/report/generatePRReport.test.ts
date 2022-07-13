@@ -12,7 +12,7 @@ const DEFAULT_OPTIONS: Options = {
     packageManager: 'npm',
     skipStep: 'all',
     prNumber: 7,
-    pull_request: {
+    pullRequest: {
         number: 7,
         head: { sha: '123456', ref: '123' },
         base: { ref: '456' },

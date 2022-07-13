@@ -1,4 +1,4 @@
-import { info, setFailed } from '@actions/core';
+import { setFailed } from '@actions/core';
 import { context, getOctokit } from '@actions/github';
 
 import { createCoverageAnnotations } from './annotations/createCoverageAnnotations';
@@ -26,7 +26,7 @@ export const run = async (
         dataCollector,
         getOptions
     );
-    const isInPR = !!options?.pull_request;
+    const isInPR = !!options?.pullRequest;
 
     if (!isInitialized || !options) {
         throw Error('Initialization failed.');
@@ -64,7 +64,7 @@ export const run = async (
         'switchToBase',
         dataCollector,
         async (skip) => {
-            const baseBranch = options?.pull_request?.base?.ref;
+            const baseBranch = options?.pullRequest?.base?.ref;
 
             // no need to switch branch when:
             // - this is not a PR
@@ -146,7 +146,7 @@ export const run = async (
                 summaryReport!.text,
                 options,
                 context.repo,
-                options.pull_request as { number: number },
+                options.pullRequest as { number: number },
                 octokit
             );
         } else {

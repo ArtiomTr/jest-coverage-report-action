@@ -22,7 +22,7 @@ const defaultOptions: Options = {
     packageManager: 'npm',
     skipStep: 'none',
     prNumber: null,
-    pull_request: null,
+    pullRequest: null,
 };
 
 const clearMocks = () => {

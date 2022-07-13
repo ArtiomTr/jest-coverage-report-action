@@ -187,7 +187,7 @@ const defaultOptions: Options = {
     packageManager: 'npm',
     skipStep: 'all',
     prNumber: 345,
-    pull_request: {
+    pullRequest: {
         number: 345,
         base: {
             ref: '123',
@@ -312,7 +312,7 @@ describe('run', () => {
         getOptionsMock.mockResolvedValue({
             ...defaultOptions,
             prNumber: null,
-            pull_request: null,
+            pullRequest: null,
         });
         mockContext({
             eventName: 'push',

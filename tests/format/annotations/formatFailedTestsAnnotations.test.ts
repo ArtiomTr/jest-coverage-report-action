@@ -14,7 +14,7 @@ const DEFAULT_OPTIONS: Options = {
     packageManager: 'npm',
     skipStep: 'all',
     prNumber: 5,
-    pull_request: {
+    pullRequest: {
         number: 5,
         head: { sha: '987654', ref: '123' },
         base: { ref: '456' },
@@ -89,7 +89,7 @@ describe('formatFailedTestsAnnotations', () => {
                     failures: 'Failures',
                 },
                 annotations,
-                { ...DEFAULT_OPTIONS, prNumber: null, pull_request: null }
+                { ...DEFAULT_OPTIONS, prNumber: null, pullRequest: null }
             )
         ).toMatchSnapshot();
     });
@@ -112,7 +112,7 @@ describe('formatFailedTestsAnnotations', () => {
                     failures: 'Failures',
                 },
                 new Array(53).fill(0).map(() => ({ ...annotations[0] })),
-                { ...DEFAULT_OPTIONS, prNumber: null, pull_request: null }
+                { ...DEFAULT_OPTIONS, prNumber: null, pullRequest: null }
             )
         ).toMatchSnapshot();
     });
