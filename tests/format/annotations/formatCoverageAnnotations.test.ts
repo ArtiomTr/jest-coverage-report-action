@@ -2,8 +2,24 @@ import * as all from '@actions/github';
 
 import { Annotation } from '../../../src/annotations/Annotation';
 import { formatCoverageAnnotations } from '../../../src/format/annotations/formatCoverageAnnotations';
+import { Options } from '../../../src/typings/Options';
 
 const { mockContext, clearContextMock } = all as any;
+
+const DEFAULT_OPTIONS: Options = {
+    token: '',
+    testScript: '',
+    iconType: 'emoji',
+    annotations: 'all',
+    packageManager: 'npm',
+    skipStep: 'all',
+    prNumber: 5,
+    pullRequest: {
+        number: 5,
+        head: { sha: '123456', ref: '123' },
+        base: { ref: '456' },
+    },
+};
 
 const annotations: Annotation[] = [
     {
@@ -62,7 +78,9 @@ describe('formatCoverageAnnotations', () => {
             },
         });
 
-        expect(formatCoverageAnnotations(annotations)).toMatchSnapshot();
+        expect(
+            formatCoverageAnnotations(annotations, DEFAULT_OPTIONS)
+        ).toMatchSnapshot();
     });
 
     it('should format annotations for commit', () => {
@@ -71,7 +89,13 @@ describe('formatCoverageAnnotations', () => {
             sha: '111111',
         });
 
-        expect(formatCoverageAnnotations(annotations)).toMatchSnapshot();
+        expect(
+            formatCoverageAnnotations(annotations, {
+                ...DEFAULT_OPTIONS,
+                prNumber: null,
+                pullRequest: null,
+            })
+        ).toMatchSnapshot();
     });
 
     it('should leave only 50 annotations', () => {
@@ -84,7 +108,12 @@ describe('formatCoverageAnnotations', () => {
             formatCoverageAnnotations(
                 new Array(52).fill(0).map(() => ({
                     ...annotations[0],
-                }))
+                })),
+                {
+                    ...DEFAULT_OPTIONS,
+                    prNumber: null,
+                    pullRequest: null,
+                }
             )
         ).toMatchSnapshot();
     });

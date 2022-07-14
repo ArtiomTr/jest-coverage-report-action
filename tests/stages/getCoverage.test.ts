@@ -21,6 +21,8 @@ const defaultOptions: Options = {
     annotations: 'all',
     packageManager: 'npm',
     skipStep: 'none',
+    prNumber: null,
+    pullRequest: null,
 };
 
 const clearMocks = () => {

@@ -3,16 +3,18 @@ import { context } from '@actions/github';
 import { CreateCheckOptions } from './CreateCheckOptions';
 import { getFailedTestsAnnotationsBody } from './getFailedTestsAnnotationsBody';
 import { Annotation } from '../../annotations/Annotation';
+import { Options } from '../../typings/Options';
 import { TestRunReport } from '../../typings/Report';
 import { i18n } from '../../utils/i18n';
 
 export const formatFailedTestsAnnotations = (
     runReport: TestRunReport,
-    annotations: Array<Annotation>
+    annotations: Array<Annotation>,
+    options: Options
 ): CreateCheckOptions => ({
     ...context.repo,
     status: 'completed',
-    head_sha: context.payload.pull_request?.head.sha ?? context.sha,
+    head_sha: options?.pullRequest?.head?.sha ?? context.sha,
     conclusion: 'failure',
     name: i18n('failedTestsCheckName'),
     output: {

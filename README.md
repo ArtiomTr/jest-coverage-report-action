@@ -191,6 +191,37 @@ Accepted values are:
 -   `coverage` - Will annotate those sections of your code that test did not cover
 -   `failed-tests` - Will annotate those sections of your code that failed test
 
+## Pull Request Number
+
+If you are using the `push` event to trigger this action, by default it does not know which PR to comment on or the base branch of the PR to compare code coverage with.
+
+You can pass the `prnumber` to the action so that coverage change can be run and comments will be updated on each push, instead of creating a new comment with each run of the action.
+
+You can find the PR number with a number of methods, the [jwalton/gh-find-current-pr](https://github.com/jwalton/gh-find-current-pr) action makes it easy:
+
+```yml
+name: 'coverage'
+on:
+    push:
+        branches:
+            - master
+            - main
+jobs:
+    coverage:
+        permissions:
+            checks: write
+            pull-requests: write
+            contents: write
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@v1
+            - uses: jwalton/gh-find-current-pr@v1
+                id: findPr
+            - uses: ArtiomTr/jest-coverage-report-action@v2
+                with:
+                   prnumber: ${{ steps.findPr.outputs.number }}
+```
+
 ## Contributing
 
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.

@@ -1,4 +1,5 @@
 import { getInput } from '@actions/core';
+import { context, getOctokit } from '@actions/github';
 import * as yup from 'yup';
 
 import { icons } from '../format/strings.json';
@@ -8,7 +9,11 @@ export type IconType = keyof typeof icons;
 export type AnnotationType = 'all' | 'none' | 'coverage' | 'failed-tests';
 export type PackageManagerType = 'npm' | 'yarn' | 'pnpm';
 export type SkipStepType = 'all' | 'none' | 'install';
-
+export type PullRequest = {
+    base: { ref: string };
+    head: { ref: string; sha: string };
+    number: number;
+};
 export type Options = {
     token: string;
     testScript: string;
@@ -21,6 +26,8 @@ export type Options = {
     customTitle?: string;
     coverageFile?: string;
     baseCoverageFile?: string;
+    prNumber: null | number;
+    pullRequest: null | PullRequest;
 };
 
 const validAnnotationOptions: Array<AnnotationType> = [
@@ -56,6 +63,8 @@ const optionSchema = yup.object().shape({
     customTitle: yup.string(),
     coverageFile: yup.string(),
     baseCoverageFile: yup.string(),
+    prNumber: yup.number().nullable(),
+    pullRequest: yup.object().nullable(),
 });
 
 export const shouldInstallDeps = (skipStep: SkipStepType): Boolean =>
@@ -68,7 +77,7 @@ export const getOptions = async (): Promise<Options> => {
     const token = getInput('github-token', {
         required: true,
     });
-
+    const octokit = getOctokit(token);
     const testScript = getInput('test-script');
     const threshold = getInput('threshold');
     const workingDirectory = getInput('working-directory');
@@ -79,6 +88,19 @@ export const getOptions = async (): Promise<Options> => {
     const customTitle = getInput('custom-title');
     const coverageFile = getInput('coverage-file');
     const baseCoverageFile = getInput('base-coverage-file');
+    const prNumber: number | null = Number(
+        getInput('prnumber') || context?.payload?.pull_request?.number
+    );
+    let pullRequest = context?.payload?.pull_request || null;
+
+    if (!pullRequest && !Number.isNaN(prNumber)) {
+        const { data: pr } = await octokit.pulls.get({
+            owner: context.repo.owner,
+            repo: context.repo.repo,
+            pull_number: prNumber,
+        });
+        pullRequest = pr as PullRequest;
+    }
 
     try {
         const options: Options = (await optionSchema.validate({
@@ -93,6 +115,8 @@ export const getOptions = async (): Promise<Options> => {
             customTitle,
             coverageFile,
             baseCoverageFile,
+            prNumber: prNumber || null,
+            pullRequest,
         })) as Options;
 
         return options;
