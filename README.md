@@ -267,6 +267,7 @@ Jest Coverage Report action is made with <3 thanks to these wonderful people
     <td align="center"><a href="http://armfazh.github.io"><img src="https://avatars.githubusercontent.com/u/10335519?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Armando Faz</b></sub></a><br /><a href="https://github.com/ArtiomTr/jest-coverage-report-action/commits?author=armfazh" title="Code">💻</a></td>
     <td align="center"><a href="https://github.com/maciejtutak"><img src="https://avatars.githubusercontent.com/u/10584953?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Maciej Tutak</b></sub></a><br /><a href="https://github.com/ArtiomTr/jest-coverage-report-action/commits?author=maciejtutak" title="Code">💻</a></td>
     <td align="center"><a href="http://www.nikodev.ca"><img src="https://avatars.githubusercontent.com/u/34389859?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Niko Oshinov</b></sub></a><br /><a href="https://github.com/ArtiomTr/jest-coverage-report-action/commits?author=nikodevv" title="Documentation">📖</a></td>
+    <td align="center"><a href="http://dalefenton.com/"><img src="https://avatars.githubusercontent.com/u/16996057?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Dale Fenton</b></sub></a><br /><a href="https://github.com/ArtiomTr/jest-coverage-report-action/commits?author=dalevfenton" title="Documentation">📖</a> <a href="https://github.com/ArtiomTr/jest-coverage-report-action/commits?author=dalevfenton" title="Code">💻</a></td>
   </tr>
 </table>
 

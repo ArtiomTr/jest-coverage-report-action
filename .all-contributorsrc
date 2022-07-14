@@ -236,6 +236,16 @@
       "contributions": [
         "doc"
       ]
+    },
+    {
+      "login": "dalevfenton",
+      "name": "Dale Fenton",
+      "avatar_url": "https://avatars.githubusercontent.com/u/16996057?v=4",
+      "profile": "http://dalefenton.com/",
+      "contributions": [
+        "doc",
+        "code"
+      ]
     }
   ],
   "projectName": "jest-coverage-report-action",
