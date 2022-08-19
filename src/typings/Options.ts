@@ -6,7 +6,12 @@ import { icons } from '../format/strings.json';
 
 export type IconType = keyof typeof icons;
 
-export type AnnotationType = 'all' | 'none' | 'coverage' | 'failed-tests';
+export type AnnotationType =
+    | 'all'
+    | 'none'
+    | 'coverage'
+    | 'failed-tests'
+    | 'changed-coverage';
 export type PackageManagerType = 'npm' | 'yarn' | 'pnpm';
 export type SkipStepType = 'all' | 'none' | 'install';
 export type PullRequest = {
@@ -34,6 +39,7 @@ const validAnnotationOptions: Array<AnnotationType> = [
     'all',
     'none',
     'coverage',
+    'changed-coverage',
     'failed-tests',
 ];
 

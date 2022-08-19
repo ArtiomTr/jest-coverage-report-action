@@ -6,7 +6,7 @@ export function onlyChanged(
     annotations: Annotation[],
     patchContent: string
 ): Annotation[] {
-    const addedLines: { [key: string]: number[] } = indexAddedLines(
+    const addedLines: { [key: string]: number[] | undefined } = indexAddedLines(
         patchContent
     );
     return annotations.filter((a) => isInAddedLines(a, addedLines));
@@ -14,10 +14,10 @@ export function onlyChanged(
 
 function isInAddedLines(
     a: Annotation,
-    addedLines: { [key: string]: number[] }
+    addedLines: { [key: string]: number[] | undefined }
 ): boolean {
     return [...range(a.start_line, a.end_line)].some((line: number) =>
-        addedLines[a.path].some((added) => added === line)
+        addedLines[a.path]?.some((added) => added === line)
     );
 }
 

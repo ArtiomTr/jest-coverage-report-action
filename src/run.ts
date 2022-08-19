@@ -3,6 +3,7 @@ import { context, getOctokit } from '@actions/github';
 
 import { createCoverageAnnotations } from './annotations/createCoverageAnnotations';
 import { createFailedTestsAnnotations } from './annotations/createFailedTestsAnnotations';
+import { onlyChanged } from './filters/onlyChanged';
 import { formatCoverageAnnotations } from './format/annotations/formatCoverageAnnotations';
 import { formatFailedTestsAnnotations } from './format/annotations/formatFailedTestsAnnotations';
 import { generateCommitReport } from './report/generateCommitReport';
@@ -12,9 +13,10 @@ import { createReport } from './stages/createReport';
 import { getCoverage } from './stages/getCoverage';
 import { switchBack, switchBranch } from './stages/switchBranch';
 import { JsonReport } from './typings/JsonReport';
-import { getOptions } from './typings/Options';
+import { getOptions, Options } from './typings/Options';
 import { createDataCollector, DataCollector } from './utils/DataCollector';
 import { getNormalThreshold } from './utils/getNormalThreshold';
+import { getPrPatch } from './utils/getPrPatch';
 import { i18n } from './utils/i18n';
 import { runStage } from './utils/runStage';
 
@@ -185,18 +187,27 @@ export const run = async (
     await runStage('coverageAnnotations', dataCollector, async (skip) => {
         if (
             !isHeadCoverageGenerated ||
-            !['all', 'coverage'].includes(options.annotations)
+            !['all', 'coverage', 'changed-coverage'].includes(
+                options.annotations
+            )
         ) {
             skip();
         }
 
-        const coverageAnnotations = createCoverageAnnotations(headCoverage!);
+        let coverageAnnotations = createCoverageAnnotations(headCoverage!);
 
         if (coverageAnnotations.length === 0) {
             skip();
         }
 
         const octokit = getOctokit(options.token);
+        if (
+            options.annotations === 'changed-coverage' &&
+            options.pullRequest?.number
+        ) {
+            const patch = await getPrPatch(octokit, options);
+            coverageAnnotations = onlyChanged(coverageAnnotations, patch);
+        }
         await octokit.checks.create(
             formatCoverageAnnotations(coverageAnnotations, options)
         );
@@ -206,3 +217,4 @@ export const run = async (
         setFailed(i18n('failed'));
     }
 };
+
