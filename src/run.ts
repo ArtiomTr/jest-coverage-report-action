@@ -13,7 +13,7 @@ import { createReport } from './stages/createReport';
 import { getCoverage } from './stages/getCoverage';
 import { switchBack, switchBranch } from './stages/switchBranch';
 import { JsonReport } from './typings/JsonReport';
-import { getOptions, Options } from './typings/Options';
+import { getOptions } from './typings/Options';
 import { createDataCollector, DataCollector } from './utils/DataCollector';
 import { getNormalThreshold } from './utils/getNormalThreshold';
 import { getPrPatch } from './utils/getPrPatch';
@@ -187,9 +187,7 @@ export const run = async (
     await runStage('coverageAnnotations', dataCollector, async (skip) => {
         if (
             !isHeadCoverageGenerated ||
-            !['all', 'coverage', 'changed-coverage'].includes(
-                options.annotations
-            )
+            !['all', 'coverage'].includes(options.annotations)
         ) {
             skip();
         }
@@ -201,10 +199,7 @@ export const run = async (
         }
 
         const octokit = getOctokit(options.token);
-        if (
-            options.annotations === 'changed-coverage' &&
-            options.pullRequest?.number
-        ) {
+        if (options.pullRequest?.number) {
             const patch = await getPrPatch(octokit, options);
             coverageAnnotations = onlyChanged(coverageAnnotations, patch);
         }
@@ -217,4 +212,3 @@ export const run = async (
         setFailed(i18n('failed'));
     }
 };
-
