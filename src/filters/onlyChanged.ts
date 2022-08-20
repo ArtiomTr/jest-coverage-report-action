@@ -1,27 +1,25 @@
 import parseDiff from 'parse-diff';
 
 import { Annotation } from '../annotations/Annotation';
+interface LineIndex {
+    [key: string]: number[] | undefined;
+}
 
 export function onlyChanged(
     annotations: Annotation[],
     patchContent: string
 ): Annotation[] {
-    const addedLines: { [key: string]: number[] | undefined } = indexAddedLines(
-        patchContent
-    );
+    const addedLines: LineIndex = indexAddedLines(patchContent);
     return annotations.filter((a) => isInAddedLines(a, addedLines));
 }
 
-function isInAddedLines(
-    a: Annotation,
-    addedLines: { [key: string]: number[] | undefined }
-): boolean {
+function isInAddedLines(a: Annotation, addedLines: LineIndex): boolean {
     return [...range(a.start_line, a.end_line)].some((line: number) =>
         addedLines[a.path]?.some((added) => added === line)
     );
 }
 
-function indexAddedLines(patchContent: string) {
+function indexAddedLines(patchContent: string): LineIndex {
     const patch = parseDiff(patchContent);
     const addedLines: { [key: string]: number[] } = {};
     for (const file of patch) {
