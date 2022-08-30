@@ -25,7 +25,7 @@ inputs:
         default: emoji
     annotations:
         required: false
-        description: 'What type of annotations show. Options: none, coverage, changed-coverage, failed-tests, all'
+        description: 'What type of annotations show. Options: none, coverage, failed-tests, all'
         default: all
     package-manager:
         required: false
