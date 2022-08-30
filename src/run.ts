@@ -1,4 +1,4 @@
-import { setFailed } from '@actions/core';
+import { setFailed, setOutput } from '@actions/core';
 import { context, getOctokit } from '@actions/github';
 
 import { createCoverageAnnotations } from './annotations/createCoverageAnnotations';
@@ -137,7 +137,7 @@ export const run = async (
     );
 
     await runStage('publishReport', dataCollector, async (skip) => {
-        if (!isReportContentGenerated) {
+        if (!isReportContentGenerated || !options.output.includes('comment')) {
             skip();
         }
 
@@ -157,6 +157,19 @@ export const run = async (
                 context.repo,
                 octokit
             );
+        }
+    });
+
+    await runStage('setOutputs', dataCollector, (skip) => {
+        if (
+            !isReportContentGenerated ||
+            !options.output.includes('report-markdown')
+        ) {
+            skip();
+        }
+
+        if (options.output.includes('report-markdown')) {
+            setOutput('report', summaryReport!.text);
         }
     });
 
