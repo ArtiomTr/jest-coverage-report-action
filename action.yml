@@ -54,11 +54,13 @@ inputs:
 outputs:
     report:
         description: Generated markdown report. Exists only if input option "output" is set to "report-markdown".
+        value: ${{ steps.main.outputs.report }}
 runs:
     using: composite
     steps:
         - run: $GITHUB_ACTION_PATH/run.sh
           shell: bash
+          id: main
           env:
               INPUT_GITHUB-TOKEN: ${{ inputs.github-token }}
               INPUT_TEST-SCRIPT: ${{ inputs.test-script }}

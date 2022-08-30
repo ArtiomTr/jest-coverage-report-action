@@ -169,7 +169,7 @@ export const run = async (
         }
 
         if (options.output.includes('report-markdown')) {
-            setOutput('HELLO_WORLD', 'Hello!');
+            setOutput('report', summaryReport!.text);
         }
     });
 
