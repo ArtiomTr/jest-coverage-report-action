@@ -19,6 +19,7 @@ const DEFAULT_OPTIONS: Options = {
         head: { sha: '123456', ref: '123' },
         base: { ref: '456' },
     },
+    output: ['comment'],
 };
 
 const annotations: Annotation[] = [

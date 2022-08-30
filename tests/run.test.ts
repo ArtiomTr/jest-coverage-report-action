@@ -197,6 +197,7 @@ const defaultOptions: Options = {
             ref: '456',
         },
     },
+    output: ['comment'],
 };
 
 jest.mock('../src/typings/Options.ts');

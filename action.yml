@@ -47,6 +47,10 @@ inputs:
     prnumber:
         required: false
         description: Pull Request number for this commit. Use if your action is running in a PR, but non on the pull_request event, so that you do not get multiple comments.
+    output:
+        required: false
+        description: What output should action produce? `comment` - add comment to PR, `report-markdown` - report markdown text in "outputs.reportMarkdown".
+        default: comment
 runs:
     using: composite
     steps:
@@ -65,3 +69,4 @@ runs:
               INPUT_COVERAGE-FILE: ${{ inputs.coverage-file }}
               INPUT_BASE-COVERAGE-FILE: ${{ inputs.base-coverage-file }}
               INPUT_PRNUMBER: ${{ inputs.prnumber }}
+              INPUT_OUTPUT: ${{ inputs.output }}
