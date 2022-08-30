@@ -24,6 +24,7 @@
         "fs-extra": "^10.0.0",
         "markdown-table": "^2.0.0",
         "micromatch": "^4.0.4",
+        "parse-diff": "^0.9.0",
         "semver": "^7.3.5",
         "strip-ansi": "^6.0.0",
         "yup": "^0.32.9"

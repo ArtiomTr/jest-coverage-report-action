@@ -188,7 +188,7 @@ Accepted values are:
 
 -   `all` (default) - Will annotate sections of your code that failed tests or test did not cover
 -   `none` - Turns off annotations
--   `coverage` - Will annotate those sections of your code that test did not cover
+-   `coverage` - Will annotate those sections of your code that test did not cover. Limited to changed lines when used on a Pull Request
 -   `failed-tests` - Will annotate those sections of your code that failed test
 
 ## Pull Request Number
@@ -268,6 +268,7 @@ Jest Coverage Report action is made with <3 thanks to these wonderful people
     <td align="center"><a href="https://github.com/maciejtutak"><img src="https://avatars.githubusercontent.com/u/10584953?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Maciej Tutak</b></sub></a><br /><a href="https://github.com/ArtiomTr/jest-coverage-report-action/commits?author=maciejtutak" title="Code">💻</a></td>
     <td align="center"><a href="http://www.nikodev.ca"><img src="https://avatars.githubusercontent.com/u/34389859?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Niko Oshinov</b></sub></a><br /><a href="https://github.com/ArtiomTr/jest-coverage-report-action/commits?author=nikodevv" title="Documentation">📖</a></td>
     <td align="center"><a href="http://dalefenton.com/"><img src="https://avatars.githubusercontent.com/u/16996057?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Dale Fenton</b></sub></a><br /><a href="https://github.com/ArtiomTr/jest-coverage-report-action/commits?author=dalevfenton" title="Documentation">📖</a> <a href="https://github.com/ArtiomTr/jest-coverage-report-action/commits?author=dalevfenton" title="Code">💻</a></td>
+    <td align="center"><a href="http://projects.flo.by"><img src="https://avatars.githubusercontent.com/u/235570?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Florent Jaby</b></sub></a><br /><a href="https://github.com/ArtiomTr/jest-coverage-report-action/commits?author=Floby" title="Code">💻</a></td>
   </tr>
 </table>
 

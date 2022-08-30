@@ -3,6 +3,7 @@ import { context, getOctokit } from '@actions/github';
 
 import { createCoverageAnnotations } from './annotations/createCoverageAnnotations';
 import { createFailedTestsAnnotations } from './annotations/createFailedTestsAnnotations';
+import { onlyChanged } from './filters/onlyChanged';
 import { formatCoverageAnnotations } from './format/annotations/formatCoverageAnnotations';
 import { formatFailedTestsAnnotations } from './format/annotations/formatFailedTestsAnnotations';
 import { generateCommitReport } from './report/generateCommitReport';
@@ -15,6 +16,7 @@ import { JsonReport } from './typings/JsonReport';
 import { getOptions } from './typings/Options';
 import { createDataCollector, DataCollector } from './utils/DataCollector';
 import { getNormalThreshold } from './utils/getNormalThreshold';
+import { getPrPatch } from './utils/getPrPatch';
 import { i18n } from './utils/i18n';
 import { runStage } from './utils/runStage';
 
@@ -190,13 +192,17 @@ export const run = async (
             skip();
         }
 
-        const coverageAnnotations = createCoverageAnnotations(headCoverage!);
+        let coverageAnnotations = createCoverageAnnotations(headCoverage!);
 
         if (coverageAnnotations.length === 0) {
             skip();
         }
 
         const octokit = getOctokit(options.token);
+        if (options.pullRequest?.number) {
+            const patch = await getPrPatch(octokit, options);
+            coverageAnnotations = onlyChanged(coverageAnnotations, patch);
+        }
         await octokit.checks.create(
             formatCoverageAnnotations(coverageAnnotations, options)
         );

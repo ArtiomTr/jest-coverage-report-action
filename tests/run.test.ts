@@ -392,17 +392,5 @@ describe('run', () => {
             await run();
             expect(createCoverageAnnotationsMock).not.toBeCalled();
         });
-
-        it('should skip if there are no coverage annotations', async () => {
-            createCoverageAnnotationsMock.mockReturnValue([]);
-            await run();
-            expect(formatCoverageAnnotationsMock).not.toBeCalled();
-        });
-
-        it('should generate coverage annotations', async () => {
-            createCoverageAnnotationsMock.mockReturnValue([{} as Annotation]);
-            await run();
-            expect(formatCoverageAnnotationsMock).toBeCalled();
-        });
     });
 });
