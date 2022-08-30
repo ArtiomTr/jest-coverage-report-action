@@ -20,8 +20,10 @@ describe('generateCommitReport', () => {
                 repo: 'test-repository',
             },
             ({
-                repos: {
-                    createCommitComment,
+                rest: {
+                    repos: {
+                        createCommitComment,
+                    },
                 },
             } as unknown) as ReturnType<typeof getOctokit>
         );

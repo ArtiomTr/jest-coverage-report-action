@@ -188,7 +188,7 @@ export const run = async (
         }
 
         const octokit = getOctokit(options.token);
-        await octokit.checks.create(
+        await octokit.rest.checks.create(
             formatFailedTestsAnnotations(
                 summaryReport!.runReport,
                 failedAnnotations,
@@ -216,7 +216,7 @@ export const run = async (
             const patch = await getPrPatch(octokit, options);
             coverageAnnotations = onlyChanged(coverageAnnotations, patch);
         }
-        await octokit.checks.create(
+        await octokit.rest.checks.create(
             formatCoverageAnnotations(coverageAnnotations, options)
         );
     });

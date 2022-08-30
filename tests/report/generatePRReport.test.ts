@@ -37,9 +37,11 @@ describe('generatePRReport', () => {
                 number: 7,
             },
             ({
-                issues: {
-                    updateComment,
-                    createComment,
+                rest: {
+                    issues: {
+                        updateComment,
+                        createComment,
+                    },
                 },
                 paginate,
             } as unknown) as ReturnType<typeof getOctokit>
@@ -76,9 +78,11 @@ describe('generatePRReport', () => {
                 number: 7,
             },
             ({
-                issues: {
-                    updateComment,
-                    createComment,
+                rest: {
+                    issues: {
+                        updateComment,
+                        createComment,
+                    },
                 },
                 paginate,
             } as unknown) as ReturnType<typeof getOctokit>

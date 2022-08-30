@@ -107,7 +107,7 @@ export const getOptions = async (): Promise<Options> => {
     let pullRequest = context?.payload?.pull_request || null;
 
     if (!pullRequest && !Number.isNaN(prNumber)) {
-        const { data: pr } = await octokit.pulls.get({
+        const { data: pr } = await octokit.rest.pulls.get({
             owner: context.repo.owner,
             repo: context.repo.repo,
             pull_number: prNumber,

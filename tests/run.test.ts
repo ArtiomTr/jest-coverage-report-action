@@ -217,9 +217,11 @@ const switchBranchMock = mocked(switchBranch);
 const createReportMock = mocked(createReport);
 
 (getOctokit as jest.Mock<any, any>).mockReturnValue({
-    checks: {
-        create: (fn: () => any) => {
-            fn();
+    rest: {
+        checks: {
+            create: (fn: () => any) => {
+                fn();
+            },
         },
     },
 });

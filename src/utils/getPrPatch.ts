@@ -6,7 +6,7 @@ export async function getPrPatch(
     octokit: ReturnType<typeof getOctokit>,
     options: Options
 ): Promise<string> {
-    const response: { data: string } = ((await octokit.pulls.get({
+    const response: { data: string } = ((await octokit.rest.pulls.get({
         ...context.repo,
         pull_number: options.pullRequest!.number,
         headers: {
