@@ -188,7 +188,7 @@ Accepted values are:
 
 -   `all` (default) - Will annotate sections of your code that failed tests or test did not cover
 -   `none` - Turns off annotations
--   `coverage` - Will annotate those sections of your code that test did not cover
+-   `coverage` - Will annotate those sections of your code that test did not cover. Limited to changed lines when used on a Pull Request
 -   `failed-tests` - Will annotate those sections of your code that failed test
 
 ## Pull Request Number
