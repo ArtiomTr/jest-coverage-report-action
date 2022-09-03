@@ -1,4 +1,4 @@
-import { setFailed } from '@actions/core';
+import { setFailed, setOutput } from '@actions/core';
 import { context, getOctokit } from '@actions/github';
 
 import { createCoverageAnnotations } from './annotations/createCoverageAnnotations';
@@ -137,7 +137,7 @@ export const run = async (
     );
 
     await runStage('publishReport', dataCollector, async (skip) => {
-        if (!isReportContentGenerated) {
+        if (!isReportContentGenerated || !options.output.includes('comment')) {
             skip();
         }
 
@@ -160,6 +160,19 @@ export const run = async (
         }
     });
 
+    await runStage('setOutputs', dataCollector, (skip) => {
+        if (
+            !isReportContentGenerated ||
+            !options.output.includes('report-markdown')
+        ) {
+            skip();
+        }
+
+        if (options.output.includes('report-markdown')) {
+            setOutput('report', summaryReport!.text);
+        }
+    });
+
     await runStage('failedTestsAnnotations', dataCollector, async (skip) => {
         if (
             !isHeadCoverageGenerated ||
@@ -175,7 +188,7 @@ export const run = async (
         }
 
         const octokit = getOctokit(options.token);
-        await octokit.checks.create(
+        await octokit.rest.checks.create(
             formatFailedTestsAnnotations(
                 summaryReport!.runReport,
                 failedAnnotations,
@@ -203,7 +216,7 @@ export const run = async (
             const patch = await getPrPatch(octokit, options);
             coverageAnnotations = onlyChanged(coverageAnnotations, patch);
         }
-        await octokit.checks.create(
+        await octokit.rest.checks.create(
             formatCoverageAnnotations(coverageAnnotations, options)
         );
     });

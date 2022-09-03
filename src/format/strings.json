@@ -59,7 +59,8 @@
         "runTest": "Running tests",
         "collectCoverage": "Collecting coverage",
         "parseCoverage": "Parsing coverage",
-        "switchBack": "Switching back to original branch"
+        "switchBack": "Switching back to original branch",
+        "setOutputs": "Setting outputs"
     },
     "thresholdFailures": {
         "percents": "{{ type }} coverage not met for {{ path }}: expected >={{ expected }}%, but got {{ coverage }}%",
@@ -104,7 +105,7 @@
         "readingCoverageFileFailed": "Failed reading coverage file. (Error: {{ error }})",
         "failedGettingCoverage": "Getting code coverage data failed."
     },
-    "detailsHidden": ":warning: Details were not displayed: the report size has exceeded the limit." ,
+    "detailsHidden": ":warning: Details were not displayed: the report size has exceeded the limit.",
     "summaryTitle": "Coverage report {{ dir }}",
     "newFilesCoverage": "Show new covered files :hatching_chick:",
     "decreasedCoverageFiles": "Show files with reduced coverage :small_red_triangle_down:",
