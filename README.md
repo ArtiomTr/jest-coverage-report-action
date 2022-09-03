@@ -42,14 +42,16 @@ on:
             - main
 jobs:
     coverage:
-        permissions:
-            checks: write
-            pull-requests: write
-            contents: write
         runs-on: ubuntu-latest
         steps:
-            - uses: actions/checkout@v1
+            - uses: actions/checkout@v3
             - uses: ArtiomTr/jest-coverage-report-action@v2
+              id: coverage
+              with:
+                  output: report-markdown
+            - uses: marocchino/sticky-pull-request-comment@v2
+              with:
+                  message: ${{ steps.coverage.outputs.report }}
 ```
 
 3. Pay attention to the action parameters. You can specify custom [threshold](#specify-threshold) or [test script](#customizing-test-script)
@@ -190,6 +192,41 @@ Accepted values are:
 -   `none` - Turns off annotations
 -   `coverage` - Will annotate those sections of your code that test did not cover. Limited to changed lines when used on a Pull Request
 -   `failed-tests` - Will annotate those sections of your code that failed test
+
+## Outputs
+
+By default, action attaches comment to a pull request or commit. However, this approach doesn't work with pull requests from forks without write permission.
+
+To resolve this issue, action can produce only report text and return it as "output". Then, this output could be redirected to other action that supports commenting on public forks, like [sticky-pull-request-comment](https://github.com/marocchino/sticky-pull-request-comment) action. Example:
+
+```yml
+- uses: ArtiomTr/jest-coverage-report-action@v2
+    # give the id for the step, to access outputs in another step.
+    id: coverage
+    with:
+        # tell to the action to not attach comment.
+        output: report-markdown
+- uses: marocchino/sticky-pull-request-comment@v2
+    with:
+        # pass output from the previous step by id.
+        message: ${{ steps.coverage.outputs.report }}
+```
+
+Also, you can use this data on other platforms. For instance, you can send report to your [Slack](https://github.com/slackapi/slack-github-action) or [Jira](https://github.com/atlassian/gajira-comment).
+
+> **Note**: Working examples of integrations with different platforms are much appreciated! Feel free to open a [PR](https://github.com/ArtiomTr/jest-coverage-report-action/pulls).
+
+Available options are:
+`comment` - Attach comment to PR or commit, depending on event type, which triggered an action.
+`report-markdown` - Generate output "report", with report contents in markdown format.
+
+Also, you can combine these options:
+
+```yml
+with:
+    # This will attach comment to a PR and generate markdown output.
+    output: comment, report-markdown
+```
 
 ## Pull Request Number
 
