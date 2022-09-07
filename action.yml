@@ -74,4 +74,7 @@ runs:
               INPUT_COVERAGE-FILE: ${{ inputs.coverage-file }}
               INPUT_BASE-COVERAGE-FILE: ${{ inputs.base-coverage-file }}
               INPUT_PRNUMBER: ${{ inputs.prnumber }}
-              INPUT_OUTPUT: ${{ inputs.output }}
+              INPUT_OUTPUT: report-markdown
+        - uses: marocchino/sticky-pull-request-comment@v2
+          with:
+              message: ${{ steps.main.outputs.report }}
