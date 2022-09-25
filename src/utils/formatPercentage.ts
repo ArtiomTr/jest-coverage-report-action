@@ -2,7 +2,7 @@ import { decimalToString } from './decimalToString';
 import { formatPercentageDelta } from './formatPercentageDelta';
 import { i18n } from './i18n';
 
-const APPROXIMATION_THRESHOLD = 1;
+const APPROXIMATION_THRESHOLD = 0;
 
 export const formatPercentage = (
     headPercentage: number,
