@@ -91,7 +91,7 @@ const Home = () => (
                         justifyContent={['center', null, null, 'flex-start']}
                         paddingY="4"
                     >
-                        <Link href="#quick-start">
+                        <Link href="quick-start">
                             <Button
                                 className={classes['tryIt']}
                                 variant="outline"
