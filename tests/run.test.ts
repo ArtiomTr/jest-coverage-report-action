@@ -1,6 +1,7 @@
 import * as allCore from '@actions/core';
 import * as all from '@actions/github';
 import { getOctokit } from '@actions/github';
+import { loadConfig } from 'c12';
 import { mocked } from 'ts-jest/utils';
 
 import { Annotation } from '../src/annotations/Annotation';
@@ -215,6 +216,7 @@ const getOptionsMock = mocked(getOptions);
 const getCoverageMock = mocked(getCoverage);
 const switchBranchMock = mocked(switchBranch);
 const createReportMock = mocked(createReport);
+const loadConfigMock = mocked(loadConfig);
 
 (getOctokit as jest.Mock<any, any>).mockReturnValue({
     rest: {
@@ -232,12 +234,16 @@ beforeEach(() => {
     getCoverageMock.mockClear();
     createReportMock.mockClear();
     (setFailed as jest.Mock).mockClear();
+    loadConfigMock.mockClear();
 
     getOptionsMock.mockResolvedValue(defaultOptions);
     getCoverageMock.mockResolvedValue(standardReport);
     createReportMock.mockReturnValue({
         runReport: {} as TestRunReport,
     } as SummaryReport);
+    loadConfigMock.mockResolvedValue({
+        config: {},
+    });
     clearContextMock();
 });
 
