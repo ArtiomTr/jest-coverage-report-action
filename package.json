@@ -20,7 +20,6 @@
         "@actions/core": "^1.9.1",
         "@actions/exec": "^1.1.1",
         "@actions/github": "^5.0.3",
-        "cfgn": "^0.1.3",
         "fs-extra": "^10.0.0",
         "markdown-table": "^2.0.0",
         "micromatch": "^4.0.4",
