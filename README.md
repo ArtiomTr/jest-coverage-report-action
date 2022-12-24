@@ -48,6 +48,7 @@ jobs:
             - uses: ArtiomTr/jest-coverage-report-action@v2
               id: coverage
               with:
+                  github-token: ${{ secrets.GITHUB_TOKEN }}
                   output: report-markdown
             - uses: marocchino/sticky-pull-request-comment@v2
               with:
