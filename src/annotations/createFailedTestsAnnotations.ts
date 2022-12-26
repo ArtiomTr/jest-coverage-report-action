@@ -2,9 +2,9 @@ import { relative } from 'path';
 
 import stripAnsi from 'strip-ansi';
 
-import { Annotation } from './Annotation';
-import { JsonReport } from '../typings/JsonReport';
-import { isValidNumber } from '../utils/isValidNumber';
+import { Annotation } from './Annotation.js';
+import { JsonReport } from '../typings/JsonReport.js';
+import { isValidNumber } from '../utils/isValidNumber.js';
 
 export const createFailedTestsAnnotations = (
     jsonReport: JsonReport

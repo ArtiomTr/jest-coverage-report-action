@@ -1,6 +1,6 @@
-import { ActionError } from '../typings/ActionError';
-import { JsonReport } from '../typings/JsonReport';
-import { FailReason } from '../typings/Report';
+import { ActionError } from '../typings/ActionError.js';
+import { JsonReport } from '../typings/JsonReport.js';
+import { FailReason } from '../typings/Report.js';
 
 export const parseCoverage = (src: string): JsonReport => {
     try {

@@ -1,8 +1,8 @@
 import crypto from 'crypto';
 
-import pick from 'lodash/pick';
+import pick from 'lodash/pick.js';
 
-import { Options } from '../typings/Options';
+import { Options } from '../typings/Options.js';
 
 const OPTION_NAMES_TO_HASH = [
     'workingDirectory',

@@ -2,21 +2,24 @@ import * as allCore from '@actions/core';
 import * as all from '@actions/github';
 import { getOctokit } from '@actions/github';
 import { loadConfig } from 'c12';
-import { mocked } from 'ts-jest/utils';
 
-import { Annotation } from '../src/annotations/Annotation';
-import { createCoverageAnnotations } from '../src/annotations/createCoverageAnnotations';
-import { createFailedTestsAnnotations } from '../src/annotations/createFailedTestsAnnotations';
-import { formatCoverageAnnotations } from '../src/format/annotations/formatCoverageAnnotations';
-import { formatFailedTestsAnnotations } from '../src/format/annotations/formatFailedTestsAnnotations';
-import { run } from '../src/run';
-import { createReport } from '../src/stages/createReport';
-import { getCoverage } from '../src/stages/getCoverage';
-import { switchBranch } from '../src/stages/switchBranch';
-import { JsonReport } from '../src/typings/JsonReport';
-import { getOptions, Options } from '../src/typings/Options';
-import { SummaryReport, TestRunReport } from '../src/typings/Report';
-import { CollectedData, createDataCollector } from '../src/utils/DataCollector';
+import { mocked } from './testUtils.js';
+import { Annotation } from '../src/annotations/Annotation.js';
+import { createCoverageAnnotations } from '../src/annotations/createCoverageAnnotations.js';
+import { createFailedTestsAnnotations } from '../src/annotations/createFailedTestsAnnotations.js';
+import { formatCoverageAnnotations } from '../src/format/annotations/formatCoverageAnnotations.js';
+import { formatFailedTestsAnnotations } from '../src/format/annotations/formatFailedTestsAnnotations.js';
+import { run } from '../src/run.js';
+import { createReport } from '../src/stages/createReport.js';
+import { getCoverage } from '../src/stages/getCoverage.js';
+import { switchBranch } from '../src/stages/switchBranch.js';
+import { JsonReport } from '../src/typings/JsonReport.js';
+import { getOptions, Options } from '../src/typings/Options.js';
+import { SummaryReport, TestRunReport } from '../src/typings/Report.js';
+import {
+    CollectedData,
+    createDataCollector,
+} from '../src/utils/DataCollector.js';
 
 const { mockContext, clearContextMock } = all as any;
 const { setFailed } = allCore;

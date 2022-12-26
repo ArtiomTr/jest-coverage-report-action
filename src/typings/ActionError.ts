@@ -1,5 +1,5 @@
-import { FailReason } from './Report';
-import { i18n } from '../utils/i18n';
+import { FailReason } from './Report.js';
+import { i18n } from '../utils/i18n.js';
 
 export class ActionError<T> extends Error {
     public constructor(reason: FailReason, details?: T) {

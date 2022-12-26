@@ -1,10 +1,10 @@
 import markdownTable from 'markdown-table';
 
-import { getFileCoverageDetailRow } from './getFileCoverageDetailRow';
-import { CoverageDetailsMap } from '../../typings/Coverage';
-import { createMarkdownSpoiler } from '../../utils/createMarkdownSpoiler';
-import { i18n } from '../../utils/i18n';
-import { withExplanation } from '../../utils/withExplanation';
+import { getFileCoverageDetailRow } from './getFileCoverageDetailRow.js';
+import { CoverageDetailsMap } from '../../typings/Coverage.js';
+import { createMarkdownSpoiler } from '../../utils/createMarkdownSpoiler.js';
+import { i18n } from '../../utils/i18n.js';
+import { withExplanation } from '../../utils/withExplanation.js';
 
 export const formatCoverageDetailsPart = (
     summary: string,

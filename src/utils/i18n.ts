@@ -1,7 +1,7 @@
 import { getInput } from '@actions/core';
-import get from 'lodash/get';
+import get from 'lodash/get.js';
 
-import { insertArgs } from './insertArgs';
+import { insertArgs } from './insertArgs.js';
 import strings from '../format/strings.json';
 
 const iconRegex = /:(\w+):/g;

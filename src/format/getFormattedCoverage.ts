@@ -1,7 +1,7 @@
-import { formatCoverageDetails } from './details/formatCoverageDetails';
-import { formatCoverageSummary } from './summary/formatCoverageSummary';
-import { CoverageDetailsMap, CoverageSummary } from '../typings/Coverage';
-import { i18n } from '../utils/i18n';
+import { formatCoverageDetails } from './details/formatCoverageDetails.js';
+import { formatCoverageSummary } from './summary/formatCoverageSummary.js';
+import { CoverageDetailsMap, CoverageSummary } from '../typings/Coverage.js';
+import { i18n } from '../utils/i18n.js';
 
 export const getFormattedCoverage = (
     headSummary: Array<CoverageSummary>,

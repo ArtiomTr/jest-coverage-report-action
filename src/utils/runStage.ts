@@ -1,5 +1,5 @@
-import { DataCollector } from './DataCollector';
-import { i18n } from './i18n';
+import { DataCollector } from './DataCollector.js';
+import { i18n } from './i18n.js';
 
 export type SuccessfulStageResult<T> = [success: true, output: T];
 

@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`formatCoverage should display warning if hiding details 1`] = `
-"| <div title=\\"Status of coverage:&#10; 🟢 - ok&#10; 🟡 - slightly more than threshold&#10; 🔴 - under the threshold\\">St.<sup>:grey_question:</sup></div> | Category   | Percentage | Covered / Total |
+"| <div title="Status of coverage:&#10; 🟢 - ok&#10; 🟡 - slightly more than threshold&#10; 🔴 - under the threshold">St.<sup>:grey_question:</sup></div> | Category   | Percentage | Covered / Total |
 | :----------------------------------------------------------------------------------------------------------------------------------------------------: | :--------- | :--------- | :-------------: |
 |                                                                           🟢                                                                           | Statements | 81.82%     |      27/33      |
 |                                                                           🟢                                                                           | Branches   | 100%       |       8/8       |
@@ -11,7 +11,7 @@ exports[`formatCoverage should display warning if hiding details 1`] = `
 `;
 
 exports[`formatCoverage should format standard coverage 1`] = `
-"| <div title=\\"Status of coverage:&#10; 🟢 - ok&#10; 🟡 - slightly more than threshold&#10; 🔴 - under the threshold\\">St.<sup>:grey_question:</sup></div> | Category   | Percentage | Covered / Total |
+"| <div title="Status of coverage:&#10; 🟢 - ok&#10; 🟡 - slightly more than threshold&#10; 🔴 - under the threshold">St.<sup>:grey_question:</sup></div> | Category   | Percentage | Covered / Total |
 | :----------------------------------------------------------------------------------------------------------------------------------------------------: | :--------- | :--------- | :-------------: |
 |                                                                           🟢                                                                           | Statements | 81.82%     |      27/33      |
 |                                                                           🟢                                                                           | Branches   | 100%       |       8/8       |
@@ -22,7 +22,7 @@ exports[`formatCoverage should format standard coverage 1`] = `
 `;
 
 exports[`formatCoverage should format standard coverage 2`] = `
-"| <div title=\\"Status of coverage:&#10; 🟢 - ok&#10; 🟡 - slightly more than threshold&#10; 🔴 - under the threshold\\">St.<sup>:grey_question:</sup></div> | Category   | Percentage | Covered / Total |
+"| <div title="Status of coverage:&#10; 🟢 - ok&#10; 🟡 - slightly more than threshold&#10; 🔴 - under the threshold">St.<sup>:grey_question:</sup></div> | Category   | Percentage | Covered / Total |
 | :----------------------------------------------------------------------------------------------------------------------------------------------------: | :--------- | :--------- | :-------------: |
 |                                                                           🟢                                                                           | Statements | 81.82%     |      27/33      |
 |                                                                           🟢                                                                           | Branches   | 100%       |       8/8       |
@@ -33,7 +33,7 @@ exports[`formatCoverage should format standard coverage 2`] = `
 `;
 
 exports[`formatCoverage should format standard coverage 3`] = `
-"| <div title=\\"Status of coverage:&#10; 🟢 - ok&#10; 🟡 - slightly more than threshold&#10; 🔴 - under the threshold\\">St.<sup>:grey_question:</sup></div> | Category   | Percentage | Covered / Total |
+"| <div title="Status of coverage:&#10; 🟢 - ok&#10; 🟡 - slightly more than threshold&#10; 🔴 - under the threshold">St.<sup>:grey_question:</sup></div> | Category   | Percentage | Covered / Total |
 | :----------------------------------------------------------------------------------------------------------------------------------------------------: | :--------- | :--------- | :-------------: |
 |                                                                           🟢                                                                           | Statements | 81.82%     |      27/33      |
 |                                                                           🟢                                                                           | Branches   | 100%       |       8/8       |

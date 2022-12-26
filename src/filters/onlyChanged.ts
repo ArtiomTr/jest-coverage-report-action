@@ -1,6 +1,6 @@
 import parseDiff from 'parse-diff';
 
-import { Annotation } from '../annotations/Annotation';
+import { Annotation } from '../annotations/Annotation.js';
 interface LineIndex {
     [key: string]: number[] | undefined;
 }

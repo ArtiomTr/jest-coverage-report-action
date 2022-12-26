@@ -1,4 +1,4 @@
-import { AnnotationType } from '../typings/Options';
+import { AnnotationType } from '../typings/Options.js';
 
 export const isAnnotationEnabled = (
     option: string,

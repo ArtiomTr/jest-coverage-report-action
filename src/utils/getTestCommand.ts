@@ -1,4 +1,4 @@
-import { isOldScript } from './isOldScript';
+import { isOldScript } from './isOldScript.js';
 
 export const getTestCommand = async (
     command: string,

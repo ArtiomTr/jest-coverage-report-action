@@ -1,5 +1,5 @@
-import { TestRunReport } from '../typings/Report';
-import { createMarkdownSpoiler } from '../utils/createMarkdownSpoiler';
+import { TestRunReport } from '../typings/Report.js';
+import { createMarkdownSpoiler } from '../utils/createMarkdownSpoiler.js';
 
 export const formatRunReport = (report: TestRunReport): string => {
     const parts = [`## ${report.title}`];

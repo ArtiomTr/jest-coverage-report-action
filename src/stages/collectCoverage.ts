@@ -1,11 +1,11 @@
 import { readFile } from 'fs-extra';
 
-import { REPORT_PATH } from '../constants/REPORT_PATH';
-import { ActionError } from '../typings/ActionError';
-import { FailReason } from '../typings/Report';
-import { DataCollector } from '../utils/DataCollector';
-import { i18n } from '../utils/i18n';
-import { joinPaths } from '../utils/joinPaths';
+import { REPORT_PATH } from '../constants/REPORT_PATH.js';
+import { ActionError } from '../typings/ActionError.js';
+import { FailReason } from '../typings/Report.js';
+import { DataCollector } from '../utils/DataCollector.js';
+import { i18n } from '../utils/i18n.js';
+import { joinPaths } from '../utils/joinPaths.js';
 
 export const collectCoverage = async (
     dataCollector: DataCollector<unknown>,

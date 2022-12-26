@@ -1,7 +1,7 @@
 import micromatch from 'micromatch';
 
-import { accumulateCoverageDetails } from './accumulateCoverageDetails';
-import { DetailedFileCoverage, FileCoverageMap } from './getFileCoverageMap';
+import { accumulateCoverageDetails } from './accumulateCoverageDetails.js';
+import { DetailedFileCoverage, FileCoverageMap } from './getFileCoverageMap.js';
 
 export const getCoverageForDirectory = (
     directory: string,

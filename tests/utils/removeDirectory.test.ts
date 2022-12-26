@@ -1,7 +1,7 @@
 import { rm, rmdir } from 'fs-extra';
-import { mocked } from 'ts-jest/utils';
 
 import { removeDirectory } from '../../src/utils/removeDirectory';
+import { mocked } from '../testUtils.js';
 
 const originalProcess = process;
 

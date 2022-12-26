@@ -1,5 +1,5 @@
-import { ThresholdResult } from '../typings/ThresholdResult';
-import { i18n } from '../utils/i18n';
+import { ThresholdResult } from '../typings/ThresholdResult.js';
+import { i18n } from '../utils/i18n.js';
 
 export const formatThresholdResults = (results: ThresholdResult[]): string => {
     return results

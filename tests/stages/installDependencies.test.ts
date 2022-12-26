@@ -1,10 +1,10 @@
 import { sep } from 'path';
 
 import { exec } from '@actions/exec';
-import { mocked } from 'ts-jest/utils';
 
 import { installDependencies } from '../../src/stages/installDependencies';
 import { removeDirectory } from '../../src/utils/removeDirectory';
+import { mocked } from '../testUtils.js';
 
 jest.mock('../../src/utils/removeDirectory');
 

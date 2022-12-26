@@ -1,18 +1,18 @@
 import { dirname } from 'path';
 
-import isNil from 'lodash/isNil';
+import isNil from 'lodash/isNil.js';
 import micromatch from 'micromatch';
 
-import { JestThreshold } from '../typings/JestThreshold';
-import { JsonReport } from '../typings/JsonReport';
-import { FailReason } from '../typings/Report';
-import { ThresholdResult } from '../typings/ThresholdResult';
-import { accumulateCoverageDetails } from '../utils/accumulateCoverageDetails';
-import { checkSingleThreshold } from '../utils/checkSingleThreshold';
-import { DataCollector } from '../utils/DataCollector';
-import { getCoverageForDirectory } from '../utils/getCoverageForDirectory';
-import { getFileCoverageMap } from '../utils/getFileCoverageMap';
-import { joinPaths } from '../utils/joinPaths';
+import { JestThreshold } from '../typings/JestThreshold.js';
+import { JsonReport } from '../typings/JsonReport.js';
+import { FailReason } from '../typings/Report.js';
+import { ThresholdResult } from '../typings/ThresholdResult.js';
+import { accumulateCoverageDetails } from '../utils/accumulateCoverageDetails.js';
+import { checkSingleThreshold } from '../utils/checkSingleThreshold.js';
+import { DataCollector } from '../utils/DataCollector.js';
+import { getCoverageForDirectory } from '../utils/getCoverageForDirectory.js';
+import { getFileCoverageMap } from '../utils/getFileCoverageMap.js';
+import { joinPaths } from '../utils/joinPaths.js';
 
 export const checkThreshold = (
     report: JsonReport,

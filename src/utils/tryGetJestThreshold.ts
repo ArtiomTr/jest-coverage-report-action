@@ -1,5 +1,5 @@
-import { parseJestConfig } from './parseJestConfig';
-import { JestThreshold } from '../typings/JestThreshold';
+import { parseJestConfig } from './parseJestConfig.js';
+import { JestThreshold } from '../typings/JestThreshold.js';
 
 export const tryGetJestThreshold = async (
     workingDirectory: string

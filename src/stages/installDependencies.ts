@@ -1,8 +1,8 @@
 import { exec } from '@actions/exec';
 
-import { PackageManagerType } from '../typings/Options';
-import { joinPaths } from '../utils/joinPaths';
-import { removeDirectory } from '../utils/removeDirectory';
+import { PackageManagerType } from '../typings/Options.js';
+import { joinPaths } from '../utils/joinPaths.js';
+import { removeDirectory } from '../utils/removeDirectory.js';
 
 export const installDependencies = async (
     packageManager: PackageManagerType = 'npm',

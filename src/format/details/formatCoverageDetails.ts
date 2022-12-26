@@ -1,8 +1,8 @@
-import { formatCoverageDetailsPart } from './formatCoverageDetailsPart';
-import { getDecreasedCoverage } from './getDecreasedCoverage';
-import { getNewFilesCoverage } from './getNewFilesCoverage';
-import { CoverageDetailsMap } from '../../typings/Coverage';
-import { i18n } from '../../utils/i18n';
+import { formatCoverageDetailsPart } from './formatCoverageDetailsPart.js';
+import { getDecreasedCoverage } from './getDecreasedCoverage.js';
+import { getNewFilesCoverage } from './getNewFilesCoverage.js';
+import { CoverageDetailsMap } from '../../typings/Coverage.js';
+import { i18n } from '../../utils/i18n.js';
 
 export const formatCoverageDetails = (
     headDetails: CoverageDetailsMap,

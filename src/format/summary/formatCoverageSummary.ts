@@ -1,10 +1,10 @@
 import table from 'markdown-table';
 
-import { CoverageSummary } from '../../typings/Coverage';
-import { formatPercentage } from '../../utils/formatPercentage';
-import { getStatusOfPercents } from '../../utils/getStatusOfPercents';
-import { i18n } from '../../utils/i18n';
-import { withExplanation } from '../../utils/withExplanation';
+import { CoverageSummary } from '../../typings/Coverage.js';
+import { formatPercentage } from '../../utils/formatPercentage.js';
+import { getStatusOfPercents } from '../../utils/getStatusOfPercents.js';
+import { i18n } from '../../utils/i18n.js';
+import { withExplanation } from '../../utils/withExplanation.js';
 
 export const formatCoverageSummary = (
     headSummary: Array<CoverageSummary>,

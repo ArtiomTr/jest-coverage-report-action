@@ -1,9 +1,9 @@
 import { relative } from 'path';
 
-import { Annotation } from './Annotation';
-import { JsonReport, Location } from '../typings/JsonReport';
-import { i18n } from '../utils/i18n';
-import { isValidNumber } from '../utils/isValidNumber';
+import { Annotation } from './Annotation.js';
+import { JsonReport, Location } from '../typings/JsonReport.js';
+import { i18n } from '../utils/i18n.js';
+import { isValidNumber } from '../utils/isValidNumber.js';
 
 const getLocation = (
     start: Location = { line: 0 },

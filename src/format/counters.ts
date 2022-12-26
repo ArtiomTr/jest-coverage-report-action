@@ -1,4 +1,4 @@
-import { FileCoverage } from '../typings/JsonReport';
+import { FileCoverage } from '../typings/JsonReport.js';
 
 export const standardTotalCounter = (key: keyof FileCoverage) => (
     value: FileCoverage

@@ -1,4 +1,4 @@
-import { CoverageDetail, CoverageDetailsMap } from '../../typings/Coverage';
+import { CoverageDetail, CoverageDetailsMap } from '../../typings/Coverage.js';
 
 const coverageLessThan = (first: CoverageDetail, second: CoverageDetail) =>
     first.statements < second.statements ||

@@ -1,6 +1,6 @@
 import stripAnsi from 'strip-ansi';
 
-import { JsonReport } from '../typings/JsonReport';
+import { JsonReport } from '../typings/JsonReport.js';
 
 export const getFailureDetails = ({ testResults }: JsonReport): string => {
     if (

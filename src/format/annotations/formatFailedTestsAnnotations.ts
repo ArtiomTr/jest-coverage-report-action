@@ -1,11 +1,11 @@
 import { context } from '@actions/github';
 
-import { CreateCheckOptions } from './CreateCheckOptions';
-import { getFailedTestsAnnotationsBody } from './getFailedTestsAnnotationsBody';
-import { Annotation } from '../../annotations/Annotation';
-import { Options } from '../../typings/Options';
-import { TestRunReport } from '../../typings/Report';
-import { i18n } from '../../utils/i18n';
+import { CreateCheckOptions } from './CreateCheckOptions.js';
+import { getFailedTestsAnnotationsBody } from './getFailedTestsAnnotationsBody.js';
+import { Annotation } from '../../annotations/Annotation.js';
+import { Options } from '../../typings/Options.js';
+import { TestRunReport } from '../../typings/Report.js';
+import { i18n } from '../../utils/i18n.js';
 
 export const formatFailedTestsAnnotations = (
     runReport: TestRunReport,

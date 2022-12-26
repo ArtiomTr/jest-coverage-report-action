@@ -1,8 +1,8 @@
-import { findCommonPath } from './findCommonPath';
-import { CoverageDetailsMap } from '../../typings/Coverage';
-import { JsonReport } from '../../typings/JsonReport';
-import { getFileCoverageMap } from '../../utils/getFileCoverageMap';
-import { getPercents } from '../getPercents';
+import { findCommonPath } from './findCommonPath.js';
+import { CoverageDetailsMap } from '../../typings/Coverage.js';
+import { JsonReport } from '../../typings/JsonReport.js';
+import { getFileCoverageMap } from '../../utils/getFileCoverageMap.js';
+import { getPercents } from '../getPercents.js';
 
 export const parseDetails = (jsonReport: JsonReport) => {
     // Find common root directory

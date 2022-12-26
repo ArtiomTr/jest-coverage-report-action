@@ -1,6 +1,6 @@
-import { CoverageSummary } from '../../typings/Coverage';
-import { CoverageMap, FileCoverage } from '../../typings/JsonReport';
-import { getPercents } from '../getPercents';
+import { CoverageSummary } from '../../typings/Coverage.js';
+import { CoverageMap, FileCoverage } from '../../typings/JsonReport.js';
+import { getPercents } from '../getPercents.js';
 
 export const getSummary = (
     map: CoverageMap,

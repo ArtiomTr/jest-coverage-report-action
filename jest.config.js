@@ -1,14 +1,14 @@
-module.exports = {
+export default {
     moduleFileExtensions: ['ts', 'js'],
     transform: {
-        '^.+\\.ts$': 'ts-jest',
+        '^.+\\.ts$': ['ts-jest', {
+            useESM: true
+        }],
         '^.+\\.md$': '<rootDir>/fileTransformer.js',
     },
     testMatch: ['**/*.(test|spec).ts'],
-    globals: {
-        'ts-jest': {
-            babelConfig: true,
-        },
+    moduleNameMapper: {
+        '^(.+)\\.js$': '$1'
     },
     collectCoverageFrom: ['src/**/{!(index.ts),}.ts'],
     coveragePathIgnorePatterns: ['/node_modules/'],

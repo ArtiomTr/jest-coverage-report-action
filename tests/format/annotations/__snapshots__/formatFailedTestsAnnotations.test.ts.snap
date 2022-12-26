@@ -1,13 +1,13 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`formatFailedTestsAnnotations should format failed tests annotations for PR 1`] = `
-Object {
+{
   "conclusion": "failure",
   "head_sha": "987654",
   "name": "Tests annotations (🧪 jest-coverage-report-action)",
-  "output": Object {
-    "annotations": Array [
-      Object {
+  "output": {
+    "annotations": [
+      {
         "annotation_level": "failure",
         "end_line": 25,
         "message": "Test failed...",
@@ -15,7 +15,7 @@ Object {
         "start_line": 30,
         "title": "test > lol > a",
       },
-      Object {
+      {
         "annotation_level": "failure",
         "end_line": 11,
         "message": "Test failed...",
@@ -36,13 +36,13 @@ Failures",
 `;
 
 exports[`formatFailedTestsAnnotations should format failed tests annotations for commit 1`] = `
-Object {
+{
   "conclusion": "failure",
   "head_sha": "as12d1",
   "name": "Tests annotations (🧪 jest-coverage-report-action)",
-  "output": Object {
-    "annotations": Array [
-      Object {
+  "output": {
+    "annotations": [
+      {
         "annotation_level": "failure",
         "end_line": 25,
         "message": "Test failed...",
@@ -50,7 +50,7 @@ Object {
         "start_line": 30,
         "title": "test > lol > a",
       },
-      Object {
+      {
         "annotation_level": "failure",
         "end_line": 11,
         "message": "Test failed...",
@@ -71,13 +71,13 @@ Failures",
 `;
 
 exports[`formatFailedTestsAnnotations should return only 50 annotations 1`] = `
-Object {
+{
   "conclusion": "failure",
   "head_sha": "as12d1",
   "name": "Tests annotations (🧪 jest-coverage-report-action)",
-  "output": Object {
-    "annotations": Array [
-      Object {
+  "output": {
+    "annotations": [
+      {
         "annotation_level": "failure",
         "end_line": 25,
         "message": "Test failed...",
@@ -85,7 +85,7 @@ Object {
         "start_line": 30,
         "title": "test > lol > a",
       },
-      Object {
+      {
         "annotation_level": "failure",
         "end_line": 25,
         "message": "Test failed...",
@@ -93,7 +93,7 @@ Object {
         "start_line": 30,
         "title": "test > lol > a",
       },
-      Object {
+      {
         "annotation_level": "failure",
         "end_line": 25,
         "message": "Test failed...",
@@ -101,7 +101,7 @@ Object {
         "start_line": 30,
         "title": "test > lol > a",
       },
-      Object {
+      {
         "annotation_level": "failure",
         "end_line": 25,
         "message": "Test failed...",
@@ -109,7 +109,7 @@ Object {
         "start_line": 30,
         "title": "test > lol > a",
       },
-      Object {
+      {
         "annotation_level": "failure",
         "end_line": 25,
         "message": "Test failed...",
@@ -117,7 +117,7 @@ Object {
         "start_line": 30,
         "title": "test > lol > a",
       },
-      Object {
+      {
         "annotation_level": "failure",
         "end_line": 25,
         "message": "Test failed...",
@@ -125,7 +125,7 @@ Object {
         "start_line": 30,
         "title": "test > lol > a",
       },
-      Object {
+      {
         "annotation_level": "failure",
         "end_line": 25,
         "message": "Test failed...",
@@ -133,7 +133,7 @@ Object {
         "start_line": 30,
         "title": "test > lol > a",
       },
-      Object {
+      {
         "annotation_level": "failure",
         "end_line": 25,
         "message": "Test failed...",
@@ -141,7 +141,7 @@ Object {
         "start_line": 30,
         "title": "test > lol > a",
       },
-      Object {
+      {
         "annotation_level": "failure",
         "end_line": 25,
         "message": "Test failed...",
@@ -149,7 +149,7 @@ Object {
         "start_line": 30,
         "title": "test > lol > a",
       },
-      Object {
+      {
         "annotation_level": "failure",
         "end_line": 25,
         "message": "Test failed...",
@@ -157,7 +157,7 @@ Object {
         "start_line": 30,
         "title": "test > lol > a",
       },
-      Object {
+      {
         "annotation_level": "failure",
         "end_line": 25,
         "message": "Test failed...",
@@ -165,7 +165,7 @@ Object {
         "start_line": 30,
         "title": "test > lol > a",
       },
-      Object {
+      {
         "annotation_level": "failure",
         "end_line": 25,
         "message": "Test failed...",
@@ -173,7 +173,7 @@ Object {
         "start_line": 30,
         "title": "test > lol > a",
       },
-      Object {
+      {
         "annotation_level": "failure",
         "end_line": 25,
         "message": "Test failed...",
@@ -181,7 +181,7 @@ Object {
         "start_line": 30,
         "title": "test > lol > a",
       },
-      Object {
+      {
         "annotation_level": "failure",
         "end_line": 25,
         "message": "Test failed...",
@@ -189,7 +189,7 @@ Object {
         "start_line": 30,
         "title": "test > lol > a",
       },
-      Object {
+      {
         "annotation_level": "failure",
         "end_line": 25,
         "message": "Test failed...",
@@ -197,7 +197,7 @@ Object {
         "start_line": 30,
         "title": "test > lol > a",
       },
-      Object {
+      {
         "annotation_level": "failure",
         "end_line": 25,
         "message": "Test failed...",
@@ -205,7 +205,7 @@ Object {
         "start_line": 30,
         "title": "test > lol > a",
       },
-      Object {
+      {
         "annotation_level": "failure",
         "end_line": 25,
         "message": "Test failed...",
@@ -213,7 +213,7 @@ Object {
         "start_line": 30,
         "title": "test > lol > a",
       },
-      Object {
+      {
         "annotation_level": "failure",
         "end_line": 25,
         "message": "Test failed...",
@@ -221,7 +221,7 @@ Object {
         "start_line": 30,
         "title": "test > lol > a",
       },
-      Object {
+      {
         "annotation_level": "failure",
         "end_line": 25,
         "message": "Test failed...",
@@ -229,7 +229,7 @@ Object {
         "start_line": 30,
         "title": "test > lol > a",
       },
-      Object {
+      {
         "annotation_level": "failure",
         "end_line": 25,
         "message": "Test failed...",
@@ -237,7 +237,7 @@ Object {
         "start_line": 30,
         "title": "test > lol > a",
       },
-      Object {
+      {
         "annotation_level": "failure",
         "end_line": 25,
         "message": "Test failed...",
@@ -245,7 +245,7 @@ Object {
         "start_line": 30,
         "title": "test > lol > a",
       },
-      Object {
+      {
         "annotation_level": "failure",
         "end_line": 25,
         "message": "Test failed...",
@@ -253,7 +253,7 @@ Object {
         "start_line": 30,
         "title": "test > lol > a",
       },
-      Object {
+      {
         "annotation_level": "failure",
         "end_line": 25,
         "message": "Test failed...",
@@ -261,7 +261,7 @@ Object {
         "start_line": 30,
         "title": "test > lol > a",
       },
-      Object {
+      {
         "annotation_level": "failure",
         "end_line": 25,
         "message": "Test failed...",
@@ -269,7 +269,7 @@ Object {
         "start_line": 30,
         "title": "test > lol > a",
       },
-      Object {
+      {
         "annotation_level": "failure",
         "end_line": 25,
         "message": "Test failed...",
@@ -277,7 +277,7 @@ Object {
         "start_line": 30,
         "title": "test > lol > a",
       },
-      Object {
+      {
         "annotation_level": "failure",
         "end_line": 25,
         "message": "Test failed...",
@@ -285,7 +285,7 @@ Object {
         "start_line": 30,
         "title": "test > lol > a",
       },
-      Object {
+      {
         "annotation_level": "failure",
         "end_line": 25,
         "message": "Test failed...",
@@ -293,7 +293,7 @@ Object {
         "start_line": 30,
         "title": "test > lol > a",
       },
-      Object {
+      {
         "annotation_level": "failure",
         "end_line": 25,
         "message": "Test failed...",
@@ -301,7 +301,7 @@ Object {
         "start_line": 30,
         "title": "test > lol > a",
       },
-      Object {
+      {
         "annotation_level": "failure",
         "end_line": 25,
         "message": "Test failed...",
@@ -309,7 +309,7 @@ Object {
         "start_line": 30,
         "title": "test > lol > a",
       },
-      Object {
+      {
         "annotation_level": "failure",
         "end_line": 25,
         "message": "Test failed...",
@@ -317,7 +317,7 @@ Object {
         "start_line": 30,
         "title": "test > lol > a",
       },
-      Object {
+      {
         "annotation_level": "failure",
         "end_line": 25,
         "message": "Test failed...",
@@ -325,7 +325,7 @@ Object {
         "start_line": 30,
         "title": "test > lol > a",
       },
-      Object {
+      {
         "annotation_level": "failure",
         "end_line": 25,
         "message": "Test failed...",
@@ -333,7 +333,7 @@ Object {
         "start_line": 30,
         "title": "test > lol > a",
       },
-      Object {
+      {
         "annotation_level": "failure",
         "end_line": 25,
         "message": "Test failed...",
@@ -341,7 +341,7 @@ Object {
         "start_line": 30,
         "title": "test > lol > a",
       },
-      Object {
+      {
         "annotation_level": "failure",
         "end_line": 25,
         "message": "Test failed...",
@@ -349,7 +349,7 @@ Object {
         "start_line": 30,
         "title": "test > lol > a",
       },
-      Object {
+      {
         "annotation_level": "failure",
         "end_line": 25,
         "message": "Test failed...",
@@ -357,7 +357,7 @@ Object {
         "start_line": 30,
         "title": "test > lol > a",
       },
-      Object {
+      {
         "annotation_level": "failure",
         "end_line": 25,
         "message": "Test failed...",
@@ -365,7 +365,7 @@ Object {
         "start_line": 30,
         "title": "test > lol > a",
       },
-      Object {
+      {
         "annotation_level": "failure",
         "end_line": 25,
         "message": "Test failed...",
@@ -373,7 +373,7 @@ Object {
         "start_line": 30,
         "title": "test > lol > a",
       },
-      Object {
+      {
         "annotation_level": "failure",
         "end_line": 25,
         "message": "Test failed...",
@@ -381,7 +381,7 @@ Object {
         "start_line": 30,
         "title": "test > lol > a",
       },
-      Object {
+      {
         "annotation_level": "failure",
         "end_line": 25,
         "message": "Test failed...",
@@ -389,7 +389,7 @@ Object {
         "start_line": 30,
         "title": "test > lol > a",
       },
-      Object {
+      {
         "annotation_level": "failure",
         "end_line": 25,
         "message": "Test failed...",
@@ -397,7 +397,7 @@ Object {
         "start_line": 30,
         "title": "test > lol > a",
       },
-      Object {
+      {
         "annotation_level": "failure",
         "end_line": 25,
         "message": "Test failed...",
@@ -405,7 +405,7 @@ Object {
         "start_line": 30,
         "title": "test > lol > a",
       },
-      Object {
+      {
         "annotation_level": "failure",
         "end_line": 25,
         "message": "Test failed...",
@@ -413,7 +413,7 @@ Object {
         "start_line": 30,
         "title": "test > lol > a",
       },
-      Object {
+      {
         "annotation_level": "failure",
         "end_line": 25,
         "message": "Test failed...",
@@ -421,7 +421,7 @@ Object {
         "start_line": 30,
         "title": "test > lol > a",
       },
-      Object {
+      {
         "annotation_level": "failure",
         "end_line": 25,
         "message": "Test failed...",
@@ -429,7 +429,7 @@ Object {
         "start_line": 30,
         "title": "test > lol > a",
       },
-      Object {
+      {
         "annotation_level": "failure",
         "end_line": 25,
         "message": "Test failed...",
@@ -437,7 +437,7 @@ Object {
         "start_line": 30,
         "title": "test > lol > a",
       },
-      Object {
+      {
         "annotation_level": "failure",
         "end_line": 25,
         "message": "Test failed...",
@@ -445,7 +445,7 @@ Object {
         "start_line": 30,
         "title": "test > lol > a",
       },
-      Object {
+      {
         "annotation_level": "failure",
         "end_line": 25,
         "message": "Test failed...",
@@ -453,7 +453,7 @@ Object {
         "start_line": 30,
         "title": "test > lol > a",
       },
-      Object {
+      {
         "annotation_level": "failure",
         "end_line": 25,
         "message": "Test failed...",
@@ -461,7 +461,7 @@ Object {
         "start_line": 30,
         "title": "test > lol > a",
       },
-      Object {
+      {
         "annotation_level": "failure",
         "end_line": 25,
         "message": "Test failed...",

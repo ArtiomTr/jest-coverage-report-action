@@ -1,15 +1,15 @@
 {
+    "extends": "./tsconfig.base.json",
     "compilerOptions": {
-        "target": "ES2019",
-        "module": "commonjs",
         "declaration": false,
         "outDir": "./dist",
-        "strict": true,
-        "esModuleInterop": true,
-        "lib": ["ES2019"],
-        "rootDir": "src",
-        "resolveJsonModule": true
+        "rootDir": "src"
     },
     "include": ["src", "index.d.ts"],
-    "exclude": ["node_modules", "tests", "example"]
+    "exclude": ["node_modules", "tests", "example"],
+    "references": [
+        {
+            "path": "./tsconfig.test.json"
+        }
+    ]
 }

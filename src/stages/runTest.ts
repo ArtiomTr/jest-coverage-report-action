@@ -1,6 +1,6 @@
 import { exec } from '@actions/exec';
 
-import { getTestCommand } from '../utils/getTestCommand';
+import { getTestCommand } from '../utils/getTestCommand.js';
 
 export const runTest = async (
     testCommand: string,

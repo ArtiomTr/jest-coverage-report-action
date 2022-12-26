@@ -1,4 +1,4 @@
-import { DetailedFileCoverage } from './getFileCoverageMap';
+import { DetailedFileCoverage } from './getFileCoverageMap.js';
 
 export const accumulateCoverageDetails = (
     coverageDetails: DetailedFileCoverage[]

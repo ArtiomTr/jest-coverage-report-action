@@ -1,5 +1,5 @@
-import { JsonReport } from '../../typings/JsonReport';
-import { i18n } from '../../utils/i18n';
+import { JsonReport } from '../../typings/JsonReport.js';
+import { i18n } from '../../utils/i18n.js';
 
 export const getTestRunSummary = (jsonReport: JsonReport) =>
     jsonReport.success

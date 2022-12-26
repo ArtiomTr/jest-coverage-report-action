@@ -1,9 +1,9 @@
-import isNil from 'lodash/isNil';
+import isNil from 'lodash/isNil.js';
 
-import { DetailedFileCoverage } from './getFileCoverageMap';
-import { getPercents } from '../format/getPercents';
-import { SingleThreshold } from '../typings/JestThreshold';
-import { ThresholdResult, ThresholdType } from '../typings/ThresholdResult';
+import { DetailedFileCoverage } from './getFileCoverageMap.js';
+import { getPercents } from '../format/getPercents.js';
+import { SingleThreshold } from '../typings/JestThreshold.js';
+import { ThresholdResult, ThresholdType } from '../typings/ThresholdResult.js';
 
 export const checkSingleThreshold = (
     threshold: SingleThreshold,

@@ -1,24 +1,24 @@
 import { setFailed, setOutput } from '@actions/core';
 import { context, getOctokit } from '@actions/github';
 
-import { createCoverageAnnotations } from './annotations/createCoverageAnnotations';
-import { createFailedTestsAnnotations } from './annotations/createFailedTestsAnnotations';
-import { onlyChanged } from './filters/onlyChanged';
-import { formatCoverageAnnotations } from './format/annotations/formatCoverageAnnotations';
-import { formatFailedTestsAnnotations } from './format/annotations/formatFailedTestsAnnotations';
-import { generateCommitReport } from './report/generateCommitReport';
-import { generatePRReport } from './report/generatePRReport';
-import { checkThreshold } from './stages/checkThreshold';
-import { createReport } from './stages/createReport';
-import { getCoverage } from './stages/getCoverage';
-import { switchBack, switchBranch } from './stages/switchBranch';
-import { JsonReport } from './typings/JsonReport';
-import { getOptions } from './typings/Options';
-import { createDataCollector, DataCollector } from './utils/DataCollector';
-import { getNormalThreshold } from './utils/getNormalThreshold';
-import { getPrPatch } from './utils/getPrPatch';
-import { i18n } from './utils/i18n';
-import { runStage } from './utils/runStage';
+import { createCoverageAnnotations } from './annotations/createCoverageAnnotations.js';
+import { createFailedTestsAnnotations } from './annotations/createFailedTestsAnnotations.js';
+import { onlyChanged } from './filters/onlyChanged.js';
+import { formatCoverageAnnotations } from './format/annotations/formatCoverageAnnotations.js';
+import { formatFailedTestsAnnotations } from './format/annotations/formatFailedTestsAnnotations.js';
+import { generateCommitReport } from './report/generateCommitReport.js';
+import { generatePRReport } from './report/generatePRReport.js';
+import { checkThreshold } from './stages/checkThreshold.js';
+import { createReport } from './stages/createReport.js';
+import { getCoverage } from './stages/getCoverage.js';
+import { switchBack, switchBranch } from './stages/switchBranch.js';
+import { JsonReport } from './typings/JsonReport.js';
+import { getOptions } from './typings/Options.js';
+import { createDataCollector, DataCollector } from './utils/DataCollector.js';
+import { getNormalThreshold } from './utils/getNormalThreshold.js';
+import { getPrPatch } from './utils/getPrPatch.js';
+import { i18n } from './utils/i18n.js';
+import { runStage } from './utils/runStage.js';
 
 export const run = async (
     dataCollector = createDataCollector<JsonReport>()

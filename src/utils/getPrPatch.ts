@@ -1,6 +1,6 @@
 import { context, getOctokit } from '@actions/github';
 
-import { Options } from '../typings/Options';
+import { Options } from '../typings/Options.js';
 
 export async function getPrPatch(
     octokit: ReturnType<typeof getOctokit>,

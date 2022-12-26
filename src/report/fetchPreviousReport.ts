@@ -1,7 +1,7 @@
 import { getOctokit } from '@actions/github';
 
-import { getReportTag } from '../constants/getReportTag';
-import { Options } from '../typings/Options';
+import { getReportTag } from '../constants/getReportTag.js';
+import { Options } from '../typings/Options.js';
 
 export async function fetchPreviousReport(
     octokit: ReturnType<typeof getOctokit>,

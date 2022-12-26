@@ -1,7 +1,7 @@
 import { getOctokit } from '@actions/github';
 
-import { fetchPreviousReport } from './fetchPreviousReport';
-import { Options } from '../typings/Options';
+import { fetchPreviousReport } from './fetchPreviousReport.js';
+import { Options } from '../typings/Options.js';
 
 export const generatePRReport = async (
     report: string,

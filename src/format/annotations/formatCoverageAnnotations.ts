@@ -1,9 +1,9 @@
 import { context } from '@actions/github';
 
-import { CreateCheckOptions } from './CreateCheckOptions';
-import { Annotation } from '../../annotations/Annotation';
-import { Options } from '../../typings/Options';
-import { i18n } from '../../utils/i18n';
+import { CreateCheckOptions } from './CreateCheckOptions.js';
+import { Annotation } from '../../annotations/Annotation.js';
+import { Options } from '../../typings/Options.js';
+import { i18n } from '../../utils/i18n.js';
 
 export const formatCoverageAnnotations = (
     annotations: Array<Annotation>,

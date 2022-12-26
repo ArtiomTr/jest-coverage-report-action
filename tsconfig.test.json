@@ -1,0 +1,9 @@
+{
+    "extends": "./tsconfig.base.json",
+    "compilerOptions": {
+        "composite": true,
+        "declaration": true
+    },
+    "include": ["tests", "src", "index.d.ts"],
+    "exclude": ["node_modules", "example"],
+}

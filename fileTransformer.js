@@ -1,5 +1,7 @@
-module.exports = {
+export default {
     process(src) {
-        return 'module.exports = `' + src + '`;';
+        return {
+            code: 'module.exports = `' + src + '`;',
+        };
     },
 };

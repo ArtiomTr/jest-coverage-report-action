@@ -1,6 +1,6 @@
-import { ActionError } from '../typings/ActionError';
-import { getConsoleLink } from '../utils/getConsoleLink';
-import { i18n } from '../utils/i18n';
+import { ActionError } from '../typings/ActionError.js';
+import { getConsoleLink } from '../utils/getConsoleLink.js';
+import { i18n } from '../utils/i18n.js';
 
 const getNumberWidth = (index: number) => Math.floor(Math.log10(index));
 

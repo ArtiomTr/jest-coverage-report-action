@@ -2,7 +2,6 @@ import { sep } from 'path';
 
 import { exec } from '@actions/exec';
 import { readFile } from 'fs-extra';
-import { mocked } from 'ts-jest/utils';
 
 import { getCoverage } from '../../src/stages/getCoverage';
 import { ActionError } from '../../src/typings/ActionError';
@@ -11,6 +10,7 @@ import { Options } from '../../src/typings/Options';
 import { FailReason } from '../../src/typings/Report';
 import { createDataCollector } from '../../src/utils/DataCollector';
 import { removeDirectory } from '../../src/utils/removeDirectory';
+import { mocked } from '../testUtils.js';
 
 jest.mock('../../src/utils/removeDirectory');
 

@@ -1,6 +1,6 @@
-import { decimalToString } from './decimalToString';
-import { formatPercentageDelta } from './formatPercentageDelta';
-import { i18n } from './i18n';
+import { decimalToString } from './decimalToString.js';
+import { formatPercentageDelta } from './formatPercentageDelta.js';
+import { i18n } from './i18n.js';
 
 const APPROXIMATION_THRESHOLD = 0;
 

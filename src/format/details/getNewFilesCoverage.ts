@@ -1,4 +1,4 @@
-import { CoverageDetailsMap } from '../../typings/Coverage';
+import { CoverageDetailsMap } from '../../typings/Coverage.js';
 
 export const getNewFilesCoverage = (
     headDetails: CoverageDetailsMap,

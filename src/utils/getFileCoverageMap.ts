@@ -5,8 +5,8 @@ import {
     standardTotalCounter,
     totalBranchesCounter,
     totalLinesCounter,
-} from '../format/counters';
-import { JsonReport } from '../typings/JsonReport';
+} from '../format/counters.js';
+import { JsonReport } from '../typings/JsonReport.js';
 
 export type DetailedFileCoverage = {
     totalStatements: number;

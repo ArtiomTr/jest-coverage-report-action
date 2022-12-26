@@ -1,8 +1,8 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`createCoverageAnnotations should match snapshot 1`] = `
-Array [
-  Object {
+[
+  {
     "annotation_level": "warning",
     "end_column": 21,
     "end_line": 5,
@@ -12,7 +12,7 @@ Array [
     "start_line": 5,
     "title": "🧾 Statement is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": 26,
     "end_line": 9,
@@ -22,7 +22,7 @@ Array [
     "start_line": 9,
     "title": "🧾 Statement is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": 24,
     "end_line": 11,
@@ -32,7 +32,7 @@ Array [
     "start_line": 11,
     "title": "🧾 Statement is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": 26,
     "end_line": 15,
@@ -42,7 +42,7 @@ Array [
     "start_line": 15,
     "title": "🧾 Statement is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": 24,
     "end_line": 17,
@@ -52,7 +52,7 @@ Array [
     "start_line": 17,
     "title": "🧾 Statement is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": 21,
     "end_line": 21,
@@ -62,7 +62,7 @@ Array [
     "start_line": 21,
     "title": "🧾 Statement is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": 3,
     "end_line": 4,
@@ -72,7 +72,7 @@ Array [
     "start_line": 4,
     "title": "🕹️ Function is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": 3,
     "end_line": 8,
@@ -82,7 +82,7 @@ Array [
     "start_line": 8,
     "title": "🕹️ Function is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": 3,
     "end_line": 14,
@@ -92,7 +92,7 @@ Array [
     "start_line": 14,
     "title": "🕹️ Function is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": 3,
     "end_line": 20,
@@ -106,8 +106,8 @@ Array [
 `;
 
 exports[`createCoverageAnnotations should match snapshot 2`] = `
-Array [
-  Object {
+[
+  {
     "annotation_level": "warning",
     "end_column": 15,
     "end_line": 8,
@@ -117,7 +117,7 @@ Array [
     "start_line": 8,
     "title": "🧾 Statement is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": undefined,
     "end_line": 9,
@@ -127,7 +127,7 @@ Array [
     "start_line": 7,
     "title": "🌿 Branch is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": 19,
     "end_line": 38,
@@ -137,7 +137,7 @@ Array [
     "start_line": 38,
     "title": "🧾 Statement is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": 56,
     "end_line": 34,
@@ -147,7 +147,7 @@ Array [
     "start_line": 34,
     "title": "🌿 Branch is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": undefined,
     "end_line": 39,
@@ -157,7 +157,7 @@ Array [
     "start_line": 37,
     "title": "🌿 Branch is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": 14,
     "end_line": 102,
@@ -167,7 +167,7 @@ Array [
     "start_line": 102,
     "title": "🧾 Statement is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": 58,
     "end_line": 46,
@@ -177,7 +177,7 @@ Array [
     "start_line": 46,
     "title": "🌿 Branch is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": undefined,
     "end_line": 100,
@@ -187,7 +187,7 @@ Array [
     "start_line": 96,
     "title": "🌿 Branch is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": 11,
     "end_line": 21,
@@ -197,7 +197,7 @@ Array [
     "start_line": 21,
     "title": "🧾 Statement is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": undefined,
     "end_line": 19,
@@ -207,7 +207,7 @@ Array [
     "start_line": 11,
     "title": "🌿 Branch is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": 38,
     "end_line": 14,
@@ -217,7 +217,7 @@ Array [
     "start_line": 14,
     "title": "🌿 Branch is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": 38,
     "end_line": 16,
@@ -227,7 +227,7 @@ Array [
     "start_line": 16,
     "title": "🌿 Branch is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": undefined,
     "end_line": 21,
@@ -237,7 +237,7 @@ Array [
     "start_line": 18,
     "title": "🌿 Branch is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": undefined,
     "end_line": 22,
@@ -247,7 +247,7 @@ Array [
     "start_line": 9,
     "title": "🧾 Statement is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": 29,
     "end_line": 10,
@@ -257,7 +257,7 @@ Array [
     "start_line": 10,
     "title": "🧾 Statement is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": undefined,
     "end_line": 14,
@@ -267,7 +267,7 @@ Array [
     "start_line": 12,
     "title": "🧾 Statement is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": 19,
     "end_line": 13,
@@ -277,7 +277,7 @@ Array [
     "start_line": 13,
     "title": "🧾 Statement is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": 15,
     "end_line": 16,
@@ -287,7 +287,7 @@ Array [
     "start_line": 16,
     "title": "🧾 Statement is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": undefined,
     "end_line": 24,
@@ -297,7 +297,7 @@ Array [
     "start_line": 24,
     "title": "🧾 Statement is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": undefined,
     "end_line": 29,
@@ -307,7 +307,7 @@ Array [
     "start_line": 29,
     "title": "🧾 Statement is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": undefined,
     "end_line": 35,
@@ -317,7 +317,7 @@ Array [
     "start_line": 31,
     "title": "🧾 Statement is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": 40,
     "end_line": 32,
@@ -327,7 +327,7 @@ Array [
     "start_line": 32,
     "title": "🧾 Statement is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": 40,
     "end_line": 34,
@@ -337,7 +337,7 @@ Array [
     "start_line": 34,
     "title": "🧾 Statement is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": 27,
     "end_line": 37,
@@ -347,7 +347,7 @@ Array [
     "start_line": 37,
     "title": "🧾 Statement is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": undefined,
     "end_line": 7,
@@ -357,7 +357,7 @@ Array [
     "start_line": 5,
     "title": "🌿 Branch is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": undefined,
     "end_line": 22,
@@ -367,7 +367,7 @@ Array [
     "start_line": 9,
     "title": "🌿 Branch is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": undefined,
     "end_line": 22,
@@ -377,7 +377,7 @@ Array [
     "start_line": 9,
     "title": "🌿 Branch is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": undefined,
     "end_line": 14,
@@ -387,7 +387,7 @@ Array [
     "start_line": 12,
     "title": "🌿 Branch is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": undefined,
     "end_line": 14,
@@ -397,7 +397,7 @@ Array [
     "start_line": 12,
     "title": "🌿 Branch is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": undefined,
     "end_line": 35,
@@ -407,7 +407,7 @@ Array [
     "start_line": 31,
     "title": "🌿 Branch is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": undefined,
     "end_line": 35,
@@ -417,7 +417,7 @@ Array [
     "start_line": 31,
     "title": "🌿 Branch is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": 22,
     "end_line": 28,
@@ -427,7 +427,7 @@ Array [
     "start_line": 28,
     "title": "🕹️ Function is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": 23,
     "end_line": 14,
@@ -437,7 +437,7 @@ Array [
     "start_line": 14,
     "title": "🧾 Statement is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": 22,
     "end_line": 6,
@@ -447,7 +447,7 @@ Array [
     "start_line": 6,
     "title": "🌿 Branch is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": undefined,
     "end_line": 15,
@@ -457,7 +457,7 @@ Array [
     "start_line": 13,
     "title": "🌿 Branch is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": undefined,
     "end_line": 6,
@@ -467,7 +467,7 @@ Array [
     "start_line": 3,
     "title": "🧾 Statement is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": undefined,
     "end_line": 6,
@@ -477,7 +477,7 @@ Array [
     "start_line": 6,
     "title": "🧾 Statement is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": 32,
     "end_line": 3,
@@ -487,7 +487,7 @@ Array [
     "start_line": 3,
     "title": "🧾 Statement is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": 34,
     "end_line": 6,
@@ -497,7 +497,7 @@ Array [
     "start_line": 6,
     "title": "🌿 Branch is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": undefined,
     "end_line": 6,
@@ -507,7 +507,7 @@ Array [
     "start_line": 6,
     "title": "🌿 Branch is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": undefined,
     "end_line": 3,
@@ -517,7 +517,7 @@ Array [
     "start_line": 3,
     "title": "🕹️ Function is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": undefined,
     "end_line": 2,
@@ -527,7 +527,7 @@ Array [
     "start_line": 2,
     "title": "🧾 Statement is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": undefined,
     "end_line": 5,
@@ -537,7 +537,7 @@ Array [
     "start_line": 4,
     "title": "🧾 Statement is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": undefined,
     "end_line": 5,
@@ -547,7 +547,7 @@ Array [
     "start_line": 5,
     "title": "🧾 Statement is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": 42,
     "end_line": 4,
@@ -557,7 +557,7 @@ Array [
     "start_line": 4,
     "title": "🧾 Statement is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": undefined,
     "end_line": 4,
@@ -567,7 +567,7 @@ Array [
     "start_line": 4,
     "title": "🕹️ Function is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": undefined,
     "end_line": 2,
@@ -577,7 +577,7 @@ Array [
     "start_line": 2,
     "title": "🧾 Statement is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": undefined,
     "end_line": 11,
@@ -587,7 +587,7 @@ Array [
     "start_line": 4,
     "title": "🧾 Statement is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": undefined,
     "end_line": 11,
@@ -597,7 +597,7 @@ Array [
     "start_line": 5,
     "title": "🧾 Statement is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": 40,
     "end_line": 4,
@@ -607,7 +607,7 @@ Array [
     "start_line": 4,
     "title": "🧾 Statement is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": 15,
     "end_line": 6,
@@ -617,7 +617,7 @@ Array [
     "start_line": 6,
     "title": "🌿 Branch is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": 15,
     "end_line": 11,
@@ -627,7 +627,7 @@ Array [
     "start_line": 11,
     "title": "🌿 Branch is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": 65,
     "end_line": 9,
@@ -637,7 +637,7 @@ Array [
     "start_line": 9,
     "title": "🌿 Branch is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": undefined,
     "end_line": 9,
@@ -647,7 +647,7 @@ Array [
     "start_line": 9,
     "title": "🌿 Branch is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": undefined,
     "end_line": 4,
@@ -657,7 +657,7 @@ Array [
     "start_line": 4,
     "title": "🕹️ Function is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": undefined,
     "end_line": 1,
@@ -667,7 +667,7 @@ Array [
     "start_line": 1,
     "title": "🧾 Statement is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": undefined,
     "end_line": 4,
@@ -677,7 +677,7 @@ Array [
     "start_line": 4,
     "title": "🧾 Statement is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": undefined,
     "end_line": 7,
@@ -687,7 +687,7 @@ Array [
     "start_line": 7,
     "title": "🧾 Statement is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": undefined,
     "end_line": 32,
@@ -697,7 +697,7 @@ Array [
     "start_line": 9,
     "title": "🧾 Statement is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": 26,
     "end_line": 12,
@@ -707,7 +707,7 @@ Array [
     "start_line": 12,
     "title": "🧾 Statement is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": 41,
     "end_line": 9,
@@ -717,7 +717,7 @@ Array [
     "start_line": 9,
     "title": "🧾 Statement is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": 56,
     "end_line": 15,
@@ -727,7 +727,7 @@ Array [
     "start_line": 15,
     "title": "🌿 Branch is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": undefined,
     "end_line": 15,
@@ -737,7 +737,7 @@ Array [
     "start_line": 15,
     "title": "🌿 Branch is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": 56,
     "end_line": 15,
@@ -747,7 +747,7 @@ Array [
     "start_line": 15,
     "title": "🌿 Branch is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": 56,
     "end_line": 15,
@@ -757,7 +757,7 @@ Array [
     "start_line": 15,
     "title": "🌿 Branch is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": 44,
     "end_line": 15,
@@ -767,7 +767,7 @@ Array [
     "start_line": 15,
     "title": "🌿 Branch is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": 52,
     "end_line": 15,
@@ -777,7 +777,7 @@ Array [
     "start_line": 15,
     "title": "🌿 Branch is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": 44,
     "end_line": 15,
@@ -787,7 +787,7 @@ Array [
     "start_line": 15,
     "title": "🌿 Branch is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": 44,
     "end_line": 15,
@@ -797,7 +797,7 @@ Array [
     "start_line": 15,
     "title": "🌿 Branch is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": undefined,
     "end_line": 22,
@@ -807,7 +807,7 @@ Array [
     "start_line": 22,
     "title": "🌿 Branch is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": 21,
     "end_line": 23,
@@ -817,7 +817,7 @@ Array [
     "start_line": 23,
     "title": "🌿 Branch is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": undefined,
     "end_line": 9,
@@ -827,7 +827,7 @@ Array [
     "start_line": 9,
     "title": "🕹️ Function is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": undefined,
     "end_line": 1,
@@ -837,7 +837,7 @@ Array [
     "start_line": 1,
     "title": "🧾 Statement is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": undefined,
     "end_line": 5,
@@ -847,7 +847,7 @@ Array [
     "start_line": 5,
     "title": "🧾 Statement is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": undefined,
     "end_line": 29,
@@ -857,7 +857,7 @@ Array [
     "start_line": 8,
     "title": "🧾 Statement is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": 26,
     "end_line": 9,
@@ -867,7 +867,7 @@ Array [
     "start_line": 9,
     "title": "🧾 Statement is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": 38,
     "end_line": 7,
@@ -877,7 +877,7 @@ Array [
     "start_line": 7,
     "title": "🧾 Statement is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": 56,
     "end_line": 12,
@@ -887,7 +887,7 @@ Array [
     "start_line": 12,
     "title": "🌿 Branch is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": undefined,
     "end_line": 12,
@@ -897,7 +897,7 @@ Array [
     "start_line": 12,
     "title": "🌿 Branch is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": 56,
     "end_line": 12,
@@ -907,7 +907,7 @@ Array [
     "start_line": 12,
     "title": "🌿 Branch is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": 56,
     "end_line": 12,
@@ -917,7 +917,7 @@ Array [
     "start_line": 12,
     "title": "🌿 Branch is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": 44,
     "end_line": 12,
@@ -927,7 +927,7 @@ Array [
     "start_line": 12,
     "title": "🌿 Branch is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": 52,
     "end_line": 12,
@@ -937,7 +937,7 @@ Array [
     "start_line": 12,
     "title": "🌿 Branch is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": 44,
     "end_line": 12,
@@ -947,7 +947,7 @@ Array [
     "start_line": 12,
     "title": "🌿 Branch is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": 44,
     "end_line": 12,
@@ -957,7 +957,7 @@ Array [
     "start_line": 12,
     "title": "🌿 Branch is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": undefined,
     "end_line": 20,
@@ -967,7 +967,7 @@ Array [
     "start_line": 20,
     "title": "🌿 Branch is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": 21,
     "end_line": 21,
@@ -977,7 +977,7 @@ Array [
     "start_line": 21,
     "title": "🌿 Branch is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": undefined,
     "end_line": 8,
@@ -987,7 +987,7 @@ Array [
     "start_line": 8,
     "title": "🕹️ Function is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": undefined,
     "end_line": 1,
@@ -997,7 +997,7 @@ Array [
     "start_line": 1,
     "title": "🧾 Statement is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": undefined,
     "end_line": 5,
@@ -1007,7 +1007,7 @@ Array [
     "start_line": 5,
     "title": "🧾 Statement is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": undefined,
     "end_line": 7,
@@ -1017,7 +1017,7 @@ Array [
     "start_line": 7,
     "title": "🧾 Statement is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": undefined,
     "end_line": 15,
@@ -1027,7 +1027,7 @@ Array [
     "start_line": 15,
     "title": "🧾 Statement is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": undefined,
     "end_line": 102,
@@ -1037,7 +1037,7 @@ Array [
     "start_line": 29,
     "title": "🧾 Statement is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": undefined,
     "end_line": 31,
@@ -1047,7 +1047,7 @@ Array [
     "start_line": 31,
     "title": "🧾 Statement is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": 10,
     "end_line": 33,
@@ -1057,7 +1057,7 @@ Array [
     "start_line": 33,
     "title": "🧾 Statement is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": 48,
     "end_line": 35,
@@ -1067,7 +1067,7 @@ Array [
     "start_line": 35,
     "title": "🧾 Statement is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": 18,
     "end_line": 36,
@@ -1077,7 +1077,7 @@ Array [
     "start_line": 36,
     "title": "🧾 Statement is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": undefined,
     "end_line": 49,
@@ -1087,7 +1087,7 @@ Array [
     "start_line": 38,
     "title": "🧾 Statement is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": 35,
     "end_line": 39,
@@ -1097,7 +1097,7 @@ Array [
     "start_line": 39,
     "title": "🧾 Statement is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": 18,
     "end_line": 53,
@@ -1107,7 +1107,7 @@ Array [
     "start_line": 53,
     "title": "🧾 Statement is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": undefined,
     "end_line": 78,
@@ -1117,7 +1117,7 @@ Array [
     "start_line": 55,
     "title": "🧾 Statement is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": 38,
     "end_line": 56,
@@ -1127,7 +1127,7 @@ Array [
     "start_line": 56,
     "title": "🧾 Statement is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": undefined,
     "end_line": 75,
@@ -1137,7 +1137,7 @@ Array [
     "start_line": 58,
     "title": "🧾 Statement is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": 47,
     "end_line": 63,
@@ -1147,7 +1147,7 @@ Array [
     "start_line": 63,
     "title": "🧾 Statement is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": 18,
     "end_line": 82,
@@ -1157,7 +1157,7 @@ Array [
     "start_line": 82,
     "title": "🧾 Statement is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": undefined,
     "end_line": 95,
@@ -1167,7 +1167,7 @@ Array [
     "start_line": 84,
     "title": "🧾 Statement is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": 35,
     "end_line": 85,
@@ -1177,7 +1177,7 @@ Array [
     "start_line": 85,
     "title": "🧾 Statement is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": 11,
     "end_line": 101,
@@ -1187,7 +1187,7 @@ Array [
     "start_line": 101,
     "title": "🧾 Statement is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": 38,
     "end_line": 28,
@@ -1197,7 +1197,7 @@ Array [
     "start_line": 28,
     "title": "🧾 Statement is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": 24,
     "end_line": 8,
@@ -1207,7 +1207,7 @@ Array [
     "start_line": 8,
     "title": "🌿 Branch is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": 22,
     "end_line": 9,
@@ -1217,7 +1217,7 @@ Array [
     "start_line": 9,
     "title": "🌿 Branch is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": undefined,
     "end_line": 20,
@@ -1227,7 +1227,7 @@ Array [
     "start_line": 20,
     "title": "🌿 Branch is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": undefined,
     "end_line": 21,
@@ -1237,7 +1237,7 @@ Array [
     "start_line": 21,
     "title": "🌿 Branch is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": 35,
     "end_line": 19,
@@ -1247,7 +1247,7 @@ Array [
     "start_line": 19,
     "title": "🌿 Branch is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": 60,
     "end_line": 19,
@@ -1257,7 +1257,7 @@ Array [
     "start_line": 19,
     "title": "🌿 Branch is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": undefined,
     "end_line": 19,
@@ -1267,7 +1267,7 @@ Array [
     "start_line": 19,
     "title": "🌿 Branch is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": undefined,
     "end_line": 24,
@@ -1277,7 +1277,7 @@ Array [
     "start_line": 24,
     "title": "🌿 Branch is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": undefined,
     "end_line": 25,
@@ -1287,7 +1287,7 @@ Array [
     "start_line": 25,
     "title": "🌿 Branch is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": 35,
     "end_line": 23,
@@ -1297,7 +1297,7 @@ Array [
     "start_line": 23,
     "title": "🌿 Branch is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": 60,
     "end_line": 23,
@@ -1307,7 +1307,7 @@ Array [
     "start_line": 23,
     "title": "🌿 Branch is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": undefined,
     "end_line": 23,
@@ -1317,7 +1317,7 @@ Array [
     "start_line": 23,
     "title": "🌿 Branch is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": undefined,
     "end_line": 49,
@@ -1327,7 +1327,7 @@ Array [
     "start_line": 38,
     "title": "🌿 Branch is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": undefined,
     "end_line": 49,
@@ -1337,7 +1337,7 @@ Array [
     "start_line": 38,
     "title": "🌿 Branch is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": undefined,
     "end_line": 78,
@@ -1347,7 +1347,7 @@ Array [
     "start_line": 55,
     "title": "🌿 Branch is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": undefined,
     "end_line": 78,
@@ -1357,7 +1357,7 @@ Array [
     "start_line": 55,
     "title": "🌿 Branch is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": undefined,
     "end_line": 75,
@@ -1367,7 +1367,7 @@ Array [
     "start_line": 58,
     "title": "🌿 Branch is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": undefined,
     "end_line": 75,
@@ -1377,7 +1377,7 @@ Array [
     "start_line": 58,
     "title": "🌿 Branch is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": undefined,
     "end_line": 95,
@@ -1387,7 +1387,7 @@ Array [
     "start_line": 84,
     "title": "🌿 Branch is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": undefined,
     "end_line": 95,
@@ -1397,7 +1397,7 @@ Array [
     "start_line": 84,
     "title": "🌿 Branch is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": undefined,
     "end_line": 7,
@@ -1407,7 +1407,7 @@ Array [
     "start_line": 7,
     "title": "🕹️ Function is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": undefined,
     "end_line": 29,
@@ -1417,7 +1417,7 @@ Array [
     "start_line": 29,
     "title": "🕹️ Function is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": 9,
     "end_line": 34,
@@ -1427,7 +1427,7 @@ Array [
     "start_line": 34,
     "title": "🕹️ Function is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": 17,
     "end_line": 37,
@@ -1437,7 +1437,7 @@ Array [
     "start_line": 37,
     "title": "🕹️ Function is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": 17,
     "end_line": 54,
@@ -1447,7 +1447,7 @@ Array [
     "start_line": 54,
     "title": "🕹️ Function is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": 29,
     "end_line": 57,
@@ -1457,7 +1457,7 @@ Array [
     "start_line": 57,
     "title": "🕹️ Function is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": 17,
     "end_line": 83,
@@ -1467,7 +1467,7 @@ Array [
     "start_line": 83,
     "title": "🕹️ Function is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": undefined,
     "end_line": 1,
@@ -1477,7 +1477,7 @@ Array [
     "start_line": 1,
     "title": "🧾 Statement is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": undefined,
     "end_line": 3,
@@ -1487,7 +1487,7 @@ Array [
     "start_line": 3,
     "title": "🧾 Statement is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": undefined,
     "end_line": 43,
@@ -1497,7 +1497,7 @@ Array [
     "start_line": 9,
     "title": "🧾 Statement is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": undefined,
     "end_line": 11,
@@ -1507,7 +1507,7 @@ Array [
     "start_line": 11,
     "title": "🧾 Statement is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": undefined,
     "end_line": 15,
@@ -1517,7 +1517,7 @@ Array [
     "start_line": 13,
     "title": "🧾 Statement is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": 15,
     "end_line": 14,
@@ -1527,7 +1527,7 @@ Array [
     "start_line": 14,
     "title": "🧾 Statement is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": undefined,
     "end_line": 17,
@@ -1537,7 +1537,7 @@ Array [
     "start_line": 17,
     "title": "🧾 Statement is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": 23,
     "end_line": 19,
@@ -1547,7 +1547,7 @@ Array [
     "start_line": 19,
     "title": "🧾 Statement is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": 15,
     "end_line": 21,
@@ -1557,7 +1557,7 @@ Array [
     "start_line": 21,
     "title": "🧾 Statement is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": undefined,
     "end_line": 24,
@@ -1567,7 +1567,7 @@ Array [
     "start_line": 22,
     "title": "🧾 Statement is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": undefined,
     "end_line": 23,
@@ -1577,7 +1577,7 @@ Array [
     "start_line": 23,
     "title": "🧾 Statement is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": 19,
     "end_line": 26,
@@ -1587,7 +1587,7 @@ Array [
     "start_line": 26,
     "title": "🧾 Statement is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": undefined,
     "end_line": 28,
@@ -1597,7 +1597,7 @@ Array [
     "start_line": 28,
     "title": "🧾 Statement is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": 79,
     "end_line": 30,
@@ -1607,7 +1607,7 @@ Array [
     "start_line": 30,
     "title": "🧾 Statement is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": 11,
     "end_line": 42,
@@ -1617,7 +1617,7 @@ Array [
     "start_line": 42,
     "title": "🧾 Statement is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": 41,
     "end_line": 8,
@@ -1627,7 +1627,7 @@ Array [
     "start_line": 8,
     "title": "🧾 Statement is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": undefined,
     "end_line": 15,
@@ -1637,7 +1637,7 @@ Array [
     "start_line": 13,
     "title": "🌿 Branch is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": undefined,
     "end_line": 15,
@@ -1647,7 +1647,7 @@ Array [
     "start_line": 13,
     "title": "🌿 Branch is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": undefined,
     "end_line": 24,
@@ -1657,7 +1657,7 @@ Array [
     "start_line": 22,
     "title": "🌿 Branch is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": undefined,
     "end_line": 24,
@@ -1667,7 +1667,7 @@ Array [
     "start_line": 22,
     "title": "🌿 Branch is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": 54,
     "end_line": 33,
@@ -1677,7 +1677,7 @@ Array [
     "start_line": 33,
     "title": "🌿 Branch is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": undefined,
     "end_line": 33,
@@ -1687,7 +1687,7 @@ Array [
     "start_line": 33,
     "title": "🌿 Branch is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": 54,
     "end_line": 33,
@@ -1697,7 +1697,7 @@ Array [
     "start_line": 33,
     "title": "🌿 Branch is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": 54,
     "end_line": 33,
@@ -1707,7 +1707,7 @@ Array [
     "start_line": 33,
     "title": "🌿 Branch is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": 46,
     "end_line": 33,
@@ -1717,7 +1717,7 @@ Array [
     "start_line": 33,
     "title": "🌿 Branch is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": 50,
     "end_line": 33,
@@ -1727,7 +1727,7 @@ Array [
     "start_line": 33,
     "title": "🌿 Branch is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": 46,
     "end_line": 33,
@@ -1737,7 +1737,7 @@ Array [
     "start_line": 33,
     "title": "🌿 Branch is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": 46,
     "end_line": 33,
@@ -1747,7 +1747,7 @@ Array [
     "start_line": 33,
     "title": "🌿 Branch is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": 52,
     "end_line": 34,
@@ -1757,7 +1757,7 @@ Array [
     "start_line": 34,
     "title": "🌿 Branch is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": undefined,
     "end_line": 34,
@@ -1767,7 +1767,7 @@ Array [
     "start_line": 34,
     "title": "🌿 Branch is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": 52,
     "end_line": 34,
@@ -1777,7 +1777,7 @@ Array [
     "start_line": 34,
     "title": "🌿 Branch is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": 52,
     "end_line": 34,
@@ -1787,7 +1787,7 @@ Array [
     "start_line": 34,
     "title": "🌿 Branch is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": 44,
     "end_line": 34,
@@ -1797,7 +1797,7 @@ Array [
     "start_line": 34,
     "title": "🌿 Branch is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": 48,
     "end_line": 34,
@@ -1807,7 +1807,7 @@ Array [
     "start_line": 34,
     "title": "🌿 Branch is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": 44,
     "end_line": 34,
@@ -1817,7 +1817,7 @@ Array [
     "start_line": 34,
     "title": "🌿 Branch is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": 44,
     "end_line": 34,
@@ -1827,7 +1827,7 @@ Array [
     "start_line": 34,
     "title": "🌿 Branch is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": 47,
     "end_line": 35,
@@ -1837,7 +1837,7 @@ Array [
     "start_line": 35,
     "title": "🌿 Branch is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": 45,
     "end_line": 35,
@@ -1847,7 +1847,7 @@ Array [
     "start_line": 35,
     "title": "🌿 Branch is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": 47,
     "end_line": 35,
@@ -1857,7 +1857,7 @@ Array [
     "start_line": 35,
     "title": "🌿 Branch is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": 47,
     "end_line": 35,
@@ -1867,7 +1867,7 @@ Array [
     "start_line": 35,
     "title": "🌿 Branch is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": 76,
     "end_line": 36,
@@ -1877,7 +1877,7 @@ Array [
     "start_line": 36,
     "title": "🌿 Branch is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": undefined,
     "end_line": 36,
@@ -1887,7 +1887,7 @@ Array [
     "start_line": 36,
     "title": "🌿 Branch is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": 76,
     "end_line": 36,
@@ -1897,7 +1897,7 @@ Array [
     "start_line": 36,
     "title": "🌿 Branch is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": 76,
     "end_line": 36,
@@ -1907,7 +1907,7 @@ Array [
     "start_line": 36,
     "title": "🌿 Branch is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": 60,
     "end_line": 36,
@@ -1917,7 +1917,7 @@ Array [
     "start_line": 36,
     "title": "🌿 Branch is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": 58,
     "end_line": 36,
@@ -1927,7 +1927,7 @@ Array [
     "start_line": 36,
     "title": "🌿 Branch is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": 60,
     "end_line": 36,
@@ -1937,7 +1937,7 @@ Array [
     "start_line": 36,
     "title": "🌿 Branch is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": 60,
     "end_line": 36,
@@ -1947,7 +1947,7 @@ Array [
     "start_line": 36,
     "title": "🌿 Branch is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": undefined,
     "end_line": 9,
@@ -1957,7 +1957,7 @@ Array [
     "start_line": 9,
     "title": "🕹️ Function is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": 25,
     "end_line": 21,
@@ -1967,7 +1967,7 @@ Array [
     "start_line": 21,
     "title": "🕹️ Function is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": 25,
     "end_line": 28,
@@ -1977,7 +1977,7 @@ Array [
     "start_line": 28,
     "title": "🕹️ Function is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": 21,
     "end_line": 30,
@@ -1987,7 +1987,7 @@ Array [
     "start_line": 30,
     "title": "🕹️ Function is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": undefined,
     "end_line": 1,
@@ -1997,7 +1997,7 @@ Array [
     "start_line": 1,
     "title": "🧾 Statement is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": undefined,
     "end_line": 2,
@@ -2007,7 +2007,7 @@ Array [
     "start_line": 2,
     "title": "🧾 Statement is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": undefined,
     "end_line": 4,
@@ -2017,7 +2017,7 @@ Array [
     "start_line": 4,
     "title": "🧾 Statement is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": undefined,
     "end_line": 5,
@@ -2027,7 +2027,7 @@ Array [
     "start_line": 5,
     "title": "🧾 Statement is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": undefined,
     "end_line": 6,
@@ -2037,7 +2037,7 @@ Array [
     "start_line": 6,
     "title": "🧾 Statement is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": undefined,
     "end_line": 7,
@@ -2047,7 +2047,7 @@ Array [
     "start_line": 7,
     "title": "🧾 Statement is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": undefined,
     "end_line": 8,
@@ -2057,7 +2057,7 @@ Array [
     "start_line": 8,
     "title": "🧾 Statement is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": undefined,
     "end_line": 9,
@@ -2067,7 +2067,7 @@ Array [
     "start_line": 9,
     "title": "🧾 Statement is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": undefined,
     "end_line": 10,
@@ -2077,7 +2077,7 @@ Array [
     "start_line": 10,
     "title": "🧾 Statement is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": undefined,
     "end_line": 11,
@@ -2087,7 +2087,7 @@ Array [
     "start_line": 11,
     "title": "🧾 Statement is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": undefined,
     "end_line": 12,
@@ -2097,7 +2097,7 @@ Array [
     "start_line": 12,
     "title": "🧾 Statement is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": undefined,
     "end_line": 14,
@@ -2107,7 +2107,7 @@ Array [
     "start_line": 14,
     "title": "🧾 Statement is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": undefined,
     "end_line": 15,
@@ -2117,7 +2117,7 @@ Array [
     "start_line": 15,
     "title": "🧾 Statement is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": undefined,
     "end_line": 16,
@@ -2127,7 +2127,7 @@ Array [
     "start_line": 16,
     "title": "🧾 Statement is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": undefined,
     "end_line": 17,
@@ -2137,7 +2137,7 @@ Array [
     "start_line": 17,
     "title": "🧾 Statement is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": undefined,
     "end_line": 20,
@@ -2147,7 +2147,7 @@ Array [
     "start_line": 20,
     "title": "🧾 Statement is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": undefined,
     "end_line": 21,
@@ -2157,7 +2157,7 @@ Array [
     "start_line": 21,
     "title": "🧾 Statement is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": undefined,
     "end_line": 23,
@@ -2167,7 +2167,7 @@ Array [
     "start_line": 23,
     "title": "🧾 Statement is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": undefined,
     "end_line": 31,
@@ -2177,7 +2177,7 @@ Array [
     "start_line": 29,
     "title": "🧾 Statement is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": 14,
     "end_line": 30,
@@ -2187,7 +2187,7 @@ Array [
     "start_line": 30,
     "title": "🧾 Statement is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": undefined,
     "end_line": 33,
@@ -2197,7 +2197,7 @@ Array [
     "start_line": 33,
     "title": "🧾 Statement is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": 19,
     "end_line": 37,
@@ -2207,7 +2207,7 @@ Array [
     "start_line": 37,
     "title": "🧾 Statement is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": undefined,
     "end_line": 43,
@@ -2217,7 +2217,7 @@ Array [
     "start_line": 41,
     "title": "🧾 Statement is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": 21,
     "end_line": 42,
@@ -2227,7 +2227,7 @@ Array [
     "start_line": 42,
     "title": "🧾 Statement is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": undefined,
     "end_line": 45,
@@ -2237,7 +2237,7 @@ Array [
     "start_line": 45,
     "title": "🧾 Statement is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": undefined,
     "end_line": 49,
@@ -2247,7 +2247,7 @@ Array [
     "start_line": 49,
     "title": "🧾 Statement is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": undefined,
     "end_line": 53,
@@ -2257,7 +2257,7 @@ Array [
     "start_line": 51,
     "title": "🧾 Statement is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": undefined,
     "end_line": 52,
@@ -2267,7 +2267,7 @@ Array [
     "start_line": 52,
     "title": "🧾 Statement is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": 18,
     "end_line": 55,
@@ -2277,7 +2277,7 @@ Array [
     "start_line": 55,
     "title": "🧾 Statement is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": undefined,
     "end_line": 59,
@@ -2287,7 +2287,7 @@ Array [
     "start_line": 59,
     "title": "🧾 Statement is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": undefined,
     "end_line": 61,
@@ -2297,7 +2297,7 @@ Array [
     "start_line": 61,
     "title": "🧾 Statement is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": undefined,
     "end_line": 67,
@@ -2307,7 +2307,7 @@ Array [
     "start_line": 65,
     "title": "🧾 Statement is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": undefined,
     "end_line": 66,
@@ -2317,7 +2317,7 @@ Array [
     "start_line": 66,
     "title": "🧾 Statement is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": 19,
     "end_line": 69,
@@ -2327,7 +2327,7 @@ Array [
     "start_line": 69,
     "title": "🧾 Statement is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": undefined,
     "end_line": 75,
@@ -2337,7 +2337,7 @@ Array [
     "start_line": 73,
     "title": "🧾 Statement is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": 21,
     "end_line": 74,
@@ -2347,7 +2347,7 @@ Array [
     "start_line": 74,
     "title": "🧾 Statement is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": undefined,
     "end_line": 77,
@@ -2357,7 +2357,7 @@ Array [
     "start_line": 77,
     "title": "🧾 Statement is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": 19,
     "end_line": 82,
@@ -2367,7 +2367,7 @@ Array [
     "start_line": 82,
     "title": "🧾 Statement is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": 10,
     "end_line": 86,
@@ -2377,7 +2377,7 @@ Array [
     "start_line": 86,
     "title": "🧾 Statement is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": undefined,
     "end_line": 89,
@@ -2387,7 +2387,7 @@ Array [
     "start_line": 87,
     "title": "🧾 Statement is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": undefined,
     "end_line": 88,
@@ -2397,7 +2397,7 @@ Array [
     "start_line": 88,
     "title": "🧾 Statement is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": 35,
     "end_line": 91,
@@ -2407,7 +2407,7 @@ Array [
     "start_line": 91,
     "title": "🧾 Statement is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": undefined,
     "end_line": 107,
@@ -2417,7 +2417,7 @@ Array [
     "start_line": 93,
     "title": "🧾 Statement is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": 18,
     "end_line": 94,
@@ -2427,7 +2427,7 @@ Array [
     "start_line": 94,
     "title": "🧾 Statement is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": 18,
     "end_line": 102,
@@ -2437,7 +2437,7 @@ Array [
     "start_line": 102,
     "title": "🧾 Statement is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": 10,
     "end_line": 110,
@@ -2447,7 +2447,7 @@ Array [
     "start_line": 110,
     "title": "🧾 Statement is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": undefined,
     "end_line": 116,
@@ -2457,7 +2457,7 @@ Array [
     "start_line": 111,
     "title": "🧾 Statement is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": undefined,
     "end_line": 115,
@@ -2467,7 +2467,7 @@ Array [
     "start_line": 115,
     "title": "🧾 Statement is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": 63,
     "end_line": 118,
@@ -2477,7 +2477,7 @@ Array [
     "start_line": 118,
     "title": "🧾 Statement is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": undefined,
     "end_line": 122,
@@ -2487,7 +2487,7 @@ Array [
     "start_line": 120,
     "title": "🧾 Statement is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": undefined,
     "end_line": 121,
@@ -2497,7 +2497,7 @@ Array [
     "start_line": 121,
     "title": "🧾 Statement is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": 35,
     "end_line": 124,
@@ -2507,7 +2507,7 @@ Array [
     "start_line": 124,
     "title": "🧾 Statement is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": 14,
     "end_line": 125,
@@ -2517,7 +2517,7 @@ Array [
     "start_line": 125,
     "title": "🧾 Statement is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": 10,
     "end_line": 133,
@@ -2527,7 +2527,7 @@ Array [
     "start_line": 133,
     "title": "🧾 Statement is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": undefined,
     "end_line": 139,
@@ -2537,7 +2537,7 @@ Array [
     "start_line": 134,
     "title": "🧾 Statement is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": undefined,
     "end_line": 138,
@@ -2547,7 +2547,7 @@ Array [
     "start_line": 138,
     "title": "🧾 Statement is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": 62,
     "end_line": 141,
@@ -2557,7 +2557,7 @@ Array [
     "start_line": 141,
     "title": "🧾 Statement is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": undefined,
     "end_line": 145,
@@ -2567,7 +2567,7 @@ Array [
     "start_line": 143,
     "title": "🧾 Statement is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": undefined,
     "end_line": 144,
@@ -2577,7 +2577,7 @@ Array [
     "start_line": 144,
     "title": "🧾 Statement is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": 35,
     "end_line": 147,
@@ -2587,7 +2587,7 @@ Array [
     "start_line": 147,
     "title": "🧾 Statement is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": 14,
     "end_line": 148,
@@ -2597,7 +2597,7 @@ Array [
     "start_line": 148,
     "title": "🧾 Statement is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": undefined,
     "end_line": 155,
@@ -2607,7 +2607,7 @@ Array [
     "start_line": 153,
     "title": "🧾 Statement is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": 18,
     "end_line": 154,
@@ -2617,7 +2617,7 @@ Array [
     "start_line": 154,
     "title": "🧾 Statement is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": undefined,
     "end_line": 158,
@@ -2627,7 +2627,7 @@ Array [
     "start_line": 158,
     "title": "🧾 Statement is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": undefined,
     "end_line": 31,
@@ -2637,7 +2637,7 @@ Array [
     "start_line": 29,
     "title": "🌿 Branch is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": undefined,
     "end_line": 31,
@@ -2647,7 +2647,7 @@ Array [
     "start_line": 29,
     "title": "🌿 Branch is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": 26,
     "end_line": 29,
@@ -2657,7 +2657,7 @@ Array [
     "start_line": 29,
     "title": "🌿 Branch is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": 36,
     "end_line": 29,
@@ -2667,7 +2667,7 @@ Array [
     "start_line": 29,
     "title": "🌿 Branch is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": undefined,
     "end_line": 43,
@@ -2677,7 +2677,7 @@ Array [
     "start_line": 41,
     "title": "🌿 Branch is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": undefined,
     "end_line": 43,
@@ -2687,7 +2687,7 @@ Array [
     "start_line": 41,
     "title": "🌿 Branch is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": 61,
     "end_line": 49,
@@ -2697,7 +2697,7 @@ Array [
     "start_line": 49,
     "title": "🌿 Branch is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": undefined,
     "end_line": 49,
@@ -2707,7 +2707,7 @@ Array [
     "start_line": 49,
     "title": "🌿 Branch is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": 61,
     "end_line": 49,
@@ -2717,7 +2717,7 @@ Array [
     "start_line": 49,
     "title": "🌿 Branch is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": 61,
     "end_line": 49,
@@ -2727,7 +2727,7 @@ Array [
     "start_line": 49,
     "title": "🌿 Branch is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": undefined,
     "end_line": 53,
@@ -2737,7 +2737,7 @@ Array [
     "start_line": 51,
     "title": "🌿 Branch is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": undefined,
     "end_line": 53,
@@ -2747,7 +2747,7 @@ Array [
     "start_line": 51,
     "title": "🌿 Branch is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": 27,
     "end_line": 51,
@@ -2757,7 +2757,7 @@ Array [
     "start_line": 51,
     "title": "🌿 Branch is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": 40,
     "end_line": 51,
@@ -2767,7 +2767,7 @@ Array [
     "start_line": 51,
     "title": "🌿 Branch is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": undefined,
     "end_line": 67,
@@ -2777,7 +2777,7 @@ Array [
     "start_line": 65,
     "title": "🌿 Branch is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": undefined,
     "end_line": 67,
@@ -2787,7 +2787,7 @@ Array [
     "start_line": 65,
     "title": "🌿 Branch is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": undefined,
     "end_line": 75,
@@ -2797,7 +2797,7 @@ Array [
     "start_line": 73,
     "title": "🌿 Branch is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": undefined,
     "end_line": 75,
@@ -2807,7 +2807,7 @@ Array [
     "start_line": 73,
     "title": "🌿 Branch is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": undefined,
     "end_line": 89,
@@ -2817,7 +2817,7 @@ Array [
     "start_line": 87,
     "title": "🌿 Branch is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": undefined,
     "end_line": 89,
@@ -2827,7 +2827,7 @@ Array [
     "start_line": 87,
     "title": "🌿 Branch is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": undefined,
     "end_line": 107,
@@ -2837,7 +2837,7 @@ Array [
     "start_line": 93,
     "title": "🌿 Branch is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": undefined,
     "end_line": 107,
@@ -2847,7 +2847,7 @@ Array [
     "start_line": 93,
     "title": "🌿 Branch is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": undefined,
     "end_line": 116,
@@ -2857,7 +2857,7 @@ Array [
     "start_line": 111,
     "title": "🌿 Branch is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": undefined,
     "end_line": 116,
@@ -2867,7 +2867,7 @@ Array [
     "start_line": 111,
     "title": "🌿 Branch is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": undefined,
     "end_line": 112,
@@ -2877,7 +2877,7 @@ Array [
     "start_line": 112,
     "title": "🌿 Branch is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": 14,
     "end_line": 113,
@@ -2887,7 +2887,7 @@ Array [
     "start_line": 113,
     "title": "🌿 Branch is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": undefined,
     "end_line": 122,
@@ -2897,7 +2897,7 @@ Array [
     "start_line": 120,
     "title": "🌿 Branch is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": undefined,
     "end_line": 122,
@@ -2907,7 +2907,7 @@ Array [
     "start_line": 120,
     "title": "🌿 Branch is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": undefined,
     "end_line": 139,
@@ -2917,7 +2917,7 @@ Array [
     "start_line": 134,
     "title": "🌿 Branch is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": undefined,
     "end_line": 139,
@@ -2927,7 +2927,7 @@ Array [
     "start_line": 134,
     "title": "🌿 Branch is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": undefined,
     "end_line": 135,
@@ -2937,7 +2937,7 @@ Array [
     "start_line": 135,
     "title": "🌿 Branch is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": 14,
     "end_line": 136,
@@ -2947,7 +2947,7 @@ Array [
     "start_line": 136,
     "title": "🌿 Branch is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": undefined,
     "end_line": 145,
@@ -2957,7 +2957,7 @@ Array [
     "start_line": 143,
     "title": "🌿 Branch is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": undefined,
     "end_line": 145,
@@ -2967,7 +2967,7 @@ Array [
     "start_line": 143,
     "title": "🌿 Branch is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": undefined,
     "end_line": 155,
@@ -2977,7 +2977,7 @@ Array [
     "start_line": 153,
     "title": "🌿 Branch is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": undefined,
     "end_line": 155,
@@ -2987,7 +2987,7 @@ Array [
     "start_line": 153,
     "title": "🌿 Branch is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": 18,
     "end_line": 19,
@@ -2997,7 +2997,7 @@ Array [
     "start_line": 19,
     "title": "🕹️ Function is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": 19,
     "end_line": 36,
@@ -3007,7 +3007,7 @@ Array [
     "start_line": 36,
     "title": "🕹️ Function is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": 15,
     "end_line": 48,
@@ -3017,7 +3017,7 @@ Array [
     "start_line": 48,
     "title": "🕹️ Function is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": 15,
     "end_line": 64,
@@ -3027,7 +3027,7 @@ Array [
     "start_line": 64,
     "title": "🕹️ Function is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": 15,
     "end_line": 81,
@@ -3037,7 +3037,7 @@ Array [
     "start_line": 81,
     "title": "🕹️ Function is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": 58,
     "end_line": 86,
@@ -3047,7 +3047,7 @@ Array [
     "start_line": 86,
     "title": "🕹️ Function is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": 67,
     "end_line": 110,
@@ -3057,7 +3057,7 @@ Array [
     "start_line": 110,
     "title": "🕹️ Function is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": 64,
     "end_line": 133,
@@ -3071,8 +3071,8 @@ Array [
 `;
 
 exports[`createCoverageAnnotations should match snapshot 3`] = `
-Array [
-  Object {
+[
+  {
     "annotation_level": "warning",
     "end_column": undefined,
     "end_line": 8,
@@ -3082,7 +3082,7 @@ Array [
     "start_line": 0,
     "title": "🌿 Branch is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": undefined,
     "end_line": 14,
@@ -3092,7 +3092,7 @@ Array [
     "start_line": 14,
     "title": "🌿 Branch is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": 15,
     "end_line": 8,
@@ -3102,7 +3102,7 @@ Array [
     "start_line": 8,
     "title": "🧾 Statement is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": undefined,
     "end_line": 9,
@@ -3112,7 +3112,7 @@ Array [
     "start_line": 7,
     "title": "🌿 Branch is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": 19,
     "end_line": 38,
@@ -3122,7 +3122,7 @@ Array [
     "start_line": 38,
     "title": "🧾 Statement is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": 56,
     "end_line": 34,
@@ -3132,7 +3132,7 @@ Array [
     "start_line": 34,
     "title": "🌿 Branch is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": undefined,
     "end_line": 39,
@@ -3142,7 +3142,7 @@ Array [
     "start_line": 37,
     "title": "🌿 Branch is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": 14,
     "end_line": 102,
@@ -3152,7 +3152,7 @@ Array [
     "start_line": 102,
     "title": "🧾 Statement is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": 58,
     "end_line": 46,
@@ -3162,7 +3162,7 @@ Array [
     "start_line": 46,
     "title": "🌿 Branch is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": undefined,
     "end_line": 100,
@@ -3172,7 +3172,7 @@ Array [
     "start_line": 96,
     "title": "🌿 Branch is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": 11,
     "end_line": 21,
@@ -3182,7 +3182,7 @@ Array [
     "start_line": 21,
     "title": "🧾 Statement is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": undefined,
     "end_line": 19,
@@ -3192,7 +3192,7 @@ Array [
     "start_line": 11,
     "title": "🌿 Branch is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": 38,
     "end_line": 14,
@@ -3202,7 +3202,7 @@ Array [
     "start_line": 14,
     "title": "🌿 Branch is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": 38,
     "end_line": 16,
@@ -3212,7 +3212,7 @@ Array [
     "start_line": 16,
     "title": "🌿 Branch is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": undefined,
     "end_line": 21,
@@ -3222,7 +3222,7 @@ Array [
     "start_line": 18,
     "title": "🌿 Branch is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": undefined,
     "end_line": 22,
@@ -3232,7 +3232,7 @@ Array [
     "start_line": 9,
     "title": "🧾 Statement is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": 29,
     "end_line": 10,
@@ -3242,7 +3242,7 @@ Array [
     "start_line": 10,
     "title": "🧾 Statement is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": undefined,
     "end_line": 14,
@@ -3252,7 +3252,7 @@ Array [
     "start_line": 12,
     "title": "🧾 Statement is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": 19,
     "end_line": 13,
@@ -3262,7 +3262,7 @@ Array [
     "start_line": 13,
     "title": "🧾 Statement is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": 15,
     "end_line": 16,
@@ -3272,7 +3272,7 @@ Array [
     "start_line": 16,
     "title": "🧾 Statement is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": undefined,
     "end_line": 24,
@@ -3282,7 +3282,7 @@ Array [
     "start_line": 24,
     "title": "🧾 Statement is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": undefined,
     "end_line": 29,
@@ -3292,7 +3292,7 @@ Array [
     "start_line": 29,
     "title": "🧾 Statement is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": undefined,
     "end_line": 35,
@@ -3302,7 +3302,7 @@ Array [
     "start_line": 31,
     "title": "🧾 Statement is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": 40,
     "end_line": 32,
@@ -3312,7 +3312,7 @@ Array [
     "start_line": 32,
     "title": "🧾 Statement is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": 40,
     "end_line": 34,
@@ -3322,7 +3322,7 @@ Array [
     "start_line": 34,
     "title": "🧾 Statement is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": 27,
     "end_line": 37,
@@ -3332,7 +3332,7 @@ Array [
     "start_line": 37,
     "title": "🧾 Statement is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": undefined,
     "end_line": 7,
@@ -3342,7 +3342,7 @@ Array [
     "start_line": 5,
     "title": "🌿 Branch is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": undefined,
     "end_line": 22,
@@ -3352,7 +3352,7 @@ Array [
     "start_line": 9,
     "title": "🌿 Branch is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": undefined,
     "end_line": 22,
@@ -3362,7 +3362,7 @@ Array [
     "start_line": 9,
     "title": "🌿 Branch is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": undefined,
     "end_line": 14,
@@ -3372,7 +3372,7 @@ Array [
     "start_line": 12,
     "title": "🌿 Branch is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": undefined,
     "end_line": 14,
@@ -3382,7 +3382,7 @@ Array [
     "start_line": 12,
     "title": "🌿 Branch is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": undefined,
     "end_line": 35,
@@ -3392,7 +3392,7 @@ Array [
     "start_line": 31,
     "title": "🌿 Branch is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": undefined,
     "end_line": 35,
@@ -3402,7 +3402,7 @@ Array [
     "start_line": 31,
     "title": "🌿 Branch is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": 22,
     "end_line": 28,
@@ -3412,7 +3412,7 @@ Array [
     "start_line": 28,
     "title": "🕹️ Function is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": 23,
     "end_line": 14,
@@ -3422,7 +3422,7 @@ Array [
     "start_line": 14,
     "title": "🧾 Statement is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": 22,
     "end_line": 6,
@@ -3432,7 +3432,7 @@ Array [
     "start_line": 6,
     "title": "🌿 Branch is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": undefined,
     "end_line": 15,
@@ -3442,7 +3442,7 @@ Array [
     "start_line": 13,
     "title": "🌿 Branch is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": undefined,
     "end_line": 6,
@@ -3452,7 +3452,7 @@ Array [
     "start_line": 3,
     "title": "🧾 Statement is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": undefined,
     "end_line": 6,
@@ -3462,7 +3462,7 @@ Array [
     "start_line": 6,
     "title": "🧾 Statement is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": 32,
     "end_line": 3,
@@ -3472,7 +3472,7 @@ Array [
     "start_line": 3,
     "title": "🧾 Statement is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": 34,
     "end_line": 6,
@@ -3482,7 +3482,7 @@ Array [
     "start_line": 6,
     "title": "🌿 Branch is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": undefined,
     "end_line": 6,
@@ -3492,7 +3492,7 @@ Array [
     "start_line": 6,
     "title": "🌿 Branch is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": undefined,
     "end_line": 3,
@@ -3502,7 +3502,7 @@ Array [
     "start_line": 3,
     "title": "🕹️ Function is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": undefined,
     "end_line": 2,
@@ -3512,7 +3512,7 @@ Array [
     "start_line": 2,
     "title": "🧾 Statement is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": undefined,
     "end_line": 5,
@@ -3522,7 +3522,7 @@ Array [
     "start_line": 4,
     "title": "🧾 Statement is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": undefined,
     "end_line": 5,
@@ -3532,7 +3532,7 @@ Array [
     "start_line": 5,
     "title": "🧾 Statement is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": 42,
     "end_line": 4,
@@ -3542,7 +3542,7 @@ Array [
     "start_line": 4,
     "title": "🧾 Statement is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": undefined,
     "end_line": 4,
@@ -3552,7 +3552,7 @@ Array [
     "start_line": 4,
     "title": "🕹️ Function is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": undefined,
     "end_line": 2,
@@ -3562,7 +3562,7 @@ Array [
     "start_line": 2,
     "title": "🧾 Statement is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": undefined,
     "end_line": 11,
@@ -3572,7 +3572,7 @@ Array [
     "start_line": 4,
     "title": "🧾 Statement is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": undefined,
     "end_line": 11,
@@ -3582,7 +3582,7 @@ Array [
     "start_line": 5,
     "title": "🧾 Statement is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": 40,
     "end_line": 4,
@@ -3592,7 +3592,7 @@ Array [
     "start_line": 4,
     "title": "🧾 Statement is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": 15,
     "end_line": 6,
@@ -3602,7 +3602,7 @@ Array [
     "start_line": 6,
     "title": "🌿 Branch is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": 15,
     "end_line": 11,
@@ -3612,7 +3612,7 @@ Array [
     "start_line": 11,
     "title": "🌿 Branch is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": 65,
     "end_line": 9,
@@ -3622,7 +3622,7 @@ Array [
     "start_line": 9,
     "title": "🌿 Branch is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": undefined,
     "end_line": 9,
@@ -3632,7 +3632,7 @@ Array [
     "start_line": 9,
     "title": "🌿 Branch is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": undefined,
     "end_line": 4,
@@ -3642,7 +3642,7 @@ Array [
     "start_line": 4,
     "title": "🕹️ Function is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": undefined,
     "end_line": 1,
@@ -3652,7 +3652,7 @@ Array [
     "start_line": 1,
     "title": "🧾 Statement is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": undefined,
     "end_line": 4,
@@ -3662,7 +3662,7 @@ Array [
     "start_line": 4,
     "title": "🧾 Statement is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": undefined,
     "end_line": 7,
@@ -3672,7 +3672,7 @@ Array [
     "start_line": 7,
     "title": "🧾 Statement is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": undefined,
     "end_line": 32,
@@ -3682,7 +3682,7 @@ Array [
     "start_line": 9,
     "title": "🧾 Statement is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": 26,
     "end_line": 12,
@@ -3692,7 +3692,7 @@ Array [
     "start_line": 12,
     "title": "🧾 Statement is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": 41,
     "end_line": 9,
@@ -3702,7 +3702,7 @@ Array [
     "start_line": 9,
     "title": "🧾 Statement is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": 56,
     "end_line": 15,
@@ -3712,7 +3712,7 @@ Array [
     "start_line": 15,
     "title": "🌿 Branch is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": undefined,
     "end_line": 15,
@@ -3722,7 +3722,7 @@ Array [
     "start_line": 15,
     "title": "🌿 Branch is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": 56,
     "end_line": 15,
@@ -3732,7 +3732,7 @@ Array [
     "start_line": 15,
     "title": "🌿 Branch is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": 56,
     "end_line": 15,
@@ -3742,7 +3742,7 @@ Array [
     "start_line": 15,
     "title": "🌿 Branch is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": 44,
     "end_line": 15,
@@ -3752,7 +3752,7 @@ Array [
     "start_line": 15,
     "title": "🌿 Branch is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": 52,
     "end_line": 15,
@@ -3762,7 +3762,7 @@ Array [
     "start_line": 15,
     "title": "🌿 Branch is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": 44,
     "end_line": 15,
@@ -3772,7 +3772,7 @@ Array [
     "start_line": 15,
     "title": "🌿 Branch is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": 44,
     "end_line": 15,
@@ -3782,7 +3782,7 @@ Array [
     "start_line": 15,
     "title": "🌿 Branch is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": undefined,
     "end_line": 22,
@@ -3792,7 +3792,7 @@ Array [
     "start_line": 22,
     "title": "🌿 Branch is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": 21,
     "end_line": 23,
@@ -3802,7 +3802,7 @@ Array [
     "start_line": 23,
     "title": "🌿 Branch is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": undefined,
     "end_line": 9,
@@ -3812,7 +3812,7 @@ Array [
     "start_line": 9,
     "title": "🕹️ Function is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": undefined,
     "end_line": 1,
@@ -3822,7 +3822,7 @@ Array [
     "start_line": 1,
     "title": "🧾 Statement is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": undefined,
     "end_line": 5,
@@ -3832,7 +3832,7 @@ Array [
     "start_line": 5,
     "title": "🧾 Statement is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": undefined,
     "end_line": 29,
@@ -3842,7 +3842,7 @@ Array [
     "start_line": 8,
     "title": "🧾 Statement is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": 26,
     "end_line": 9,
@@ -3852,7 +3852,7 @@ Array [
     "start_line": 9,
     "title": "🧾 Statement is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": 38,
     "end_line": 7,
@@ -3862,7 +3862,7 @@ Array [
     "start_line": 7,
     "title": "🧾 Statement is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": 56,
     "end_line": 12,
@@ -3872,7 +3872,7 @@ Array [
     "start_line": 12,
     "title": "🌿 Branch is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": undefined,
     "end_line": 12,
@@ -3882,7 +3882,7 @@ Array [
     "start_line": 12,
     "title": "🌿 Branch is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": 56,
     "end_line": 12,
@@ -3892,7 +3892,7 @@ Array [
     "start_line": 12,
     "title": "🌿 Branch is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": 56,
     "end_line": 12,
@@ -3902,7 +3902,7 @@ Array [
     "start_line": 12,
     "title": "🌿 Branch is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": 44,
     "end_line": 12,
@@ -3912,7 +3912,7 @@ Array [
     "start_line": 12,
     "title": "🌿 Branch is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": 52,
     "end_line": 12,
@@ -3922,7 +3922,7 @@ Array [
     "start_line": 12,
     "title": "🌿 Branch is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": 44,
     "end_line": 12,
@@ -3932,7 +3932,7 @@ Array [
     "start_line": 12,
     "title": "🌿 Branch is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": 44,
     "end_line": 12,
@@ -3942,7 +3942,7 @@ Array [
     "start_line": 12,
     "title": "🌿 Branch is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": undefined,
     "end_line": 20,
@@ -3952,7 +3952,7 @@ Array [
     "start_line": 20,
     "title": "🌿 Branch is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": 21,
     "end_line": 21,
@@ -3962,7 +3962,7 @@ Array [
     "start_line": 21,
     "title": "🌿 Branch is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": undefined,
     "end_line": 8,
@@ -3972,7 +3972,7 @@ Array [
     "start_line": 8,
     "title": "🕹️ Function is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": undefined,
     "end_line": 1,
@@ -3982,7 +3982,7 @@ Array [
     "start_line": 1,
     "title": "🧾 Statement is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": undefined,
     "end_line": 5,
@@ -3992,7 +3992,7 @@ Array [
     "start_line": 5,
     "title": "🧾 Statement is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": undefined,
     "end_line": 7,
@@ -4002,7 +4002,7 @@ Array [
     "start_line": 7,
     "title": "🧾 Statement is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": undefined,
     "end_line": 15,
@@ -4012,7 +4012,7 @@ Array [
     "start_line": 15,
     "title": "🧾 Statement is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": undefined,
     "end_line": 102,
@@ -4022,7 +4022,7 @@ Array [
     "start_line": 29,
     "title": "🧾 Statement is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": undefined,
     "end_line": 31,
@@ -4032,7 +4032,7 @@ Array [
     "start_line": 31,
     "title": "🧾 Statement is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": 10,
     "end_line": 33,
@@ -4042,7 +4042,7 @@ Array [
     "start_line": 33,
     "title": "🧾 Statement is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": 48,
     "end_line": 35,
@@ -4052,7 +4052,7 @@ Array [
     "start_line": 35,
     "title": "🧾 Statement is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": 18,
     "end_line": 36,
@@ -4062,7 +4062,7 @@ Array [
     "start_line": 36,
     "title": "🧾 Statement is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": undefined,
     "end_line": 49,
@@ -4072,7 +4072,7 @@ Array [
     "start_line": 38,
     "title": "🧾 Statement is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": 35,
     "end_line": 39,
@@ -4082,7 +4082,7 @@ Array [
     "start_line": 39,
     "title": "🧾 Statement is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": 18,
     "end_line": 53,
@@ -4092,7 +4092,7 @@ Array [
     "start_line": 53,
     "title": "🧾 Statement is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": undefined,
     "end_line": 78,
@@ -4102,7 +4102,7 @@ Array [
     "start_line": 55,
     "title": "🧾 Statement is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": 38,
     "end_line": 56,
@@ -4112,7 +4112,7 @@ Array [
     "start_line": 56,
     "title": "🧾 Statement is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": undefined,
     "end_line": 75,
@@ -4122,7 +4122,7 @@ Array [
     "start_line": 58,
     "title": "🧾 Statement is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": 47,
     "end_line": 63,
@@ -4132,7 +4132,7 @@ Array [
     "start_line": 63,
     "title": "🧾 Statement is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": 18,
     "end_line": 82,
@@ -4142,7 +4142,7 @@ Array [
     "start_line": 82,
     "title": "🧾 Statement is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": undefined,
     "end_line": 95,
@@ -4152,7 +4152,7 @@ Array [
     "start_line": 84,
     "title": "🧾 Statement is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": 35,
     "end_line": 85,
@@ -4162,7 +4162,7 @@ Array [
     "start_line": 85,
     "title": "🧾 Statement is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": 11,
     "end_line": 101,
@@ -4172,7 +4172,7 @@ Array [
     "start_line": 101,
     "title": "🧾 Statement is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": 38,
     "end_line": 28,
@@ -4182,7 +4182,7 @@ Array [
     "start_line": 28,
     "title": "🧾 Statement is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": 24,
     "end_line": 8,
@@ -4192,7 +4192,7 @@ Array [
     "start_line": 8,
     "title": "🌿 Branch is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": 22,
     "end_line": 9,
@@ -4202,7 +4202,7 @@ Array [
     "start_line": 9,
     "title": "🌿 Branch is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": undefined,
     "end_line": 20,
@@ -4212,7 +4212,7 @@ Array [
     "start_line": 20,
     "title": "🌿 Branch is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": undefined,
     "end_line": 21,
@@ -4222,7 +4222,7 @@ Array [
     "start_line": 21,
     "title": "🌿 Branch is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": 35,
     "end_line": 19,
@@ -4232,7 +4232,7 @@ Array [
     "start_line": 19,
     "title": "🌿 Branch is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": 60,
     "end_line": 19,
@@ -4242,7 +4242,7 @@ Array [
     "start_line": 19,
     "title": "🌿 Branch is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": undefined,
     "end_line": 19,
@@ -4252,7 +4252,7 @@ Array [
     "start_line": 19,
     "title": "🌿 Branch is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": undefined,
     "end_line": 24,
@@ -4262,7 +4262,7 @@ Array [
     "start_line": 24,
     "title": "🌿 Branch is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": undefined,
     "end_line": 25,
@@ -4272,7 +4272,7 @@ Array [
     "start_line": 25,
     "title": "🌿 Branch is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": 35,
     "end_line": 23,
@@ -4282,7 +4282,7 @@ Array [
     "start_line": 23,
     "title": "🌿 Branch is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": 60,
     "end_line": 23,
@@ -4292,7 +4292,7 @@ Array [
     "start_line": 23,
     "title": "🌿 Branch is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": undefined,
     "end_line": 23,
@@ -4302,7 +4302,7 @@ Array [
     "start_line": 23,
     "title": "🌿 Branch is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": undefined,
     "end_line": 49,
@@ -4312,7 +4312,7 @@ Array [
     "start_line": 38,
     "title": "🌿 Branch is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": undefined,
     "end_line": 49,
@@ -4322,7 +4322,7 @@ Array [
     "start_line": 38,
     "title": "🌿 Branch is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": undefined,
     "end_line": 78,
@@ -4332,7 +4332,7 @@ Array [
     "start_line": 55,
     "title": "🌿 Branch is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": undefined,
     "end_line": 78,
@@ -4342,7 +4342,7 @@ Array [
     "start_line": 55,
     "title": "🌿 Branch is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": undefined,
     "end_line": 75,
@@ -4352,7 +4352,7 @@ Array [
     "start_line": 58,
     "title": "🌿 Branch is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": undefined,
     "end_line": 75,
@@ -4362,7 +4362,7 @@ Array [
     "start_line": 58,
     "title": "🌿 Branch is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": undefined,
     "end_line": 95,
@@ -4372,7 +4372,7 @@ Array [
     "start_line": 84,
     "title": "🌿 Branch is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": undefined,
     "end_line": 95,
@@ -4382,7 +4382,7 @@ Array [
     "start_line": 84,
     "title": "🌿 Branch is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": undefined,
     "end_line": 7,
@@ -4392,7 +4392,7 @@ Array [
     "start_line": 7,
     "title": "🕹️ Function is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": undefined,
     "end_line": 29,
@@ -4402,7 +4402,7 @@ Array [
     "start_line": 29,
     "title": "🕹️ Function is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": 9,
     "end_line": 34,
@@ -4412,7 +4412,7 @@ Array [
     "start_line": 34,
     "title": "🕹️ Function is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": 17,
     "end_line": 37,
@@ -4422,7 +4422,7 @@ Array [
     "start_line": 37,
     "title": "🕹️ Function is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": 17,
     "end_line": 54,
@@ -4432,7 +4432,7 @@ Array [
     "start_line": 54,
     "title": "🕹️ Function is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": 29,
     "end_line": 57,
@@ -4442,7 +4442,7 @@ Array [
     "start_line": 57,
     "title": "🕹️ Function is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": 17,
     "end_line": 83,
@@ -4452,7 +4452,7 @@ Array [
     "start_line": 83,
     "title": "🕹️ Function is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": undefined,
     "end_line": 1,
@@ -4462,7 +4462,7 @@ Array [
     "start_line": 1,
     "title": "🧾 Statement is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": undefined,
     "end_line": 3,
@@ -4472,7 +4472,7 @@ Array [
     "start_line": 3,
     "title": "🧾 Statement is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": undefined,
     "end_line": 43,
@@ -4482,7 +4482,7 @@ Array [
     "start_line": 9,
     "title": "🧾 Statement is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": undefined,
     "end_line": 11,
@@ -4492,7 +4492,7 @@ Array [
     "start_line": 11,
     "title": "🧾 Statement is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": undefined,
     "end_line": 15,
@@ -4502,7 +4502,7 @@ Array [
     "start_line": 13,
     "title": "🧾 Statement is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": 15,
     "end_line": 14,
@@ -4512,7 +4512,7 @@ Array [
     "start_line": 14,
     "title": "🧾 Statement is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": undefined,
     "end_line": 17,
@@ -4522,7 +4522,7 @@ Array [
     "start_line": 17,
     "title": "🧾 Statement is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": 23,
     "end_line": 19,
@@ -4532,7 +4532,7 @@ Array [
     "start_line": 19,
     "title": "🧾 Statement is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": 15,
     "end_line": 21,
@@ -4542,7 +4542,7 @@ Array [
     "start_line": 21,
     "title": "🧾 Statement is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": undefined,
     "end_line": 24,
@@ -4552,7 +4552,7 @@ Array [
     "start_line": 22,
     "title": "🧾 Statement is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": undefined,
     "end_line": 23,
@@ -4562,7 +4562,7 @@ Array [
     "start_line": 23,
     "title": "🧾 Statement is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": 19,
     "end_line": 26,
@@ -4572,7 +4572,7 @@ Array [
     "start_line": 26,
     "title": "🧾 Statement is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": undefined,
     "end_line": 28,
@@ -4582,7 +4582,7 @@ Array [
     "start_line": 28,
     "title": "🧾 Statement is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": 79,
     "end_line": 30,
@@ -4592,7 +4592,7 @@ Array [
     "start_line": 30,
     "title": "🧾 Statement is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": 11,
     "end_line": 42,
@@ -4602,7 +4602,7 @@ Array [
     "start_line": 42,
     "title": "🧾 Statement is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": 41,
     "end_line": 8,
@@ -4612,7 +4612,7 @@ Array [
     "start_line": 8,
     "title": "🧾 Statement is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": undefined,
     "end_line": 15,
@@ -4622,7 +4622,7 @@ Array [
     "start_line": 13,
     "title": "🌿 Branch is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": undefined,
     "end_line": 15,
@@ -4632,7 +4632,7 @@ Array [
     "start_line": 13,
     "title": "🌿 Branch is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": undefined,
     "end_line": 24,
@@ -4642,7 +4642,7 @@ Array [
     "start_line": 22,
     "title": "🌿 Branch is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": undefined,
     "end_line": 24,
@@ -4652,7 +4652,7 @@ Array [
     "start_line": 22,
     "title": "🌿 Branch is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": 54,
     "end_line": 33,
@@ -4662,7 +4662,7 @@ Array [
     "start_line": 33,
     "title": "🌿 Branch is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": undefined,
     "end_line": 33,
@@ -4672,7 +4672,7 @@ Array [
     "start_line": 33,
     "title": "🌿 Branch is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": 54,
     "end_line": 33,
@@ -4682,7 +4682,7 @@ Array [
     "start_line": 33,
     "title": "🌿 Branch is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": 54,
     "end_line": 33,
@@ -4692,7 +4692,7 @@ Array [
     "start_line": 33,
     "title": "🌿 Branch is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": 46,
     "end_line": 33,
@@ -4702,7 +4702,7 @@ Array [
     "start_line": 33,
     "title": "🌿 Branch is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": 50,
     "end_line": 33,
@@ -4712,7 +4712,7 @@ Array [
     "start_line": 33,
     "title": "🌿 Branch is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": 46,
     "end_line": 33,
@@ -4722,7 +4722,7 @@ Array [
     "start_line": 33,
     "title": "🌿 Branch is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": 46,
     "end_line": 33,
@@ -4732,7 +4732,7 @@ Array [
     "start_line": 33,
     "title": "🌿 Branch is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": 52,
     "end_line": 34,
@@ -4742,7 +4742,7 @@ Array [
     "start_line": 34,
     "title": "🌿 Branch is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": undefined,
     "end_line": 34,
@@ -4752,7 +4752,7 @@ Array [
     "start_line": 34,
     "title": "🌿 Branch is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": 52,
     "end_line": 34,
@@ -4762,7 +4762,7 @@ Array [
     "start_line": 34,
     "title": "🌿 Branch is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": 52,
     "end_line": 34,
@@ -4772,7 +4772,7 @@ Array [
     "start_line": 34,
     "title": "🌿 Branch is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": 44,
     "end_line": 34,
@@ -4782,7 +4782,7 @@ Array [
     "start_line": 34,
     "title": "🌿 Branch is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": 48,
     "end_line": 34,
@@ -4792,7 +4792,7 @@ Array [
     "start_line": 34,
     "title": "🌿 Branch is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": 44,
     "end_line": 34,
@@ -4802,7 +4802,7 @@ Array [
     "start_line": 34,
     "title": "🌿 Branch is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": 44,
     "end_line": 34,
@@ -4812,7 +4812,7 @@ Array [
     "start_line": 34,
     "title": "🌿 Branch is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": 47,
     "end_line": 35,
@@ -4822,7 +4822,7 @@ Array [
     "start_line": 35,
     "title": "🌿 Branch is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": 45,
     "end_line": 35,
@@ -4832,7 +4832,7 @@ Array [
     "start_line": 35,
     "title": "🌿 Branch is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": 47,
     "end_line": 35,
@@ -4842,7 +4842,7 @@ Array [
     "start_line": 35,
     "title": "🌿 Branch is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": 47,
     "end_line": 35,
@@ -4852,7 +4852,7 @@ Array [
     "start_line": 35,
     "title": "🌿 Branch is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": 76,
     "end_line": 36,
@@ -4862,7 +4862,7 @@ Array [
     "start_line": 36,
     "title": "🌿 Branch is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": undefined,
     "end_line": 36,
@@ -4872,7 +4872,7 @@ Array [
     "start_line": 36,
     "title": "🌿 Branch is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": 76,
     "end_line": 36,
@@ -4882,7 +4882,7 @@ Array [
     "start_line": 36,
     "title": "🌿 Branch is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": 76,
     "end_line": 36,
@@ -4892,7 +4892,7 @@ Array [
     "start_line": 36,
     "title": "🌿 Branch is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": 60,
     "end_line": 36,
@@ -4902,7 +4902,7 @@ Array [
     "start_line": 36,
     "title": "🌿 Branch is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": 58,
     "end_line": 36,
@@ -4912,7 +4912,7 @@ Array [
     "start_line": 36,
     "title": "🌿 Branch is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": 60,
     "end_line": 36,
@@ -4922,7 +4922,7 @@ Array [
     "start_line": 36,
     "title": "🌿 Branch is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": 60,
     "end_line": 36,
@@ -4932,7 +4932,7 @@ Array [
     "start_line": 36,
     "title": "🌿 Branch is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": undefined,
     "end_line": 9,
@@ -4942,7 +4942,7 @@ Array [
     "start_line": 9,
     "title": "🕹️ Function is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": 25,
     "end_line": 21,
@@ -4952,7 +4952,7 @@ Array [
     "start_line": 21,
     "title": "🕹️ Function is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": 25,
     "end_line": 28,
@@ -4962,7 +4962,7 @@ Array [
     "start_line": 28,
     "title": "🕹️ Function is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": 21,
     "end_line": 30,
@@ -4972,7 +4972,7 @@ Array [
     "start_line": 30,
     "title": "🕹️ Function is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": undefined,
     "end_line": 1,
@@ -4982,7 +4982,7 @@ Array [
     "start_line": 1,
     "title": "🧾 Statement is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": undefined,
     "end_line": 2,
@@ -4992,7 +4992,7 @@ Array [
     "start_line": 2,
     "title": "🧾 Statement is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": undefined,
     "end_line": 4,
@@ -5002,7 +5002,7 @@ Array [
     "start_line": 4,
     "title": "🧾 Statement is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": undefined,
     "end_line": 5,
@@ -5012,7 +5012,7 @@ Array [
     "start_line": 5,
     "title": "🧾 Statement is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": undefined,
     "end_line": 6,
@@ -5022,7 +5022,7 @@ Array [
     "start_line": 6,
     "title": "🧾 Statement is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": undefined,
     "end_line": 7,
@@ -5032,7 +5032,7 @@ Array [
     "start_line": 7,
     "title": "🧾 Statement is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": undefined,
     "end_line": 8,
@@ -5042,7 +5042,7 @@ Array [
     "start_line": 8,
     "title": "🧾 Statement is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": undefined,
     "end_line": 9,
@@ -5052,7 +5052,7 @@ Array [
     "start_line": 9,
     "title": "🧾 Statement is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": undefined,
     "end_line": 10,
@@ -5062,7 +5062,7 @@ Array [
     "start_line": 10,
     "title": "🧾 Statement is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": undefined,
     "end_line": 11,
@@ -5072,7 +5072,7 @@ Array [
     "start_line": 11,
     "title": "🧾 Statement is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": undefined,
     "end_line": 12,
@@ -5082,7 +5082,7 @@ Array [
     "start_line": 12,
     "title": "🧾 Statement is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": undefined,
     "end_line": 14,
@@ -5092,7 +5092,7 @@ Array [
     "start_line": 14,
     "title": "🧾 Statement is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": undefined,
     "end_line": 15,
@@ -5102,7 +5102,7 @@ Array [
     "start_line": 15,
     "title": "🧾 Statement is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": undefined,
     "end_line": 16,
@@ -5112,7 +5112,7 @@ Array [
     "start_line": 16,
     "title": "🧾 Statement is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": undefined,
     "end_line": 17,
@@ -5122,7 +5122,7 @@ Array [
     "start_line": 17,
     "title": "🧾 Statement is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": undefined,
     "end_line": 20,
@@ -5132,7 +5132,7 @@ Array [
     "start_line": 20,
     "title": "🧾 Statement is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": undefined,
     "end_line": 21,
@@ -5142,7 +5142,7 @@ Array [
     "start_line": 21,
     "title": "🧾 Statement is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": undefined,
     "end_line": 23,
@@ -5152,7 +5152,7 @@ Array [
     "start_line": 23,
     "title": "🧾 Statement is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": undefined,
     "end_line": 31,
@@ -5162,7 +5162,7 @@ Array [
     "start_line": 29,
     "title": "🧾 Statement is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": 14,
     "end_line": 30,
@@ -5172,7 +5172,7 @@ Array [
     "start_line": 30,
     "title": "🧾 Statement is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": undefined,
     "end_line": 33,
@@ -5182,7 +5182,7 @@ Array [
     "start_line": 33,
     "title": "🧾 Statement is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": 19,
     "end_line": 37,
@@ -5192,7 +5192,7 @@ Array [
     "start_line": 37,
     "title": "🧾 Statement is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": undefined,
     "end_line": 43,
@@ -5202,7 +5202,7 @@ Array [
     "start_line": 41,
     "title": "🧾 Statement is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": 21,
     "end_line": 42,
@@ -5212,7 +5212,7 @@ Array [
     "start_line": 42,
     "title": "🧾 Statement is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": undefined,
     "end_line": 45,
@@ -5222,7 +5222,7 @@ Array [
     "start_line": 45,
     "title": "🧾 Statement is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": undefined,
     "end_line": 49,
@@ -5232,7 +5232,7 @@ Array [
     "start_line": 49,
     "title": "🧾 Statement is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": undefined,
     "end_line": 53,
@@ -5242,7 +5242,7 @@ Array [
     "start_line": 51,
     "title": "🧾 Statement is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": undefined,
     "end_line": 52,
@@ -5252,7 +5252,7 @@ Array [
     "start_line": 52,
     "title": "🧾 Statement is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": 18,
     "end_line": 55,
@@ -5262,7 +5262,7 @@ Array [
     "start_line": 55,
     "title": "🧾 Statement is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": undefined,
     "end_line": 59,
@@ -5272,7 +5272,7 @@ Array [
     "start_line": 59,
     "title": "🧾 Statement is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": undefined,
     "end_line": 61,
@@ -5282,7 +5282,7 @@ Array [
     "start_line": 61,
     "title": "🧾 Statement is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": undefined,
     "end_line": 67,
@@ -5292,7 +5292,7 @@ Array [
     "start_line": 65,
     "title": "🧾 Statement is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": undefined,
     "end_line": 66,
@@ -5302,7 +5302,7 @@ Array [
     "start_line": 66,
     "title": "🧾 Statement is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": 19,
     "end_line": 69,
@@ -5312,7 +5312,7 @@ Array [
     "start_line": 69,
     "title": "🧾 Statement is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": undefined,
     "end_line": 75,
@@ -5322,7 +5322,7 @@ Array [
     "start_line": 73,
     "title": "🧾 Statement is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": 21,
     "end_line": 74,
@@ -5332,7 +5332,7 @@ Array [
     "start_line": 74,
     "title": "🧾 Statement is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": undefined,
     "end_line": 77,
@@ -5342,7 +5342,7 @@ Array [
     "start_line": 77,
     "title": "🧾 Statement is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": 19,
     "end_line": 82,
@@ -5352,7 +5352,7 @@ Array [
     "start_line": 82,
     "title": "🧾 Statement is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": 10,
     "end_line": 86,
@@ -5362,7 +5362,7 @@ Array [
     "start_line": 86,
     "title": "🧾 Statement is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": undefined,
     "end_line": 89,
@@ -5372,7 +5372,7 @@ Array [
     "start_line": 87,
     "title": "🧾 Statement is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": undefined,
     "end_line": 88,
@@ -5382,7 +5382,7 @@ Array [
     "start_line": 88,
     "title": "🧾 Statement is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": 35,
     "end_line": 91,
@@ -5392,7 +5392,7 @@ Array [
     "start_line": 91,
     "title": "🧾 Statement is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": undefined,
     "end_line": 107,
@@ -5402,7 +5402,7 @@ Array [
     "start_line": 93,
     "title": "🧾 Statement is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": 18,
     "end_line": 94,
@@ -5412,7 +5412,7 @@ Array [
     "start_line": 94,
     "title": "🧾 Statement is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": 18,
     "end_line": 102,
@@ -5422,7 +5422,7 @@ Array [
     "start_line": 102,
     "title": "🧾 Statement is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": 10,
     "end_line": 110,
@@ -5432,7 +5432,7 @@ Array [
     "start_line": 110,
     "title": "🧾 Statement is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": undefined,
     "end_line": 116,
@@ -5442,7 +5442,7 @@ Array [
     "start_line": 111,
     "title": "🧾 Statement is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": undefined,
     "end_line": 115,
@@ -5452,7 +5452,7 @@ Array [
     "start_line": 115,
     "title": "🧾 Statement is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": 63,
     "end_line": 118,
@@ -5462,7 +5462,7 @@ Array [
     "start_line": 118,
     "title": "🧾 Statement is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": undefined,
     "end_line": 122,
@@ -5472,7 +5472,7 @@ Array [
     "start_line": 120,
     "title": "🧾 Statement is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": undefined,
     "end_line": 121,
@@ -5482,7 +5482,7 @@ Array [
     "start_line": 121,
     "title": "🧾 Statement is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": 35,
     "end_line": 124,
@@ -5492,7 +5492,7 @@ Array [
     "start_line": 124,
     "title": "🧾 Statement is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": 14,
     "end_line": 125,
@@ -5502,7 +5502,7 @@ Array [
     "start_line": 125,
     "title": "🧾 Statement is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": 10,
     "end_line": 133,
@@ -5512,7 +5512,7 @@ Array [
     "start_line": 133,
     "title": "🧾 Statement is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": undefined,
     "end_line": 139,
@@ -5522,7 +5522,7 @@ Array [
     "start_line": 134,
     "title": "🧾 Statement is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": undefined,
     "end_line": 138,
@@ -5532,7 +5532,7 @@ Array [
     "start_line": 138,
     "title": "🧾 Statement is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": 62,
     "end_line": 141,
@@ -5542,7 +5542,7 @@ Array [
     "start_line": 141,
     "title": "🧾 Statement is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": undefined,
     "end_line": 145,
@@ -5552,7 +5552,7 @@ Array [
     "start_line": 143,
     "title": "🧾 Statement is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": undefined,
     "end_line": 144,
@@ -5562,7 +5562,7 @@ Array [
     "start_line": 144,
     "title": "🧾 Statement is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": 35,
     "end_line": 147,
@@ -5572,7 +5572,7 @@ Array [
     "start_line": 147,
     "title": "🧾 Statement is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": 14,
     "end_line": 148,
@@ -5582,7 +5582,7 @@ Array [
     "start_line": 148,
     "title": "🧾 Statement is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": undefined,
     "end_line": 155,
@@ -5592,7 +5592,7 @@ Array [
     "start_line": 153,
     "title": "🧾 Statement is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": 18,
     "end_line": 154,
@@ -5602,7 +5602,7 @@ Array [
     "start_line": 154,
     "title": "🧾 Statement is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": undefined,
     "end_line": 158,
@@ -5612,7 +5612,7 @@ Array [
     "start_line": 158,
     "title": "🧾 Statement is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": undefined,
     "end_line": 31,
@@ -5622,7 +5622,7 @@ Array [
     "start_line": 29,
     "title": "🌿 Branch is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": undefined,
     "end_line": 31,
@@ -5632,7 +5632,7 @@ Array [
     "start_line": 29,
     "title": "🌿 Branch is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": 26,
     "end_line": 29,
@@ -5642,7 +5642,7 @@ Array [
     "start_line": 29,
     "title": "🌿 Branch is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": 36,
     "end_line": 29,
@@ -5652,7 +5652,7 @@ Array [
     "start_line": 29,
     "title": "🌿 Branch is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": undefined,
     "end_line": 43,
@@ -5662,7 +5662,7 @@ Array [
     "start_line": 41,
     "title": "🌿 Branch is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": undefined,
     "end_line": 43,
@@ -5672,7 +5672,7 @@ Array [
     "start_line": 41,
     "title": "🌿 Branch is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": 61,
     "end_line": 49,
@@ -5682,7 +5682,7 @@ Array [
     "start_line": 49,
     "title": "🌿 Branch is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": undefined,
     "end_line": 49,
@@ -5692,7 +5692,7 @@ Array [
     "start_line": 49,
     "title": "🌿 Branch is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": 61,
     "end_line": 49,
@@ -5702,7 +5702,7 @@ Array [
     "start_line": 49,
     "title": "🌿 Branch is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": 61,
     "end_line": 49,
@@ -5712,7 +5712,7 @@ Array [
     "start_line": 49,
     "title": "🌿 Branch is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": 27,
     "end_line": 51,
@@ -5722,7 +5722,7 @@ Array [
     "start_line": 51,
     "title": "🌿 Branch is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": 40,
     "end_line": 51,
@@ -5732,7 +5732,7 @@ Array [
     "start_line": 51,
     "title": "🌿 Branch is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": undefined,
     "end_line": 67,
@@ -5742,7 +5742,7 @@ Array [
     "start_line": 65,
     "title": "🌿 Branch is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": undefined,
     "end_line": 67,
@@ -5752,7 +5752,7 @@ Array [
     "start_line": 65,
     "title": "🌿 Branch is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": undefined,
     "end_line": 75,
@@ -5762,7 +5762,7 @@ Array [
     "start_line": 73,
     "title": "🌿 Branch is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": undefined,
     "end_line": 75,
@@ -5772,7 +5772,7 @@ Array [
     "start_line": 73,
     "title": "🌿 Branch is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": undefined,
     "end_line": 89,
@@ -5782,7 +5782,7 @@ Array [
     "start_line": 87,
     "title": "🌿 Branch is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": undefined,
     "end_line": 89,
@@ -5792,7 +5792,7 @@ Array [
     "start_line": 87,
     "title": "🌿 Branch is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": undefined,
     "end_line": 107,
@@ -5802,7 +5802,7 @@ Array [
     "start_line": 93,
     "title": "🌿 Branch is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": undefined,
     "end_line": 107,
@@ -5812,7 +5812,7 @@ Array [
     "start_line": 93,
     "title": "🌿 Branch is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": undefined,
     "end_line": 116,
@@ -5822,7 +5822,7 @@ Array [
     "start_line": 111,
     "title": "🌿 Branch is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": undefined,
     "end_line": 116,
@@ -5832,7 +5832,7 @@ Array [
     "start_line": 111,
     "title": "🌿 Branch is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": undefined,
     "end_line": 112,
@@ -5842,7 +5842,7 @@ Array [
     "start_line": 112,
     "title": "🌿 Branch is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": 14,
     "end_line": 113,
@@ -5852,7 +5852,7 @@ Array [
     "start_line": 113,
     "title": "🌿 Branch is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": undefined,
     "end_line": 122,
@@ -5862,7 +5862,7 @@ Array [
     "start_line": 120,
     "title": "🌿 Branch is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": undefined,
     "end_line": 122,
@@ -5872,7 +5872,7 @@ Array [
     "start_line": 120,
     "title": "🌿 Branch is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": undefined,
     "end_line": 0,
@@ -5882,7 +5882,7 @@ Array [
     "start_line": 134,
     "title": "🌿 Branch is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": undefined,
     "end_line": 139,
@@ -5892,7 +5892,7 @@ Array [
     "start_line": 134,
     "title": "🌿 Branch is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": undefined,
     "end_line": 135,
@@ -5902,7 +5902,7 @@ Array [
     "start_line": 135,
     "title": "🌿 Branch is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": 14,
     "end_line": 136,
@@ -5912,7 +5912,7 @@ Array [
     "start_line": 136,
     "title": "🌿 Branch is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": undefined,
     "end_line": 145,
@@ -5922,7 +5922,7 @@ Array [
     "start_line": 143,
     "title": "🌿 Branch is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": undefined,
     "end_line": 145,
@@ -5932,7 +5932,7 @@ Array [
     "start_line": 143,
     "title": "🌿 Branch is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": undefined,
     "end_line": 155,
@@ -5942,7 +5942,7 @@ Array [
     "start_line": 153,
     "title": "🌿 Branch is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": undefined,
     "end_line": 155,
@@ -5952,7 +5952,7 @@ Array [
     "start_line": 153,
     "title": "🌿 Branch is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": 18,
     "end_line": 19,
@@ -5962,7 +5962,7 @@ Array [
     "start_line": 19,
     "title": "🕹️ Function is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": 19,
     "end_line": 36,
@@ -5972,7 +5972,7 @@ Array [
     "start_line": 36,
     "title": "🕹️ Function is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": 15,
     "end_line": 48,
@@ -5982,7 +5982,7 @@ Array [
     "start_line": 48,
     "title": "🕹️ Function is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": 15,
     "end_line": 64,
@@ -5992,7 +5992,7 @@ Array [
     "start_line": 64,
     "title": "🕹️ Function is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": 15,
     "end_line": 81,
@@ -6002,7 +6002,7 @@ Array [
     "start_line": 81,
     "title": "🕹️ Function is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": 58,
     "end_line": 86,
@@ -6012,7 +6012,7 @@ Array [
     "start_line": 86,
     "title": "🕹️ Function is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": 67,
     "end_line": 110,
@@ -6022,7 +6022,7 @@ Array [
     "start_line": 110,
     "title": "🕹️ Function is not covered",
   },
-  Object {
+  {
     "annotation_level": "warning",
     "end_column": 64,
     "end_line": 133,
