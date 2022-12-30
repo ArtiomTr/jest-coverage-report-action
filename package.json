@@ -7,10 +7,10 @@
     "main": "dist/index.js",
     "scripts": {
         "test": "jest",
-        "test:log-coverage": "jest --coverage",
-        "test:coverage": "jest --silent --testLocationInResults --ci --all --coverage --json --outputFile=\"report.json\"",
-        "test:watch": "jest --watch",
-        "build": "tsc --noEmit --incremental && node esbuild.cjs",
+        "test:log-coverage": "npm run test -- --coverage",
+        "test:coverage": "npm run test -- --silent --testLocationInResults --ci --all --coverage --json --outputFile=\"report.json\"",
+        "test:watch": "npm run test -- --watch",
+        "build": "tsc -p tsconfig.main.json --noEmit --incremental && node esbuild.cjs",
         "build:dev": "node esbuild.cjs",
         "lint": "eslint ."
     },
@@ -21,9 +21,10 @@
         "@actions/core": "^1.9.1",
         "@actions/exec": "^1.1.1",
         "@actions/github": "^5.0.3",
-        "@covbot/jsx-markdown": "^0.1.0",
+        "@covbot/jsx-markdown": "^0.3.0",
         "fs-extra": "^10.0.0",
         "markdown-table": "^2.0.0",
+        "mdast-util-to-markdown": "^1.4.0",
         "micromatch": "^4.0.4",
         "parse-diff": "^0.9.0",
         "semver": "^7.3.5",
@@ -31,6 +32,7 @@
         "yup": "^0.32.9"
     },
     "devDependencies": {
+        "@babel/preset-env": "^7.20.2",
         "@types/fs-extra": "^9.0.11",
         "@types/jest": "^27.0.2",
         "@types/markdown-table": "^2.0.0",
@@ -47,6 +49,7 @@
         "eslint-plugin-prettier": "^3.3.1",
         "eslint-plugin-simple-import-sort": "^7.0.0",
         "jest": "^29.3.1",
+        "jest-watch-typeahead": "^2.2.1",
         "prettier": "^2.2.1",
         "ts-jest": "^29.0.3",
         "typescript": "^4.9.4"

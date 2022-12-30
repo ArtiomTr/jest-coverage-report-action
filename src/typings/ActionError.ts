@@ -2,7 +2,7 @@ import { FailReason } from './Report.js';
 import { i18n } from '../utils/i18n.js';
 
 export class ActionError<T> extends Error {
-    public constructor(reason: FailReason, details?: T) {
+    public constructor(public readonly reason: FailReason, details?: T) {
         super(
             i18n(
                 `errors.${reason}`,

@@ -1,10 +1,25 @@
 import * as all from '@actions/github';
 
-import { formatErrors } from '../../src/format/formatErrors';
-import { ActionError } from '../../src/typings/ActionError';
-import { FailReason } from '../../src/typings/Report';
+import { formatErrors } from '../../src/format/formatErrors.js';
+import { ActionError } from '../../src/typings/ActionError.js';
+import { FailReason } from '../../src/typings/Report.js';
 
 const { mockContext, clearContextMock } = all as any;
+
+beforeAll(() => {
+    mockContext({
+        payload: {},
+        repo: {
+            owner: 'bot',
+            repo: 'test-repo',
+        },
+        runId: 10,
+    });
+});
+
+afterAll(() => {
+    clearContextMock();
+});
 
 describe('formatErrors', () => {
     it('should return empty string, if no errors specified', () => {
@@ -13,26 +28,25 @@ describe('formatErrors', () => {
 
     it('should format 1 error', () => {
         expect(formatErrors([new ActionError(FailReason.TESTS_FAILED)])).toBe(
-            '❌ The test suite failed. Please, check the console output for more details.'
+            '❌ The test suite failed. Please, check the console output for more details.\n'
         );
-
-        mockContext({
-            payload: {},
-            repo: {
-                owner: 'bot',
-                repo: 'test-repo',
-            },
-            runId: 10,
-        });
 
         expect(formatErrors([new Error('This is unexpected error')])).toBe(
-            '❌ An unexpected error occurred. For more details, [check console](https://github.com/bot/test-repo/actions/runs/10) ' +
-                '\n```\n' +
-                'Error: This is unexpected error' +
-                '\n```'
+            '❌ An unexpected error occurred. For more details, [check console](https://github.com/bot/test-repo/actions/runs/10)\n\n' +
+                '```\n' +
+                'Error: This is unexpected error\n' +
+                '```\n'
         );
 
-        clearContextMock();
+        expect(formatErrors([new ActionError(FailReason.UNKNOWN_ERROR)])).toBe(
+            '❌ Something went wrong. If this is an issue of jest-coverage-report-action, please report about it [here](https://github.com/ArtiomTr/jest-coverage-report-action/issues/new).\n'
+        );
+
+        expect(
+            formatErrors([new ActionError(FailReason.INVALID_COVERAGE_FORMAT)])
+        ).toBe(
+            '❌ Output of test script has invalid format. Check [documentation](https://github.com/artiomtr/jest-coverage-report-action/#readme) for more details.\n'
+        );
     });
 
     it('should format multiple errors', () => {

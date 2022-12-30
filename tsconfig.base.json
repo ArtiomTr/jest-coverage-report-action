@@ -1,13 +1,16 @@
 {
     "compilerOptions": {
-        "target": "ES2019",
+        "target": "ES2020",
         "module": "NodeNext",
         "moduleResolution": "NodeNext",
-        "declaration": false,
+        "declaration": true,
         "strict": true,
         "esModuleInterop": true,
-        "lib": ["ES2019"],
+        "lib": ["es2019"],
         "resolveJsonModule": true,
         "skipLibCheck": true,
+        "allowSyntheticDefaultImports": true,
+        "jsx": "react-jsx",
+        "jsxImportSource": "@covbot/jsx-markdown"
     }
 }

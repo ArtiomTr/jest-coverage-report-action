@@ -1,0 +1,10 @@
+{
+    "extends": "./tsconfig.base.json",
+    "compilerOptions": {
+        "outDir": "./dist",
+        "rootDir": "src",
+        "composite": true
+    },
+    "include": ["src", "index.d.ts", "./src/format/strings.json"],
+    "exclude": ["node_modules", "tests", "example"]
+}

@@ -1,7 +1,8 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`formatErrors should format multiple errors 1`] = `
-"Multiple errors occurred
+"❌ Multiple errors occurred
+
 \`\`\`
  1 | The test suite failed. Please, check the console output for more details.
  2 | Error: hello
@@ -12,7 +13,8 @@ exports[`formatErrors should format multiple errors 1`] = `
 `;
 
 exports[`formatErrors should format multiple errors 2`] = `
-"Multiple errors occurred
+"❌ Multiple errors occurred
+
 \`\`\`
  1  | Error: error
  2  | Error: error
@@ -59,7 +61,8 @@ exports[`formatErrors should format multiple errors 2`] = `
 `;
 
 exports[`formatErrors should format multiple errors 3`] = `
-"Multiple errors occurred
+"❌ Multiple errors occurred
+
 \`\`\`
  1   | Error: error
  2   | Error: error

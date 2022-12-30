@@ -8,6 +8,7 @@ build({
     entryPoints: ['src/index.ts'],
     outfile: 'dist/index.js',
     target: 'node10',
+    jsxImportSource: '@covbot/jsx-markdown',
     loader: {
         '.md': 'text',
     },
