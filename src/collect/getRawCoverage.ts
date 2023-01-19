@@ -8,7 +8,7 @@ import { FailReason } from '../typings/Report';
 
 const joinPaths = (...segments: Array<string | undefined>) =>
     join(...(segments as string[]).filter((segment) => segment !== undefined));
-
+// test
 export const getRawCoverage = async (
     testCommand: string,
     branch?: string,
