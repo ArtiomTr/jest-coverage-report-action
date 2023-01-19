@@ -18,7 +18,7 @@ export const getRawCoverage = async (
     | { success: false; failReason: FailReason.TESTS_FAILED; error?: Error }
 > => {
     if (branch) {
-        // NOTE: It is possible that the 'git fetch -all' command will fail due to different file permissions, so allow that to fail gracefully
+        // NOTE:  It is possible that the 'git fetch -all' command will fail due to different file permissions, so allow that to fail gracefully
         try {
             await exec(`git fetch --all --depth=1`);
         } catch (err) {
