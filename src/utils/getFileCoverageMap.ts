@@ -24,15 +24,28 @@ export type FileCoverageMap = Record<string, DetailedFileCoverage>;
 export const getFileCoverageMap = (jsonReport: JsonReport) =>
     Object.entries(jsonReport.coverageMap).reduce<FileCoverageMap>(
         (acc, [filename, fileCoverage]) => {
+            const normalizedFileCoverage =
+                'statementMap' in fileCoverage
+                    ? fileCoverage
+                    : fileCoverage.data;
+
             acc[filename] = {
-                totalStatements: standardTotalCounter('s')(fileCoverage),
-                coveredStatements: standardCoveredCounter('s')(fileCoverage),
-                totalFunctions: standardTotalCounter('f')(fileCoverage),
-                coveredFunctions: standardCoveredCounter('f')(fileCoverage),
-                totalBranches: totalBranchesCounter(fileCoverage),
-                coveredBranches: coveredBranchesCounter(fileCoverage),
-                totalLines: totalLinesCounter(fileCoverage),
-                coveredLines: coveredLinesCounter(fileCoverage),
+                totalStatements: standardTotalCounter('s')(
+                    normalizedFileCoverage
+                ),
+                coveredStatements: standardCoveredCounter('s')(
+                    normalizedFileCoverage
+                ),
+                totalFunctions: standardTotalCounter('f')(
+                    normalizedFileCoverage
+                ),
+                coveredFunctions: standardCoveredCounter('f')(
+                    normalizedFileCoverage
+                ),
+                totalBranches: totalBranchesCounter(normalizedFileCoverage),
+                coveredBranches: coveredBranchesCounter(normalizedFileCoverage),
+                totalLines: totalLinesCounter(normalizedFileCoverage),
+                coveredLines: coveredLinesCounter(normalizedFileCoverage),
             };
             return acc;
         },
