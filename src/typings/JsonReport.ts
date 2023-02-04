@@ -64,7 +64,7 @@ export type Range = {
     end?: Location;
 };
 
-export type CoverageMap = Record<string, FileCoverage>;
+export type CoverageMap = Record<string, FileCoverage | FileCoverageInData>;
 
 export type FileCoverage = {
     path: string;
@@ -74,6 +74,10 @@ export type FileCoverage = {
     s: HitMap;
     f: HitMap;
     b: ArrayHitMap;
+};
+
+export type FileCoverageInData = {
+    data: FileCoverage;
 };
 
 export type StatementMap = Record<number, StatementCoverage>;

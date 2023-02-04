@@ -8,12 +8,16 @@ export const getSummary = (
     coveredCounter: (value: FileCoverage) => number,
     title: string
 ): CoverageSummary => {
-    const total = Object.values(map).reduce(
+    const values = Object.values(map).map((value) =>
+        'statementMap' in value ? value : value.data
+    );
+
+    const total = values.reduce(
         (acc, currValue) => acc + totalCounter(currValue),
         0
     );
 
-    const covered = Object.values(map).reduce(
+    const covered = values.reduce(
         (acc, currValue) => acc + coveredCounter(currValue),
         0
     );
