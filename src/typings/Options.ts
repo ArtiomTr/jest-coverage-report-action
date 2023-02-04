@@ -103,6 +103,7 @@ export const getOptions = async (): Promise<Options> => {
     const prNumber: number | null = Number(
         getInput('prnumber') || context?.payload?.pull_request?.number
     );
+    console.log(context?.payload);
     const output = getInput('output');
     let pullRequest = context?.payload?.pull_request || null;
 
