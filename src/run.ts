@@ -49,9 +49,17 @@ export const run = async (
         }
     );
 
-    const [, initialBranch] = await runStage('getBranch', dataCollector, () => {
-        return getCurrentBranch();
-    });
+    const [, initialBranch] = await runStage(
+        'getBranch',
+        dataCollector,
+        (skip) => {
+            if (!isInPR) {
+                skip();
+            }
+
+            return getCurrentBranch();
+        }
+    );
 
     const [isHeadSwitched] = await runStage(
         'switchToHead',
@@ -67,7 +75,7 @@ export const run = async (
                 skip();
             }
 
-            await checkoutRef(head!, 'covbot-pr-head', 'covbot/pr-head');
+            await checkoutRef(head!, 'covbot-pr-head-remote', 'covbot/pr-head');
         }
     );
 
@@ -106,7 +114,7 @@ export const run = async (
                 skip();
             }
 
-            await checkoutRef(base!, 'covbot-pr-base', 'covbot/pr-base');
+            await checkoutRef(base!, 'covbot-pr-base-remote', 'covbot/pr-base');
         }
     );
 
@@ -116,7 +124,7 @@ export const run = async (
         'baseCoverage',
         dataCollector,
         async (skip) => {
-            if (!isSwitched && !options.baseCoverageFile) {
+            if (!isSwitched && !isHeadSwitched && !options.baseCoverageFile) {
                 skip();
             }
 

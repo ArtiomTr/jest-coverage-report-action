@@ -125,8 +125,6 @@ export const getOptions = async (): Promise<Options> => {
         });
         pullRequest = pr as PullRequest;
     }
-    console.log(pullRequest);
-
     try {
         const options: Options = (await optionSchema.validate({
             token,
