@@ -46,16 +46,44 @@ jobs:
         steps:
             - uses: actions/checkout@v3
             - uses: ArtiomTr/jest-coverage-report-action@v2
-              id: coverage
-              with:
-                  output: report-markdown
-            - uses: marocchino/sticky-pull-request-comment@v2
-              with:
-                  message: ${{ steps.coverage.outputs.report }}
 ```
 
 3. Pay attention to the action parameters. You can specify custom [threshold](#specify-threshold) or [test script](#customizing-test-script)
 4. That's it!
+
+## Forks with no write permission
+
+If you're seeing this error in your action's console:
+
+```
+HttpError: Resource not accessible by integration
+    at /home/runner/work/_actions/ArtiomTr/jest-coverage-report-action/v2/dist/index.js:8:323774
+    at processTicsAndRejections (node:internal/process/task_queues:96:5)
+    at async /home/runner/work/_actions/ArtiomTr/jest-coverage-report-action/v2/dist/index.js:64:2535
+    at async Ie (/home/runner/work/_actions/ArtiomTr/jest-coverage-report-action/v2/dist/index.js:63:156)
+    at async S_ (/home/runner/work/_actions/ArtiomTr/jest-coverage-report-action/v2/dist/index.js:64:2294)
+```
+
+It means that action is running with low privileges. By default, `pull_request` event doesn't have any write permissions, when PR is coming from fork. To fix that, change trigger action to `pull_request_target`:
+
+```yml
+name: 'coverage'
+on:
+    pull_request_target:
+        branches:
+            - master
+            - main
+jobs:
+    coverage:
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@v3
+            - uses: ArtiomTr/jest-coverage-report-action@v2
+```
+
+> **Warning**
+> 
+> This brings worse DX - you can test action only when it is merged into your main branch. **Any changes to the workflow file will be taken only after merging them to the main branch**
 
 ## Custom token
 
@@ -195,11 +223,9 @@ Accepted values are:
 
 ## Outputs
 
-By default, action attaches comment to a pull request or commit. However, this approach doesn't work with pull requests from forks without write permission.
+By default, action attaches comment to a pull request or commit. However, if you want to use other action for publishing report, you can specify `output: report-markdown`:
 
-To resolve this issue, action can produce only report text and return it as "output". Then, this output could be redirected to other action that supports commenting on public forks, like [sticky-pull-request-comment](https://github.com/marocchino/sticky-pull-request-comment) action. Example:
-
-```yml
+```yaml
 - uses: ArtiomTr/jest-coverage-report-action@v2
     # give the id for the step, to access outputs in another step.
     id: coverage
@@ -217,8 +243,8 @@ Also, you can use this data on other platforms. For instance, you can send repor
 > **Note**: Working examples of integrations with different platforms are much appreciated! Feel free to open a [PR](https://github.com/ArtiomTr/jest-coverage-report-action/pulls).
 
 Available options are:
-`comment` - Attach comment to PR or commit, depending on event type, which triggered an action.
-`report-markdown` - Generate output "report", with report contents in markdown format.
+* `comment` - Attach comment to PR or commit, depending on event type, which triggered an action.
+* `report-markdown` - Generate output "report", with report contents in markdown format.
 
 Also, you can combine these options:
 
