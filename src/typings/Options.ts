@@ -10,9 +10,20 @@ export type AnnotationType = 'all' | 'none' | 'coverage' | 'failed-tests';
 export type PackageManagerType = 'npm' | 'yarn' | 'pnpm';
 export type SkipStepType = 'all' | 'none' | 'install';
 export type OutputType = 'comment' | 'report-markdown';
+
+export type GithubRepo = {
+    clone_url: string;
+};
+
+export type GithubRef = {
+    ref: string;
+    sha: string;
+    repo: GithubRepo;
+};
+
 export type PullRequest = {
-    base: { ref: string };
-    head: { ref: string; sha: string };
+    base: GithubRef;
+    head: GithubRef;
     number: number;
 };
 export type Options = {
