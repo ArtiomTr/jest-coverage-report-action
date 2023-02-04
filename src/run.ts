@@ -83,7 +83,7 @@ export const run = async (
         'headCoverage',
         dataCollector,
         async (skip) => {
-            if (!isHeadSwitched && !options.coverageFile) {
+            if (isInPR && !isHeadSwitched && !options.coverageFile) {
                 skip();
             }
 
