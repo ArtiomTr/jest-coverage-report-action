@@ -11,7 +11,7 @@ import { generatePRReport } from './report/generatePRReport';
 import { checkThreshold } from './stages/checkThreshold';
 import { createReport } from './stages/createReport';
 import { getCoverage } from './stages/getCoverage';
-import { switchBack, switchBranch } from './stages/switchBranch';
+import { getCurrentBranch, switchBranch } from './stages/switchBranch';
 import { JsonReport } from './typings/JsonReport';
 import { getOptions } from './typings/Options';
 import { createDataCollector, DataCollector } from './utils/DataCollector';
@@ -45,10 +45,36 @@ export const run = async (
         }
     );
 
+    const [_, initialBranch] = await runStage('getBranch', dataCollector, () => {
+        return getCurrentBranch();
+    });
+    
+    const [isHeadSwitched] = await runStage(
+        'switchToHead',
+        dataCollector,
+        async (skip) => {
+            const headBranch = options?.pullRequest?.head?.ref;
+
+            // no need to switch branch when:
+            // - this is not a PR
+            // - this is the PR head branch
+            // - a head coverage is provided
+            if (!isInPR || !headBranch || !!options.coverageFile) {
+                skip();
+            }
+
+            await switchBranch(headBranch as string);
+        }
+    );
+
     const [isHeadCoverageGenerated, headCoverage] = await runStage(
         'headCoverage',
         dataCollector,
-        async () => {
+        async (skip) => {
+            if(!isHeadSwitched && !options.coverageFile) {
+                skip();
+            }
+
             return await getCoverage(
                 dataCollector,
                 options,
@@ -99,12 +125,13 @@ export const run = async (
         }
     );
 
-    await runStage('switchBack', dataCollector, async (skip) => {
-        if (!isSwitched) {
+    await runStage('switchBack', dataCollector, (skip) => {
+        if(!initialBranch) {
+            console.warn('Not checked out to the original branch - failed to get it.');
             skip();
         }
 
-        await switchBack();
+        return switchBranch(initialBranch!);
     });
 
     if (baseCoverage) {
