@@ -50,7 +50,7 @@ export const checkoutRef = async (
 export const getCurrentBranch = async () => {
     try {
         let branchStr = '';
-        await exec('git rev-parse --abbrev-ref HEAD', undefined, {
+        await exec('git show -s --pretty=%D HEAD', undefined, {
             listeners: {
                 stdout: (data) => {
                     branchStr += data.toString();
@@ -58,7 +58,13 @@ export const getCurrentBranch = async () => {
             },
         });
 
-        return branchStr.trim();
+        const realBranchName = branchStr.trim().match(/\S+$/);
+
+        if (realBranchName === null) {
+            return;
+        }
+
+        return realBranchName[0].trim();
     } catch (err) {
         console.warn('Failed to get current branch', err);
     }
