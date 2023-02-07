@@ -11,7 +11,11 @@ import { generatePRReport } from './report/generatePRReport';
 import { checkThreshold } from './stages/checkThreshold';
 import { createReport } from './stages/createReport';
 import { getCoverage } from './stages/getCoverage';
-import { switchBack, switchBranch } from './stages/switchBranch';
+import {
+    checkoutRef,
+    getCurrentBranch,
+    switchBranch,
+} from './stages/switchBranch';
 import { JsonReport } from './typings/JsonReport';
 import { getOptions } from './typings/Options';
 import { createDataCollector, DataCollector } from './utils/DataCollector';
@@ -45,10 +49,44 @@ export const run = async (
         }
     );
 
+    const [, initialBranch] = await runStage(
+        'getBranch',
+        dataCollector,
+        (skip) => {
+            if (!isInPR) {
+                skip();
+            }
+
+            return getCurrentBranch();
+        }
+    );
+
+    const [isHeadSwitched] = await runStage(
+        'switchToHead',
+        dataCollector,
+        async (skip) => {
+            const head = options?.pullRequest?.head;
+
+            // no need to switch branch when:
+            // - this is not a PR
+            // - this is the PR head branch
+            // - a head coverage is provided
+            if (!isInPR || !head || !!options.coverageFile) {
+                skip();
+            }
+
+            await checkoutRef(head!, 'covbot-pr-head-remote', 'covbot/pr-head');
+        }
+    );
+
     const [isHeadCoverageGenerated, headCoverage] = await runStage(
         'headCoverage',
         dataCollector,
-        async () => {
+        async (skip) => {
+            if (isInPR && !isHeadSwitched && !options.coverageFile) {
+                skip();
+            }
+
             return await getCoverage(
                 dataCollector,
                 options,
@@ -66,17 +104,17 @@ export const run = async (
         'switchToBase',
         dataCollector,
         async (skip) => {
-            const baseBranch = options?.pullRequest?.base?.ref;
+            const base = options?.pullRequest?.base;
 
             // no need to switch branch when:
             // - this is not a PR
             // - this is the PR base branch
-            // - a baseCoverageFile is provided
-            if (!isInPR || !baseBranch || !!options.baseCoverageFile) {
+            // - a base coverage is provided
+            if (!isInPR || !base || !!options.baseCoverageFile) {
                 skip();
             }
 
-            await switchBranch(baseBranch as string);
+            await checkoutRef(base!, 'covbot-pr-base-remote', 'covbot/pr-base');
         }
     );
 
@@ -86,7 +124,7 @@ export const run = async (
         'baseCoverage',
         dataCollector,
         async (skip) => {
-            if (!isSwitched && !options.baseCoverageFile) {
+            if (!isSwitched && !isHeadSwitched && !options.baseCoverageFile) {
                 skip();
             }
 
@@ -99,12 +137,15 @@ export const run = async (
         }
     );
 
-    await runStage('switchBack', dataCollector, async (skip) => {
-        if (!isSwitched) {
+    await runStage('switchBack', dataCollector, (skip) => {
+        if (!initialBranch) {
+            console.warn(
+                'Not checked out to the original branch - failed to get it.'
+            );
             skip();
         }
 
-        await switchBack();
+        return switchBranch(initialBranch!);
     });
 
     if (baseCoverage) {
