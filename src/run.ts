@@ -75,7 +75,12 @@ export const run = async (
                 skip();
             }
 
-            await checkoutRef(head!, 'covbot-pr-head-remote', 'covbot/pr-head');
+            await checkoutRef(
+                head!,
+                'covbot-pr-head-remote',
+                'covbot/pr-head',
+                options.token
+            );
         }
     );
 
@@ -114,7 +119,12 @@ export const run = async (
                 skip();
             }
 
-            await checkoutRef(base!, 'covbot-pr-base-remote', 'covbot/pr-base');
+            await checkoutRef(
+                base!,
+                'covbot-pr-base-remote',
+                'covbot/pr-base',
+                options.token
+            );
         }
     );
 
