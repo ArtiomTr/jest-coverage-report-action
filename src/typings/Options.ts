@@ -12,7 +12,7 @@ export type SkipStepType = 'all' | 'none' | 'install';
 export type OutputType = 'comment' | 'report-markdown';
 
 export type GithubRepo = {
-    clone_url: string;
+    ssh_url: string;
 };
 
 export type GithubRef = {

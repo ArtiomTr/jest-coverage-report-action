@@ -17,33 +17,33 @@ export const checkoutRef = async (
     remoteName: string,
     newBranchName: string
 ) => {
-    if (!ref.ref || !ref.repo || !ref.repo.clone_url || !ref.sha) {
+    if (!ref.ref || !ref.repo || !ref.repo.ssh_url || !ref.sha) {
         throw new Error('Invalid ref in context - cannot checkout branch');
     }
 
     console.log(ref);
 
+    // try {
+    await exec(`git remote add ${remoteName} ${ref.repo.ssh_url}`);
+
     try {
-        await exec(`git remote add ${remoteName} ${ref.repo.clone_url}`);
-
-        try {
-            await exec(`git fetch --depth=1 ${remoteName}`);
-        } catch (err) {
-            console.warn('Error fetching git repository', err);
-        }
-
-        await exec(
-            `git checkout -b ${newBranchName} --track ${remoteName}/${ref.ref} -f`
-        );
-    } catch {
-        try {
-            await exec(`git fetch --depth=1`);
-        } catch (err) {
-            console.warn('Error fetching git repository', err);
-        }
-
-        await exec(`git checkout ${ref.ref} -f`);
+        await exec(`git fetch --depth=1 ${remoteName}`);
+    } catch (err) {
+        console.warn('Error fetching git repository', err);
     }
+
+    await exec(
+        `git checkout -b ${newBranchName} --track ${remoteName}/${ref.ref} -f`
+    );
+    // } catch {
+    //     try {
+    //         await exec(`git fetch --depth=1`);
+    //     } catch (err) {
+    //         console.warn('Error fetching git repository', err);
+    //     }
+
+    //     await exec(`git checkout ${ref.ref} -f`);
+    // }
 };
 
 export const getCurrentBranch = async () => {
