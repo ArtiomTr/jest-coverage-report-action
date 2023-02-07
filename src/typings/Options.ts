@@ -13,6 +13,7 @@ export type OutputType = 'comment' | 'report-markdown';
 
 export type GithubRepo = {
     ssh_url: string;
+    clone_url: string;
 };
 
 export type GithubRef = {
