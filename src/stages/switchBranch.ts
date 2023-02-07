@@ -21,17 +21,27 @@ export const checkoutRef = async (
         throw new Error('Invalid ref in context - cannot checkout branch');
     }
 
-    await exec(`git remote add ${remoteName} ${ref.repo.clone_url}`);
-
     try {
-        await exec(`git fetch --depth=1 ${remoteName}`);
-    } catch (err) {
-        console.warn('Error fetching git repository', err);
-    }
+        await exec(`git remote add ${remoteName} ${ref.repo.clone_url}`);
 
-    await exec(
-        `git checkout -b ${newBranchName} --track ${remoteName}/${ref.ref} -f`
-    );
+        try {
+            await exec(`git fetch --depth=1 ${remoteName}`);
+        } catch (err) {
+            console.warn('Error fetching git repository', err);
+        }
+
+        await exec(
+            `git checkout -b ${newBranchName} --track ${remoteName}/${ref.ref} -f`
+        );
+    } catch {
+        try {
+            await exec(`git fetch --depth=1`);
+        } catch (err) {
+            console.warn('Error fetching git repository', err);
+        }
+
+        await exec(`git checkout ${ref.ref} -f`);
+    }
 };
 
 export const getCurrentBranch = async () => {
