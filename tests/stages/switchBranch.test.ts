@@ -49,6 +49,30 @@ describe('checkoutRef', () => {
         );
     });
 
+    it('should not add new remote, if fetching failed', async () => {
+        (exec as jest.Mock<any, any>).mockRejectedValueOnce(
+            'Something went wrong...'
+        );
+
+        try {
+            await checkoutRef(
+                {
+                    ref: 'hello',
+                    repo: { clone_url: 'https://github.com/test/repo.git' },
+                    sha: '123456',
+                },
+                'remote-1',
+                'branch-1'
+            );
+        } catch {
+            /* Ignore error */
+        }
+
+        expect(exec).not.toBeCalledWith(
+            'git remote add remote-1 https://github.com/test/repo.git'
+        );
+    });
+
     it('should fetch new remote', async () => {
         await checkoutRef(
             {
@@ -79,49 +103,16 @@ describe('checkoutRef', () => {
         );
     });
 
-    it('should fail if ref is invalid', async () => {
-        await expect(
-            checkoutRef(
-                {
-                    ref: 'hello',
-                } as GithubRef,
-                'remote-1',
-                'branch-1'
-            )
-        ).rejects.toBeDefined();
-
-        await expect(
-            checkoutRef(
-                {
-                    ref: 'hello',
-                    repo: {},
-                } as GithubRef,
-                'remote-1',
-                'branch-1'
-            )
-        ).rejects.toBeDefined();
-    });
-
-    it('should try to checkout event if fetching failed', async () => {
-        (exec as jest.Mock<any, any>).mockImplementation((command: string) => {
-            if (command.startsWith('git fetch')) {
-                throw 0;
-            }
-        });
-
+    it('should fallback to the old behavior, if something went wrong', async () => {
         await checkoutRef(
             {
                 ref: 'hello',
-                repo: { clone_url: 'https://github.com/test/repo.git' },
-                sha: '123456',
-            },
+            } as GithubRef,
             'remote-1',
             'branch-1'
         );
 
-        expect(exec).toBeCalledWith(
-            'git checkout -b branch-1 --track remote-1/hello -f'
-        );
+        expect(exec).toBeCalledWith('git checkout hello -f');
     });
 });
 
@@ -139,6 +130,42 @@ describe('getCurrentBranch', () => {
         );
 
         expect(await getCurrentBranch()).toBe('Test-branch');
+
+        (exec as jest.Mock<any, any>).mockImplementation(
+            (
+                _command: unknown,
+                _args: unknown,
+                options: { listeners: { stdout: (value: Buffer) => void } }
+            ) => {
+                options.listeners.stdout(
+                    Buffer.from(
+                        'HEAD -> Fallback-to-old-behavior, origin/Fallback-to-old-behavior\n\n'
+                    )
+                );
+            }
+        );
+
+        expect(await getCurrentBranch()).toBe(
+            'origin/Fallback-to-old-behavior'
+        );
+
+        (exec as jest.Mock<any, any>).mockImplementation(
+            (
+                _command: unknown,
+                _args: unknown,
+                options: { listeners: { stdout: (value: Buffer) => void } }
+            ) => {
+                options.listeners.stdout(
+                    Buffer.from(
+                        'HEAD -> Fallback-to-old-behavior, origin/Fallback-to-old-behavior\n\n'
+                    )
+                );
+            }
+        );
+
+        expect(await getCurrentBranch()).toBe(
+            'origin/Fallback-to-old-behavior'
+        );
     });
 
     it('should not throw, if getting branch failed', async () => {
