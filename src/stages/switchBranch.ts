@@ -21,6 +21,8 @@ export const checkoutRef = async (
         throw new Error('Invalid ref in context - cannot checkout branch');
     }
 
+    console.log(ref);
+
     try {
         await exec(`git remote add ${remoteName} ${ref.repo.clone_url}`);
 
