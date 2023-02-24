@@ -30,6 +30,7 @@
     },
     "devDependencies": {
         "@types/fs-extra": "^9.0.11",
+        "@types/istanbul-lib-coverage": "^2.0.4",
         "@types/jest": "^27.0.2",
         "@types/markdown-table": "^2.0.0",
         "@types/micromatch": "^4.0.2",
