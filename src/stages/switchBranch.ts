@@ -21,14 +21,22 @@ const checkoutRefNew = async (
         throw new Error('Invalid ref in context - cannot checkout branch');
     }
 
-    // Make sure repository is accessible
-    await exec(`git fetch --depth=1 --dry-run ${ref.repo.clone_url}`);
+    try {
+        // Make sure repository is accessible
+        await exec(`git fetch --depth=1 --dry-run ${ref.repo.clone_url}`);
 
-    // And only then add it as remote
-    await exec(`git remote add ${remoteName} ${ref.repo.clone_url}`);
+        // And only then add it as remote
+        await exec(`git remote add ${remoteName} ${ref.repo.clone_url}`);
+    } catch {
+        /* Ignore error */
+    }
 
-    // And fetch it
-    await exec(`git fetch --depth=1 ${remoteName}`);
+    try {
+        // Try to forcibly fetch remote
+        await exec(`git fetch --depth=1 ${remoteName}`);
+    } catch {
+        /* Ignore error */
+    }
 
     await exec(
         `git checkout -b ${newBranchName} --track ${remoteName}/${ref.ref} -f`
