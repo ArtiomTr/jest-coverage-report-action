@@ -9,6 +9,7 @@ describe('getReportTag', () => {
             testScript: 'script',
             coverageFile: 'coverage',
             baseCoverageFile: 'baseCoverage',
+            customTitle: 'customTitle',
         };
 
         const reportTag = getReportTag(options);
@@ -32,6 +33,7 @@ describe('getReportTag', () => {
             testScript: 'script',
             coverageFile: 'coverage',
             baseCoverageFile: 'baseCoverage',
+            customTitle: 'customTitle',
         };
 
         const reportTag = getReportTag(options);
@@ -41,6 +43,7 @@ describe('getReportTag', () => {
             'testScript',
             'coverageFile',
             'baseCoverageFile',
+            'customTitle',
         ].forEach((option) => {
             const changedOptions = { ...options, [option]: 'changed option' };
 
@@ -56,6 +59,7 @@ describe('getReportTag', () => {
             testScript: 'script',
             coverageFile: 'coverage',
             baseCoverageFile: 'baseCoverage',
+            customTitle: 'customTitle',
         };
 
         const reportTag = getReportTag(options);
@@ -67,7 +71,6 @@ describe('getReportTag', () => {
             'threshold',
             'packageManager',
             'skipStep',
-            'customTitle',
         ].forEach((option) => {
             const changedOptions = { ...options, [option]: 'changed option' };
 
