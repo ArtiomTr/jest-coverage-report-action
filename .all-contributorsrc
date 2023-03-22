@@ -255,6 +255,15 @@
       "contributions": [
         "code"
       ]
+    },
+    {
+      "login": "vikasperi",
+      "name": "vikasperi",
+      "avatar_url": "https://avatars.githubusercontent.com/u/117131235?v=4",
+      "profile": "https://github.com/vikasperi",
+      "contributions": [
+        "code"
+      ]
     }
   ],
   "projectName": "jest-coverage-report-action",
@@ -262,5 +271,6 @@
   "repoType": "github",
   "repoHost": "https://github.com",
   "skipCi": true,
-  "contributorsPerLine": 7
+  "contributorsPerLine": 7,
+  "commitConvention": "angular"
 }
