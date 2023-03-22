@@ -9,6 +9,7 @@ const OPTION_NAMES_TO_HASH = [
     'testScript',
     'coverageFile',
     'baseCoverageFile',
+    'customTitle',
 ] as const;
 
 type OptionsToHash = Pick<Options, typeof OPTION_NAMES_TO_HASH[number]>;
