@@ -16,14 +16,12 @@ const getLocation = (
 } => ({
     start_line: start.line,
     end_line: end.line,
-    start_column:
-        start.line === end.line && start.column !== null && end.column !== null
-            ? start.column
-            : undefined,
-    end_column:
-        start.line === end.line && start.column !== null && end.column !== null
-            ? end.column
-            : undefined,
+    ...start.line === end.line && start.column !== null && end.column !== null
+        ? {
+            start_column: start.column,
+            end_column: end.column,
+        }
+        : {},
 });
 
 export const createCoverageAnnotations = (
