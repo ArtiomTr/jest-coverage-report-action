@@ -16,12 +16,12 @@ const getLocation = (
 } => ({
     start_line: Math.min(start.line, end.line),
     end_line: Math.max(end.line),
-    ...start.line === end.line && start.column != null && end.column != null
+    ...(start.line === end.line && start.column != null && end.column != null
         ? {
-            start_column: Math.max(1, Math.min(start.column, end.column)),
-            end_column: Math.max(1, start.column, end.column),
-        }
-        : {},
+              start_column: Math.max(1, Math.min(start.column, end.column)),
+              end_column: Math.max(1, start.column, end.column),
+          }
+        : {}),
 });
 
 export const createCoverageAnnotations = (
