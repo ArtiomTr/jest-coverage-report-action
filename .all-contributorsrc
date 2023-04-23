@@ -264,6 +264,16 @@
       "contributions": [
         "code"
       ]
+    },
+    {
+      "login": "hyperair",
+      "name": "Chow Loong Jin",
+      "avatar_url": "https://avatars.githubusercontent.com/u/88355?v=4",
+      "profile": "https://github.com/hyperair",
+      "contributions": [
+        "bug",
+        "code"
+      ]
     }
   ],
   "projectName": "jest-coverage-report-action",
