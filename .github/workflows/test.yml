@@ -22,4 +22,4 @@ jobs:
               uses: ./ # Uses an action in the root directory
               with:
                   annotations: failed-tests
-                  test-script: npm run test:coverage
+                  test-script: pnpm test:coverage

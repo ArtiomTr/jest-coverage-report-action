@@ -21,14 +21,11 @@ jobs:
               with:
                   node-version: ${{ matrix.node }}
 
-            - name: Install deps and build (with cache)
-              uses: bahmutov/npm-install@v1
+            - name: Install pnpm dependencies (with cache)
+              uses: covbot/pnpm-install-with-cache@v1
 
             - name: Lint
-              run: npm run lint
-
-            - name: Test
-              run: npm test -- --ci --coverage --maxWorkers=2
+              run: pnpm lint
 
             - name: Build
-              run: npm run build
+              run: pnpm build
