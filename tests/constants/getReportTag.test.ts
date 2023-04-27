@@ -1,3 +1,5 @@
+import { describe, expect, it } from 'vitest';
+
 import { getReportTag } from '../../src/constants/getReportTag';
 
 const REPORT_TAG_REGEX = /<!-- jest coverage report action for options with hash [0-9a-f]{32} -->/;

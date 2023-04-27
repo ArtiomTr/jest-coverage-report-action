@@ -1,3 +1,5 @@
+import { describe, expect, it } from 'vitest';
+
 import { formatCoverageDetails } from '../../../src/format/details/formatCoverageDetails';
 
 describe('formatCoverageDetails', () => {

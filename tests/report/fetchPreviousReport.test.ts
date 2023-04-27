@@ -1,8 +1,11 @@
 import type { getOctokit } from '@actions/github';
+import { describe, expect, it, vi } from 'vitest';
 
 import { getReportTag } from '../../src/constants/getReportTag';
 import { fetchPreviousReport } from '../../src/report/fetchPreviousReport';
 import { Options } from '../../src/typings/Options';
+
+vi.mock('@actions/github');
 
 const DEFAULT_OPTIONS: Options = {
     token: '',
@@ -30,7 +33,7 @@ const DEFAULT_OPTIONS: Options = {
 
 describe('fetchPreviousReport', () => {
     it('should find previous report', async () => {
-        const paginate = jest.fn();
+        const paginate = vi.fn();
 
         paginate.mockImplementationOnce(() => [
             {
@@ -80,7 +83,7 @@ describe('fetchPreviousReport', () => {
     });
 
     it('should find previous report for specified directory', async () => {
-        const paginate = jest.fn();
+        const paginate = vi.fn();
 
         paginate.mockImplementationOnce(() => [
             {
@@ -126,7 +129,7 @@ describe('fetchPreviousReport', () => {
     });
 
     it('should return null if no report found', async () => {
-        const paginate = jest.fn();
+        const paginate = vi.fn();
 
         paginate.mockImplementationOnce(() => [
             {

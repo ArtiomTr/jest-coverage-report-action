@@ -1,3 +1,5 @@
+import { describe, expect, it } from 'vitest';
+
 import { getDecreasedCoverage } from '../../../src/format/details/getDecreasedCoverage';
 
 describe('getDecreasedCoverage', () => {

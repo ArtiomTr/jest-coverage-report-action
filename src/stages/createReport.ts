@@ -8,7 +8,7 @@ import { formatRunReport } from '../format/formatRunReport';
 import { formatThresholdResults } from '../format/formatThresholdResults';
 import { getFailureDetails } from '../format/getFailureDetails';
 import { getTestRunSummary } from '../format/summary/getTestRunSummary';
-import template from '../format/template.md';
+import template from '../format/template.txt';
 import { JsonReport } from '../typings/JsonReport';
 import { Options } from '../typings/Options';
 import { SummaryReport, TestRunReport } from '../typings/Report';

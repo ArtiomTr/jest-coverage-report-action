@@ -1,3 +1,5 @@
+import { describe, expect, it } from 'vitest';
+
 import { GITHUB_MESSAGE_SIZE_LIMIT } from '../../src/constants/GITHUB_MESSAGE_SIZE_LIMIT';
 
 describe('GITHUB_MESSAGE_SIZE_LIMIT', () => {

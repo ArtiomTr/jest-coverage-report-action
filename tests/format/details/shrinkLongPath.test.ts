@@ -1,3 +1,5 @@
+import { describe, expect, it } from 'vitest';
+
 import { shrinkLongPath } from '../../../src/format/details/shrinkLongPath';
 
 describe('shrinkLongPath', () => {

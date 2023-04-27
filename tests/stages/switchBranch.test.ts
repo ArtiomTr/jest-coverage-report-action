@@ -1,4 +1,5 @@
-import { exec } from '@actions/exec';
+import { exec, ExecOptions } from '@actions/exec';
+import { beforeEach, describe, expect, it, vi } from 'vitest';
 
 import {
     checkoutRef,
@@ -7,8 +8,10 @@ import {
 } from '../../src/stages/switchBranch';
 import { GithubRef } from '../../src/typings/Options';
 
+vi.mock('@actions/exec');
+
 const clearMocks = () => {
-    (exec as jest.Mock<any, any>).mockClear();
+    vi.mocked(exec).mockClear();
 };
 
 beforeEach(clearMocks);
@@ -22,7 +25,7 @@ describe('switchBranch', () => {
     });
 
     it('should switch to branch, even if fetch failed', async () => {
-        (exec as jest.Mock<any, any>).mockImplementationOnce(() => {
+        vi.mocked(exec).mockImplementationOnce(() => {
             throw 0;
         });
 
@@ -50,9 +53,7 @@ describe('checkoutRef', () => {
     });
 
     it('should not add new remote, if fetching failed', async () => {
-        (exec as jest.Mock<any, any>).mockRejectedValueOnce(
-            'Something went wrong...'
-        );
+        vi.mocked(exec).mockRejectedValueOnce('Something went wrong...');
 
         try {
             await checkoutRef(
@@ -118,30 +119,26 @@ describe('checkoutRef', () => {
 
 describe('getCurrentBranch', () => {
     it('should get current branch', async () => {
-        (exec as jest.Mock<any, any>).mockImplementation(
-            (
-                _command: unknown,
-                _args: unknown,
-                options: { listeners: { stdout: (value: Buffer) => void } }
-            ) => {
-                options.listeners.stdout(Buffer.from('   Te'));
-                options.listeners.stdout(Buffer.from('st-branch\n \t'));
+        vi.mocked(exec).mockImplementation(
+            (_command?: unknown, _args?: unknown, options?: ExecOptions) => {
+                options?.listeners?.stdout?.(Buffer.from('   Te'));
+                options?.listeners?.stdout?.(Buffer.from('st-branch\n \t'));
+
+                return Promise.resolve(0);
             }
         );
 
         expect(await getCurrentBranch()).toBe('Test-branch');
 
-        (exec as jest.Mock<any, any>).mockImplementation(
-            (
-                _command: unknown,
-                _args: unknown,
-                options: { listeners: { stdout: (value: Buffer) => void } }
-            ) => {
-                options.listeners.stdout(
+        vi.mocked(exec).mockImplementation(
+            (_command?: unknown, _args?: unknown, options?: ExecOptions) => {
+                options?.listeners?.stdout?.(
                     Buffer.from(
                         'HEAD -> Fallback-to-old-behavior, origin/Fallback-to-old-behavior\n\n'
                     )
                 );
+
+                return Promise.resolve(0);
             }
         );
 
@@ -149,17 +146,15 @@ describe('getCurrentBranch', () => {
             'origin/Fallback-to-old-behavior'
         );
 
-        (exec as jest.Mock<any, any>).mockImplementation(
-            (
-                _command: unknown,
-                _args: unknown,
-                options: { listeners: { stdout: (value: Buffer) => void } }
-            ) => {
-                options.listeners.stdout(
+        vi.mocked(exec).mockImplementation(
+            (_command?: unknown, _args?: unknown, options?: ExecOptions) => {
+                options?.listeners?.stdout?.(
                     Buffer.from(
                         'HEAD -> Fallback-to-old-behavior, origin/Fallback-to-old-behavior\n\n'
                     )
                 );
+
+                return Promise.resolve(0);
             }
         );
 
@@ -169,7 +164,7 @@ describe('getCurrentBranch', () => {
     });
 
     it('should not throw, if getting branch failed', async () => {
-        (exec as jest.Mock<any, any>).mockImplementation(() => {
+        vi.mocked(exec).mockImplementation(() => {
             return Promise.reject(0);
         });
 

@@ -1,3 +1,5 @@
+import { vi } from 'vitest';
+
 const input: Record<string, unknown> = {};
 
 export const getInput = (name: string) => input[name];
@@ -12,6 +14,6 @@ export const clearInputMock = () => {
     });
 };
 
-export const error = jest.fn();
-export const info = jest.fn();
-export const setFailed = jest.fn();
+export const error = vi.fn();
+export const info = vi.fn();
+export const setFailed = vi.fn();

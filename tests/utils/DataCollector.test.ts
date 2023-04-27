@@ -1,13 +1,16 @@
 import * as core from '@actions/core';
+import { beforeEach, describe, expect, it, vi } from 'vitest';
 
 import { ActionError } from '../../src/typings/ActionError';
 import { FailReason } from '../../src/typings/Report';
 import { createDataCollector } from '../../src/utils/DataCollector';
 
+vi.mock('@actions/core');
+
 describe('DataCollector', () => {
     beforeEach(() => {
-        (core.error as jest.Mock).mockClear();
-        (core.info as jest.Mock).mockClear();
+        vi.mocked(core.error).mockClear();
+        vi.mocked(core.info).mockClear();
     });
 
     it('should collect data', () => {

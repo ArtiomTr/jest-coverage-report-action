@@ -1,3 +1,5 @@
+import { describe, expect, it } from 'vitest';
+
 import { findCommonPath } from '../../../src/format/details/findCommonPath';
 
 describe('findCommonPath', () => {

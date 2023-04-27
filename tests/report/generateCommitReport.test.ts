@@ -1,13 +1,16 @@
 import type { getOctokit } from '@actions/github';
 import * as all from '@actions/github';
+import { describe, expect, it, vi } from 'vitest';
 
 import { generateCommitReport } from '../../src/report/generateCommitReport';
+
+vi.mock('@actions/github');
 
 const { mockContext, clearContextMock } = all as any;
 
 describe('generateCommitReport', () => {
     it('should generate commit report', async () => {
-        const createCommitComment = jest.fn();
+        const createCommitComment = vi.fn();
 
         mockContext({
             sha: '123456',

@@ -1,3 +1,5 @@
+import { describe, expect, it } from 'vitest';
+
 import { isAnnotationEnabled } from '../../src/annotations/isAnnotationEnabled';
 
 describe('isAnnotationEnabled', () => {

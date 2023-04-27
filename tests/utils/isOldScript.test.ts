@@ -1,11 +1,14 @@
 import { sep } from 'path';
 
 import { readFile } from 'fs-extra';
+import { beforeEach, describe, expect, it, vi } from 'vitest';
 
 import { isOldScript } from '../../src/utils/isOldScript';
 
+vi.mock('fs-extra');
+
 beforeEach(() => {
-    (readFile as jest.Mock<any, any>).mockClear();
+    vi.mocked(readFile).mockClear();
 });
 
 describe('isOldScript', () => {
@@ -51,13 +54,17 @@ describe('isOldScript', () => {
     });
 
     it('should detect old scripts in package.json file', async () => {
-        (readFile as jest.Mock<any, any>).mockReturnValue(
-            JSON.stringify({
-                scripts: {
-                    test: 'npx jest --outputFile=report.json',
-                    'test:coverage': 'npx jest',
-                },
-            })
+        vi.mocked(readFile).mockReturnValue(
+            Promise.resolve(
+                Buffer.from(
+                    JSON.stringify({
+                        scripts: {
+                            test: 'npx jest --outputFile=report.json',
+                            'test:coverage': 'npx jest',
+                        },
+                    })
+                )
+            )
         );
 
         expect(await isOldScript('npm test', undefined)).toBe(true);
@@ -82,15 +89,19 @@ describe('isOldScript', () => {
             await isOldScript('pnpm run test -- --coverage', undefined)
         ).toBe(true);
 
-        (readFile as jest.Mock<any, any>).mockClear();
+        vi.mocked(readFile).mockClear();
 
-        (readFile as jest.Mock<any, any>).mockReturnValue(
-            JSON.stringify({
-                scripts: {
-                    test: 'npx jest --outputFile=report.json',
-                    'test:coverage': 'npx jest',
-                },
-            })
+        vi.mocked(readFile).mockReturnValue(
+            Promise.resolve(
+                Buffer.from(
+                    JSON.stringify({
+                        scripts: {
+                            test: 'npx jest --outputFile=report.json',
+                            'test:coverage': 'npx jest',
+                        },
+                    })
+                )
+            )
         );
 
         expect(await isOldScript('npm test', undefined)).toBe(true);

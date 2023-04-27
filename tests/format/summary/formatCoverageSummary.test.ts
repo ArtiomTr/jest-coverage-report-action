@@ -1,3 +1,5 @@
+import { describe, expect, it } from 'vitest';
+
 import { formatCoverageSummary } from '../../../src/format/summary/formatCoverageSummary';
 
 describe('formatCoverageSummary', () => {

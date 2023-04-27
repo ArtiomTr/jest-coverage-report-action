@@ -1,4 +1,33 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`createFailedTestsAnnotations > should create failed tests annotations 1`] = `
+[
+  {
+    "annotation_level": "failure",
+    "end_line": 4,
+    "message": "",
+    "path": "tests/format/details/getNewFilesCoverage.test.ts",
+    "start_line": 4,
+    "title": "getNewFilesCoverage > should return new file coverage",
+  },
+  {
+    "annotation_level": "failure",
+    "end_line": 29,
+    "message": "",
+    "path": "tests/format/details/getNewFilesCoverage.test.ts",
+    "start_line": 29,
+    "title": "getNewFilesCoverage > should return empty object, when base details not specified",
+  },
+  {
+    "annotation_level": "failure",
+    "end_line": 23,
+    "message": "",
+    "path": "tests/format/summary/getTestRunSummary.test.ts",
+    "start_line": 23,
+    "title": "getTestRunSummary > should return failure summary",
+  },
+]
+`;
 
 exports[`createFailedTestsAnnotations should create failed tests annotations 1`] = `
 Array [

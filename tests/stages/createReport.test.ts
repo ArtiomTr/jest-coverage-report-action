@@ -1,4 +1,5 @@
 import * as all from '@actions/github';
+import { describe, expect, it, vi } from 'vitest';
 
 import { createReport, getSha } from '../../src/stages/createReport';
 import { JsonReport } from '../../src/typings/JsonReport';
@@ -7,6 +8,8 @@ import { createDataCollector } from '../../src/utils/DataCollector';
 import report from '../mock-data/jsonReport.json';
 
 const { mockContext, clearContextMock } = all as any;
+
+vi.mock('@actions/github');
 
 const DEFAULT_OPTIONS: Options = {
     token: '',

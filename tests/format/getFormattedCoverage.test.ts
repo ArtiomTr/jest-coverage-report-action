@@ -1,3 +1,5 @@
+import { describe, expect, it } from 'vitest';
+
 import { parseDetails } from '../../src/format/details/parseDetails';
 import { getFormattedCoverage } from '../../src/format/getFormattedCoverage';
 import { parseSummary } from '../../src/format/summary/parseSummary';

@@ -1,4 +1,8 @@
+import { describe, expect, it, vi } from 'vitest';
+
 import { getTestCommand } from '../../src/utils/getTestCommand';
+
+vi.mock('fs-extra');
 
 describe('getTestCommand', () => {
     it('should modify command', async () => {

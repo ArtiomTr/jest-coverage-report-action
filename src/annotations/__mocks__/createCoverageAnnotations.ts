@@ -1,1 +1,3 @@
-export const createCoverageAnnotations = jest.fn();
+import { vi } from 'vitest';
+
+export const createCoverageAnnotations = vi.fn();

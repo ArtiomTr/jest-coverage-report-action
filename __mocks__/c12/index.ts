@@ -1,1 +1,3 @@
-export const loadConfig = jest.fn();
+import { vi } from 'vitest';
+
+export const loadConfig = vi.fn();

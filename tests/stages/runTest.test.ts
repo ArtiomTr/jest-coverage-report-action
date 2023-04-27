@@ -1,9 +1,12 @@
 import { exec } from '@actions/exec';
+import { beforeEach, describe, expect, it, vi } from 'vitest';
 
 import { runTest } from '../../src/stages/runTest';
 
+vi.mock('@actions/exec');
+
 const clearMocks = () => {
-    (exec as jest.Mock<any, any>).mockClear();
+    vi.mocked(exec).mockClear();
 };
 
 beforeEach(clearMocks);

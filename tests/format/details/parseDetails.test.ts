@@ -1,3 +1,5 @@
+import { describe, expect, it } from 'vitest';
+
 import { parseDetails } from '../../../src/format/details/parseDetails';
 import { JsonReport } from '../../../src/typings/JsonReport';
 import report from '../../mock-data/jsonReport.json';

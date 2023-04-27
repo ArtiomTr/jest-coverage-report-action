@@ -1,3 +1,6 @@
-const realPath = jest.requireActual('path');
+import { vi } from 'vitest';
 
-export const relative = jest.fn(realPath.relative);
+const realPath = await vi.importActual('path');
+
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export const relative = vi.fn((realPath as any).relative);

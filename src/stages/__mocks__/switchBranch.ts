@@ -1,5 +1,7 @@
-export const switchBranch = jest.fn();
+import { vi } from 'vitest';
 
-export const checkoutRef = jest.fn();
+export const switchBranch = vi.fn();
 
-export const getCurrentBranch = jest.fn();
+export const checkoutRef = vi.fn();
+
+export const getCurrentBranch = vi.fn();

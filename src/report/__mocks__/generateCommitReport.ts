@@ -1,1 +1,3 @@
-export const generateCommitReport = jest.fn();
+import { vi } from 'vitest';
+
+export const generateCommitReport = vi.fn();

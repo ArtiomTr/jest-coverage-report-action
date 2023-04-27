@@ -1,3 +1,5 @@
+import { describe, expect, it } from 'vitest';
+
 import { withExplanation } from '../../src/utils/withExplanation';
 
 describe('withExplanation', () => {

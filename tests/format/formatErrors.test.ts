@@ -1,8 +1,11 @@
 import * as all from '@actions/github';
+import { describe, expect, it, vi } from 'vitest';
 
 import { formatErrors } from '../../src/format/formatErrors';
 import { ActionError } from '../../src/typings/ActionError';
 import { FailReason } from '../../src/typings/Report';
+
+vi.mock('@actions/github');
 
 const { mockContext, clearContextMock } = all as any;
 

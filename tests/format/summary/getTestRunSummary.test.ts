@@ -1,3 +1,5 @@
+import { describe, expect, it } from 'vitest';
+
 import { getTestRunSummary } from '../../../src/format/summary/getTestRunSummary';
 import { JsonReport } from '../../../src/typings/JsonReport';
 

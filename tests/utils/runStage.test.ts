@@ -1,5 +1,9 @@
+import { describe, expect, it, vi } from 'vitest';
+
 import { createDataCollector } from '../../src/utils/DataCollector';
 import { runStage } from '../../src/utils/runStage';
+
+vi.mock('@actions/core');
 
 describe('runStage', () => {
     it('should run successfully', async () => {

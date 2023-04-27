@@ -1,3 +1,5 @@
+import { describe, expect, it } from 'vitest';
+
 import { decimalToString } from '../../src/utils/decimalToString';
 
 describe('decimalToString', () => {

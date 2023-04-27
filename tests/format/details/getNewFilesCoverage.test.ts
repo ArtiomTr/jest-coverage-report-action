@@ -1,3 +1,5 @@
+import { describe, expect, it } from 'vitest';
+
 import { getNewFilesCoverage } from '../../../src/format/details/getNewFilesCoverage';
 
 describe('getNewFilesCoverage', () => {

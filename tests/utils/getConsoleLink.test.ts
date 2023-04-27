@@ -1,6 +1,9 @@
 import * as all from '@actions/github';
+import { describe, expect, it, vi } from 'vitest';
 
 import { getConsoleLink } from '../../src/utils/getConsoleLink';
+
+vi.mock('@actions/github');
 
 const { mockContext, clearContextMock } = all as any;
 

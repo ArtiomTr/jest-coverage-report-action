@@ -1,3 +1,5 @@
+import { describe, expect, it } from 'vitest';
+
 import { formatCoverage } from '../../src/format/formatCoverage';
 import jsonReport from '../mock-data/jsonReport.json';
 

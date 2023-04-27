@@ -1,1 +1,3 @@
-export const removeDirectory = jest.fn().mockName('removeDirectory');
+import { vi } from 'vitest';
+
+export const removeDirectory = vi.fn().mockName('removeDirectory');

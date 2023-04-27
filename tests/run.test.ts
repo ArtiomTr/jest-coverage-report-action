@@ -2,7 +2,7 @@ import * as allCore from '@actions/core';
 import * as all from '@actions/github';
 import { getOctokit } from '@actions/github';
 import { loadConfig } from 'c12';
-import { mocked } from 'ts-jest/utils';
+import { beforeEach, describe, expect, it, vi } from 'vitest';
 
 import { Annotation } from '../src/annotations/Annotation';
 import { createCoverageAnnotations } from '../src/annotations/createCoverageAnnotations';
@@ -212,26 +212,32 @@ const defaultOptions: Options = {
     output: ['comment'],
 };
 
-jest.mock('../src/typings/Options.ts');
-jest.mock('../src/stages/getCoverage.ts');
-jest.mock('../src/stages/switchBranch.ts');
-jest.mock('../src/stages/createReport.ts');
-jest.mock('../src/report/generatePRReport.ts');
-jest.mock('../src/report/generateCommitReport.ts');
-jest.mock('../src/annotations/createFailedTestsAnnotations.ts');
-jest.mock('../src/annotations/createCoverageAnnotations.ts');
-jest.mock('../src/format/annotations/formatFailedTestsAnnotations.ts');
-jest.mock('../src/format/annotations/formatCoverageAnnotations.ts');
+vi.mock('@actions/core');
+vi.mock('@actions/exec');
+vi.mock('@actions/github');
+vi.mock('c12');
+vi.mock('fs-extra');
+vi.mock('path');
+vi.mock('../src/typings/Options.ts');
+vi.mock('../src/stages/getCoverage.ts');
+vi.mock('../src/stages/switchBranch.ts');
+vi.mock('../src/stages/createReport.ts');
+vi.mock('../src/report/generatePRReport.ts');
+vi.mock('../src/report/generateCommitReport.ts');
+vi.mock('../src/annotations/createFailedTestsAnnotations.ts');
+vi.mock('../src/annotations/createCoverageAnnotations.ts');
+vi.mock('../src/format/annotations/formatFailedTestsAnnotations.ts');
+vi.mock('../src/format/annotations/formatCoverageAnnotations.ts');
 
-const getOptionsMock = mocked(getOptions);
-const getCoverageMock = mocked(getCoverage);
-const switchBranchMock = mocked(switchBranch);
-const getCurrentBranchMock = mocked(getCurrentBranch);
-const checkoutRefMock = mocked(checkoutRef);
-const createReportMock = mocked(createReport);
-const loadConfigMock = mocked(loadConfig);
+const getOptionsMock = vi.mocked(getOptions);
+const getCoverageMock = vi.mocked(getCoverage);
+const switchBranchMock = vi.mocked(switchBranch);
+const getCurrentBranchMock = vi.mocked(getCurrentBranch);
+const checkoutRefMock = vi.mocked(checkoutRef);
+const createReportMock = vi.mocked(createReport);
+const loadConfigMock = vi.mocked(loadConfig);
 
-(getOctokit as jest.Mock<any, any>).mockReturnValue({
+vi.mocked(getOctokit).mockReturnValue({
     rest: {
         checks: {
             create: (fn: () => any) => {
@@ -239,14 +245,14 @@ const loadConfigMock = mocked(loadConfig);
             },
         },
     },
-});
+} as any);
 
 beforeEach(() => {
     switchBranchMock.mockClear();
     getOptionsMock.mockClear();
     getCoverageMock.mockClear();
     createReportMock.mockClear();
-    (setFailed as jest.Mock).mockClear();
+    vi.mocked(setFailed).mockClear();
     loadConfigMock.mockClear();
     getCurrentBranchMock.mockClear();
     checkoutRefMock.mockClear();
@@ -283,7 +289,7 @@ describe('run', () => {
 
     it('should run in PR', async () => {
         const dataCollector = createDataCollector<JsonReport>();
-        const dataCollectorAddSpy = jest.spyOn(dataCollector, 'add');
+        const dataCollectorAddSpy = vi.spyOn(dataCollector, 'add');
         await run(dataCollector);
         expect(getCoverageMock).toBeCalledTimes(2);
         expect(checkoutRefMock.mock.calls[0]).toEqual([
@@ -321,7 +327,7 @@ describe('run', () => {
 
     it('should skip if headCoverage is not generated', async () => {
         const dataCollector = createDataCollector<JsonReport>();
-        const dataCollectorAddSpy = jest.spyOn(dataCollector, 'add');
+        const dataCollectorAddSpy = vi.spyOn(dataCollector, 'add');
         getCoverageMock.mockRejectedValue('');
         await run(dataCollector);
         expect(dataCollectorAddSpy).toBeCalledTimes(0);
@@ -331,7 +337,7 @@ describe('run', () => {
         const dataCollector = createDataCollector<JsonReport>();
         const dataCollectorMock = {
             ...dataCollector,
-            get: jest.fn(),
+            get: vi.fn(),
         };
         dataCollectorMock.get.mockReturnValue({
             errors: [new Error('error')],
@@ -344,7 +350,7 @@ describe('run', () => {
         const dataCollector = createDataCollector<JsonReport>();
         const dataCollectorMock = {
             ...dataCollector,
-            get: jest.fn(),
+            get: vi.fn(),
         };
         dataCollectorMock.get.mockReturnValue(({
             errors: [],
@@ -376,7 +382,7 @@ describe('run', () => {
             payload: {},
         });
         const dataCollector = createDataCollector<JsonReport>();
-        const dataCollectorAddSpy = jest.spyOn(dataCollector, 'add');
+        const dataCollectorAddSpy = vi.spyOn(dataCollector, 'add');
         await run(dataCollector);
         expect(getCoverageMock).toBeCalledTimes(2);
         expect(checkoutRefMock.mock.calls[0]).toEqual([
@@ -394,11 +400,11 @@ describe('run', () => {
     });
 
     describe('failedAnnotations', () => {
-        const createFailedTestsAnnotationsMock = mocked(
+        const createFailedTestsAnnotationsMock = vi.mocked(
             createFailedTestsAnnotations
         );
 
-        const formatFailedTestsAnnotationsMock = mocked(
+        const formatFailedTestsAnnotationsMock = vi.mocked(
             formatFailedTestsAnnotations
         );
 
@@ -432,8 +438,12 @@ describe('run', () => {
     });
 
     describe('coverageAnnotations', () => {
-        const createCoverageAnnotationsMock = mocked(createCoverageAnnotations);
-        const formatCoverageAnnotationsMock = mocked(formatCoverageAnnotations);
+        const createCoverageAnnotationsMock = vi.mocked(
+            createCoverageAnnotations
+        );
+        const formatCoverageAnnotationsMock = vi.mocked(
+            formatCoverageAnnotations
+        );
 
         beforeEach(() => {
             createCoverageAnnotationsMock.mockClear();

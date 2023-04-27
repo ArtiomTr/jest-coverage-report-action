@@ -1,5 +1,6 @@
 import * as all from '@actions/core';
 import * as allGh from '@actions/github';
+import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 import { ObjectSchema } from 'yup';
 
 import {
@@ -7,6 +8,9 @@ import {
     shouldInstallDeps,
     shouldRunTestScript,
 } from '../../src/typings/Options';
+
+vi.mock('@actions/core');
+vi.mock('@actions/github');
 
 const { mockInput, clearInputMock } = all as any;
 const { mockContext, getOctokit } = allGh as any;
@@ -38,7 +42,7 @@ const options = {
 const OctokitMock = () => ({
     rest: {
         pulls: {
-            get: jest.fn(() => ({ data: pr })),
+            get: vi.fn(() => ({ data: pr })),
         },
     },
 });
@@ -153,7 +157,7 @@ describe('getOptions', () => {
     it('should throw non-validation error', async () => {
         const validate = ObjectSchema.prototype.validate;
 
-        ObjectSchema.prototype.validate = jest.fn(() => {
+        ObjectSchema.prototype.validate = vi.fn(() => {
             throw new Error('Any error');
         });
 

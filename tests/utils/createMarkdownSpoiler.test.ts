@@ -1,3 +1,5 @@
+import { describe, expect, it } from 'vitest';
+
 import { createMarkdownSpoiler } from '../../src/utils/createMarkdownSpoiler';
 
 describe('createMarkdownSpoiler', () => {

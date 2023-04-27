@@ -25,3 +25,5 @@ coverage
 
 # Intellij IDE automatically generated folder
 .idea
+
+report.json

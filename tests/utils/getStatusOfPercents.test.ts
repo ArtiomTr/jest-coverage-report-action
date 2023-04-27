@@ -1,3 +1,5 @@
+import { describe, expect, it } from 'vitest';
+
 import { getStatusOfPercents } from '../../src/utils/getStatusOfPercents';
 
 describe('getStatusOfPercents', () => {

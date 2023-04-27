@@ -1,8 +1,11 @@
 import * as all from '@actions/github';
+import { beforeEach, describe, expect, it, vi } from 'vitest';
 
 import { Annotation } from '../../../src/annotations/Annotation';
 import { formatCoverageAnnotations } from '../../../src/format/annotations/formatCoverageAnnotations';
 import { Options } from '../../../src/typings/Options';
+
+vi.mock('@actions/github');
 
 const { mockContext, clearContextMock } = all as any;
 

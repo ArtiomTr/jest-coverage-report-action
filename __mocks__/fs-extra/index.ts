@@ -1,5 +1,7 @@
-export const readFile = jest.fn();
+import { vi } from 'vitest';
 
-export const rmdir = jest.fn();
+export const readFile = vi.fn();
 
-export const rm = jest.fn();
+export const rmdir = vi.fn();
+
+export const rm = vi.fn();

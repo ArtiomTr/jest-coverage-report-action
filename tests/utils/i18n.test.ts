@@ -1,3 +1,5 @@
+import { describe, expect, it } from 'vitest';
+
 import { i18n } from '../../src/utils/i18n';
 
 describe('i18n', () => {

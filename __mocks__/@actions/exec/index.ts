@@ -1,1 +1,3 @@
-export const exec = jest.fn();
+import { vi } from 'vitest';
+
+export const exec = vi.fn();

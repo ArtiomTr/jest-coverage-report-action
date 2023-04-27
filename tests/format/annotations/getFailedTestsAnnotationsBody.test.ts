@@ -1,3 +1,5 @@
+import { describe, expect, it } from 'vitest';
+
 import { getFailedTestsAnnotationsBody } from '../../../src/format/annotations/getFailedTestsAnnotationsBody';
 
 describe('getFailedTestsAnnotationsBody', () => {

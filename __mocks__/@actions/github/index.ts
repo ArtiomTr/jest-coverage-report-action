@@ -1,3 +1,5 @@
+import { vi } from 'vitest';
+
 export const context: Record<string, unknown> = {};
 
 export const mockContext = (newContext: Record<string, unknown>) => {
@@ -10,4 +12,4 @@ export const clearContextMock = () => {
     });
 };
 
-export const getOctokit = jest.fn();
+export const getOctokit = vi.fn();

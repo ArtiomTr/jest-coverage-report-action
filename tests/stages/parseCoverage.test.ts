@@ -1,3 +1,5 @@
+import { describe, expect, it } from 'vitest';
+
 import { parseCoverage } from '../../src/stages/parseCoverage';
 import { ActionError } from '../../src/typings/ActionError';
 import { FailReason } from '../../src/typings/Report';

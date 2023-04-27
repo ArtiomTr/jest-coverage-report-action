@@ -1,14 +1,15 @@
 {
     "compilerOptions": {
         "target": "ES2019",
-        "module": "commonjs",
+        "module": "ES2022",
         "declaration": false,
         "outDir": "./dist",
         "strict": true,
         "esModuleInterop": true,
-        "lib": ["ES2019"],
+        "lib": ["ES2022", "DOM"],
         "rootDir": "src",
-        "resolveJsonModule": true
+        "resolveJsonModule": true,
+        "moduleResolution": "node"
     },
     "include": ["src", "index.d.ts"],
     "exclude": ["node_modules", "tests", "example"]

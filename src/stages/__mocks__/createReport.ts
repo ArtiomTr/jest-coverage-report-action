@@ -1,1 +1,3 @@
-export const createReport = jest.fn();
+import { vi } from 'vitest';
+
+export const createReport = vi.fn();

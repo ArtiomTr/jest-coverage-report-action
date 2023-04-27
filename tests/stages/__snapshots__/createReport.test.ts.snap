@@ -1,4 +1,48 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`createReport > should match snapshots (failed report) 1`] = `
+{
+  "runReport": {
+    "failures": "",
+    "summary": "Failed tests: 0/12. Failed suites: 0/5.",
+    "title": "Test suite run failed",
+  },
+  "text": "/src/format/template.txt",
+}
+`;
+
+exports[`createReport > should match snapshots 1`] = `
+{
+  "runReport": {
+    "failures": "",
+    "summary": "12 tests passing in 5 suites.",
+    "title": "Test suite run success",
+  },
+  "text": "/src/format/template.txt",
+}
+`;
+
+exports[`createReport > should match snapshots 2`] = `
+{
+  "runReport": {
+    "failures": "",
+    "summary": "12 tests passing in 5 suites.",
+    "title": "Test suite run success",
+  },
+  "text": "/src/format/template.txt",
+}
+`;
+
+exports[`createReport > should match snapshots 3`] = `
+{
+  "runReport": {
+    "failures": "",
+    "summary": "12 tests passing in 5 suites.",
+    "title": "Test suite run success",
+  },
+  "text": "/src/format/template.txt",
+}
+`;
 
 exports[`createReport should match snapshots (failed report) 1`] = `
 Object {

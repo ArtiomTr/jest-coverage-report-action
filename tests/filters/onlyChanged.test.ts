@@ -1,3 +1,5 @@
+import { describe, expect, it } from 'vitest';
+
 import { Annotation } from '../../src/annotations/Annotation';
 import { onlyChanged } from '../../src/filters/onlyChanged';
 

@@ -1,3 +1,5 @@
+import { describe, expect, it } from 'vitest';
+
 import { getFileCoverageDetailRow } from '../../../src/format/details/getFileCoverageDetailRow';
 
 describe('getFileCoverageDetailRow', () => {

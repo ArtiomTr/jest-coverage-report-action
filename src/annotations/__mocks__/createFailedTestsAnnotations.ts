@@ -1,1 +1,3 @@
-export const createFailedTestsAnnotations = jest.fn();
+import { vi } from 'vitest';
+
+export const createFailedTestsAnnotations = vi.fn();

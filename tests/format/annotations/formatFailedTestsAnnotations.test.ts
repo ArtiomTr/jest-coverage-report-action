@@ -1,10 +1,13 @@
 import * as all from '@actions/github';
+import { beforeEach, describe, expect, it, vi } from 'vitest';
 
 import { Annotation } from '../../../src/annotations/Annotation';
 import { formatFailedTestsAnnotations } from '../../../src/format/annotations/formatFailedTestsAnnotations';
 import { Options } from '../../../src/typings/Options';
 
 const { mockContext, clearContextMock } = all as any;
+
+vi.mock('@actions/github');
 
 const DEFAULT_OPTIONS: Options = {
     token: '',

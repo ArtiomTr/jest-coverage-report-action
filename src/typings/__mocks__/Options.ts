@@ -1,4 +1,6 @@
-export const getOptions = jest.fn(() => ({
+import { vi } from 'vitest';
+
+export const getOptions = vi.fn(() => ({
     token: 'TOKEN',
     testScript: 'test script',
     iconType: 'emoji',

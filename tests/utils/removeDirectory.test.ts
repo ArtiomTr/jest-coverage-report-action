@@ -1,13 +1,15 @@
 import { rm, rmdir } from 'fs-extra';
-import { mocked } from 'ts-jest/utils';
+import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 
 import { removeDirectory } from '../../src/utils/removeDirectory';
 
 const originalProcess = process;
 
+vi.mock('fs-extra');
+
 beforeEach(() => {
-    mocked(rm).mockClear();
-    mocked(rmdir).mockClear();
+    vi.mocked(rm).mockClear();
+    vi.mocked(rmdir).mockClear();
 });
 
 afterEach(() => {

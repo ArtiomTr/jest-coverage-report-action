@@ -1,8 +1,11 @@
 import type { getOctokit } from '@actions/github';
+import { describe, expect, it, vi } from 'vitest';
 
 import { getReportTag } from '../../src/constants/getReportTag';
 import { generatePRReport } from '../../src/report/generatePRReport';
 import { Options } from '../../src/typings/Options';
+
+vi.mock('@actions/github');
 
 const DEFAULT_OPTIONS: Options = {
     token: '',
@@ -30,9 +33,9 @@ const DEFAULT_OPTIONS: Options = {
 
 describe('generatePRReport', () => {
     it('should generate new PR report', async () => {
-        const paginate = jest.fn(() => []);
-        const updateComment = jest.fn();
-        const createComment = jest.fn();
+        const paginate = vi.fn(() => []);
+        const updateComment = vi.fn();
+        const createComment = vi.fn();
 
         await generatePRReport(
             'Report body',
@@ -66,14 +69,14 @@ describe('generatePRReport', () => {
     });
 
     it('should update old report', async () => {
-        const paginate = jest.fn(() => [
+        const paginate = vi.fn(() => [
             {
                 body: `${getReportTag(DEFAULT_OPTIONS)}`,
                 id: 15,
             },
         ]);
-        const updateComment = jest.fn();
-        const createComment = jest.fn();
+        const updateComment = vi.fn();
+        const createComment = vi.fn();
 
         await generatePRReport(
             'Report body',

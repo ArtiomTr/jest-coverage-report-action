@@ -1,3 +1,5 @@
+import { describe, expect, it } from 'vitest';
+
 import { getFailedAnnotationsSummary } from '../../../src/format/annotations/getFailedAnnotationsSummary';
 import { JsonReport } from '../../../src/typings/JsonReport';
 

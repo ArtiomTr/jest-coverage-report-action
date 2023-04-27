@@ -1,3 +1,5 @@
+import { describe, expect, it } from 'vitest';
+
 import { getFailureDetails } from '../../src/format/getFailureDetails';
 import { JsonReport } from '../../src/typings/JsonReport';
 
