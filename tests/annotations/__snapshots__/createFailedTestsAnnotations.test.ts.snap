@@ -28,32 +28,3 @@ exports[`createFailedTestsAnnotations > should create failed tests annotations 1
   },
 ]
 `;
-
-exports[`createFailedTestsAnnotations should create failed tests annotations 1`] = `
-Array [
-  Object {
-    "annotation_level": "failure",
-    "end_line": 4,
-    "message": "",
-    "path": "tests/format/details/getNewFilesCoverage.test.ts",
-    "start_line": 4,
-    "title": "getNewFilesCoverage > should return new file coverage",
-  },
-  Object {
-    "annotation_level": "failure",
-    "end_line": 29,
-    "message": "",
-    "path": "tests/format/details/getNewFilesCoverage.test.ts",
-    "start_line": 29,
-    "title": "getNewFilesCoverage > should return empty object, when base details not specified",
-  },
-  Object {
-    "annotation_level": "failure",
-    "end_line": 23,
-    "message": "",
-    "path": "tests/format/summary/getTestRunSummary.test.ts",
-    "start_line": 23,
-    "title": "getTestRunSummary > should return failure summary",
-  },
-]
-`;

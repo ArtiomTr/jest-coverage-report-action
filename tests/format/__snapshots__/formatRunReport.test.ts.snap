@@ -22,26 +22,3 @@ exports[`formatRunReport > should generate summary as markdown (successful tests
 "## Tests Passed
 2 Tests Passed"
 `;
-
-exports[`formatRunReport should generate summary as markdown (failure tests) 1`] = `
-"## Tests Failed
-
-<details><summary>2 Tests Passed, 1 Test Failed</summary>
-<br/>
-
-\`\`\`
-fail 1
-\`\`\`
----
-\`\`\`
-fail 2
-\`\`\`
-
-</details>
-"
-`;
-
-exports[`formatRunReport should generate summary as markdown (successful tests) 1`] = `
-"## Tests Passed
-2 Tests Passed"
-`;
