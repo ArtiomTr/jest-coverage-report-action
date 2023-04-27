@@ -4,6 +4,10 @@
     "version": "1.0.0",
     "description": "",
     "main": "dist/index.js",
+    "engines": {
+        "pnpm": "~8.3.1"
+    },
+    "packageManager": "pnpm@8.3.1",
     "scripts": {
         "test": "jest",
         "test:log-coverage": "jest --coverage",
@@ -21,6 +25,7 @@
         "@actions/exec": "^1.1.1",
         "@actions/github": "^5.0.3",
         "fs-extra": "^10.0.0",
+        "lodash": "^4.17.21",
         "markdown-table": "^2.0.0",
         "micromatch": "^4.0.4",
         "parse-diff": "^0.9.0",
@@ -29,9 +34,11 @@
         "yup": "^0.32.9"
     },
     "devDependencies": {
+        "@octokit/openapi-types": "^12.11.0",
         "@types/fs-extra": "^9.0.11",
         "@types/istanbul-lib-coverage": "^2.0.4",
         "@types/jest": "^27.0.2",
+        "@types/lodash": "^4.14.194",
         "@types/markdown-table": "^2.0.0",
         "@types/micromatch": "^4.0.2",
         "@types/node": "^14.14.20",

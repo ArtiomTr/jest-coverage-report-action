@@ -20,6 +20,9 @@ jobs:
                   node-version: '12'
                   cache: 'npm'
 
+            - name: Install pnpm
+              run: corepack enable && corepack prepare
+              
             - name: Install pnpm dependencies (with cache)
               uses: covbot/pnpm-install-with-cache@v1
 

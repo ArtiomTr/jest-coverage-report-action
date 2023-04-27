@@ -18,8 +18,18 @@ jobs:
         steps:
             - name: Checkout
               uses: actions/checkout@v2
+
+            - name: Use Node 20.x
+              uses: actions/setup-node@v2
+              with:
+                  node-version: 20.x
+
+            - name: Install pnpm
+              run: corepack enable && corepack prepare
+
             - name: Test coverage
               uses: ./ # Uses an action in the root directory
               with:
                   annotations: failed-tests
+                  package-manager: pnpm
                   test-script: pnpm test:coverage
