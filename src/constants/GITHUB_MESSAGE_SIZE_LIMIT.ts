@@ -1,1 +1,0 @@
-export const GITHUB_MESSAGE_SIZE_LIMIT = 65535;

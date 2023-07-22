@@ -1,0 +1,22 @@
+fragment GithubRef on Ref {
+    name
+    repository {
+        nameWithOwner
+    }
+}
+
+query PullRequestInfo($owner: String!, $repo: String!, $prNumber: Int!) {
+    repository(name: $repo, owner: $owner) {
+        pullRequest(number: $prNumber) {
+            headRef {
+                ...GithubRef
+                target {
+                    oid
+                }
+            }
+            baseRef {
+                ...GithubRef
+            }
+        }
+    }
+}

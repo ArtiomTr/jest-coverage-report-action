@@ -13,16 +13,9 @@ inputs:
         required: false
         description: 'A custom npm script to get coverage'
         default: npx jest
-    threshold:
-        required: false
-        description: 'Coverage threshold. If total coverage is less than threshold, PR will be rejected'
     working-directory:
         required: false
         description: 'Custom working directory'
-    icons:
-        required: false
-        description: 'Which icons to use. Available choices: emoji, ascii'
-        default: emoji
     annotations:
         required: false
         description: 'What type of annotations show. Options: none, coverage, failed-tests, all'
