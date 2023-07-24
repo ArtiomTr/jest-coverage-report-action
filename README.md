@@ -285,6 +285,15 @@ jobs:
                    prnumber: ${{ steps.findPr.outputs.number }}
 ```
 
+## Customizing report title
+
+If you're running this action multiple times (for instance, when dealing with monorepos), you'll need to distinguish reports from different runs. To do so, you can use the `custom-title` property:
+
+```yaml
+with:
+    custom-title: Coverage report for backend
+```
+
 ## Contributing
 
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
