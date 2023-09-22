@@ -283,6 +283,15 @@
       "contributions": [
         "code"
       ]
+    },
+    {
+      "login": "ddlan",
+      "name": "Danny Lan",
+      "avatar_url": "https://avatars.githubusercontent.com/u/25760929?v=4",
+      "profile": "http://www.dannylan.me",
+      "contributions": [
+        "code"
+      ]
     }
   ],
   "projectName": "jest-coverage-report-action",
@@ -291,5 +300,6 @@
   "repoHost": "https://github.com",
   "skipCi": true,
   "contributorsPerLine": 7,
-  "commitConvention": "angular"
+  "commitConvention": "angular",
+  "commitType": "docs"
 }
