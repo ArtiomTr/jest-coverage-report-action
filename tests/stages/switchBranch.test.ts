@@ -114,7 +114,7 @@ describe('checkoutRef', () => {
 
         expect(exec).toBeCalledWith('git checkout hello -f');
     });
-    
+
     it('should try git checkout by sha if ref fails', async () => {
         (exec as jest.Mock<any, any>).mockImplementation((command) => {
             if (command === 'git checkout hello -f') throw 0;
