@@ -114,6 +114,23 @@ describe('checkoutRef', () => {
 
         expect(exec).toBeCalledWith('git checkout hello -f');
     });
+
+    it('should try git checkout by sha if ref fails', async () => {
+        (exec as jest.Mock<any, any>).mockImplementation((command) => {
+            if (command === 'git checkout hello -f') throw 0;
+        });
+
+        await checkoutRef(
+            {
+                ref: 'hello',
+                sha: '123456',
+            } as GithubRef,
+            'remote-1',
+            'branch-1'
+        );
+
+        expect(exec).toHaveBeenNthCalledWith(3, 'git checkout 123456 -f');
+    });
 });
 
 describe('getCurrentBranch', () => {
