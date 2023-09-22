@@ -347,6 +347,7 @@ Jest Coverage Report action is made with <3 thanks to these wonderful people
     <tr>
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/hyperair"><img src="https://avatars.githubusercontent.com/u/88355?v=4?s=100" width="100px;" alt="Chow Loong Jin"/><br /><sub><b>Chow Loong Jin</b></sub></a><br /><a href="https://github.com/ArtiomTr/jest-coverage-report-action/issues?q=author%3Ahyperair" title="Bug reports">🐛</a> <a href="https://github.com/ArtiomTr/jest-coverage-report-action/commits?author=hyperair" title="Code">💻</a></td>
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/aj8k"><img src="https://avatars.githubusercontent.com/u/1395376?v=4?s=100" width="100px;" alt="Anton Joy"/><br /><sub><b>Anton Joy</b></sub></a><br /><a href="https://github.com/ArtiomTr/jest-coverage-report-action/commits?author=aj8k" title="Code">💻</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="http://www.dannylan.me"><img src="https://avatars.githubusercontent.com/u/25760929?v=4?s=100" width="100px;" alt="Danny Lan"/><br /><sub><b>Danny Lan</b></sub></a><br /><a href="https://github.com/ArtiomTr/jest-coverage-report-action/commits?author=ddlan" title="Code">💻</a></td>
     </tr>
   </tbody>
 </table>
