@@ -29,7 +29,7 @@ inputs:
         default: all
     package-manager:
         required: false
-        description: 'Which package manager to use; can be `npm`, `yarn`, or `pnpm`'
+        description: 'Which package manager to use; can be `npm`, `yarn`, `pnpm`, or `bun`'
         default: 'npm'
     skip-step:
         required: false

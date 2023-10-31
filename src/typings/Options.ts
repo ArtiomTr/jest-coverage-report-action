@@ -7,7 +7,7 @@ import { icons } from '../format/strings.json';
 export type IconType = keyof typeof icons;
 
 export type AnnotationType = 'all' | 'none' | 'coverage' | 'failed-tests';
-export type PackageManagerType = 'npm' | 'yarn' | 'pnpm';
+export type PackageManagerType = 'npm' | 'yarn' | 'pnpm' | 'bun';
 export type SkipStepType = 'all' | 'none' | 'install';
 export type OutputType = 'comment' | 'report-markdown';
 
@@ -54,6 +54,7 @@ const packageManagerOptions: Array<PackageManagerType> = [
     'npm',
     'yarn',
     'pnpm',
+    'bun',
 ];
 
 const validIconOptions = Object.keys(icons);

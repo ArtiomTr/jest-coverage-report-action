@@ -16,22 +16,25 @@ You can add this action for the new project, as well as for already existing one
 2. Secondly, make sure that you can run the Jest without additional arguments. To test it, try to run this code in your shell:
 
 ```bash
-
 npx jest
 ```
 
 Or via yarn:
 
 ```bash
-
 yarn jest
 ```
 
 Or via pnpm (pnpx):
 
 ```bash
-
 pnpx jest
+```
+
+Or via bun (bunx):
+
+```bash
+bunx jest
 ```
 
 <!-- TODO: replace link -->

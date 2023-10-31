@@ -98,7 +98,7 @@ If you want to enable only specific annotations, you can specify following choic
 
 ### package-manager
 
-By default, action uses [npm](https://github.com/npm/cli#readme) package manager. But, if you want to use [yarn](https://github.com/yarnpkg/berry#readme) or [pnpm](https://pnpm.io/), simply set `package-manager`option to `yarn` or `pnpm`:
+By default, action uses [npm](https://github.com/npm/cli#readme) package manager. But, if you want to use [yarn](https://github.com/yarnpkg/berry#readme), [pnpm](https://pnpm.io/), or [bun](https://bun.sh/), simply set `package-manager`option to `yarn`, `pnpm`, or `bun`:
 
 ```yaml
 with:
@@ -112,6 +112,14 @@ or
 with:
     github-token: ${{ secrets.GITHUB_TOKEN }}
     package-manager: pnpm
+```
+
+or
+
+```yaml
+with:
+    github-token: ${{ secrets.GITHUB_TOKEN }}
+    package-manager: bun
 ```
 
 ### skip-step

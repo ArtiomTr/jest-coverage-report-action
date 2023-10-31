@@ -82,7 +82,7 @@ jobs:
 ```
 
 > **Warning**
-> 
+>
 > This brings worse DX - you can test action only when it is merged into your main branch. **Any changes to the workflow file will be taken only after merging them to the main branch**
 
 ## Custom token
@@ -147,9 +147,9 @@ with:
     test-script: npm test
 ```
 
-## Usage with `yarn` or `pnpm`
+## Usage with `yarn` `pnpm`, or `bun`
 
-By default, this action will install your dependencies using `npm`. If you are using `yarn` or `pnpm`, you can specify it in the `package-manager` option:
+By default, this action will install your dependencies using `npm`. If you are using `yarn`, `pnpm`, or `bun`, you can specify it in the `package-manager` option:
 
 ```yml
 with:
@@ -161,6 +161,13 @@ or
 ```yml
 with:
     package-manager: pnpm
+```
+
+or
+
+```yml
+with:
+    package-manager: bun
 ```
 
 ## Use existing test report(s)
