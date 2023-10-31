@@ -60,6 +60,14 @@ describe('installDependencies', () => {
         });
     });
 
+    it('should install dependencies using bun', async () => {
+        await installDependencies('bun');
+
+        expect(exec).toBeCalledWith('bun install', undefined, {
+            cwd: undefined,
+        });
+    });
+
     it('should install dependencies under specified working directory', async () => {
         await installDependencies(undefined, 'workingDir');
 

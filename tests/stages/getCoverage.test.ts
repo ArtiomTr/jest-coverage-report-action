@@ -123,6 +123,21 @@ describe('getCoverage', () => {
         });
 
         expect(jsonReportPnpm).toStrictEqual({});
+
+        (readFile as jest.Mock<any, any>).mockImplementationOnce(() => '{}');
+
+        const jsonReportBun = await getCoverage(
+            dataCollector,
+            { ...defaultOptions, packageManager: 'bun' },
+            false,
+            undefined
+        );
+
+        expect(exec).toBeCalledWith('bun install', undefined, {
+            cwd: undefined,
+        });
+
+        expect(jsonReportBun).toStrictEqual({});
     });
 
     it('should skip installation step', async () => {

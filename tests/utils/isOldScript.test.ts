@@ -19,6 +19,10 @@ describe('isOldScript', () => {
         ).toBe(true);
 
         expect(
+            await isOldScript('bunx jest --outputFile=report.json', undefined)
+        ).toBe(true);
+
+        expect(
             await isOldScript('yarn jest --outputFile=report.json', undefined)
         ).toBe(true);
 
@@ -34,6 +38,13 @@ describe('isOldScript', () => {
         ).toBe(true);
 
         expect(
+            await isOldScript(
+                'bun run test -- --outputFile=report.json',
+                undefined
+            )
+        ).toBe(true);
+
+        expect(
             await isOldScript('yarn test --outputFile=report.json', undefined)
         ).toBe(true);
 
@@ -42,6 +53,7 @@ describe('isOldScript', () => {
         expect(await isOldScript('yarn jest', undefined)).toBe(false);
         expect(await isOldScript('npm test', undefined)).toBe(false);
         expect(await isOldScript('pnpm test', undefined)).toBe(false);
+        expect(await isOldScript('bun run test', undefined)).toBe(false);
         expect(
             await isOldScript(
                 'yaasync async async async async async async async rn test',
@@ -65,6 +77,11 @@ describe('isOldScript', () => {
         expect(await isOldScript('yarn test', undefined)).toBe(true);
         expect(await isOldScript('yarn run test', undefined)).toBe(true);
         expect(await isOldScript('yarn run test:coverage', undefined)).toBe(
+            false
+        );
+        expect(await isOldScript('bun run test', undefined)).toBe(true);
+        expect(await isOldScript('bun run test', undefined)).toBe(true);
+        expect(await isOldScript('bun run test:coverage', undefined)).toBe(
             false
         );
         expect(await isOldScript('npm run test', undefined)).toBe(true);
