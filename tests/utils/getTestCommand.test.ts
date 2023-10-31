@@ -17,6 +17,12 @@ describe('getTestCommand', () => {
         ).toBe(
             'pnpx jest --ci --json --coverage --testLocationInResults --outputFile="report.json"'
         );
+
+        expect(
+            await getTestCommand('bunx jest', 'report.json', undefined)
+        ).toBe(
+            'bunx jest --ci --json --coverage --testLocationInResults --outputFile="report.json"'
+        );
     });
 
     it('should add double hyphens for npm and pnpm', async () => {

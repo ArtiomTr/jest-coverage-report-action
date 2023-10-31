@@ -50,6 +50,7 @@ describe('isOldScript', () => {
 
         expect(await isOldScript('npx jest', undefined)).toBe(false);
         expect(await isOldScript('pnpx jest', undefined)).toBe(false);
+        expect(await isOldScript('bunx jest', undefined)).toBe(false);
         expect(await isOldScript('yarn jest', undefined)).toBe(false);
         expect(await isOldScript('npm test', undefined)).toBe(false);
         expect(await isOldScript('pnpm test', undefined)).toBe(false);
