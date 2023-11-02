@@ -292,6 +292,15 @@
       "contributions": [
         "code"
       ]
+    },
+    {
+      "login": "coopbri",
+      "name": "Brian Cooper",
+      "avatar_url": "https://avatars.githubusercontent.com/u/20056195?v=4",
+      "profile": "https://brian-cooper.com",
+      "contributions": [
+        "code"
+      ]
     }
   ],
   "projectName": "jest-coverage-report-action",
