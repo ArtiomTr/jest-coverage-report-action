@@ -2,7 +2,7 @@ import { join } from 'path';
 
 import { readFile } from 'fs-extra';
 
-const packageScriptRegex = /^(?:(?:npm|yarn|pnpm)\s+(?:run\s+)?([\w:-]+))/;
+const packageScriptRegex = /^(?:(?:npm|yarn|pnpm|bun)\s+(?:run\s+)?([\w:-]+))/;
 
 export const isOldScript = async (
     command: string,
