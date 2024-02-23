@@ -41,6 +41,7 @@ export type Options = {
     prNumber: null | number;
     pullRequest: null | PullRequest;
     output: Array<OutputType>;
+    annotationFilters?: Array<string>;
 };
 
 const validAnnotationOptions: Array<AnnotationType> = [
@@ -73,7 +74,7 @@ const optionSchema = yup.object().shape({
     annotations: yup.string().required().oneOf(validAnnotationOptions),
     threshold: yup
         .number()
-        .transform((value) => (isNaN(value) ? undefined : value))
+        .transform((value: number) => (isNaN(value) ? undefined : value))
         .min(0)
         .max(100),
     workingDirectory: yup.string(),
@@ -89,6 +90,7 @@ const optionSchema = yup.object().shape({
         .required()
         .transform((_, originalValue: string) => originalValue.split(', '))
         .of(yup.string().required().oneOf(validOutputTypeOptions)),
+    annotationFilters: yup.string().transform((value: string) => value.split(','))
 });
 
 export const shouldInstallDeps = (skipStep: SkipStepType): Boolean =>
@@ -112,6 +114,7 @@ export const getOptions = async (): Promise<Options> => {
     const customTitle = getInput('custom-title');
     const coverageFile = getInput('coverage-file');
     const baseCoverageFile = getInput('base-coverage-file');
+    const annotationFilters = getInput('annotation-filters');
     const prNumber: number | null = Number(
         getInput('prnumber') || context?.payload?.pull_request?.number
     );
@@ -142,6 +145,7 @@ export const getOptions = async (): Promise<Options> => {
             prNumber: prNumber || null,
             pullRequest,
             output,
+            annotationFilters,
         })) as Options;
 
         return options;
