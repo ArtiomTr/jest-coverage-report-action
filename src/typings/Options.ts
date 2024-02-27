@@ -2,8 +2,8 @@ import { getInput } from '@actions/core';
 import { context, getOctokit } from '@actions/github';
 import * as yup from 'yup';
 
-import { icons } from '../format/strings.json';
 import { CoverageAnnotationType } from './CoverageAnnotationType';
+import { icons } from '../format/strings.json';
 
 export type IconType = keyof typeof icons;
 
@@ -91,7 +91,9 @@ const optionSchema = yup.object().shape({
         .required()
         .transform((_, originalValue: string) => originalValue.split(', '))
         .of(yup.string().required().oneOf(validOutputTypeOptions)),
-    annotationFilters: yup.string().transform((value: string) => value.split(','))
+    annotationFilters: yup
+        .string()
+        .transform((value: string) => value.split(',')),
 });
 
 export const shouldInstallDeps = (skipStep: SkipStepType): Boolean =>
