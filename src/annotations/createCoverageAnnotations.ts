@@ -1,5 +1,6 @@
 import { relative } from 'path';
 
+import { CoverageAnnotationType } from '../typings/CoverageAnnotationType';
 import { JsonReport, Location } from '../typings/JsonReport';
 import { i18n } from '../utils/i18n';
 import { isValidNumber } from '../utils/isValidNumber';
@@ -26,12 +27,12 @@ const getLocation = (
 
 export const createCoverageAnnotations = (
     jsonReport: JsonReport,
-    annotationFilters: string[]
+    annotationFilters: CoverageAnnotationType[]
 ): Array<Annotation> => {
     const annotations: Partial<Annotation>[] = [];
 
     if (annotationFilters.length === 0) {
-        annotationFilters = ['statement', 'branch', 'function'];
+        annotationFilters = [CoverageAnnotationType.Branch, CoverageAnnotationType.Function, CoverageAnnotationType.Statement];
     }
 
     Object.entries(jsonReport.coverageMap).forEach(
@@ -41,7 +42,7 @@ export const createCoverageAnnotations = (
                 'statementMap' in fileCoverage
                     ? fileCoverage
                     : fileCoverage.data;
-            if (annotationFilters.includes('statement')) {
+            if (annotationFilters.includes(CoverageAnnotationType.Statement)) {
                 Object.entries(normalizedFileCoverage.statementMap).forEach(
                     ([statementIndex, statementCoverage]) => {
                         if (normalizedFileCoverage.s[+statementIndex] === 0) {
@@ -61,7 +62,7 @@ export const createCoverageAnnotations = (
             }
             
 
-            if (annotationFilters.includes('branch')) { 
+            if (annotationFilters.includes(CoverageAnnotationType.Branch)) { 
                 Object.entries(normalizedFileCoverage.branchMap).forEach(
                     ([branchIndex, branchCoverage]) => {
                         if (branchCoverage.locations) {
@@ -92,7 +93,7 @@ export const createCoverageAnnotations = (
                 );
             }
 
-            if (!annotationFilters.includes('function')) { 
+            if (annotationFilters.includes(CoverageAnnotationType.Function)) { 
                 Object.entries(normalizedFileCoverage.fnMap).forEach(
                     ([functionIndex, functionCoverage]) => {
                         if (normalizedFileCoverage.f[+functionIndex] === 0) {

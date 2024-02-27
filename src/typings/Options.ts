@@ -3,6 +3,7 @@ import { context, getOctokit } from '@actions/github';
 import * as yup from 'yup';
 
 import { icons } from '../format/strings.json';
+import { CoverageAnnotationType } from './CoverageAnnotationType';
 
 export type IconType = keyof typeof icons;
 
@@ -41,7 +42,7 @@ export type Options = {
     prNumber: null | number;
     pullRequest: null | PullRequest;
     output: Array<OutputType>;
-    annotationFilters?: Array<string>;
+    annotationFilters?: Array<CoverageAnnotationType>;
 };
 
 const validAnnotationOptions: Array<AnnotationType> = [
