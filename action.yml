@@ -51,6 +51,10 @@ inputs:
         required: false
         description: What output should action produce? `comment` - add comment to PR, `report-markdown` - report markdown text in "outputs.report".
         default: comment
+    annotation-filters:
+        required: false
+        description: A comma separated list of what kind of annotations to show. Values can be `branch`, `statement`, `function`
+        default: branch,statement,function
 outputs:
     report:
         description: Generated markdown report. Exists only if input option "output" is set to "report-markdown".
@@ -75,3 +79,4 @@ runs:
               INPUT_BASE-COVERAGE-FILE: ${{ inputs.base-coverage-file }}
               INPUT_PRNUMBER: ${{ inputs.prnumber }}
               INPUT_OUTPUT: ${{ inputs.output }}
+              INPUT_ANNOTATION-FILTERS: ${{ inputs.annotation-filters }}
