@@ -23,7 +23,7 @@ describe('createCoverageAnnotations', () => {
         ).toMatchSnapshot();
 
         expect(
-            createCoverageAnnotations((jsonReport3 as unknown) as JsonReport, [CoverageAnnotationType.Branch, CoverageAnnotationType.Function, CoverageAnnotationType.Statement])
+            createCoverageAnnotations((jsonReport3 as unknown) as JsonReport, [])
         ).toMatchSnapshot();
 
         expect(
