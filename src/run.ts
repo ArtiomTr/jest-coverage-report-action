@@ -129,10 +129,6 @@ export const run = async (
                 skip();
             }
 
-            if (!0) {
-                throw new Error('aaa');
-            }
-
             return await getCoverage(
                 ignoreCollector,
                 options,
