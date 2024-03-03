@@ -1,43 +1,47 @@
+import { formatThresholdResults } from './formatThresholdResults';
 import { ActionError } from '../typings/ActionError';
+import { ThresholdResult } from '../typings/ThresholdResult';
 import { getConsoleLink } from '../utils/getConsoleLink';
 import { i18n } from '../utils/i18n';
 
 const getNumberWidth = (index: number) => Math.floor(Math.log10(index));
 
-export const formatErrors = (
+const formatErrorsInner = (
     errors: Array<Error>,
-    testRunSuccess: boolean,
-    coverageSuccess: boolean
+    testsFailed: boolean,
+    thresholdResults: ThresholdResult[]
 ) => {
+    if (thresholdResults.length > 0) {
+        return (
+            i18n('errors.coverageFail') +
+            '\n' +
+            formatThresholdResults(thresholdResults) +
+            '\n'
+        );
+    }
+
     if (errors.length === 0) {
-        return '';
+        return undefined;
     }
 
     if (errors.length === 1) {
         const error = errors[0];
 
         if (error instanceof ActionError) {
-            return i18n(':x: {{ error }}', { error: error.toString() });
+            return i18n('{{ error }}', { error: error.toString() });
         }
 
         if (
             error instanceof Error &&
             /The process [^\s]+ failed with exit code 1($|\s)/.test(
                 error.message
-            )
+            ) &&
+            testsFailed
         ) {
-            if (!testRunSuccess) {
-                return i18n('> [!CAUTION]\n> {{ error }}\n', {
-                    error: i18n('errors.testFail'),
-                });
-            } else if (!coverageSuccess) {
-                return i18n('> [!CAUTION]\n> {{ error }}\n', {
-                    error: i18n('errors.coverageFail'),
-                });
-            }
+            return i18n('errors.testFail');
         }
 
-        return i18n(':x: {{ unexpectedError }} \n```\n{{ error }}\n```', {
+        return i18n('{{ unexpectedError }} \n```\n{{ error }}\n```', {
             error: error.toString(),
             unexpectedError: i18n('errors.unexpectedError', {
                 consoleLink: getConsoleLink(),
@@ -58,5 +62,25 @@ export const formatErrors = (
                 )
                 .join('\n'),
         })
+    );
+};
+
+export const formatErrors = (
+    errors: Array<Error>,
+    testsFailed: boolean,
+    thresholdResults: ThresholdResult[]
+) => {
+    const text = formatErrorsInner(errors, testsFailed, thresholdResults);
+
+    if (!text) {
+        return '';
+    }
+
+    return (
+        '> [!CAUTION]\n' +
+        text
+            .split('\n')
+            .map((it) => `> ${it}\n`)
+            .join('')
     );
 };

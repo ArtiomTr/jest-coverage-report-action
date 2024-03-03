@@ -5,7 +5,6 @@ import { GITHUB_MESSAGE_SIZE_LIMIT } from '../constants/GITHUB_MESSAGE_SIZE_LIMI
 import { formatCoverage } from '../format/formatCoverage';
 import { formatErrors } from '../format/formatErrors';
 import { formatRunReport } from '../format/formatRunReport';
-import { formatThresholdResults } from '../format/formatThresholdResults';
 import { getFailureDetails } from '../format/getFailureDetails';
 import template from '../format/template.md';
 import { JsonReport } from '../typings/JsonReport';
@@ -32,11 +31,12 @@ export const createReport = (
     const [headReport, baseReport] = data;
     const formattedErrors = formatErrors(
         errors,
-        thresholdResults.length === 0,
-        headReport.success
+        headReport.numFailedTests !== 0 ||
+            headReport.numFailedTestSuites !== 0 ||
+            headReport.numRuntimeErrorTestSuites !== 0,
+        thresholdResults
     );
 
-    const formattedThresholdResults = formatThresholdResults(thresholdResults);
     const coverage = formatCoverage(headReport, baseReport, undefined, false);
     const runReport: TestRunReport = headReport.success
         ? {
@@ -62,12 +62,7 @@ export const createReport = (
     const formattedReport = formatRunReport(runReport);
 
     let templateText = insertArgs(template, {
-        body: [
-            formattedErrors,
-            formattedThresholdResults,
-            coverage,
-            formattedReport,
-        ].join('\n'),
+        body: [formattedErrors, coverage, formattedReport].join('\n'),
         dir: workingDirectory || '',
         tag: getReportTag(options),
         title: insertArgs(customTitle || i18n('summaryTitle'), {
@@ -85,12 +80,9 @@ export const createReport = (
         );
 
         templateText = insertArgs(template, {
-            body: [
-                formattedErrors,
-                formattedThresholdResults,
-                reducedCoverage,
-                formattedReport,
-            ].join('\n'),
+            body: [formattedErrors, reducedCoverage, formattedReport].join(
+                '\n'
+            ),
             dir: workingDirectory || '',
             tag: getReportTag(options),
             title: insertArgs(customTitle || i18n('summaryTitle'), {
