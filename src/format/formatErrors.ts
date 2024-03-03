@@ -20,8 +20,6 @@ const formatErrorsInner = (
         );
     }
 
-    throw new Error('aaa');
-
     if (errors.length === 0) {
         return undefined;
     }
