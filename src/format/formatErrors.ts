@@ -27,11 +27,11 @@ export const formatErrors = (
             )
         ) {
             if (!testRunSuccess) {
-                return i18n('> **Error** {{ error }}', {
+                return i18n('> [!ERROR]\n> {{ error }}\n', {
                     error: i18n('errors.testFail'),
                 });
             } else if (!coverageSuccess) {
-                return i18n('> **Error** {{ error }}', {
+                return i18n('> [!ERROR]\n> {{ error }}\n', {
                     error: i18n('errors.coverageFail'),
                 });
             }
