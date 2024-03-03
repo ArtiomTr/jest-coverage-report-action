@@ -1,22 +1,47 @@
+import { formatThresholdResults } from './formatThresholdResults';
 import { ActionError } from '../typings/ActionError';
+import { ThresholdResult } from '../typings/ThresholdResult';
 import { getConsoleLink } from '../utils/getConsoleLink';
 import { i18n } from '../utils/i18n';
 
 const getNumberWidth = (index: number) => Math.floor(Math.log10(index));
 
-export const formatErrors = (errors: Array<Error>) => {
+const formatErrorsInner = (
+    errors: Array<Error>,
+    testsFailed: boolean,
+    thresholdResults: ThresholdResult[]
+) => {
+    if (thresholdResults.length > 0) {
+        return (
+            i18n('errors.coverageFail') +
+            '\n' +
+            formatThresholdResults(thresholdResults) +
+            '\n'
+        );
+    }
+
     if (errors.length === 0) {
-        return '';
+        return undefined;
     }
 
     if (errors.length === 1) {
         const error = errors[0];
 
         if (error instanceof ActionError) {
-            return i18n(':x: {{ error }}', { error: error.toString() });
+            return i18n('{{ error }}', { error: error.toString() });
         }
 
-        return i18n(':x: {{ unexpectedError }} \n```\n{{ error }}\n```', {
+        if (
+            error instanceof Error &&
+            /The process [^\s]+ failed with exit code 1($|\s)/.test(
+                error.message
+            ) &&
+            testsFailed
+        ) {
+            return i18n('errors.testFail');
+        }
+
+        return i18n('{{ unexpectedError }} \n```\n{{ error }}\n```', {
             error: error.toString(),
             unexpectedError: i18n('errors.unexpectedError', {
                 consoleLink: getConsoleLink(),
@@ -37,5 +62,25 @@ export const formatErrors = (errors: Array<Error>) => {
                 )
                 .join('\n'),
         })
+    );
+};
+
+export const formatErrors = (
+    errors: Array<Error>,
+    testsFailed: boolean,
+    thresholdResults: ThresholdResult[]
+) => {
+    const text = formatErrorsInner(errors, testsFailed, thresholdResults);
+
+    if (!text) {
+        return '';
+    }
+
+    return (
+        '> [!CAUTION]\n' +
+        text
+            .split('\n')
+            .map((it) => `> ${it}\n`)
+            .join('')
     );
 };
