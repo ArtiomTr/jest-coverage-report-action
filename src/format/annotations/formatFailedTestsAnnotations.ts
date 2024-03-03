@@ -19,7 +19,6 @@ export const formatFailedTestsAnnotations = (
     output: {
         title: runReport.success ? i18n('testsSuccess') : i18n('testsFail'),
         text: [
-            runReport.summary,
             annotations.length > 50 &&
                 i18n('tooMuchAnnotations', {
                     hiddenCount: annotations.length - 50,
