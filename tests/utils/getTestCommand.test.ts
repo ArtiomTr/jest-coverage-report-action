@@ -56,6 +56,32 @@ describe('getTestCommand', () => {
         );
     });
 
+    it('should handle double hyphens when pnpm version is unknown', async () => {
+        mocked(exec).mockImplementation(() => {
+            return Promise.reject(new Error('Unknown failure'));
+        });
+
+        expect(
+            await getTestCommand(
+                'pnpm run test:coverage',
+                'report.json',
+                undefined
+            )
+        ).toBe(
+            'pnpm run test:coverage -- --ci --json --coverage --testLocationInResults --outputFile="report.json"'
+        );
+
+        expect(
+            await getTestCommand(
+                'pnpm run test:coverage -- --coverageReporters="text" --coverageReporters="text-summary"',
+                'report.json',
+                undefined
+            )
+        ).toBe(
+            'pnpm run test:coverage -- --coverageReporters="text" --coverageReporters="text-summary" --ci --json --coverage --testLocationInResults --outputFile="report.json"'
+        );
+    });
+
     it('should handle double hyphens for pnpm < 7.0.0', async () => {
         mocked(exec).mockImplementation((command, _args, options) => {
             if (command.trim() === 'pnpm -v' && options?.listeners?.stdout) {
