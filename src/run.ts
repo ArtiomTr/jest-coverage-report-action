@@ -248,14 +248,13 @@ export const run = async (
 
         let coverageAnnotations = createCoverageAnnotations(headCoverage!);
 
-        if (coverageAnnotations.length === 0) {
-            skip();
-        }
-
         const octokit = getOctokit(options.token);
         if (options.pullRequest?.number) {
             const patch = await getPrPatch(octokit, options);
             coverageAnnotations = onlyChanged(coverageAnnotations, patch);
+        }
+        if (coverageAnnotations.length === 0) {
+            skip();
         }
         await octokit.rest.checks.create(
             formatCoverageAnnotations(coverageAnnotations, options)
