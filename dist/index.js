@@ -2116,8 +2116,7 @@ ${e}
 `);var b1=(e,t,i,a)=>e?c9(d1(e),t?d1(t):void 0,c1(e),t?c1(t):void 0,i,a):"";var d9=e=>e.map(({type:t,path:i,expected:a,received:u})=>Je(`thresholdFailures.${a<0?"ones":"percents"}`,{path:i,type:Je(t),ltype:Je(t).toLowerCase(),expected:Math.abs(a),coverage:u})).join(`
 `);var Dn=class extends Error{constructor(t,i){super(Je(`errors.${t}`,i))}toString(){return this.message}};var mu=nt(Jn()),h9=()=>{var t,i;return`${(i=(t=mu.context.payload.repository)==null?void 0:t.html_url)!=null?i:`https://github.com/${mu.context.repo.owner}/${mu.context.repo.repo}`}/actions/runs/${mu.context.runId}`};var zq=e=>Math.floor(Math.log10(e)),Yq=(e,t,i)=>{if(i.length>0)return Je("errors.coverageFail")+`
 `+d9(i)+`
-`;if(e.length!==0){if(e.length===1){let a=e[0];return a instanceof Dn?Je("{{ error }}",{error:a.toString()}):a instanceof Error&&/The process [^\s]+ failed with exit code 1($|\s)/.test(a.message)&&t?Je("errors.testFail"):Je("{{ unexpectedError }} \n```\n{{ error }}\n```",{error:a.toString(),unexpectedError:Je("errors.unexpectedError",{consoleLink:h9()})})}return Je("errors.multiple")+Je("\n```\n{{ errors }}\n```\n",{errors:e.map((a,u)=>` ${String(1+u).padEnd(1+zq(e.length)," ")} | ${a.toString()}`).join(`
-`)})}},f9=(e,t,i)=>{let a=Yq(e,t,i);return a?`> [!CAUTION]
+`;throw new Error("aaa")},f9=(e,t,i)=>{let a=Yq(e,t,i);return a?`> [!CAUTION]
 `+a.split(`
 `).map(u=>`> ${u}
 `).join(""):""};var m9=e=>{let t=[`## ${e.title}`];return!e.success&&e.failures?t.push(ed({summary:e.summary,body:e.failures})):t.push(e.summary),t.join(`
