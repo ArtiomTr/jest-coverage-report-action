@@ -16,7 +16,14 @@ export const formatErrors = (errors: Array<Error>) => {
             return i18n(':x: {{ error }}', { error: error.toString() });
         }
 
-        console.log(error);
+        if (
+            error instanceof Error &&
+            /The process [^\s]+ failed with exit code 1/.test(error.message)
+        ) {
+            return i18n(':x: {{ error }}', {
+                error: i18n('errors.testFail'),
+            });
+        }
 
         return i18n(':x: {{ unexpectedError }} \n```\n{{ error }}\n```', {
             error: error.toString(),
