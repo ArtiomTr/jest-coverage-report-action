@@ -1,4 +1,24 @@
+import { exec } from '@actions/exec';
+import semver from 'semver';
+
 import { isOldScript } from './isOldScript';
+
+const checkPnpmVersion = async () => {
+    try {
+        let versionStr = '';
+        await exec('pnpm -v', undefined, {
+            listeners: {
+                stdout: (data) => {
+                    versionStr += data.toString();
+                },
+            },
+        });
+
+        return semver.satisfies(versionStr.trim(), '< 7.0.0');
+    } catch (error) {
+        return true;
+    }
+};
 
 export const getTestCommand = async (
     command: string,
@@ -10,7 +30,9 @@ export const getTestCommand = async (
         return command;
     }
 
-    const isNpmStyle = command.startsWith('npm') || command.startsWith('pnpm');
+    const isNpmStyle =
+        command.startsWith('npm') ||
+        (command.startsWith('pnpm') && (await checkPnpmVersion()));
 
     const hasDoubleHyphen = command.includes(' -- ');
 
