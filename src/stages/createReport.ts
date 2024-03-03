@@ -79,6 +79,20 @@ export const createReport = (
             }),
             sha: getSha(),
         });
+
+        if (templateText.length > GITHUB_MESSAGE_SIZE_LIMIT) {
+            templateText = insertArgs(template, {
+                body: insertArgs('> {{ text }}', {
+                    text: i18n('errors.reportGenerationError'),
+                }),
+                dir: workingDirectory || '',
+                tag: getReportTag(options),
+                title: insertArgs(customTitle || i18n('summaryTitle'), {
+                    dir: workingDirectory ? `for \`${workingDirectory}\`` : '',
+                }),
+                sha: getSha(),
+            });
+        }
     }
 
     return {

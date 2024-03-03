@@ -103,7 +103,8 @@
         "reportNotFound": "Coverage output file not found. (file \"{{ coveragePath }}\" not found)",
         "multiple": "Multiple errors occurred",
         "readingCoverageFileFailed": "Failed reading coverage file. (Error: {{ error }})",
-        "failedGettingCoverage": "Getting code coverage data failed."
+        "failedGettingCoverage": "Getting code coverage data failed.",
+        "reportGenerationError": "Action wasn't able to generate report within GitHub comment limit. If you're facing this issue, please let me know by commenting under [this issue](https://github.com/ArtiomTr/jest-coverage-report-action/issues/404)."
     },
     "detailsHidden": ":warning: Details were not displayed: the report size has exceeded the limit.",
     "summaryTitle": "Coverage report {{ dir }}",
