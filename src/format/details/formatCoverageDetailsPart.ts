@@ -40,6 +40,8 @@ export const formatCoverageDetailsPart = (
                 ],
                 {
                     align: ['c', 'l', 'l', 'l', 'l', 'l'],
+                    stringLength: () => 1,
+                    alignDelimiters: false,
                 }
             ),
             summary,
