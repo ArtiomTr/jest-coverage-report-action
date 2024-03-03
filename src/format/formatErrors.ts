@@ -26,13 +26,13 @@ export const formatErrors = (
                 error.message
             )
         ) {
-            if (!testRunSuccess) {
-                return i18n('> [!ERROR]\n> {{ error }}\n', {
-                    error: i18n('errors.testFail'),
-                });
-            } else if (!coverageSuccess) {
-                return i18n('> [!ERROR]\n> {{ error }}\n', {
+            if (!coverageSuccess) {
+                return i18n('> [!CAUTION]\n> {{ error }}\n', {
                     error: i18n('errors.coverageFail'),
+                });
+            } else if (!testRunSuccess) {
+                return i18n('> [!CAUTION]\n> {{ error }}\n', {
+                    error: i18n('errors.testFail'),
                 });
             }
         }

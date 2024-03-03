@@ -29,5 +29,9 @@ export const formatCoverageSummary = (
                 `${currSummary.covered}/${currSummary.total}`,
             ]),
         ],
-        { align: ['c', 'l', 'l', 'c'] }
+        {
+            align: ['c', 'l', 'l', 'c'],
+            stringLength: () => 1,
+            alignDelimiters: false,
+        }
     );
