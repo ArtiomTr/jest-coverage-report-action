@@ -89,7 +89,7 @@
     "testsFailSummary": "Failed tests: {{ numFailedTests }}/{{ numTotalTests }}. Failed suites: {{ numFailedTestSuites }}/{{ numTotalTestSuites }}.",
     "testsSuccessSummary": "{{ numPassedTests }} tests passing in {{ numPassedTestSuites }} suite{{ ending }}.",
     "coveredCheckName": "Coverage annotations (🧪 jest-coverage-report-action)",
-    "failedTestsCheckName": "Tests annotations (🧪 jest-coverage-report-action)",
+    "testRunCheckName": "Tests annotations (🧪 jest-coverage-report-action)",
     "coverageTitle": "Coverage report annotations",
     "coverageAnnotations": "Coverage report annotations",
     "coverageAnnotationsText": "Created coverage report annotations. To disable them, see [documentation](https://github.com/ArtiomTr/jest-coverage-report-action#jest-coverage-report-).",

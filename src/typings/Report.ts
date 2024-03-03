@@ -8,11 +8,18 @@ export enum FailReason {
     FAILED_GETTING_COVERAGE = 'failedGettingCoverage',
 }
 
-export type TestRunReport = {
-    title: string;
-    summary: string;
-    failures?: string;
-};
+export type TestRunReport =
+    | {
+          success: true;
+          title: string;
+          summary: string;
+      }
+    | {
+          success: false;
+          title: string;
+          summary: string;
+          failures: string;
+      };
 
 export type SummaryReport = {
     text: string;

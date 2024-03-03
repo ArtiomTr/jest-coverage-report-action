@@ -6,6 +6,7 @@ describe('formatRunReport', () => {
     it('should generate summary as markdown (successful tests)', () => {
         expect(
             formatRunReport({
+                success: true,
                 summary: '2 Tests Passed',
                 title: 'Tests Passed',
             })
@@ -14,6 +15,7 @@ describe('formatRunReport', () => {
     it('should generate summary as markdown (failure tests)', () => {
         expect(
             formatRunReport({
+                success: false,
                 summary: '2 Tests Passed, 1 Test Failed',
                 title: 'Tests Failed',
                 failures: getFailureDetails({

@@ -4,6 +4,7 @@ exports[`createReport should match snapshots (failed report) 1`] = `
 Object {
   "runReport": Object {
     "failures": "",
+    "success": false,
     "summary": "Failed tests: 0/12. Failed suites: 0/5.",
     "title": "Test suite run failed",
   },
@@ -32,7 +33,7 @@ Failed tests: 0/12. Failed suites: 0/5.
 exports[`createReport should match snapshots 1`] = `
 Object {
   "runReport": Object {
-    "failures": "",
+    "success": true,
     "summary": "12 tests passing in 5 suites.",
     "title": "Test suite run success",
   },
@@ -61,7 +62,7 @@ Object {
 exports[`createReport should match snapshots 2`] = `
 Object {
   "runReport": Object {
-    "failures": "",
+    "success": true,
     "summary": "12 tests passing in 5 suites.",
     "title": "Test suite run success",
   },
@@ -90,7 +91,7 @@ Object {
 exports[`createReport should match snapshots 3`] = `
 Object {
   "runReport": Object {
-    "failures": "",
+    "success": true,
     "summary": "12 tests passing in 5 suites.",
     "title": "Test suite run success",
   },

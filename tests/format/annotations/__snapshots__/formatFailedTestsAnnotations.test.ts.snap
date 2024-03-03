@@ -471,9 +471,9 @@ Object {
       },
     ],
     "summary": "Some summary",
-    "text": "Created failed tests' annotations. To disable them, see [documentation](https://github.com/ArtiomTr/jest-coverage-report-action#jest-coverage-report-).
-Failures
-3 annotations hidden. Only 50 can be displayed at once.",
+    "text": "3 annotations hidden. Only 50 can be displayed at once.
+Created failed tests' annotations. To disable them, see [documentation](https://github.com/ArtiomTr/jest-coverage-report-action#jest-coverage-report-).
+Failures",
     "title": "Test suite run failed",
   },
   "owner": "test-bot",

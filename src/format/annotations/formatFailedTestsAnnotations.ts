@@ -1,7 +1,6 @@
 import { context } from '@actions/github';
 
 import { CreateCheckOptions } from './CreateCheckOptions';
-import { getFailedTestsAnnotationsBody } from './getFailedTestsAnnotationsBody';
 import { Annotation } from '../../annotations/Annotation';
 import { Options } from '../../typings/Options';
 import { TestRunReport } from '../../typings/Report';
@@ -15,20 +14,22 @@ export const formatFailedTestsAnnotations = (
     ...context.repo,
     status: 'completed',
     head_sha: options?.pullRequest?.head?.sha ?? context.sha,
-    conclusion: 'failure',
-    name: i18n('failedTestsCheckName'),
+    conclusion: runReport.success ? 'success' : 'failure',
+    name: i18n('testRunCheckName'),
     output: {
-        title: i18n('testsFail'),
+        title: runReport.success ? i18n('testsSuccess') : i18n('testsFail'),
         text: [
-            getFailedTestsAnnotationsBody(runReport),
             annotations.length > 50 &&
                 i18n('tooMuchAnnotations', {
                     hiddenCount: annotations.length - 50,
                 }),
+            i18n('testsFailSummaryPt2') +
+                (!runReport.success ? '\n' + runReport.failures : ''),
         ]
             .filter(Boolean)
             .join('\n'),
         summary: runReport.summary,
-        annotations: annotations.slice(0, 49),
+        annotations:
+            annotations.length > 0 ? annotations.slice(0, 49) : undefined,
     },
 });

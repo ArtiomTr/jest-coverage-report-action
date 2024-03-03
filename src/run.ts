@@ -23,6 +23,7 @@ import { getNormalThreshold } from './utils/getNormalThreshold';
 import { getPrPatch } from './utils/getPrPatch';
 import { i18n } from './utils/i18n';
 import { runStage } from './utils/runStage';
+import { upsertCheck } from './utils/upsertCheck';
 
 export const run = async (
     dataCollector = createDataCollector<JsonReport>()
@@ -224,12 +225,9 @@ export const run = async (
 
         const failedAnnotations = createFailedTestsAnnotations(headCoverage!);
 
-        if (failedAnnotations.length === 0) {
-            skip();
-        }
-
         const octokit = getOctokit(options.token);
-        await octokit.rest.checks.create(
+        await upsertCheck(
+            octokit,
             formatFailedTestsAnnotations(
                 summaryReport!.runReport,
                 failedAnnotations,
@@ -257,7 +255,8 @@ export const run = async (
             const patch = await getPrPatch(octokit, options);
             coverageAnnotations = onlyChanged(coverageAnnotations, patch);
         }
-        await octokit.rest.checks.create(
+        await upsertCheck(
+            octokit,
             formatCoverageAnnotations(coverageAnnotations, options)
         );
     });
