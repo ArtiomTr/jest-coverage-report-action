@@ -4,6 +4,7 @@
     "version": "1.0.0",
     "description": "",
     "main": "dist/index.js",
+    "packageManager": "npm@6.12.0",
     "scripts": {
         "test": "jest",
         "test:log-coverage": "jest --coverage",
