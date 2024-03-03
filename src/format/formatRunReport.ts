@@ -3,7 +3,7 @@ import { createMarkdownSpoiler } from '../utils/createMarkdownSpoiler';
 
 export const formatRunReport = (report: TestRunReport): string => {
     const parts = [`## ${report.title}`];
-    if (report.failures) {
+    if (!report.success && report.failures) {
         parts.push(
             createMarkdownSpoiler({
                 summary: report.summary,

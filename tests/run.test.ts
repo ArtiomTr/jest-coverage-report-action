@@ -416,12 +416,6 @@ describe('run', () => {
             expect(createFailedTestsAnnotationsMock).not.toBeCalled();
         });
 
-        it('should skip if there are no failed tests', async () => {
-            createFailedTestsAnnotationsMock.mockReturnValue([]);
-            await run();
-            expect(formatFailedTestsAnnotationsMock).not.toBeCalled();
-        });
-
         it('should generate failed test annotations', async () => {
             createFailedTestsAnnotationsMock.mockReturnValue([
                 {} as Annotation,

@@ -70,6 +70,7 @@ describe('formatFailedTestsAnnotations', () => {
         expect(
             formatFailedTestsAnnotations(
                 {
+                    success: false,
                     title: 'Test success',
                     summary: 'Some summary',
                     failures: 'Failures',
@@ -93,6 +94,7 @@ describe('formatFailedTestsAnnotations', () => {
         expect(
             formatFailedTestsAnnotations(
                 {
+                    success: false,
                     title: 'Test success',
                     summary: 'Some summary',
                     failures: 'Failures',
@@ -116,6 +118,7 @@ describe('formatFailedTestsAnnotations', () => {
         expect(
             formatFailedTestsAnnotations(
                 {
+                    success: false,
                     title: 'Test success',
                     summary: 'Some summary',
                     failures: 'Failures',

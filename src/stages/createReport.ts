@@ -7,7 +7,6 @@ import { formatErrors } from '../format/formatErrors';
 import { formatRunReport } from '../format/formatRunReport';
 import { formatThresholdResults } from '../format/formatThresholdResults';
 import { getFailureDetails } from '../format/getFailureDetails';
-import { getTestRunSummary } from '../format/summary/getTestRunSummary';
 import template from '../format/template.md';
 import { JsonReport } from '../typings/JsonReport';
 import { Options } from '../typings/Options';
@@ -35,11 +34,27 @@ export const createReport = (
 
     const formattedThresholdResults = formatThresholdResults(thresholdResults);
     const coverage = formatCoverage(headReport, baseReport, undefined, false);
-    const runReport: TestRunReport = {
-        title: i18n(headReport.success ? 'testsSuccess' : 'testsFail'),
-        summary: getTestRunSummary(headReport),
-        failures: getFailureDetails(headReport),
-    };
+    const runReport: TestRunReport = headReport.success
+        ? {
+              success: true,
+              title: i18n('testsSuccess'),
+              summary: i18n('testsSuccessSummary', {
+                  numPassedTests: headReport.numPassedTests,
+                  numPassedTestSuites: headReport.numPassedTestSuites,
+                  ending: headReport.numPassedTestSuites > 1 ? 's' : '',
+              }),
+          }
+        : {
+              success: false,
+              title: i18n('testsFail'),
+              summary: i18n('testsFailSummary', {
+                  numFailedTests: headReport.numFailedTests,
+                  numTotalTests: headReport.numTotalTests,
+                  numFailedTestSuites: headReport.numFailedTestSuites,
+                  numTotalTestSuites: headReport.numTotalTestSuites,
+              }),
+              failures: getFailureDetails(headReport),
+          };
     const formattedReport = formatRunReport(runReport);
 
     let templateText = insertArgs(template, {
