@@ -4,7 +4,11 @@ import { i18n } from '../utils/i18n';
 
 const getNumberWidth = (index: number) => Math.floor(Math.log10(index));
 
-export const formatErrors = (errors: Array<Error>) => {
+export const formatErrors = (
+    errors: Array<Error>,
+    testRunSuccess: boolean,
+    coverageSuccess: boolean
+) => {
     if (errors.length === 0) {
         return '';
     }
@@ -18,11 +22,19 @@ export const formatErrors = (errors: Array<Error>) => {
 
         if (
             error instanceof Error &&
-            /The process [^\s]+ failed with exit code 1/.test(error.message)
+            /The process [^\s]+ failed with exit code 1($|\s)/.test(
+                error.message
+            )
         ) {
-            return i18n(':x: {{ error }}', {
-                error: i18n('errors.testFail'),
-            });
+            if (!testRunSuccess) {
+                return i18n('> **Error** {{ error }}', {
+                    error: i18n('errors.testFail'),
+                });
+            } else if (!coverageSuccess) {
+                return i18n('> **Error** {{ error }}', {
+                    error: i18n('errors.coverageFail'),
+                });
+            }
         }
 
         return i18n(':x: {{ unexpectedError }} \n```\n{{ error }}\n```', {

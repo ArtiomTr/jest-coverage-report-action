@@ -30,7 +30,11 @@ export const createReport = (
 
     const { errors, data } = dataCollector.get();
     const [headReport, baseReport] = data;
-    const formattedErrors = formatErrors(errors);
+    const formattedErrors = formatErrors(
+        errors,
+        headReport.success,
+        thresholdResults.length > 0
+    );
 
     const formattedThresholdResults = formatThresholdResults(thresholdResults);
     const coverage = formatCoverage(headReport, baseReport, undefined, false);
