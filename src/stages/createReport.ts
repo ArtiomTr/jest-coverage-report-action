@@ -32,8 +32,8 @@ export const createReport = (
     const [headReport, baseReport] = data;
     const formattedErrors = formatErrors(
         errors,
-        headReport.success,
-        thresholdResults.length > 0
+        thresholdResults.length === 0,
+        headReport.success
     );
 
     const formattedThresholdResults = formatThresholdResults(thresholdResults);
