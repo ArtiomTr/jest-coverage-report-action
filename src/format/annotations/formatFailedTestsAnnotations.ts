@@ -19,13 +19,13 @@ export const formatFailedTestsAnnotations = (
     output: {
         title: runReport.success ? i18n('testsSuccess') : i18n('testsFail'),
         text: [
-            !runReport.success &&
-                i18n('testsFailSummaryPt2') + '\n' + runReport.failures,
             runReport.summary,
             annotations.length > 50 &&
                 i18n('tooMuchAnnotations', {
                     hiddenCount: annotations.length - 50,
                 }),
+            i18n('testsFailSummaryPt2') +
+                (!runReport.success ? '\n' + runReport.failures : ''),
         ]
             .filter(Boolean)
             .join('\n'),
