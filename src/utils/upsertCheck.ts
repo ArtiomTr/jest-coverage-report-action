@@ -1,4 +1,5 @@
 import { getOctokit } from '@actions/github';
+import { HttpClientError } from '@actions/http-client';
 
 import { CreateCheckOptions } from '../format/annotations/CreateCheckOptions';
 
@@ -37,6 +38,9 @@ export const upsertCheck = async (
             });
         }
     } catch (error) {
+        if (error instanceof HttpClientError) {
+            console.warn('HTTP CLIENT!');
+        }
         console.warn(error);
     }
 };

@@ -6,7 +6,7 @@
         "outDir": "./dist",
         "strict": true,
         "esModuleInterop": true,
-        "lib": ["ES2019"],
+        "lib": ["ES2019", "DOM"],
         "rootDir": "src",
         "resolveJsonModule": true
     },
