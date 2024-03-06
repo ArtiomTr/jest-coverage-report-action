@@ -2,12 +2,6 @@
 
 exports[`createReport should match snapshots (failed report) 1`] = `
 Object {
-  "runReport": Object {
-    "failures": "",
-    "success": false,
-    "summary": "Failed tests: 0/12. Failed suites: 0/5.",
-    "title": "Test suite run failed",
-  },
   "text": "<!-- jest coverage report action for options with hash 07a2060717d2c01f3ad9c6a8cfe3ca1b -->
 
 ## Coverage report 
@@ -31,11 +25,6 @@ Failed tests: 0/12. Failed suites: 0/5.
 
 exports[`createReport should match snapshots 1`] = `
 Object {
-  "runReport": Object {
-    "success": true,
-    "summary": "12 tests passing in 5 suites.",
-    "title": "Test suite run success",
-  },
   "text": "<!-- jest coverage report action for options with hash 8f0735414be39738f79dc9c8549004e2 -->
 
 ## Coverage report for \`custom directory\`
@@ -59,11 +48,6 @@ Object {
 
 exports[`createReport should match snapshots 2`] = `
 Object {
-  "runReport": Object {
-    "success": true,
-    "summary": "12 tests passing in 5 suites.",
-    "title": "Test suite run success",
-  },
   "text": "<!-- jest coverage report action for options with hash 07a2060717d2c01f3ad9c6a8cfe3ca1b -->
 
 ## Coverage report 
@@ -87,11 +71,6 @@ Object {
 
 exports[`createReport should match snapshots 3`] = `
 Object {
-  "runReport": Object {
-    "success": true,
-    "summary": "12 tests passing in 5 suites.",
-    "title": "Test suite run success",
-  },
   "text": "<!-- jest coverage report action for options with hash 7e82ebc2d1870f828e62dde34753f616 -->
 
 ## Custom title with directory - for \`directory\`

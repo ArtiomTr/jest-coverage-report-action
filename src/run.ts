@@ -10,6 +10,7 @@ import { generateCommitReport } from './report/generateCommitReport';
 import { generatePRReport } from './report/generatePRReport';
 import { checkThreshold } from './stages/checkThreshold';
 import { createReport } from './stages/createReport';
+import { createRunReport } from './stages/createRunReport';
 import { getCoverage } from './stages/getCoverage';
 import {
     checkoutRef,
@@ -170,11 +171,71 @@ export const run = async (
         }
     );
 
+    const [isRunReportGenerated, runReport] = await runStage(
+        'generateRunReport',
+        dataCollector,
+        (skip) => {
+            if (!isHeadCoverageGenerated) {
+                skip();
+            }
+
+            return createRunReport(headCoverage!);
+        }
+    );
+
+    await runStage('failedTestsAnnotations', dataCollector, async (skip) => {
+        if (
+            !isHeadCoverageGenerated ||
+            !isRunReportGenerated ||
+            !['all', 'failed-tests'].includes(options.annotations)
+        ) {
+            skip();
+        }
+
+        const failedAnnotations = createFailedTestsAnnotations(headCoverage!);
+
+        const octokit = getOctokit(options.token);
+        await upsertCheck(
+            octokit,
+            formatFailedTestsAnnotations(runReport!, failedAnnotations, options)
+        );
+    });
+
+    await runStage('coverageAnnotations', dataCollector, async (skip) => {
+        if (
+            !isHeadCoverageGenerated ||
+            !['all', 'coverage'].includes(options.annotations)
+        ) {
+            skip();
+        }
+
+        let coverageAnnotations = createCoverageAnnotations(headCoverage!);
+
+        if (coverageAnnotations.length === 0) {
+            skip();
+        }
+
+        const octokit = getOctokit(options.token);
+        if (options.pullRequest?.number) {
+            const patch = await getPrPatch(octokit, options);
+            coverageAnnotations = onlyChanged(coverageAnnotations, patch);
+        }
+        await upsertCheck(
+            octokit,
+            formatCoverageAnnotations(coverageAnnotations, options)
+        );
+    });
+
     const [isReportContentGenerated, summaryReport] = await runStage(
         'generateReportContent',
         dataCollector,
         async () => {
-            return createReport(dataCollector, options, thresholdResults ?? []);
+            return createReport(
+                dataCollector,
+                runReport,
+                options,
+                thresholdResults ?? []
+            );
         }
     );
 
@@ -213,52 +274,6 @@ export const run = async (
         if (options.output.includes('report-markdown')) {
             setOutput('report', summaryReport!.text);
         }
-    });
-
-    await runStage('failedTestsAnnotations', dataCollector, async (skip) => {
-        if (
-            !isHeadCoverageGenerated ||
-            !['all', 'failed-tests'].includes(options.annotations)
-        ) {
-            skip();
-        }
-
-        const failedAnnotations = createFailedTestsAnnotations(headCoverage!);
-
-        const octokit = getOctokit(options.token);
-        await upsertCheck(
-            octokit,
-            formatFailedTestsAnnotations(
-                summaryReport!.runReport,
-                failedAnnotations,
-                options
-            )
-        );
-    });
-
-    await runStage('coverageAnnotations', dataCollector, async (skip) => {
-        if (
-            !isHeadCoverageGenerated ||
-            !['all', 'coverage'].includes(options.annotations)
-        ) {
-            skip();
-        }
-
-        let coverageAnnotations = createCoverageAnnotations(headCoverage!);
-
-        if (coverageAnnotations.length === 0) {
-            skip();
-        }
-
-        const octokit = getOctokit(options.token);
-        if (options.pullRequest?.number) {
-            const patch = await getPrPatch(octokit, options);
-            coverageAnnotations = onlyChanged(coverageAnnotations, patch);
-        }
-        await upsertCheck(
-            octokit,
-            formatCoverageAnnotations(coverageAnnotations, options)
-        );
     });
 
     if (dataCollector.get().errors.length > 0) {

@@ -1,5 +1,6 @@
 import { formatThresholdResults } from './formatThresholdResults';
 import { ActionError } from '../typings/ActionError';
+import { FailReason } from '../typings/Report';
 import { ThresholdResult } from '../typings/ThresholdResult';
 import { getConsoleLink } from '../utils/getConsoleLink';
 import { i18n } from '../utils/i18n';
@@ -22,6 +23,16 @@ const formatErrorsInner = (
 
     if (errors.length === 0) {
         return undefined;
+    }
+
+    if (
+        errors.some(
+            (error) =>
+                error instanceof ActionError &&
+                error.failReason === FailReason.MISSING_CHECKS_PERMISSION
+        )
+    ) {
+        return i18n('errors.missingChecksPermissionDetail');
     }
 
     if (errors.length === 1) {

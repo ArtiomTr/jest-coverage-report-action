@@ -52,6 +52,7 @@
         "baseCoverage": "Base coverage collection",
         "switchToBase": "Switching to base branch",
         "generateReportContent": "Generating report",
+        "generateRunReport": "Generating run report",
         "publishReport": "Report publish",
         "failedTestsAnnotations": "Failed tests' annotations publication",
         "coverageAnnotations": "Coverage annotations publication",
@@ -106,7 +107,23 @@
         "failedGettingCoverage": "Getting code coverage data failed.",
         "reportGenerationError": "Action wasn't able to generate report within GitHub comment limit. If you're facing this issue, please let me know by commenting under [this issue](https://github.com/ArtiomTr/jest-coverage-report-action/issues/404).",
         "testFail": "Test run failed",
-        "coverageFail": "Coverage does not meet threshold"
+        "coverageFail": "Coverage does not meet threshold",
+        "missingChecksPermission": "Missing `checks: write` permission",
+        "missingChecksPermissionDetail": [
+            "You've enabled `annotations` option, but `checks` permission is missing. To fix this, add this to your `action.yaml` file:",
+            "```diff",
+            "jobs:",
+            "    permissions:",
+            "        contents: write",
+            "        pull-requests: write",
+            "+       checks: write",
+            "    coverage:",
+            "        runs-on: ubuntu-latest",
+            "        steps:",
+            "            - uses: actions/checkout@v3",
+            "            - uses: ArtiomTr/jest-coverage-report-action@v2",
+            "```"
+        ]
     },
     "detailsHidden": ":warning: Details were not displayed: the report size has exceeded the limit.",
     "summaryTitle": "Coverage report {{ dir }}",

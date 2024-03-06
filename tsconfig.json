@@ -6,7 +6,7 @@
         "outDir": "./dist",
         "strict": true,
         "esModuleInterop": true,
-        "lib": ["ES2019"],
+        "lib": ["ES2019", "DOM" /* dirty hack, otherwise typescript doesn't find URL */],
         "rootDir": "src",
         "resolveJsonModule": true
     },
