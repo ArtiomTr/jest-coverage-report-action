@@ -1,6 +1,7 @@
 import * as all from '@actions/github';
 
 import { createReport, getSha } from '../../src/stages/createReport';
+import { createRunReport } from '../../src/stages/createRunReport';
 import { JsonReport } from '../../src/typings/JsonReport';
 import { Options } from '../../src/typings/Options';
 import { createDataCollector } from '../../src/utils/DataCollector';
@@ -41,6 +42,7 @@ describe('createReport', () => {
         expect(
             await createReport(
                 dataCollector,
+                createRunReport(report),
                 {
                     ...DEFAULT_OPTIONS,
                     workingDirectory: 'custom directory',
@@ -49,12 +51,18 @@ describe('createReport', () => {
             )
         ).toMatchSnapshot();
         expect(
-            await createReport(dataCollector, DEFAULT_OPTIONS, [])
+            await createReport(
+                dataCollector,
+                createRunReport(report),
+                DEFAULT_OPTIONS,
+                []
+            )
         ).toMatchSnapshot();
 
         expect(
             await createReport(
                 dataCollector,
+                createRunReport(report),
                 {
                     ...DEFAULT_OPTIONS,
                     workingDirectory: 'directory',
@@ -74,7 +82,12 @@ describe('createReport', () => {
         mockContext({ payload: { after: '123456' } });
 
         expect(
-            await createReport(dataCollector, DEFAULT_OPTIONS, [])
+            await createReport(
+                dataCollector,
+                createRunReport({ ...report, success: false }),
+                DEFAULT_OPTIONS,
+                []
+            )
         ).toMatchSnapshot();
 
         clearContextMock();

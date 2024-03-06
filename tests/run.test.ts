@@ -19,7 +19,7 @@ import {
 } from '../src/stages/switchBranch';
 import { JsonReport } from '../src/typings/JsonReport';
 import { getOptions, Options } from '../src/typings/Options';
-import { SummaryReport, TestRunReport } from '../src/typings/Report';
+import { SummaryReport } from '../src/typings/Report';
 import { CollectedData, createDataCollector } from '../src/utils/DataCollector';
 
 const { mockContext, clearContextMock } = all as any;
@@ -237,6 +237,9 @@ const loadConfigMock = mocked(loadConfig);
             create: (fn: () => any) => {
                 fn();
             },
+            listForRef: () => {
+                throw new Error('failure');
+            },
         },
     },
 });
@@ -254,9 +257,7 @@ beforeEach(() => {
 
     getOptionsMock.mockResolvedValue(defaultOptions);
     getCoverageMock.mockResolvedValue(standardReport);
-    createReportMock.mockReturnValue({
-        runReport: {} as TestRunReport,
-    } as SummaryReport);
+    createReportMock.mockReturnValue({} as SummaryReport);
     loadConfigMock.mockResolvedValue({
         config: {},
     });
