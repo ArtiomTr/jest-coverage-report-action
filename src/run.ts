@@ -170,14 +170,6 @@ export const run = async (
         }
     );
 
-    const [isReportContentGenerated, summaryReport] = await runStage(
-        'generateReportContent',
-        dataCollector,
-        async () => {
-            return createReport(dataCollector, options, thresholdResults ?? []);
-        }
-    );
-
     await runStage('failedTestsAnnotations', dataCollector, async (skip) => {
         if (
             !isHeadCoverageGenerated ||
@@ -223,6 +215,14 @@ export const run = async (
             formatCoverageAnnotations(coverageAnnotations, options)
         );
     });
+
+    const [isReportContentGenerated, summaryReport] = await runStage(
+        'generateReportContent',
+        dataCollector,
+        async () => {
+            return createReport(dataCollector, options, thresholdResults ?? []);
+        }
+    );
 
     await runStage('publishReport', dataCollector, async (skip) => {
         if (!isReportContentGenerated || !options.output.includes('comment')) {
