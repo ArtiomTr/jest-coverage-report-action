@@ -10,6 +10,7 @@ import { generateCommitReport } from './report/generateCommitReport';
 import { generatePRReport } from './report/generatePRReport';
 import { checkThreshold } from './stages/checkThreshold';
 import { createReport } from './stages/createReport';
+import { createRunReport } from './stages/createRunReport';
 import { getCoverage } from './stages/getCoverage';
 import {
     checkoutRef,
@@ -170,9 +171,22 @@ export const run = async (
         }
     );
 
+    const [isRunReportGenerated, runReport] = await runStage(
+        'generateRunReport',
+        dataCollector,
+        (skip) => {
+            if (!isHeadCoverageGenerated) {
+                skip();
+            }
+
+            return createRunReport(headCoverage!);
+        }
+    );
+
     await runStage('failedTestsAnnotations', dataCollector, async (skip) => {
         if (
             !isHeadCoverageGenerated ||
+            !isRunReportGenerated ||
             !['all', 'failed-tests'].includes(options.annotations)
         ) {
             skip();
@@ -183,11 +197,7 @@ export const run = async (
         const octokit = getOctokit(options.token);
         await upsertCheck(
             octokit,
-            formatFailedTestsAnnotations(
-                summaryReport!.runReport,
-                failedAnnotations,
-                options
-            )
+            formatFailedTestsAnnotations(runReport!, failedAnnotations, options)
         );
     });
 
@@ -220,7 +230,12 @@ export const run = async (
         'generateReportContent',
         dataCollector,
         async () => {
-            return createReport(dataCollector, options, thresholdResults ?? []);
+            return createReport(
+                dataCollector,
+                runReport,
+                options,
+                thresholdResults ?? []
+            );
         }
     );
 

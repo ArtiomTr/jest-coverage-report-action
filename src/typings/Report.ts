@@ -24,5 +24,4 @@ export type TestRunReport =
 
 export type SummaryReport = {
     text: string;
-    runReport: TestRunReport;
 };

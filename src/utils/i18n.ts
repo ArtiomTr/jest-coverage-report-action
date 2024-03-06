@@ -13,7 +13,11 @@ const icons = (strings.icons as Record<string, Record<string, string>>)[
 ];
 
 export const i18n = (key: string, args?: Record<string, unknown>) => {
-    const string = get(strings, key, key) as string;
+    let string = get(strings, key, key) as string | string[];
+
+    if (Array.isArray(string)) {
+        string = string.join('\n');
+    }
 
     const normalizedIconsString = string.replace(
         iconRegex,

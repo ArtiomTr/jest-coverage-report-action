@@ -5,7 +5,6 @@ import { GITHUB_MESSAGE_SIZE_LIMIT } from '../constants/GITHUB_MESSAGE_SIZE_LIMI
 import { formatCoverage } from '../format/formatCoverage';
 import { formatErrors } from '../format/formatErrors';
 import { formatRunReport } from '../format/formatRunReport';
-import { getFailureDetails } from '../format/getFailureDetails';
 import template from '../format/template.md';
 import { JsonReport } from '../typings/JsonReport';
 import { Options } from '../typings/Options';
@@ -22,6 +21,7 @@ export const getSha = () =>
 
 export const createReport = (
     dataCollector: DataCollector<JsonReport>,
+    runReport: TestRunReport | undefined,
     options: Options,
     thresholdResults: ThresholdResult[]
 ): SummaryReport => {
@@ -38,28 +38,7 @@ export const createReport = (
     );
 
     const coverage = formatCoverage(headReport, baseReport, undefined, false);
-    const runReport: TestRunReport = headReport.success
-        ? {
-              success: true,
-              title: i18n('testsSuccess'),
-              summary: i18n('testsSuccessSummary', {
-                  numPassedTests: headReport.numPassedTests,
-                  numPassedTestSuites: headReport.numPassedTestSuites,
-                  ending: headReport.numPassedTestSuites > 1 ? 's' : '',
-              }),
-          }
-        : {
-              success: false,
-              title: i18n('testsFail'),
-              summary: i18n('testsFailSummary', {
-                  numFailedTests: headReport.numFailedTests,
-                  numTotalTests: headReport.numTotalTests,
-                  numFailedTestSuites: headReport.numFailedTestSuites,
-                  numTotalTestSuites: headReport.numTotalTestSuites,
-              }),
-              failures: getFailureDetails(headReport),
-          };
-    const formattedReport = formatRunReport(runReport);
+    const formattedReport = runReport ? formatRunReport(runReport) : '';
 
     let templateText = insertArgs(template, {
         body: [formattedErrors, coverage, formattedReport].join('\n'),
@@ -108,6 +87,5 @@ export const createReport = (
 
     return {
         text: templateText,
-        runReport,
     };
 };
