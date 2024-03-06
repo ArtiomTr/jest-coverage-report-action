@@ -6,6 +6,7 @@ export enum FailReason {
     REPORT_NOT_FOUND = 'reportNotFound',
     READING_COVERAGE_FILE_FAILED = 'readingCoverageFileFailed',
     FAILED_GETTING_COVERAGE = 'failedGettingCoverage',
+    MISSING_CHECKS_PERMISSION = 'missingChecksPermission',
 }
 
 export type TestRunReport =

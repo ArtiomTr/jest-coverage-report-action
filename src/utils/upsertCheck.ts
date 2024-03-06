@@ -2,6 +2,8 @@ import { getOctokit } from '@actions/github';
 import { RequestError } from '@octokit/request-error';
 
 import { CreateCheckOptions } from '../format/annotations/CreateCheckOptions';
+import { ActionError } from '../typings/ActionError';
+import { FailReason } from '../typings/Report';
 
 export const upsertCheck = async (
     octokit: ReturnType<typeof getOctokit>,
@@ -38,6 +40,10 @@ export const upsertCheck = async (
             });
         }
     } catch (error) {
-        console.warn('Is request error?', error instanceof RequestError);
+        if (error instanceof RequestError && error.status === 403) {
+            throw new ActionError(FailReason.MISSING_CHECKS_PERMISSION);
+        }
+
+        throw error;
     }
 };

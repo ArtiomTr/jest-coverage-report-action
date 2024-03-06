@@ -178,43 +178,6 @@ export const run = async (
         }
     );
 
-    await runStage('publishReport', dataCollector, async (skip) => {
-        if (!isReportContentGenerated || !options.output.includes('comment')) {
-            skip();
-        }
-
-        const octokit = getOctokit(options.token);
-
-        if (isInPR) {
-            await generatePRReport(
-                summaryReport!.text,
-                options,
-                context.repo,
-                options.pullRequest as { number: number },
-                octokit
-            );
-        } else {
-            await generateCommitReport(
-                summaryReport!.text,
-                context.repo,
-                octokit
-            );
-        }
-    });
-
-    await runStage('setOutputs', dataCollector, (skip) => {
-        if (
-            !isReportContentGenerated ||
-            !options.output.includes('report-markdown')
-        ) {
-            skip();
-        }
-
-        if (options.output.includes('report-markdown')) {
-            setOutput('report', summaryReport!.text);
-        }
-    });
-
     await runStage('failedTestsAnnotations', dataCollector, async (skip) => {
         if (
             !isHeadCoverageGenerated ||
@@ -259,6 +222,43 @@ export const run = async (
             octokit,
             formatCoverageAnnotations(coverageAnnotations, options)
         );
+    });
+
+    await runStage('publishReport', dataCollector, async (skip) => {
+        if (!isReportContentGenerated || !options.output.includes('comment')) {
+            skip();
+        }
+
+        const octokit = getOctokit(options.token);
+
+        if (isInPR) {
+            await generatePRReport(
+                summaryReport!.text,
+                options,
+                context.repo,
+                options.pullRequest as { number: number },
+                octokit
+            );
+        } else {
+            await generateCommitReport(
+                summaryReport!.text,
+                context.repo,
+                octokit
+            );
+        }
+    });
+
+    await runStage('setOutputs', dataCollector, (skip) => {
+        if (
+            !isReportContentGenerated ||
+            !options.output.includes('report-markdown')
+        ) {
+            skip();
+        }
+
+        if (options.output.includes('report-markdown')) {
+            setOutput('report', summaryReport!.text);
+        }
     });
 
     if (dataCollector.get().errors.length > 0) {
