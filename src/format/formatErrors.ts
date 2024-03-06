@@ -32,7 +32,7 @@ const formatErrorsInner = (
                 error.failReason === FailReason.MISSING_CHECKS_PERMISSION
         )
     ) {
-        return i18n('errors.missingChecksPermission');
+        return i18n('errors.missingChecksPermissionDetail');
     }
 
     if (errors.length === 1) {
