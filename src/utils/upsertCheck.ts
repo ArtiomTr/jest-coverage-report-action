@@ -26,13 +26,17 @@ export const upsertCheck = async (
         );
     }
 
-    if (check_id === undefined) {
-        await octokit.rest.checks.create(check);
-    } else {
-        await octokit.rest.checks.update({
-            check_run_id: check_id,
-            ...check,
-            head_sha: undefined,
-        });
+    try {
+        if (check_id === undefined) {
+            await octokit.rest.checks.create(check);
+        } else {
+            await octokit.rest.checks.update({
+                check_run_id: check_id,
+                ...check,
+                head_sha: undefined,
+            });
+        }
+    } catch (error) {
+        console.warn(error);
     }
 };
