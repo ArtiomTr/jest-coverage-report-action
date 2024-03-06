@@ -244,7 +244,10 @@ export const run = async (
             skip();
         }
 
-        let coverageAnnotations = createCoverageAnnotations(headCoverage!);
+        let coverageAnnotations = createCoverageAnnotations(
+            headCoverage!,
+            options.annotationFilters || []
+        );
 
         if (coverageAnnotations.length === 0) {
             skip();
