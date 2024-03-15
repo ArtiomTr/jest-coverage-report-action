@@ -76,6 +76,8 @@ const parsedOptions = {
     prNumber: null,
     pullRequest: null,
     output: ['comment'],
+    owner: 'test',
+    repo: 'test-repo',
 };
 
 describe('getOptions', () => {
@@ -170,6 +172,7 @@ describe('getOptions', () => {
 
         expect(await getOptions()).toStrictEqual({
             ...parsedOptions,
+            sha: '123456789',
             prNumber: 1234,
             pullRequest: pr,
         });
@@ -180,6 +183,7 @@ describe('getOptions', () => {
         mockInput({ ...options, prnumber: '1234' });
         expect(await getOptions()).toStrictEqual({
             ...parsedOptions,
+            sha: '123456789',
             prNumber: 1234,
             pullRequest: pr,
         });
@@ -191,6 +195,7 @@ describe('getOptions', () => {
         mockInput({ ...options, prnumber: '1234' });
         expect(await getOptions()).toStrictEqual({
             ...parsedOptions,
+            sha: '123456789',
             prNumber: 1234,
             pullRequest: pr,
         });

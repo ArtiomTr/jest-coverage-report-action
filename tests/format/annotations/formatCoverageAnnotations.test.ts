@@ -28,6 +28,9 @@ const DEFAULT_OPTIONS: Options = {
         },
     },
     output: ['comment'],
+    owner: 'test-bot',
+    repo: 'test',
+    sha: '123456',
 };
 
 const annotations: Annotation[] = [
@@ -95,7 +98,6 @@ describe('formatCoverageAnnotations', () => {
     it('should format annotations for commit', () => {
         mockContext({
             payload: {},
-            sha: '111111',
         });
 
         expect(
@@ -110,7 +112,6 @@ describe('formatCoverageAnnotations', () => {
     it('should leave only 50 annotations', () => {
         mockContext({
             payload: {},
-            sha: '111111',
         });
 
         expect(

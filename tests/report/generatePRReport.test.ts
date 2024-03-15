@@ -26,6 +26,9 @@ const DEFAULT_OPTIONS: Options = {
         },
     },
     output: ['comment'],
+    owner: 'bot',
+    repo: 'test-repository',
+    sha: '123456',
 };
 
 describe('generatePRReport', () => {

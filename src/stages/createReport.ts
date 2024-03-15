@@ -14,11 +14,6 @@ import { DataCollector } from '../utils/DataCollector';
 import { i18n } from '../utils/i18n';
 import { insertArgs } from '../utils/insertArgs';
 
-export const getSha = () =>
-    context.payload.after ??
-    context.payload.pull_request?.head.sha ??
-    context.sha;
-
 export const createReport = (
     dataCollector: DataCollector<JsonReport>,
     runReport: TestRunReport | undefined,
@@ -47,7 +42,7 @@ export const createReport = (
         title: insertArgs(customTitle || i18n('summaryTitle'), {
             dir: workingDirectory ? `for \`${workingDirectory}\`` : '',
         }),
-        sha: getSha(),
+        sha: context.payload.after ?? options.sha,
     });
 
     if (templateText.length > GITHUB_MESSAGE_SIZE_LIMIT) {
@@ -67,7 +62,7 @@ export const createReport = (
             title: insertArgs(customTitle || i18n('summaryTitle'), {
                 dir: workingDirectory ? `for \`${workingDirectory}\`` : '',
             }),
-            sha: getSha(),
+            sha: context.payload.after ?? options.sha,
         });
 
         if (templateText.length > GITHUB_MESSAGE_SIZE_LIMIT) {
@@ -80,7 +75,7 @@ export const createReport = (
                 title: insertArgs(customTitle || i18n('summaryTitle'), {
                     dir: workingDirectory ? `for \`${workingDirectory}\`` : '',
                 }),
-                sha: getSha(),
+                sha: context.payload.after ?? options.sha,
             });
         }
     }
