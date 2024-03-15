@@ -210,6 +210,9 @@ const defaultOptions: Options = {
         },
     },
     output: ['comment'],
+    owner: 'bot',
+    repo: 'test-repo',
+    sha: '123',
 };
 
 jest.mock('../src/typings/Options.ts');

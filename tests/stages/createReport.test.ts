@@ -1,6 +1,6 @@
 import * as all from '@actions/github';
 
-import { createReport, getSha } from '../../src/stages/createReport';
+import { createReport } from '../../src/stages/createReport';
 import { createRunReport } from '../../src/stages/createRunReport';
 import { JsonReport } from '../../src/typings/JsonReport';
 import { Options } from '../../src/typings/Options';
@@ -31,6 +31,9 @@ const DEFAULT_OPTIONS: Options = {
         },
     },
     output: ['comment'],
+    owner: 'bot',
+    repo: 'test-repo',
+    sha: '123',
 };
 
 describe('createReport', () => {
@@ -90,20 +93,6 @@ describe('createReport', () => {
             )
         ).toMatchSnapshot();
 
-        clearContextMock();
-    });
-
-    it('should extract commit shasum from context', async () => {
-        mockContext({ payload: { after: '123456' } });
-        expect(getSha()).toBe('123456');
-        clearContextMock();
-
-        mockContext({ payload: { pull_request: { head: { sha: '123456' } } } });
-        expect(getSha()).toBe('123456');
-        clearContextMock();
-
-        mockContext({ payload: {}, sha: '123456' });
-        expect(getSha()).toBe('123456');
         clearContextMock();
     });
 });

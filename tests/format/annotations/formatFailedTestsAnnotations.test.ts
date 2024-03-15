@@ -28,6 +28,9 @@ const DEFAULT_OPTIONS: Options = {
         },
     },
     output: ['comment'],
+    owner: 'test-bot',
+    repo: 'test',
+    sha: 'as12d1',
 };
 
 const annotations: Annotation[] = [
@@ -58,13 +61,7 @@ describe('formatFailedTestsAnnotations', () => {
                 owner: 'test-bot',
                 repo: 'test',
             },
-            payload: {
-                pull_request: {
-                    head: {
-                        sha: '987654',
-                    },
-                },
-            },
+            payload: {},
         });
 
         expect(
@@ -88,7 +85,6 @@ describe('formatFailedTestsAnnotations', () => {
                 repo: 'test',
             },
             payload: {},
-            sha: 'as12d1',
         });
 
         expect(
@@ -112,7 +108,6 @@ describe('formatFailedTestsAnnotations', () => {
                 repo: 'test',
             },
             payload: {},
-            sha: 'as12d1',
         });
 
         expect(

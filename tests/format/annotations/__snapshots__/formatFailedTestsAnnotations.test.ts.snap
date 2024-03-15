@@ -3,7 +3,7 @@
 exports[`formatFailedTestsAnnotations should format failed tests annotations for PR 1`] = `
 Object {
   "conclusion": "failure",
-  "head_sha": "987654",
+  "head_sha": "as12d1",
   "name": "Tests annotations (🧪 jest-coverage-report-action)",
   "output": Object {
     "annotations": Array [

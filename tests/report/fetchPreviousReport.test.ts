@@ -26,6 +26,9 @@ const DEFAULT_OPTIONS: Options = {
         },
     },
     output: ['comment'],
+    owner: 'bot',
+    repo: 'test-repo',
+    sha: '123',
 };
 
 describe('fetchPreviousReport', () => {

@@ -1,5 +1,5 @@
 import { setFailed, setOutput } from '@actions/core';
-import { context, getOctokit } from '@actions/github';
+import { getOctokit } from '@actions/github';
 
 import { createCoverageAnnotations } from './annotations/createCoverageAnnotations';
 import { createFailedTestsAnnotations } from './annotations/createFailedTestsAnnotations';
@@ -250,15 +250,16 @@ export const run = async (
             await generatePRReport(
                 summaryReport!.text,
                 options,
-                context.repo,
+                { repo: options.repo, owner: options.owner },
                 options.pullRequest as { number: number },
                 octokit
             );
         } else {
             await generateCommitReport(
                 summaryReport!.text,
-                context.repo,
-                octokit
+                { repo: options.repo, owner: options.owner },
+                octokit,
+                options.sha
             );
         }
     });

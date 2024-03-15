@@ -24,6 +24,9 @@ const defaultOptions: Options = {
     prNumber: null,
     pullRequest: null,
     output: ['comment'],
+    owner: 'bot',
+    repo: 'test-repo',
+    sha: '123',
 };
 
 const clearMocks = () => {

@@ -1,4 +1,4 @@
-import { context, getOctokit } from '@actions/github';
+import { getOctokit } from '@actions/github';
 
 import { Options } from '../typings/Options';
 
@@ -7,7 +7,8 @@ export async function getPrPatch(
     options: Options
 ): Promise<string> {
     const response: { data: string } = ((await octokit.rest.pulls.get({
-        ...context.repo,
+        repo: options.repo,
+        owner: options.owner,
         pull_number: options.pullRequest!.number,
         headers: {
             accept: 'application/vnd.github.v3.patch',

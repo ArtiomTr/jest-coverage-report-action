@@ -3,15 +3,11 @@ import * as all from '@actions/github';
 
 import { generateCommitReport } from '../../src/report/generateCommitReport';
 
-const { mockContext, clearContextMock } = all as any;
+const { clearContextMock } = all as any;
 
 describe('generateCommitReport', () => {
     it('should generate commit report', async () => {
         const createCommitComment = jest.fn();
-
-        mockContext({
-            sha: '123456',
-        });
 
         await generateCommitReport(
             'Report body',
@@ -25,7 +21,8 @@ describe('generateCommitReport', () => {
                         createCommitComment,
                     },
                 },
-            } as unknown) as ReturnType<typeof getOctokit>
+            } as unknown) as ReturnType<typeof getOctokit>,
+            '123456'
         );
 
         expect(createCommitComment).toBeCalledWith({

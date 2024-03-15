@@ -41,6 +41,9 @@ export type Options = {
     prNumber: null | number;
     pullRequest: null | PullRequest;
     output: Array<OutputType>;
+    owner: string;
+    repo: string;
+    sha: string;
 };
 
 const validAnnotationOptions: Array<AnnotationType> = [
@@ -84,6 +87,9 @@ const optionSchema = yup.object().shape({
     baseCoverageFile: yup.string(),
     prNumber: yup.number().nullable(),
     pullRequest: yup.object().nullable(),
+    owner: yup.string(),
+    repo: yup.string(),
+    sha: yup.string(),
     output: yup
         .array()
         .required()
@@ -116,16 +122,22 @@ export const getOptions = async (): Promise<Options> => {
         getInput('prnumber') || context?.payload?.pull_request?.number
     );
     const output = getInput('output');
+    const owner = getInput('owner') || context.repo.owner;
+    const repo = getInput('repo') || context.repo.repo;
+
     let pullRequest = context?.payload?.pull_request || null;
 
     if (!pullRequest && !Number.isNaN(prNumber)) {
         const { data: pr } = await octokit.rest.pulls.get({
-            owner: context.repo.owner,
-            repo: context.repo.repo,
+            owner: owner,
+            repo: repo,
             pull_number: prNumber,
         });
         pullRequest = pr as PullRequest;
     }
+
+    const sha = pullRequest?.head.sha ?? context.sha;
+
     try {
         const options: Options = (await optionSchema.validate({
             token,
@@ -142,6 +154,9 @@ export const getOptions = async (): Promise<Options> => {
             prNumber: prNumber || null,
             pullRequest,
             output,
+            owner,
+            repo,
+            sha,
         })) as Options;
 
         return options;
