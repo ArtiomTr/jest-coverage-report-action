@@ -10,8 +10,8 @@ jobs:
         runs-on: ${{ matrix.os }}
         strategy:
             matrix:
-                node: ['10.x', '14.x', '17.x']
-                os: [ubuntu-latest, macos-latest]
+                node: ['14.x', '16.x', '18.x', '20.x']
+                os: [ubuntu-latest]
         steps:
             - name: Checkout repo
               uses: actions/checkout@v2
