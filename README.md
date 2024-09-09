@@ -356,6 +356,7 @@ Jest Coverage Report action is made with <3 thanks to these wonderful people
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/aj8k"><img src="https://avatars.githubusercontent.com/u/1395376?v=4?s=100" width="100px;" alt="Anton Joy"/><br /><sub><b>Anton Joy</b></sub></a><br /><a href="https://github.com/ArtiomTr/jest-coverage-report-action/commits?author=aj8k" title="Code">💻</a></td>
       <td align="center" valign="top" width="14.28%"><a href="http://www.dannylan.me"><img src="https://avatars.githubusercontent.com/u/25760929?v=4?s=100" width="100px;" alt="Danny Lan"/><br /><sub><b>Danny Lan</b></sub></a><br /><a href="https://github.com/ArtiomTr/jest-coverage-report-action/commits?author=ddlan" title="Code">💻</a></td>
       <td align="center" valign="top" width="14.28%"><a href="https://brian-cooper.com"><img src="https://avatars.githubusercontent.com/u/20056195?v=4?s=100" width="100px;" alt="Brian Cooper"/><br /><sub><b>Brian Cooper</b></sub></a><br /><a href="https://github.com/ArtiomTr/jest-coverage-report-action/commits?author=coopbri" title="Code">💻</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="http://d.hatena.ne.jp/syossan/"><img src="https://avatars.githubusercontent.com/u/910446?v=4?s=100" width="100px;" alt="syossan27"/><br /><sub><b>syossan27</b></sub></a><br /><a href="https://github.com/ArtiomTr/jest-coverage-report-action/commits?author=syossan27" title="Code">💻</a></td>
     </tr>
   </tbody>
 </table>
