@@ -301,6 +301,15 @@
       "contributions": [
         "code"
       ]
+    },
+    {
+      "login": "syossan27",
+      "name": "syossan27",
+      "avatar_url": "https://avatars.githubusercontent.com/u/910446?v=4",
+      "profile": "http://d.hatena.ne.jp/syossan/",
+      "contributions": [
+        "code"
+      ]
     }
   ],
   "projectName": "jest-coverage-report-action",
