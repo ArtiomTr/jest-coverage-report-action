@@ -48,10 +48,10 @@ describe('getIncreasedCoverage', () => {
                 },
             },
             baseDetails: {
-                'hello2.ts': {
+                'hello.ts': {
                     filename: 'hello.ts',
                     lines: 50,
-                    branches: 60,
+                    branches: 40,
                     functions: 50,
                     statements: 50,
                 },
