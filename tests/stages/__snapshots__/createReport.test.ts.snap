@@ -15,6 +15,7 @@ Object {
 | 🟢 | Lines | 80.65% | 25/31 |
 
 
+
 ## Test suite run failed
 Failed tests: 0/12. Failed suites: 0/5.
 
@@ -36,6 +37,7 @@ Object {
 | 🟢 | Branches | 100% | 8/8 |
 | 🟡 | Functions | 63.64% | 7/11 |
 | 🟢 | Lines | 80.65% | 25/31 |
+
 
 
 ## Test suite run success
@@ -61,6 +63,7 @@ Object {
 | 🟢 | Lines | 80.65% | 25/31 |
 
 
+
 ## Test suite run success
 12 tests passing in 5 suites.
 
@@ -82,6 +85,7 @@ Object {
 | 🟢 | Branches | 100% | 8/8 |
 | 🟡 | Functions | 63.64% | 7/11 |
 | 🟢 | Lines | 80.65% | 25/31 |
+
 
 
 ## Test suite run success

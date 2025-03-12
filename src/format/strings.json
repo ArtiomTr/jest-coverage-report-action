@@ -129,6 +129,7 @@
     "summaryTitle": "Coverage report {{ dir }}",
     "newFilesCoverage": "Show new covered files :hatching_chick:",
     "decreasedCoverageFiles": "Show files with reduced coverage :small_red_triangle_down:",
+    "increasedCoverageFiles": "Show files with increased coverage :arrow_up_small:",
     "baseCoverage": "Base coverage is: ",
     "loadingCoverageFromFile": "Loading code coverage from file: {{ pathToCoverageFile }}"
 }

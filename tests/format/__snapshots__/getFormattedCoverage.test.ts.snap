@@ -8,5 +8,6 @@ exports[`getFormattedCoverage should match snapshots 1`] = `
 | 🟡 | Functions | 63.64% | 7/11 |
 | 🟢 | Lines | 80.65% | 25/31 |
 
+
 "
 `;
