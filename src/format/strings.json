@@ -13,6 +13,19 @@
             "receipt": "🧾",
             "grey_question": "❔"
         },
+        "accessible": {
+            "x": "❌",
+            "arrow_up_small": "🔺",
+            "small_red_triangle_down": "🔻",
+            "green_circle": "✅",
+            "yellow_circle": "⚠️",
+            "red_circle": "❎",
+            "hatching_chick": "🐣",
+            "joystick": "🕹️",
+            "herb": "🌿",
+            "receipt": "🧾",
+            "grey_question": "❔"
+        },
         "ascii": {
             "x": "[ !!! ]",
             "arrow_up_small": "",
