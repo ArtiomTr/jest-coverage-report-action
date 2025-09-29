@@ -310,6 +310,15 @@
       "contributions": [
         "code"
       ]
+    },
+    {
+      "login": "morgan-atproperties",
+      "name": "morgan-atproperties",
+      "avatar_url": "https://avatars.githubusercontent.com/u/91989944?v=4",
+      "profile": "https://github.com/morgan-atproperties",
+      "contributions": [
+        "doc"
+      ]
     }
   ],
   "projectName": "jest-coverage-report-action",
