@@ -185,6 +185,53 @@ with:
 
 For example, you can save every test run to an artifact and then download and reference them here.
 
+## Running tests in containers
+
+If you run your tests in a Docker container, you will need a little extra
+setup because:
+
+1. You must share your coverage file with jest-coverage-report-action.
+2. The absolute paths of your tests must match the paths in the GitHub
+   workspace if you want test failure and test coverage annotations.
+
+One of the easier ways to do this is to mount the GitHub workspace
+inside your test container.  Here is a sample action that uses Docker:
+
+```yaml
+name: Run tests
+
+on:
+  pull_request:
+
+jobs:
+  run_tests:
+    name: Run tests
+    runs-on: ubuntu-latest
+
+    steps:
+      # Check out the repository
+      - uses: actions/checkout@v4
+
+      - name: Start containers
+        run: docker compose -f docker-compose.ci.yml up -d
+
+      # install any dependencies since this is a fresh checkout
+      - name: Install dependencies
+        run: docker compose -f docker-compose.ci.yml run -v ${GITHUB_WORKSPACE}:${GITHUB_WORKSPACE} --workdir ${GITHUB_WORKSPACE} tests yarn install
+
+      - name: Run tests
+        # note the flags passed to jest.  if you are running your tests with
+        # yarn or npm, you should set the equivalent flags there.
+        run: docker compose -f docker-compose.ci.yml run -v ${GITHUB_WORKSPACE}:${GITHUB_WORKSPACE} --workdir ${GITHUB_WORKSPACE} tests jest --coverage --ci --json --testLocationInResults --outputFile=report.json
+
+      - name: Collect test coverage
+        uses: ArtiomTr/jest-coverage-report-action@v2
+        if: always() # we should still try to run this even if there are test failures
+        with:
+          coverage-file: ./report.json
+          base-coverage-file: ./report.json
+```
+
 ## Opt-out coverage comparison features
 
 You can opt-out coverage comparison features to speed-up action. To achieve this, firstly, manually collect coverage to `report.json` file. Then, specify these options for the action:
