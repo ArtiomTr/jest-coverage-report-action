@@ -14,7 +14,7 @@ export const formatPercentage = (
 
     return i18n(
         isDeltaValid
-            ? '<div title="{{ baseCoverage }}%">{{ percentage }}% {{ delta }}</div>'
+            ? '<nobr title="{{ baseCoverage }}%">{{ percentage }}% {{ delta }}</nobr>'
             : '{{ percentage }}%',
         {
             percentage: decimalToString(headPercentage),
