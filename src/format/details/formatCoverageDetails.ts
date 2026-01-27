@@ -1,13 +1,15 @@
 import { formatCoverageDetailsPart } from './formatCoverageDetailsPart';
 import { getDecreasedCoverage } from './getDecreasedCoverage';
 import { getNewFilesCoverage } from './getNewFilesCoverage';
+import { RepoInfo } from './shrinkLongPath';
 import { CoverageDetailsMap } from '../../typings/Coverage';
 import { i18n } from '../../utils/i18n';
 
 export const formatCoverageDetails = (
     headDetails: CoverageDetailsMap,
     baseDetails: CoverageDetailsMap | undefined,
-    threshold: number | undefined
+    threshold: number | undefined,
+    repoInfo?: RepoInfo
 ): string => {
     const decreasedCoverage = getDecreasedCoverage(headDetails, baseDetails);
 
@@ -16,13 +18,15 @@ export const formatCoverageDetails = (
             i18n('newFilesCoverage'),
             getNewFilesCoverage(headDetails, baseDetails),
             undefined,
-            threshold
+            threshold,
+            repoInfo
         ),
         formatCoverageDetailsPart(
             i18n('decreasedCoverageFiles'),
             decreasedCoverage.headDetails,
             decreasedCoverage.baseDetails,
-            threshold
+            threshold,
+            repoInfo
         ),
     ].join('\n');
 };
