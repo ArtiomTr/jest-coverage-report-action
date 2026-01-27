@@ -31,6 +31,7 @@ const DEFAULT_OPTIONS: Options = {
         },
     },
     output: ['comment'],
+    coverageColumns: ['statements', 'branches', 'functions', 'lines'],
 };
 
 describe('createReport', () => {

@@ -2,12 +2,14 @@ import { parseDetails } from './details/parseDetails';
 import { parseSummary } from './summary/parseSummary';
 import { getFormattedCoverage } from './getFormattedCoverage';
 import { JsonReport } from '../typings/JsonReport';
+import { CoverageColumnType } from '../typings/Options';
 
 export const formatCoverage = (
     headReport: JsonReport | undefined,
     baseReport: JsonReport | undefined,
     threshold: number | undefined,
-    hideDetails: boolean | undefined
+    hideDetails: boolean | undefined,
+    coverageColumns?: CoverageColumnType[]
 ): string => {
     if (headReport) {
         return getFormattedCoverage(
@@ -16,7 +18,8 @@ export const formatCoverage = (
             parseDetails(headReport),
             baseReport ? parseDetails(baseReport) : undefined,
             threshold,
-            hideDetails
+            hideDetails,
+            coverageColumns
         );
     }
 

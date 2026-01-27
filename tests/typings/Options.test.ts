@@ -34,6 +34,7 @@ const options = {
     ['coverage-file']: 'file.json',
     ['base-coverage-file']: 'base.json',
     output: 'comment',
+    ['coverage-columns']: 'statements, branches, functions, lines',
 };
 const OctokitMock = () => ({
     rest: {
@@ -76,6 +77,7 @@ const parsedOptions = {
     prNumber: null,
     pullRequest: null,
     output: ['comment'],
+    coverageColumns: ['statements', 'branches', 'functions', 'lines'],
 };
 
 describe('getOptions', () => {
