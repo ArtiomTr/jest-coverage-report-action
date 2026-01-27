@@ -24,6 +24,8 @@ const defaultOptions: Options = {
     prNumber: null,
     pullRequest: null,
     output: ['comment'],
+    boldDeltas: false,
+    showDeltaIcons: true,
 };
 
 const clearMocks = () => {

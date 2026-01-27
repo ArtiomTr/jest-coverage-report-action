@@ -34,6 +34,8 @@ const options = {
     ['coverage-file']: 'file.json',
     ['base-coverage-file']: 'base.json',
     output: 'comment',
+    ['bold-deltas']: 'false',
+    ['show-delta-icons']: 'true',
 };
 const OctokitMock = () => ({
     rest: {
@@ -76,6 +78,8 @@ const parsedOptions = {
     prNumber: null,
     pullRequest: null,
     output: ['comment'],
+    boldDeltas: false,
+    showDeltaIcons: true,
 };
 
 describe('getOptions', () => {

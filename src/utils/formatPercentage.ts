@@ -1,12 +1,16 @@
 import { decimalToString } from './decimalToString';
-import { formatPercentageDelta } from './formatPercentageDelta';
+import {
+    DeltaFormatOptions,
+    formatPercentageDelta,
+} from './formatPercentageDelta';
 import { i18n } from './i18n';
 
 const APPROXIMATION_THRESHOLD = 0;
 
 export const formatPercentage = (
     headPercentage: number,
-    basePercentage: number = headPercentage
+    basePercentage: number = headPercentage,
+    deltaOptions?: DeltaFormatOptions
 ) => {
     const delta = headPercentage - basePercentage;
 
@@ -20,7 +24,7 @@ export const formatPercentage = (
             percentage: decimalToString(headPercentage),
             baseCoverage:
                 i18n('baseCoverage') + decimalToString(basePercentage),
-            delta: isDeltaValid ? formatPercentageDelta(delta) : '',
+            delta: isDeltaValid ? formatPercentageDelta(delta, deltaOptions) : '',
         }
     );
 };

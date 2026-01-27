@@ -25,7 +25,8 @@ export const createReport = (
     options: Options,
     thresholdResults: ThresholdResult[]
 ): SummaryReport => {
-    const { workingDirectory, customTitle } = options;
+    const { workingDirectory, customTitle, boldDeltas, showDeltaIcons } = options;
+    const deltaOptions = { boldDeltas, showDeltaIcons };
 
     const { errors, data } = dataCollector.get();
     const [headReport, baseReport] = data;
@@ -37,7 +38,7 @@ export const createReport = (
         thresholdResults
     );
 
-    const coverage = formatCoverage(headReport, baseReport, undefined, false);
+    const coverage = formatCoverage(headReport, baseReport, undefined, false, deltaOptions);
     const formattedReport = runReport ? formatRunReport(runReport) : '';
 
     let templateText = insertArgs(template, {
@@ -55,7 +56,8 @@ export const createReport = (
             headReport,
             baseReport,
             undefined,
-            true
+            true,
+            deltaOptions
         );
 
         templateText = insertArgs(template, {
