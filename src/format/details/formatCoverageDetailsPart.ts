@@ -1,6 +1,7 @@
 import markdownTable from 'markdown-table';
 
 import { getFileCoverageDetailRow } from './getFileCoverageDetailRow';
+import { RepoInfo } from './shrinkLongPath';
 import { CoverageDetailsMap } from '../../typings/Coverage';
 import { createMarkdownSpoiler } from '../../utils/createMarkdownSpoiler';
 import { i18n } from '../../utils/i18n';
@@ -10,14 +11,16 @@ export const formatCoverageDetailsPart = (
     summary: string,
     headDetails: CoverageDetailsMap,
     baseDetails?: CoverageDetailsMap,
-    threshold?: number
+    threshold?: number,
+    repoInfo?: RepoInfo
 ): string | undefined => {
     const tableContent = Object.keys(headDetails).map((filename) =>
         getFileCoverageDetailRow(
             filename,
             headDetails[filename],
             baseDetails?.[filename],
-            threshold
+            threshold,
+            repoInfo
         )
     );
 

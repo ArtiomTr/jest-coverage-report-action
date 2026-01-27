@@ -3,6 +3,7 @@ import { context } from '@actions/github';
 import { getReportTag } from '../constants/getReportTag';
 import { GITHUB_MESSAGE_SIZE_LIMIT } from '../constants/GITHUB_MESSAGE_SIZE_LIMIT';
 import { formatCoverage } from '../format/formatCoverage';
+import { RepoInfo } from '../format/details/shrinkLongPath';
 import { formatErrors } from '../format/formatErrors';
 import { formatRunReport } from '../format/formatRunReport';
 import template from '../format/template.md';
@@ -19,6 +20,17 @@ export const getSha = () =>
     context.payload.pull_request?.head.sha ??
     context.sha;
 
+const getRepoInfo = (options: Options): RepoInfo | undefined => {
+    if (!context.repo?.owner || !context.repo?.repo) {
+        return undefined;
+    }
+    return {
+        owner: context.repo.owner,
+        repo: context.repo.repo,
+        sha: options.pullRequest?.head?.sha ?? context.sha,
+    };
+};
+
 export const createReport = (
     dataCollector: DataCollector<JsonReport>,
     runReport: TestRunReport | undefined,
@@ -26,6 +38,7 @@ export const createReport = (
     thresholdResults: ThresholdResult[]
 ): SummaryReport => {
     const { workingDirectory, customTitle } = options;
+    const repoInfo = getRepoInfo(options);
 
     const { errors, data } = dataCollector.get();
     const [headReport, baseReport] = data;
@@ -37,7 +50,7 @@ export const createReport = (
         thresholdResults
     );
 
-    const coverage = formatCoverage(headReport, baseReport, undefined, false);
+    const coverage = formatCoverage(headReport, baseReport, undefined, false, repoInfo);
     const formattedReport = runReport ? formatRunReport(runReport) : '';
 
     let templateText = insertArgs(template, {
@@ -55,7 +68,8 @@ export const createReport = (
             headReport,
             baseReport,
             undefined,
-            true
+            true,
+            repoInfo
         );
 
         templateText = insertArgs(template, {
