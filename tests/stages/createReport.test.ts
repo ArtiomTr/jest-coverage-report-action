@@ -31,6 +31,8 @@ const DEFAULT_OPTIONS: Options = {
         },
     },
     output: ['comment'],
+    boldDeltas: false,
+    showDeltaIcons: true,
 };
 
 describe('createReport', () => {

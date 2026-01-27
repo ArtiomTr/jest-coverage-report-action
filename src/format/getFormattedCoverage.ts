@@ -1,6 +1,7 @@
 import { formatCoverageDetails } from './details/formatCoverageDetails';
 import { formatCoverageSummary } from './summary/formatCoverageSummary';
 import { CoverageDetailsMap, CoverageSummary } from '../typings/Coverage';
+import { DeltaFormatOptions } from '../utils/formatPercentageDelta';
 import { i18n } from '../utils/i18n';
 
 export const getFormattedCoverage = (
@@ -9,12 +10,13 @@ export const getFormattedCoverage = (
     headDetails: CoverageDetailsMap,
     baseDetails: CoverageDetailsMap | undefined,
     threshold: number | undefined,
-    hideDetails: boolean | undefined
+    hideDetails: boolean | undefined,
+    deltaOptions?: DeltaFormatOptions
 ): string =>
     [
-        formatCoverageSummary(headSummary, baseSummary, threshold),
+        formatCoverageSummary(headSummary, baseSummary, threshold, deltaOptions),
         !hideDetails
-            ? formatCoverageDetails(headDetails, baseDetails, threshold)
+            ? formatCoverageDetails(headDetails, baseDetails, threshold, deltaOptions)
             : `> ${i18n('detailsHidden')}`,
     ]
         .filter(Boolean)

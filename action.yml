@@ -51,6 +51,14 @@ inputs:
         required: false
         description: What output should action produce? `comment` - add comment to PR, `report-markdown` - report markdown text in "outputs.report".
         default: comment
+    bold-deltas:
+        required: false
+        description: 'Use bold code blocks for delta percentages (e.g., **`-3.95%`** instead of (-3.95%))'
+        default: 'false'
+    show-delta-icons:
+        required: false
+        description: 'Show arrow icons (🔻/🔼) next to delta percentages'
+        default: 'true'
 outputs:
     report:
         description: Generated markdown report. Exists only if input option "output" is set to "report-markdown".
@@ -75,3 +83,5 @@ runs:
               INPUT_BASE-COVERAGE-FILE: ${{ inputs.base-coverage-file }}
               INPUT_PRNUMBER: ${{ inputs.prnumber }}
               INPUT_OUTPUT: ${{ inputs.output }}
+              INPUT_BOLD-DELTAS: ${{ inputs.bold-deltas }}
+              INPUT_SHOW-DELTA-ICONS: ${{ inputs.show-delta-icons }}

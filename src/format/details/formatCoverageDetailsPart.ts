@@ -3,6 +3,7 @@ import markdownTable from 'markdown-table';
 import { getFileCoverageDetailRow } from './getFileCoverageDetailRow';
 import { CoverageDetailsMap } from '../../typings/Coverage';
 import { createMarkdownSpoiler } from '../../utils/createMarkdownSpoiler';
+import { DeltaFormatOptions } from '../../utils/formatPercentageDelta';
 import { i18n } from '../../utils/i18n';
 import { withExplanation } from '../../utils/withExplanation';
 
@@ -10,14 +11,16 @@ export const formatCoverageDetailsPart = (
     summary: string,
     headDetails: CoverageDetailsMap,
     baseDetails?: CoverageDetailsMap,
-    threshold?: number
+    threshold?: number,
+    deltaOptions?: DeltaFormatOptions
 ): string | undefined => {
     const tableContent = Object.keys(headDetails).map((filename) =>
         getFileCoverageDetailRow(
             filename,
             headDetails[filename],
             baseDetails?.[filename],
-            threshold
+            threshold,
+            deltaOptions
         )
     );
 

@@ -210,6 +210,8 @@ const defaultOptions: Options = {
         },
     },
     output: ['comment'],
+    boldDeltas: false,
+    showDeltaIcons: true,
 };
 
 jest.mock('../src/typings/Options.ts');

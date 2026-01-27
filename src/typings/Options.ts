@@ -41,6 +41,8 @@ export type Options = {
     prNumber: null | number;
     pullRequest: null | PullRequest;
     output: Array<OutputType>;
+    boldDeltas: boolean;
+    showDeltaIcons: boolean;
 };
 
 const validAnnotationOptions: Array<AnnotationType> = [
@@ -89,6 +91,14 @@ const optionSchema = yup.object().shape({
         .required()
         .transform((_, originalValue: string) => originalValue.split(', '))
         .of(yup.string().required().oneOf(validOutputTypeOptions)),
+    boldDeltas: yup
+        .boolean()
+        .required()
+        .transform((_, originalValue: string) => originalValue === 'true'),
+    showDeltaIcons: yup
+        .boolean()
+        .required()
+        .transform((_, originalValue: string) => originalValue === 'true'),
 });
 
 export const shouldInstallDeps = (skipStep: SkipStepType): Boolean =>
@@ -116,6 +126,8 @@ export const getOptions = async (): Promise<Options> => {
         getInput('prnumber') || context?.payload?.pull_request?.number
     );
     const output = getInput('output');
+    const boldDeltas = getInput('bold-deltas') || 'false';
+    const showDeltaIcons = getInput('show-delta-icons') || 'true';
     let pullRequest = context?.payload?.pull_request || null;
 
     if (!pullRequest && !Number.isNaN(prNumber)) {
@@ -142,6 +154,8 @@ export const getOptions = async (): Promise<Options> => {
             prNumber: prNumber || null,
             pullRequest,
             output,
+            boldDeltas,
+            showDeltaIcons,
         })) as Options;
 
         return options;
