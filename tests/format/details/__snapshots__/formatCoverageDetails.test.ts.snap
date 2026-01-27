@@ -17,7 +17,7 @@ exports[`formatCoverageDetails should match snapshots 1`] = `
 
 | <div title=\\"Status of coverage:&#10; 🟢 - ok&#10; 🟡 - slightly more than threshold&#10; 🔴 - under the threshold\\">St.<sup>:grey_question:</sup></div> | File | Statements | Branches | Functions | Lines |
 | :-: | :- | :- | :- | :- | :- |
-| 🟡 | decreased.ts | <div title=\\"Base coverage is: 80%\\">70% (-10% 🔻)</div> | <div title=\\"Base coverage is: 60%\\">50% (-10% 🔻)</div> | <div title=\\"Base coverage is: 60%\\">50% (-10% 🔻)</div> | <div title=\\"Base coverage is: 90%\\">80% (-10% 🔻)</div> |
+| 🟡 | decreased.ts | <div title=\\"Base coverage is: 80%\\">70% **\`-10%\`** 🔻</div> | <div title=\\"Base coverage is: 60%\\">50% **\`-10%\`** 🔻</div> | <div title=\\"Base coverage is: 60%\\">50% **\`-10%\`** 🔻</div> | <div title=\\"Base coverage is: 90%\\">80% **\`-10%\`** 🔻</div> |
 
 </details>
 "
