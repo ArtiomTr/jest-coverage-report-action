@@ -10,6 +10,7 @@ export type AnnotationType = 'all' | 'none' | 'coverage' | 'failed-tests';
 export type PackageManagerType = 'npm' | 'yarn' | 'pnpm' | 'bun';
 export type SkipStepType = 'all' | 'none' | 'install';
 export type OutputType = 'comment' | 'report-markdown';
+export type CoverageColumnType = 'statements' | 'branches' | 'functions' | 'lines';
 
 export type GithubRepo = {
     clone_url: string;
@@ -41,6 +42,7 @@ export type Options = {
     prNumber: null | number;
     pullRequest: null | PullRequest;
     output: Array<OutputType>;
+    coverageColumns: Array<CoverageColumnType>;
 };
 
 const validAnnotationOptions: Array<AnnotationType> = [
@@ -66,6 +68,13 @@ const validOutputTypeOptions: Array<OutputType> = [
     'report-markdown',
 ];
 
+const validCoverageColumnOptions: Array<CoverageColumnType> = [
+    'statements',
+    'branches',
+    'functions',
+    'lines',
+];
+
 const optionSchema = yup.object().shape({
     token: yup.string().required(),
     testScript: yup.string().required(),
@@ -89,6 +98,16 @@ const optionSchema = yup.object().shape({
         .required()
         .transform((_, originalValue: string) => originalValue.split(', '))
         .of(yup.string().required().oneOf(validOutputTypeOptions)),
+    coverageColumns: yup
+        .array()
+        .required()
+        .transform((_, originalValue: string) =>
+            originalValue
+                .split(',')
+                .map((s: string) => s.trim())
+                .filter(Boolean)
+        )
+        .of(yup.string().required().oneOf(validCoverageColumnOptions)),
 });
 
 export const shouldInstallDeps = (skipStep: SkipStepType): Boolean =>
@@ -116,6 +135,8 @@ export const getOptions = async (): Promise<Options> => {
         getInput('prnumber') || context?.payload?.pull_request?.number
     );
     const output = getInput('output');
+    const coverageColumns =
+        getInput('coverage-columns') || 'statements, branches, functions, lines';
     let pullRequest = context?.payload?.pull_request || null;
 
     if (!pullRequest && !Number.isNaN(prNumber)) {
@@ -142,6 +163,7 @@ export const getOptions = async (): Promise<Options> => {
             prNumber: prNumber || null,
             pullRequest,
             output,
+            coverageColumns,
         })) as Options;
 
         return options;

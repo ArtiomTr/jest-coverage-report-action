@@ -51,6 +51,10 @@ inputs:
         required: false
         description: What output should action produce? `comment` - add comment to PR, `report-markdown` - report markdown text in "outputs.report".
         default: comment
+    coverage-columns:
+        required: false
+        description: 'Comma-separated list of coverage columns to display. Available: statements, branches, functions, lines. Default shows all columns.'
+        default: 'statements, branches, functions, lines'
 outputs:
     report:
         description: Generated markdown report. Exists only if input option "output" is set to "report-markdown".
@@ -75,3 +79,4 @@ runs:
               INPUT_BASE-COVERAGE-FILE: ${{ inputs.base-coverage-file }}
               INPUT_PRNUMBER: ${{ inputs.prnumber }}
               INPUT_OUTPUT: ${{ inputs.output }}
+              INPUT_COVERAGE-COLUMNS: ${{ inputs.coverage-columns }}

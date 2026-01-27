@@ -24,6 +24,7 @@ const defaultOptions: Options = {
     prNumber: null,
     pullRequest: null,
     output: ['comment'],
+    coverageColumns: ['statements', 'branches', 'functions', 'lines'],
 };
 
 const clearMocks = () => {

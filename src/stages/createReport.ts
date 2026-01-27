@@ -25,7 +25,7 @@ export const createReport = (
     options: Options,
     thresholdResults: ThresholdResult[]
 ): SummaryReport => {
-    const { workingDirectory, customTitle } = options;
+    const { workingDirectory, customTitle, coverageColumns } = options;
 
     const { errors, data } = dataCollector.get();
     const [headReport, baseReport] = data;
@@ -37,7 +37,7 @@ export const createReport = (
         thresholdResults
     );
 
-    const coverage = formatCoverage(headReport, baseReport, undefined, false);
+    const coverage = formatCoverage(headReport, baseReport, undefined, false, coverageColumns);
     const formattedReport = runReport ? formatRunReport(runReport) : '';
 
     let templateText = insertArgs(template, {
@@ -55,7 +55,8 @@ export const createReport = (
             headReport,
             baseReport,
             undefined,
-            true
+            true,
+            coverageColumns
         );
 
         templateText = insertArgs(template, {

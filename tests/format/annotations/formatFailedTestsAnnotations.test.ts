@@ -28,6 +28,7 @@ const DEFAULT_OPTIONS: Options = {
         },
     },
     output: ['comment'],
+    coverageColumns: ['statements', 'branches', 'functions', 'lines'],
 };
 
 const annotations: Annotation[] = [
