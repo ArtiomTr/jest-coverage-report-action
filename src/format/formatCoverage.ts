@@ -7,7 +7,8 @@ export const formatCoverage = (
     headReport: JsonReport | undefined,
     baseReport: JsonReport | undefined,
     threshold: number | undefined,
-    hideDetails: boolean | undefined
+    hideDetails: boolean | undefined,
+    showOverallColumn: boolean = false
 ): string => {
     if (headReport) {
         return getFormattedCoverage(
@@ -16,7 +17,8 @@ export const formatCoverage = (
             parseDetails(headReport),
             baseReport ? parseDetails(baseReport) : undefined,
             threshold,
-            hideDetails
+            hideDetails,
+            showOverallColumn
         );
     }
 

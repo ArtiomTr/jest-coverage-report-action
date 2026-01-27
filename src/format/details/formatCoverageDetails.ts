@@ -7,7 +7,8 @@ import { i18n } from '../../utils/i18n';
 export const formatCoverageDetails = (
     headDetails: CoverageDetailsMap,
     baseDetails: CoverageDetailsMap | undefined,
-    threshold: number | undefined
+    threshold: number | undefined,
+    showOverallColumn: boolean = false
 ): string => {
     const decreasedCoverage = getDecreasedCoverage(headDetails, baseDetails);
 
@@ -16,13 +17,15 @@ export const formatCoverageDetails = (
             i18n('newFilesCoverage'),
             getNewFilesCoverage(headDetails, baseDetails),
             undefined,
-            threshold
+            threshold,
+            showOverallColumn
         ),
         formatCoverageDetailsPart(
             i18n('decreasedCoverageFiles'),
             decreasedCoverage.headDetails,
             decreasedCoverage.baseDetails,
-            threshold
+            threshold,
+            showOverallColumn
         ),
     ].join('\n');
 };

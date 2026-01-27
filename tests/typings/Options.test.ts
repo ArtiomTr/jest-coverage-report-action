@@ -76,6 +76,7 @@ const parsedOptions = {
     prNumber: null,
     pullRequest: null,
     output: ['comment'],
+    showOverallColumn: false,
 };
 
 describe('getOptions', () => {

@@ -9,12 +9,13 @@ export const getFormattedCoverage = (
     headDetails: CoverageDetailsMap,
     baseDetails: CoverageDetailsMap | undefined,
     threshold: number | undefined,
-    hideDetails: boolean | undefined
+    hideDetails: boolean | undefined,
+    showOverallColumn: boolean = false
 ): string =>
     [
         formatCoverageSummary(headSummary, baseSummary, threshold),
         !hideDetails
-            ? formatCoverageDetails(headDetails, baseDetails, threshold)
+            ? formatCoverageDetails(headDetails, baseDetails, threshold, showOverallColumn)
             : `> ${i18n('detailsHidden')}`,
     ]
         .filter(Boolean)

@@ -31,6 +31,7 @@ const DEFAULT_OPTIONS: Options = {
         },
     },
     output: ['comment'],
+    showOverallColumn: false,
 };
 
 describe('createReport', () => {

@@ -10,40 +10,42 @@ export const formatCoverageDetailsPart = (
     summary: string,
     headDetails: CoverageDetailsMap,
     baseDetails?: CoverageDetailsMap,
-    threshold?: number
+    threshold?: number,
+    showOverallColumn: boolean = false
 ): string | undefined => {
     const tableContent = Object.keys(headDetails).map((filename) =>
         getFileCoverageDetailRow(
             filename,
             headDetails[filename],
             baseDetails?.[filename],
-            threshold
+            threshold,
+            showOverallColumn
         )
     );
 
     if (tableContent.length > 0) {
+        const headers = [
+            withExplanation(i18n('status'), i18n('statusExplanation')),
+            i18n('filename'),
+            i18n('statements'),
+            i18n('branches'),
+            i18n('functions'),
+            i18n('lines'),
+        ];
+
+        const aligns: Array<'c' | 'l'> = ['c', 'l', 'l', 'l', 'l', 'l'];
+
+        if (showOverallColumn) {
+            headers.push(i18n('overall'));
+            aligns.push('l');
+        }
+
         return createMarkdownSpoiler({
-            body: markdownTable(
-                [
-                    [
-                        withExplanation(
-                            i18n('status'),
-                            i18n('statusExplanation')
-                        ),
-                        i18n('filename'),
-                        i18n('statements'),
-                        i18n('branches'),
-                        i18n('functions'),
-                        i18n('lines'),
-                    ],
-                    ...tableContent,
-                ],
-                {
-                    align: ['c', 'l', 'l', 'l', 'l', 'l'],
-                    stringLength: () => 1,
-                    alignDelimiters: false,
-                }
-            ),
+            body: markdownTable([headers, ...tableContent], {
+                align: aligns,
+                stringLength: () => 1,
+                alignDelimiters: false,
+            }),
             summary,
         });
     }

@@ -24,6 +24,7 @@ const defaultOptions: Options = {
     prNumber: null,
     pullRequest: null,
     output: ['comment'],
+    showOverallColumn: false,
 };
 
 const clearMocks = () => {

@@ -28,6 +28,7 @@ const DEFAULT_OPTIONS: Options = {
         },
     },
     output: ['comment'],
+    showOverallColumn: false,
 };
 
 const annotations: Annotation[] = [
