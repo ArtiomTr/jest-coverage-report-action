@@ -210,6 +210,7 @@ const defaultOptions: Options = {
         },
     },
     output: ['comment'],
+    showOverallColumn: false,
 };
 
 jest.mock('../src/typings/Options.ts');
