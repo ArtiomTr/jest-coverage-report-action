@@ -216,7 +216,7 @@ export const run = async (
         }
 
         const octokit = getOctokit(options.token);
-        if (options.pullRequest?.number) {
+        if (options.pullRequest?.number && options.onlyChanged) {
             const patch = await getPrPatch(octokit, options);
             coverageAnnotations = onlyChanged(coverageAnnotations, patch);
         }

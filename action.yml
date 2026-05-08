@@ -47,6 +47,9 @@ inputs:
     prnumber:
         required: false
         description: Pull Request number for this commit. Use if your action is running in a PR, but non on the pull_request event, so that you do not get multiple comments.
+    only-changed-files:
+        description: 'Only annotate changed files for coverage annotation in the current PR. (default: true)'
+        default: 'true'
     output:
         required: false
         description: What output should action produce? `comment` - add comment to PR, `report-markdown` - report markdown text in "outputs.report".

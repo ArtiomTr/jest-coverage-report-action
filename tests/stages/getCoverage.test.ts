@@ -23,6 +23,7 @@ const defaultOptions: Options = {
     skipStep: 'none',
     prNumber: null,
     pullRequest: null,
+    onlyChanged: true,
     output: ['comment'],
 };
 

@@ -75,6 +75,7 @@ const parsedOptions = {
     baseCoverageFile: 'base.json',
     prNumber: null,
     pullRequest: null,
+    onlyChanged: true,
     output: ['comment'],
 };
 
@@ -127,6 +128,14 @@ describe('getOptions', () => {
         clearInputMock();
 
         mockInput({ ...options, ['threshold']: 'asdf' });
+        await expect(getOptions()).resolves.toBeDefined();
+        clearInputMock();
+
+        mockInput({ ...options, ['only-changed-files']: 'nope' });
+        await expect(getOptions()).rejects.toBeDefined();
+        clearInputMock();
+
+        mockInput({ ...options, ['only-changed-files']: '' });
         await expect(getOptions()).resolves.toBeDefined();
         clearInputMock();
 

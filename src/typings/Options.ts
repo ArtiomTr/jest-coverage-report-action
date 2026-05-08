@@ -40,6 +40,7 @@ export type Options = {
     baseCoverageFile?: string;
     prNumber: null | number;
     pullRequest: null | PullRequest;
+    onlyChanged: boolean;
     output: Array<OutputType>;
 };
 
@@ -84,6 +85,7 @@ const optionSchema = yup.object().shape({
     baseCoverageFile: yup.string(),
     prNumber: yup.number().nullable(),
     pullRequest: yup.object().nullable(),
+    onlyChanged: yup.boolean().default(true),
     output: yup
         .array()
         .required()
@@ -115,6 +117,7 @@ export const getOptions = async (): Promise<Options> => {
     const prNumber: number | null = Number(
         getInput('prnumber') || context?.payload?.pull_request?.number
     );
+    const onlyChanged = getInput('only-changed-files') || true;
     const output = getInput('output');
     let pullRequest = context?.payload?.pull_request || null;
 
@@ -141,6 +144,7 @@ export const getOptions = async (): Promise<Options> => {
             baseCoverageFile,
             prNumber: prNumber || null,
             pullRequest,
+            onlyChanged,
             output,
         })) as Options;
 

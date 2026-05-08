@@ -30,6 +30,7 @@ const DEFAULT_OPTIONS: Options = {
             repo: { clone_url: 'https://github.com/test/repo.git' },
         },
     },
+    onlyChanged: true,
     output: ['comment'],
 };
 

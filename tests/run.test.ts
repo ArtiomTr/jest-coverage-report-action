@@ -7,6 +7,7 @@ import { mocked } from 'ts-jest/utils';
 import { Annotation } from '../src/annotations/Annotation';
 import { createCoverageAnnotations } from '../src/annotations/createCoverageAnnotations';
 import { createFailedTestsAnnotations } from '../src/annotations/createFailedTestsAnnotations';
+import { onlyChanged } from '../src/filters/onlyChanged';
 import { formatCoverageAnnotations } from '../src/format/annotations/formatCoverageAnnotations';
 import { formatFailedTestsAnnotations } from '../src/format/annotations/formatFailedTestsAnnotations';
 import { run } from '../src/run';
@@ -209,6 +210,7 @@ const defaultOptions: Options = {
             },
         },
     },
+    onlyChanged: true,
     output: ['comment'],
 };
 
@@ -220,6 +222,7 @@ jest.mock('../src/report/generatePRReport.ts');
 jest.mock('../src/report/generateCommitReport.ts');
 jest.mock('../src/annotations/createFailedTestsAnnotations.ts');
 jest.mock('../src/annotations/createCoverageAnnotations.ts');
+jest.mock('../src/filters/onlyChanged.ts');
 jest.mock('../src/format/annotations/formatFailedTestsAnnotations.ts');
 jest.mock('../src/format/annotations/formatCoverageAnnotations.ts');
 
@@ -429,6 +432,7 @@ describe('run', () => {
     describe('coverageAnnotations', () => {
         const createCoverageAnnotationsMock = mocked(createCoverageAnnotations);
         const formatCoverageAnnotationsMock = mocked(formatCoverageAnnotations);
+        const onlyChangedMock = mocked(onlyChanged);
 
         beforeEach(() => {
             createCoverageAnnotationsMock.mockClear();
@@ -442,6 +446,16 @@ describe('run', () => {
             });
             await run();
             expect(createCoverageAnnotationsMock).not.toBeCalled();
+        });
+
+        it('should not filter out annotations on unchanged files for current PR if disabled by options', async () => {
+            getOptionsMock.mockResolvedValue({
+                ...defaultOptions,
+                onlyChanged: false,
+            });
+            await run();
+            expect(createCoverageAnnotationsMock).toBeCalled();
+            expect(onlyChangedMock).not.toBeCalled();
         });
     });
 });
