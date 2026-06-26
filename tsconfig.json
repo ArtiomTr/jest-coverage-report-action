@@ -1,12 +1,12 @@
 {
     "compilerOptions": {
-        "target": "ES2019",
+        "target": "ES2022",
         "module": "commonjs",
         "declaration": false,
         "outDir": "./dist",
         "strict": true,
         "esModuleInterop": true,
-        "lib": ["ES2019", "DOM" /* dirty hack, otherwise typescript doesn't find URL */],
+        "lib": ["ES2022", "DOM"],
         "rootDir": "src",
         "resolveJsonModule": true
     },
